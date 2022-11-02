@@ -6,25 +6,30 @@
     <item
         android:id="@+id/nav_math"
         android:icon="@drawable/math_icon"
-        tools:ignore="ExtraText,MenuTitle" />
+        android:title="Math"
+        tools:ignore="ExtraText" />
 
     <item
         android:id="@+id/nav_read"
         android:icon="@drawable/english_icon"
-        tools:ignore="ExtraText,MenuTitle" />
+        android:title="Reading"
+        tools:ignore="ExtraText" />
     <item
         android:id="@+id/nav_exe"
-        tools:ignore="ExtraText,MenuTitle"
+        android:title="Exercise"
+        tools:ignore="ExtraText"
         android:icon="@drawable/exer_icon"/>
 
     <item
         android:id="@+id/nav_goal"
         android:icon="@drawable/goal_icon"
-        tools:ignore="ExtraText,MenuTitle" />
+        android:title="Goal"
+        tools:ignore="ExtraText" />
 
     <item
         android:id="@+id/nav_settings"
+        android:title="Setting"
         android:icon="@drawable/setting"
-        tools:ignore="ExtraText,MenuTitle" />
+        tools:ignore="ExtraText" />
 
 </menu>

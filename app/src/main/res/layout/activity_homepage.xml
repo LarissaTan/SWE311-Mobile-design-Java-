@@ -8,32 +8,40 @@
 
     <FrameLayout
         android:id="@+id/frame_layout_homepage"
-        android:layout_marginTop="140dp"
         android:layout_width="match_parent"
-        android:layout_height="480dp" />
-
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomApp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottomApp"
         android:layout_gravity="bottom"
+        android:layout_marginBottom="4dp"
         android:background="#ffffff"
-        app:fabCradleVerticalOffset="10dp"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="10dp"
-        tools:ignore="BottomAppBar,MissingConstraints">
+        app:fabCradleVerticalOffset="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="BottomAppBar">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:itemRippleColor="#C6850A"
+            app:itemTextColor="#C6850A"
             android:layout_marginRight="16dp"
+            android:background="@drawable/transparent_background"
             app:itemIconSize="@dimen/design_navigation_icon_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/navigation"/>
+            app:menu="@menu/navigation" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
