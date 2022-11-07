@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:layout_marginStart="20dp">
+                    android:paddingStart="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -120,63 +120,281 @@
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
                     android:layout_marginStart="21dp"
+                    android:layout_marginTop="40dp"
                     android:text="Game"
-                    android:textSize="30sp"
-                    android:textColor="#000000"/>
+                    android:textColor="#000000"
+                    android:textSize="30sp" />
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                        <FrameLayout
+                            android:layout_width="230dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            >
 
                             <ImageView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/math_card"
+                                android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
                                 android:maxWidth="230dp"
                                 android:maxHeight="180dp"
-                                android:layout_margin="10dp"
-                                android:scaleType="fitCenter"/>
+                                android:src="@drawable/math_card" />
 
-                        </LinearLayout>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="230dp"
+                                android:layout_height="86dp"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:layout_marginTop="90dp"
+                                app:cardBackgroundColor="#E6F8F8FA">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="10dp"
+                                        android:text="Math Domino"
+                                        android:textColor="#252529"
+                                        android:textSize="16sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginStart="10dp">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_light"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="230dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:maxWidth="230dp"
+                                android:maxHeight="180dp"
+                                android:src="@drawable/math_sheep" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="230dp"
+                                android:layout_height="86dp"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:layout_marginTop="90dp"
+                                app:cardBackgroundColor="#E6F8F8FA">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="10dp"
+                                        android:text="Count the Sheep"
+                                        android:textColor="#252529"
+                                        android:textSize="16sp"/>
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginStart="10dp">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_light"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="230dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:maxWidth="230dp"
+                                android:maxHeight="180dp"
+                                android:src="@drawable/math_cat" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="230dp"
+                                android:layout_height="86dp"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:layout_marginTop="90dp"
+                                app:cardBackgroundColor="#E6F8F8FA">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="10dp"
+                                        android:text="Feeding Time"
+                                        android:textColor="#252529"
+                                        android:textSize="16dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:layout_marginStart="10dp">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_light"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/star_gray"
+                                            android:scaleType="fitCenter" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </FrameLayout>
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/math_sheep"
+                            android:layout_margin="10dp"
                             android:adjustViewBounds="true"
                             android:maxWidth="230dp"
                             android:maxHeight="180dp"
-                            android:layout_margin="10dp"
-                            android:scaleType="fitCenter" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/math_cat"
-                            android:adjustViewBounds="true"
-                            android:maxWidth="230dp"
-                            android:maxHeight="180dp"
-                            android:layout_margin="10dp"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/math_card" />
 
                     </LinearLayout>
                 </HorizontalScrollView>
