@@ -43,8 +43,9 @@
                 android:layout_width="332dp"
                 android:layout_height="86dp"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="90dp"
-                app:cardBackgroundColor="#E6F8F8FA">
+                android:layout_marginTop="150dp"
+                app:cardBackgroundColor="#E6F8F8FA"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -75,14 +76,28 @@
                             android:textColor="#252529"/>
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/level_1"
-                            android:maxWidth="23dp"
-                            android:maxHeight="5dp"
-                            android:adjustViewBounds="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="15dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/level_icon_light"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/level_icon_grey"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/level_icon_grey"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -91,7 +106,7 @@
                             android:maxWidth="12dp"
                             android:maxHeight="12dp"
                             android:adjustViewBounds="true"
-                            android:layout_marginLeft="170dp"
+                            android:layout_marginLeft="150dp"
                             android:layout_gravity="center_vertical|right"/>
 
                         <TextView
@@ -100,7 +115,7 @@
                             android:text="10MIN"
                             android:textSize="13sp"
                             android:textColor="#252529"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="5dp"
                             android:layout_gravity="center_vertical|right"/>
 
                     </LinearLayout>
@@ -116,7 +131,7 @@
             android:layout_height="match_parent"
             app:cardElevation="10dp"
             app:cardCornerRadius="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             app:cardBackgroundColor="@color/white"
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true">
@@ -130,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="21dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:text="Game"
                     android:textColor="#000000"
                     android:textSize="30sp" />
@@ -149,25 +164,25 @@
                             android:layout_width="230dp"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="10dp"
-                            >
+                            android:layout_margin="10dp">
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
                                 android:maxWidth="230dp"
                                 android:maxHeight="180dp"
+                                android:scaleType="fitCenter"
                                 android:src="@drawable/math_card" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="230dp"
-                                android:layout_height="86dp"
+                                android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
-                                app:cardBackgroundColor="#E6F8F8FA">
+                                app:cardBackgroundColor="#E6F8F8FA"
+                                app:cardCornerRadius="10dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -177,7 +192,8 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginStart="10dp"
                                         android:text="Math Domino"
                                         android:textColor="#252529"
                                         android:textSize="16sp" />
@@ -185,38 +201,39 @@
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginStart="10dp">
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="3dp"
+                                        android:orientation="horizontal">
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_light"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                     </LinearLayout>
 
@@ -230,25 +247,25 @@
                             android:layout_width="230dp"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="10dp"
-                            >
+                            android:layout_margin="10dp">
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
                                 android:maxWidth="230dp"
                                 android:maxHeight="180dp"
+                                android:scaleType="fitCenter"
                                 android:src="@drawable/math_sheep" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="230dp"
-                                android:layout_height="86dp"
+                                android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
-                                app:cardBackgroundColor="#E6F8F8FA">
+                                app:cardBackgroundColor="#E6F8F8FA"
+                                app:cardCornerRadius="10dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -258,46 +275,48 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginStart="10dp"
                                         android:text="Count the Sheep"
                                         android:textColor="#252529"
-                                        android:textSize="16sp"/>
+                                        android:textSize="16sp" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginStart="10dp">
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="3dp"
+                                        android:orientation="horizontal">
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_light"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -310,25 +329,25 @@
                             android:layout_width="230dp"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_margin="10dp"
-                            >
+                            android:layout_margin="10dp">
 
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
-                                android:scaleType="fitCenter"
                                 android:maxWidth="230dp"
                                 android:maxHeight="180dp"
+                                android:scaleType="fitCenter"
                                 android:src="@drawable/math_cat" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="230dp"
-                                android:layout_height="86dp"
+                                android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
-                                app:cardBackgroundColor="#E6F8F8FA">
+                                app:cardBackgroundColor="#E6F8F8FA"
+                                app:cardCornerRadius="10dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -338,7 +357,8 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:layout_marginStart="10dp"
                                         android:text="Feeding Time"
                                         android:textColor="#252529"
                                         android:textSize="16dp" />
@@ -346,38 +366,39 @@
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginStart="10dp">
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="3dp"
+                                        android:orientation="horizontal">
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_light"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                         <ImageView
                                             android:layout_width="22dp"
                                             android:layout_height="15dp"
-                                            android:src="@drawable/star_gray"
-                                            android:scaleType="fitCenter" />
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                     </LinearLayout>
                                 </LinearLayout>
@@ -385,16 +406,6 @@
                             </androidx.cardview.widget.CardView>
 
                         </FrameLayout>
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:adjustViewBounds="true"
-                            android:maxWidth="230dp"
-                            android:maxHeight="180dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/math_card" />
 
                     </LinearLayout>
                 </HorizontalScrollView>

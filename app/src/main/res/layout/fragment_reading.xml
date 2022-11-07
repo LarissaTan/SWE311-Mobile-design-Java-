@@ -46,8 +46,9 @@
                 android:layout_width="332dp"
                 android:layout_height="86dp"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="90dp"
-                app:cardBackgroundColor="#E6F8F8FA">
+                android:layout_marginTop="150dp"
+                app:cardBackgroundColor="#E6F8F8FA"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -78,14 +79,28 @@
                             android:textColor="#252529"/>
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/level_1"
-                            android:maxWidth="23dp"
-                            android:maxHeight="5dp"
-                            android:adjustViewBounds="true"
-                            android:layout_marginLeft="10dp"
-                            android:layout_gravity="center_vertical"/>
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:scaleType="fitCenter"
+                        android:layout_marginStart="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/level_icon_light"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/level_icon_grey"/>
+
+                        <ImageView
+                            android:layout_width="13dp"
+                            android:layout_height="13dp"
+                            android:scaleType="fitCenter"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/level_icon_grey"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -94,7 +109,7 @@
                             android:maxWidth="12dp"
                             android:maxHeight="12dp"
                             android:adjustViewBounds="true"
-                            android:layout_marginLeft="170dp"
+                            android:layout_marginLeft="150dp"
                             android:layout_gravity="center_vertical|right"/>
 
                         <TextView
@@ -103,7 +118,7 @@
                             android:text="8MIN"
                             android:textSize="13sp"
                             android:textColor="#252529"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="5dp"
                             android:layout_gravity="center_vertical|right"/>
 
                     </LinearLayout>
@@ -117,114 +132,111 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="10dp"
-            app:cardCornerRadius="20dp"
             android:layout_marginTop="30dp"
             app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
             app:cardMaxElevation="12dp"
             app:cardPreventCornerOverlap="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="20dp"
                     android:text="Game"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_margin="20dp"
-                    android:textColor="#1A3B34"/>
+                    android:textColor="#000000"
+                    android:textSize="30sp" />
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <FrameLayout
-                            android:id="@+id/reading_module1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal">
+                            android:layout_width="230dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp">
 
                             <ImageView
-                                android:id="@+id/imageButton2"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
-                                android:maxWidth="302.78dp"
-                                android:maxHeight="210dp"
+                                android:maxWidth="230dp"
+                                android:maxHeight="180dp"
                                 android:scaleType="fitCenter"
-                                android:src="@drawable/reading1_image"
-                                android:layout_marginTop="10dp"
-                                android:layout_gravity="center_horizontal"/>
+                                android:src="@drawable/read_boy" />
 
                             <androidx.cardview.widget.CardView
-                                android:layout_width="332dp"
-                                android:layout_height="86dp"
+                                android:layout_width="230dp"
+                                android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
-                                app:cardBackgroundColor="#E6F8F8FA">
+                                app:cardBackgroundColor="#E6F8F8FA"
+                                app:cardCornerRadius="10dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:orientation="vertical"
-                                    android:layout_marginStart="20dp">
+                                    android:orientation="vertical">
 
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Learn the basic words (1)"
-                                        android:textSize="23sp"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Find the words"
                                         android:textColor="#252529"
-                                        android:layout_marginTop="10dp" />
+                                        android:textSize="16sp" />
 
                                     <LinearLayout
-                                        android:layout_width="wrap_content"
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_marginTop="10dp"
-                                        android:layout_marginBottom="5dp">
-
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="Level"
-                                            android:textSize="15sp"
-                                            android:textColor="#252529"/>
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="3dp"
+                                        android:orientation="horizontal">
 
                                         <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/level_1"
-                                            android:maxWidth="23dp"
-                                            android:maxHeight="5dp"
-                                            android:adjustViewBounds="true"
-                                            android:layout_marginLeft="10dp"
-                                            android:layout_gravity="center_vertical"/>
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
 
                                         <ImageView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/level_timer"
-                                            android:maxWidth="12dp"
-                                            android:maxHeight="12dp"
-                                            android:adjustViewBounds="true"
-                                            android:layout_marginLeft="170dp"
-                                            android:layout_gravity="center_vertical|right"/>
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
 
-                                        <TextView
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:text="8MIN"
-                                            android:textSize="13sp"
-                                            android:textColor="#252529"
-                                            android:layout_marginStart="10dp"
-                                            android:layout_gravity="center_vertical|right"/>
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
 
                                     </LinearLayout>
 
@@ -234,25 +246,87 @@
 
                         </FrameLayout>
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/math_sheep"
-                            android:adjustViewBounds="true"
-                            android:maxWidth="230dp"
-                            android:maxHeight="180dp"
-                            android:layout_margin="10dp"
-                            android:scaleType="fitCenter" />
+                        <FrameLayout
+                            android:layout_width="230dp"
+                            android:layout_height="180dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/math_cat"
-                            android:adjustViewBounds="true"
-                            android:maxWidth="230dp"
-                            android:maxHeight="180dp"
-                            android:layout_margin="10dp"
-                            android:scaleType="fitCenter"/>
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:adjustViewBounds="true"
+                                android:maxWidth="230dp"
+                                android:maxHeight="180dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/read_car" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="230dp"
+                                android:layout_height="60dp"
+                                android:layout_gravity="bottom|center_horizontal"
+                                android:layout_marginTop="90dp"
+                                app:cardBackgroundColor="#E6F8F8FA"
+                                app:cardCornerRadius="10dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
+                                        android:text="Deliver goods"
+                                        android:textColor="#252529"
+                                        android:textSize="16sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="10dp"
+                                        android:layout_marginTop="3dp"
+                                        android:orientation="horizontal">
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_light" />
+
+                                        <ImageView
+                                            android:layout_width="22dp"
+                                            android:layout_height="15dp"
+                                            android:scaleType="fitCenter"
+                                            android:src="@drawable/star_gray" />
+
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </FrameLayout>
 
                     </LinearLayout>
                 </HorizontalScrollView>
