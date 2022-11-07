@@ -6,9 +6,32 @@
     tools:context=".navigation.ExerciseFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="exe u k" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Exercise"
+            android:textSize="30sp"
+            android:layout_margin="20dp" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:iconifiedByDefault="true"
+            android:queryHint="Search Keyword"
+            android:maxWidth="315dp">
+
+        </SearchView>
+
+
+
+    </LinearLayout>
+
 
 </FrameLayout>
