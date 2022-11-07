@@ -1,14 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation.ReadingFragment">
+    tools:context=".navigation.ReadingFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is Reading page!!" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/reading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="21dp"
+            android:text="Reading"
+            android:textSize="30sp"
+            android:textColor="#000000"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="302.78dp"
+                android:maxHeight="210dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/reading1_image"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="332dp"
+                android:layout_height="86dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="90dp"
+                app:cardBackgroundColor="#E6F8F8FA">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Learn the basic words (1)"
+                        android:textSize="23sp"
+                        android:textColor="#252529"
+                        android:layout_marginTop="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Level"
+                            android:textSize="15sp"
+                            android:textColor="#252529"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/level_1"
+                            android:maxWidth="23dp"
+                            android:maxHeight="5dp"
+                            android:adjustViewBounds="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center_vertical"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/level_timer"
+                            android:maxWidth="12dp"
+                            android:maxHeight="12dp"
+                            android:adjustViewBounds="true"
+                            android:layout_marginLeft="170dp"
+                            android:layout_gravity="center_vertical|right"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="8MIN"
+                            android:textSize="13sp"
+                            android:textColor="#252529"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center_vertical|right"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
