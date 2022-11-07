@@ -63,6 +63,7 @@
             android:layout_below="@+id/item_chatbox_time"/>
 
         <TextView
+            android:id="@+id/item_chatbox_alert_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_medium"

@@ -3,12 +3,18 @@ package com.example.funnylearning.temp_head;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.recycle.chatbox.adapter_chatbox;
+import com.example.funnylearning.recycle.chatbox.model_chatbox;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +22,9 @@ import com.example.funnylearning.R;
  * create an instance of this fragment.
  */
 public class Message extends Fragment {
+
+    private RecyclerView messageList;
+    private final ArrayList<model_chatbox> chatList = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,7 +69,19 @@ public class Message extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_message, container, false);
+        messageList = (RecyclerView) view.findViewById(R.id.recyclerview_message);
+
+        chatList.clear();
+        chatList.add(new model_chatbox("image","Mr. Ong Cong Kin","Okay","09:41 AM",0));
+
+        messageList.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter_chatbox customAdapter = new adapter_chatbox(chatList);
+        messageList.setAdapter(customAdapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        return view;
     }
+
+
 }

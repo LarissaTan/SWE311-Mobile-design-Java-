@@ -36,6 +36,7 @@
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_message"
             android:layout_width="match_parent"
             android:layout_height="800dp"
             android:layout_marginTop="20dp"
@@ -44,7 +45,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_margin="40dp"
-                android:id="@+id/recyclerview_today"
+                android:id="@+id/recyclerview_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
