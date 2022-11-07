@@ -17,5 +17,5 @@ public class model_chatbox {
 }
 
 /*
-* linear lyaout
+* linear layout
 * */
