@@ -13,12 +13,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/reading"
+            android:id="@+id/math"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginStart="21dp"
-            android:text="Reading"
+            android:text="Math"
             android:textSize="30sp"
             android:textColor="#000000"/>
 
@@ -35,7 +35,7 @@
                 android:maxWidth="302.78dp"
                 android:maxHeight="210dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/reading1_image"
+                android:src="@drawable/math_pic"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"/>
 
@@ -55,7 +55,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Learn the basic words (1)"
+                        android:text="Addition with ten (1)"
                         android:textSize="23sp"
                         android:textColor="#252529"
                         android:layout_marginTop="10dp" />
@@ -97,7 +97,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="8MIN"
+                            android:text="10MIN"
                             android:textSize="13sp"
                             android:textColor="#252529"
                             android:layout_marginStart="10dp"
@@ -125,12 +125,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="21dp"
                     android:text="Game"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_margin="20dp"/>
+                    android:textSize="30sp"
+                    android:textColor="#000000"/>
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -140,15 +141,22 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/math_card"
-                            android:adjustViewBounds="true"
-                            android:maxWidth="230dp"
-                            android:maxHeight="180dp"
-                            android:layout_margin="10dp"
-                            android:scaleType="fitCenter"/>
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/math_card"
+                                android:adjustViewBounds="true"
+                                android:maxWidth="230dp"
+                                android:maxHeight="180dp"
+                                android:layout_margin="10dp"
+                                android:scaleType="fitCenter"/>
+
+                        </LinearLayout>
 
                         <ImageView
                             android:layout_width="wrap_content"
