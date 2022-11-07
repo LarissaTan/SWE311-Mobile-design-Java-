@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="Home"
+        tools:ignore="ExtraText" />
+
+    <item
         android:id="@+id/nav_math"
         android:icon="@drawable/math_icon"
         android:title="Math"
@@ -19,12 +25,6 @@
         android:title="Exercise"
         tools:ignore="ExtraText"
         android:icon="@drawable/exer_icon"/>
-
-    <item
-        android:id="@+id/nav_goal"
-        android:icon="@drawable/goal_icon"
-        android:title="Goal"
-        tools:ignore="ExtraText" />
 
     <item
         android:id="@+id/nav_settings"

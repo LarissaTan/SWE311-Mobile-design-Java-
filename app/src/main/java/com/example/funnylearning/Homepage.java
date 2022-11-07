@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.funnylearning.navigation.ExerciseFragment;
-import com.example.funnylearning.navigation.GoalFragment;
+import com.example.funnylearning.navigation.HomeFragment;
 import com.example.funnylearning.navigation.MathFragment;
 import com.example.funnylearning.navigation.ReadingFragment;
 import com.example.funnylearning.navigation.SettingFragment;
@@ -25,19 +25,19 @@ public class Homepage extends AppCompatActivity {
 
         ExerciseFragment exerciseFragment = new ExerciseFragment();
         SettingFragment settingFragment = new SettingFragment();
-        GoalFragment goalFragment = new GoalFragment();
+        HomeFragment homeFragment = new HomeFragment();
         MathFragment mathFragment = new MathFragment();
         ReadingFragment readingFragment = new ReadingFragment();
 
         bottomNavigationView  = findViewById(R.id.bottomNavigationView);
-        replacementFragment(goalFragment);
+        replacementFragment(homeFragment);
         //bottomNavigationView.setSelectedItemId(R.id.nav_goal);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-                case R.id.nav_goal:
-                    replacementFragment(goalFragment);
+                case R.id.nav_home:
+                    replacementFragment(homeFragment);
                     break;
                 case R.id.nav_exe:
                     replacementFragment(exerciseFragment);
