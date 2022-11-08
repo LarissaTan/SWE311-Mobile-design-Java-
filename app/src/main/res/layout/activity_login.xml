@@ -1,9 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:background="#f9d150"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_text_input_layout1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Account"
+        android:textColorHint="@color/black"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="OutlinedBox helper helper"
+        app:helperTextTextAppearance="@style/HelperTextAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/outlined_edit_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:textColorHighlight="@color/textColorHighlight" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_text_input_layout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/outlined_text_input_layout1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Password"
+        android:textColorHint="@color/black"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="OutlinedBox helper helper"
+        app:helperTextTextAppearance="@style/HelperTextAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/outlined_edit_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:textColorHighlight="@color/textColorHighlight" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/outlined_text_input_layout2"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Log in"
+        android:backgroundTint="@color/btn"
+        android:textSize="30sp"
+        android:fontFamily="@font/yujiboku_regular"/>
+
+    <TextView
+        android:id="@+id/forgetPwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:layout_below="@+id/btnLogin"
+        android:gravity="center"
+        android:fontFamily="@font/alegreya_variablefont_wght"
+        android:textStyle="italic"
+        android:textColor="@color/btn"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgetPwd"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+    <TextView
+        android:id="@+id/dont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an account?"
+        android:gravity="center"
+        android:fontFamily="@font/alegreya_variablefont_wght"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:gravity="center"
+        android:fontFamily="@font/alegreya_variablefont_wght"
+        android:textStyle="italic"
+        android:textColor="@color/btn"
+        android:textSize="20sp" />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
