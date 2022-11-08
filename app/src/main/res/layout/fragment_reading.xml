@@ -18,7 +18,7 @@
             android:id="@+id/reading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="21dp"
             android:text="Reading"
             android:textSize="30sp"
@@ -28,7 +28,22 @@
             android:id="@+id/reading_module1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="48dp"
+                android:layout_height="24dp"
+                app:cardBackgroundColor="#E6F8F8FA"
+                app:cardCornerRadius="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:text="Free"/>
+
+            </androidx.cardview.widget.CardView>
 
             <ImageView
                 android:id="@+id/imageButton2"
@@ -132,7 +147,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
