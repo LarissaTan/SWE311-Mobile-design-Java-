@@ -1,5 +1,6 @@
 package com.example.funnylearning.navigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.funnylearning.Enter_page;
+import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
+import com.example.funnylearning.Temp_head;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +66,19 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Button test;
+        test = view.findViewById(R.id.just_for_test);
+
+        test.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent it = new Intent(getContext(), Temp_head.class);
+                startActivity(it);
+            }
+        });
+
+        return view;
     }
 }

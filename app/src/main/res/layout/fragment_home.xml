@@ -11,4 +11,11 @@
         android:layout_height="match_parent"
         android:text="this is goal!" />
 
+    <Button
+        android:id="@+id/just_for_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="just for test"/>
+
 </FrameLayout>
