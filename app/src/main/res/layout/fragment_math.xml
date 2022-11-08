@@ -45,6 +45,8 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="150dp"
                 app:cardBackgroundColor="#E6F8F8FA"
+                app:cardUseCompatPadding="true"
+                app:cardPreventCornerOverlap="false"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -129,16 +131,16 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardElevation="10dp"
-            app:cardCornerRadius="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp"
             app:cardMaxElevation="12dp"
-            app:cardPreventCornerOverlap="true">
+            app:cardCornerRadius="20dp"
+            android:layout_marginBottom="-20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -161,15 +163,16 @@
                         android:orientation="horizontal">
 
                         <FrameLayout
-                            android:layout_width="230dp"
-                            android:layout_height="180dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="1dp"
                                 android:adjustViewBounds="true"
                                 android:maxWidth="230dp"
                                 android:maxHeight="180dp"
@@ -180,7 +183,7 @@
                                 android:layout_width="230dp"
                                 android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
-                                android:layout_marginTop="90dp"
+                                android:layout_marginBottom="1.5dp"
                                 app:cardBackgroundColor="#E6F8F8FA"
                                 app:cardCornerRadius="10dp">
 
@@ -190,16 +193,16 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:text="Math Domino"
                                         android:textColor="#252529"
                                         android:textSize="16sp" />
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="10dp"
                                         android:layout_marginTop="3dp"
@@ -250,7 +253,7 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
@@ -263,9 +266,9 @@
                                 android:layout_width="230dp"
                                 android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
-                                android:layout_marginTop="90dp"
                                 app:cardBackgroundColor="#E6F8F8FA"
-                                app:cardCornerRadius="10dp">
+                                app:cardCornerRadius="10dp"
+                                android:layout_marginBottom="1.5dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -275,8 +278,8 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:text="Count the Sheep"
                                         android:textColor="#252529"
                                         android:textSize="16sp" />
@@ -332,7 +335,7 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
@@ -345,7 +348,7 @@
                                 android:layout_width="230dp"
                                 android:layout_height="60dp"
                                 android:layout_gravity="bottom|center_horizontal"
-                                android:layout_marginTop="90dp"
+                                android:layout_marginBottom="1.5dp"
                                 app:cardBackgroundColor="#E6F8F8FA"
                                 app:cardCornerRadius="10dp">
 
@@ -357,8 +360,8 @@
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginTop="10dp"
                                         android:layout_marginStart="10dp"
+                                        android:layout_marginTop="10dp"
                                         android:text="Feeding Time"
                                         android:textColor="#252529"
                                         android:textSize="16dp" />

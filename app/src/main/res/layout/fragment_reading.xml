@@ -48,6 +48,8 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginTop="150dp"
                 app:cardBackgroundColor="#E6F8F8FA"
+                app:cardUseCompatPadding="true"
+                app:cardPreventCornerOverlap="false"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -134,10 +136,10 @@
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="20dp"
             app:cardElevation="10dp"
             app:cardMaxElevation="12dp"
-            app:cardPreventCornerOverlap="true">
+            app:cardCornerRadius="20dp"
+            android:layout_marginBottom="-20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,7 +172,7 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
@@ -185,7 +187,8 @@
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
                                 app:cardBackgroundColor="#E6F8F8FA"
-                                app:cardCornerRadius="10dp">
+                                app:cardCornerRadius="10dp"
+                                android:layout_margin="1.5dp">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -253,7 +256,7 @@
                             android:layout_margin="10dp">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:adjustViewBounds="true"
@@ -268,7 +271,8 @@
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_marginTop="90dp"
                                 app:cardBackgroundColor="#E6F8F8FA"
-                                app:cardCornerRadius="10dp">
+                                app:cardCornerRadius="10dp"
+                                android:layout_margin="1.5dp"                                >
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
