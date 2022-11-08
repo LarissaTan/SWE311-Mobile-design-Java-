@@ -77,13 +77,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/outlined_text_input_layout2"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
         android:text="Log in"
         android:backgroundTint="@color/btn"
         android:textSize="30sp"
-        android:fontFamily="@font/yujiboku_regular"/>
+        android:fontFamily="@font/indie_flower"/>
+
 
     <TextView
         android:id="@+id/forgetPwd"
