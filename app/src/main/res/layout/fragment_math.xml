@@ -16,7 +16,7 @@
             android:id="@+id/math"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginStart="21dp"
             android:text="Math"
             android:textSize="30sp"
@@ -25,8 +25,23 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="48dp"
+                android:layout_height="24dp"
+                app:cardBackgroundColor="#E6F8F8FA"
+                app:cardCornerRadius="4dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:text="Free"/>
+
+            </androidx.cardview.widget.CardView>
+            
             <ImageView
                 android:id="@+id/imageButton2"
                 android:layout_width="wrap_content"
