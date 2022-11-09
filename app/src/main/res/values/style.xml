@@ -22,5 +22,25 @@
         <item name = "android:textSize">16sp</item>
     </style>
 
+    <style name="title">
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/abeezee_regular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="hint">
+        <item name="android:textColor">@color/hint</item>
+        <item name="android:fontFamily">@font/alegreya</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+
+    </style>
 
 </resources>

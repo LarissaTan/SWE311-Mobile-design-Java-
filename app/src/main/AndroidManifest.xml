@@ -13,7 +13,14 @@
         android:theme="@style/Theme.FunnyLearning"
         tools:targetApi="31">
         <activity
-            android:name=".Profile"
+            android:name=".Temp_register"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Setting"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,27 +42,6 @@
         </activity>
         <activity
             android:name=".Goal"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Age"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MathLevel"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Gender"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -112,7 +98,7 @@
         </activity>
         <activity
             android:name=".Login"
-            android:exported="false">
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
