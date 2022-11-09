@@ -13,6 +13,13 @@
         android:theme="@style/Theme.FunnyLearning"
         tools:targetApi="31">
         <activity
+            android:name=".Setting"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ChoosePhoto"
             android:exported="false">
             <meta-data
@@ -89,7 +96,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Temp_head"
             android:exported="false">
@@ -97,7 +103,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".Signup"
             android:exported="false">
