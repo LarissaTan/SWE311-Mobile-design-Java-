@@ -18,16 +18,45 @@
 
 
     <ImageView
+        android:id="@+id/forgot_psw_succeed_imgView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_below="@+id/forgot_psw_succeed_tv1"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-8dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/tick_circle" />
+
+    <TextView
+        android:id="@+id/forgot_psw_succeed_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password Changed"
+        style="@style/title"
+        android:layout_below="@+id/forgot_psw_succeed_imgView1"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/forgot_psw_succeed_tv3"
+        style="@style/hint"
+        android:layout_width="272dp"
+        android:layout_height="113dp"
+        android:layout_below="@+id/forgot_psw_succeed_tv2"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Your new password is ready,Let’s use your new password Have fun :)" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/forgot_psw_succeed_tv3"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="10dp"
         android:text="Continue" />
+
 </RelativeLayout>
