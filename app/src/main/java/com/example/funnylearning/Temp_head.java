@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.funnylearning.navigation.HomeFragment;
 import com.example.funnylearning.navigation.ReadingFragment;
 import com.example.funnylearning.navigation.SettingFragment;
 import com.example.funnylearning.temp_head.Message;
@@ -22,14 +24,43 @@ public class Temp_head extends AppCompatActivity {
         System.out.println("temp_head is working");
         super.onCreate(savedInstanceState);
 
-        title = "Message";
-        setContentView(R.layout.activity_temp_head);
-        /* setTest need to put behind the setContentView!!!!! */
-        head_bar_title = findViewById(R.id.head_bar_title);
-        head_bar_title.setText(title);
+        Intent intent = getIntent();
 
+        int tag = Integer.parseInt(intent.getStringExtra(HomeFragment.EXTRA_NAME));
+/*
+        if(tag == 0){
+            title = "Messages";
+            setContentView(R.layout.activity_temp_head);
+            /* setTest need to put behind the setContentView!!!!! *
+            head_bar_title = findViewById(R.id.head_bar_title);
+            head_bar_title.setText(title);
+            Message messageFragment = new Message();
+            //SettingFragment settingFragment = new SettingFragment();
+            replacementFragment(messageFragment);
+        }
 
+        if(tag == 1){
+            title = "Messages";
+            setContentView(R.layout.activity_temp_head);
+            /* setTest need to put behind the setContentView!!!!! *
+            head_bar_title = findViewById(R.id.head_bar_title);
+            head_bar_title.setText(title);
+            Message messageFragment = new Message();
+            //SettingFragment settingFragment = new SettingFragment();
+            replacementFragment(messageFragment);
+        }
 
+        if(tag == 1){
+            title = "Messages";
+            setContentView(R.layout.activity_temp_head);
+            // setTest need to put behind the setContentView!!!!!
+            head_bar_title = findViewById(R.id.head_bar_title);
+            head_bar_title.setText(title);
+            Message messageFragment = new Message();
+            //SettingFragment settingFragment = new SettingFragment();
+            replacementFragment(messageFragment);
+        }
+*/
         Message messageFragment = new Message();
         SettingFragment settingFragment = new SettingFragment();
         replacementFragment(messageFragment);

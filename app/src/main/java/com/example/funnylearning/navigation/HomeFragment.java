@@ -22,6 +22,7 @@ import com.example.funnylearning.Temp_head;
  */
 public class HomeFragment extends Fragment {
 
+    public static final String EXTRA_NAME = "tag";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,19 +63,45 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public int tag;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        Button test;
+        Button test,ong,cheh;
         test = view.findViewById(R.id.just_for_test);
+        ong =  view.findViewById(R.id.test_ong);
+        cheh = view.findViewById(R.id.test_cheh);
+
+
+        cheh.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                tag = 0;
+                Intent it = new Intent(getContext(), Temp_head.class);
+                it.putExtra(EXTRA_NAME,tag);
+                startActivity(it);
+            }
+        });
 
         test.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                tag = 1;
                 Intent it = new Intent(getContext(), Temp_head.class);
+                it.putExtra(EXTRA_NAME,tag);
+                startActivity(it);
+            }
+        });
+
+        ong.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                tag = 2;
+                Intent it = new Intent(getContext(), Temp_head.class);
+                it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
             }
         });
