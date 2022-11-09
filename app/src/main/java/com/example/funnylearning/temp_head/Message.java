@@ -75,15 +75,18 @@ public class Message extends Fragment {
 
         chatList.clear();
         System.out.println("message is working");
-        chatList.add(new model_chatbox("Mr. Ong Cong Kin","Okay","09:41 AM",0));
+        chatList.add(new model_chatbox("Mr. Ong Cong Kin","Okay","09:41 AM","2"));
+        chatList.add(new model_chatbox("Mr. Cheh Shu Ze","good!","08:20 AM","5"));
         //image will add latter
 
-        //System.out.println("message is working");
+        System.out.println("message is working");
         messageList.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter_chatbox customAdapter = new adapter_chatbox(chatList);
         System.out.println("layout manager is working");
         messageList.setAdapter(customAdapter);
         // Inflate the layout for this fragment
+
+        System.out.println("setAdapter is working");
         return view;
     }
 

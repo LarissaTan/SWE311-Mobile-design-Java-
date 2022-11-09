@@ -44,7 +44,7 @@
             app:cardCornerRadius="40dp">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="40dp"
+                android:layout_margin="20dp"
                 android:id="@+id/recyclerview_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

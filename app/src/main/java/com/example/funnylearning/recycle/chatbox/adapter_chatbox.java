@@ -12,7 +12,7 @@ import com.example.funnylearning.R;
 
 import java.util.ArrayList;
 
-public class adapter_chatbox extends RecyclerView.Adapter<adapter_chatbox.ViewHolder>{
+public class adapter_chatbox extends RecyclerView.Adapter<adapter_chatbox.ViewHolder>{//bug
     private final ArrayList<model_chatbox> chatList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -46,7 +46,7 @@ public class adapter_chatbox extends RecyclerView.Adapter<adapter_chatbox.ViewHo
 
         viewHolder. item_chatbox_title.setText(list.name);
         viewHolder. item_chatbox_message.setText(list.messageTop);
-        viewHolder. item_chatbox_alert_num.setText(list.alert_num);
+        //viewHolder. item_chatbox_alert_num.setText(list.alert_num);//bug1111
         viewHolder. item_chatbox_time.setText(list.time);
     }
 
