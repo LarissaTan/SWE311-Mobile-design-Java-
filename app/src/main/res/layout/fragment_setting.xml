@@ -3,12 +3,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".navigation.SettingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:maxHeight="30dp"
+        android:maxWidth="30dp"
+        android:src="@drawable/setting_gear"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is setting page!!!!!!!" />
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="24sp"
+            android:textColor="#252529"
+            android:layout_gravity="center_horizontal"/>
+        
+        <androidx.cardview.widget.CardView
+            android:layout_width="343dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="12dp"
+            android:layout_marginBottom="-20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxWidth="98dp"
+                android:maxHeight="98dp"
+                android:src="@drawable/profile_girl"
+                android:layout_gravity="right|top"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="70dp"
+                android:layout_marginStart="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User name"
+                    android:textSize="17sp"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Janine Celine"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:background="#E9ECF3"/>
+
+                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:textSize="17sp"
+                android:textColor="#000000"
+                android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Five years old"
+                    android:textSize="16sp"
+                    android:textColor="#252529"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:background="#E9ECF3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textSize="17sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="16sp"
+                    android:textColor="#252529"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:background="#E9ECF3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="17sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="user2274@gmail.com"
+                    android:textSize="16sp"
+                    android:textColor="#252529"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:background="#E9ECF3"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location"
+                    android:textSize="17sp"
+                    android:textColor="#000000"
+                    android:layout_marginTop="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="America"
+                    android:textSize="16sp"
+                    android:textColor="#252529"
+                    android:layout_marginTop="20dp"/>
+
+                <View
+                    android:layout_width="300dp"
+                    android:layout_height="2dp"
+                    android:background="#E9ECF3"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
 
 </FrameLayout>
