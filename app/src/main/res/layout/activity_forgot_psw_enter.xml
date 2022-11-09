@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ForgotPswEnter">
+    tools:context=".ForgotPswEmail">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/forgot_psw_enter_tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        style="@style/title"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/forgot_psw_enter_outlined_text_input_layout1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_psw_enter_tv1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Code"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="error"
+        app:helperTextTextAppearance="@style/HelperTextAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/forgot_psw_enter_outlined_outlined_edit_text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHighlight="@color/textColorHighlight" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/forgot_psw_enter_outlined_text_input_layout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_psw_enter_outlined_text_input_layout1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:hint="New Password"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="error"
+        app:helperTextTextAppearance="@style/HelperTextAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/forgot_psw_enter_outlined_edit_text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHighlight="@color/textColorHighlight" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/forgot_psw_enter_outlined_text_input_layout3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_psw_enter_outlined_text_input_layout2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Repeat Your New Password"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="error"
+        app:helperTextTextAppearance="@style/HelperTextAppearance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/forgot_psw_enter_outlined_edit_text3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHighlight="@color/textColorHighlight" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_psw_enter_outlined_text_input_layout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="10dp"
+        android:text="Continue" />
+</RelativeLayout>
