@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.funnylearning.Enter_page;
+import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;

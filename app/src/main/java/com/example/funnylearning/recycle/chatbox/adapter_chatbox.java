@@ -16,14 +16,13 @@ public class adapter_chatbox extends RecyclerView.Adapter<adapter_chatbox.ViewHo
     private final ArrayList<model_chatbox> chatList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_chatbox_title, item_chatbox_message, item_chatbox_time, item_chatbox_alert_num, item_chatbox_image;
+        TextView item_chatbox_title, item_chatbox_message, item_chatbox_time, item_chatbox_alert_num;
 
         public ViewHolder(View view) {
             super(view);
             item_chatbox_message = view.findViewById(R.id.item_chatbox_message);
             item_chatbox_time = view.findViewById(R.id.item_chatbox_time);
             item_chatbox_alert_num = view.findViewById(R.id.item_chatbox_alert_num);
-            item_chatbox_image = view.findViewById(R.id.item_chatbox_image);
             item_chatbox_title = view.findViewById(R.id.item_chatbox_title);
         }
     }
@@ -48,7 +47,6 @@ public class adapter_chatbox extends RecyclerView.Adapter<adapter_chatbox.ViewHo
         viewHolder. item_chatbox_title.setText(list.name);
         viewHolder. item_chatbox_message.setText(list.messageTop);
         viewHolder. item_chatbox_alert_num.setText(list.alert_num);
-        viewHolder. item_chatbox_image.setText(list.image);
         viewHolder. item_chatbox_time.setText(list.time);
     }
 

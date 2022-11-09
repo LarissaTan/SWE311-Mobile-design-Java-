@@ -74,10 +74,14 @@ public class Message extends Fragment {
         messageList = (RecyclerView) view.findViewById(R.id.recyclerview_message);
 
         chatList.clear();
-        chatList.add(new model_chatbox("image","Mr. Ong Cong Kin","Okay","09:41 AM",0));
+        System.out.println("message is working");
+        chatList.add(new model_chatbox("Mr. Ong Cong Kin","Okay","09:41 AM",0));
+        //image will add latter
 
+        //System.out.println("message is working");
         messageList.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter_chatbox customAdapter = new adapter_chatbox(chatList);
+        System.out.println("layout manager is working");
         messageList.setAdapter(customAdapter);
         // Inflate the layout for this fragment
         return view;

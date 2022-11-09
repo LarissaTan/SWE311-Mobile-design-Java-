@@ -21,7 +21,7 @@ public class Temp_head extends AppCompatActivity {
 
         Message messageFragment = new Message();
         SettingFragment settingFragment = new SettingFragment();
-        replacementFragment(settingFragment);
+        replacementFragment(messageFragment);
     }
 
     private void replacementFragment(Fragment fragment){
