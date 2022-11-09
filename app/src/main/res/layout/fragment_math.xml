@@ -92,29 +92,18 @@
                             android:textSize="15sp"
                             android:textColor="#252529"/>
 
-                        <ImageView
-                            android:layout_width="13dp"
-                            android:layout_height="13dp"
-                            android:scaleType="fitCenter"
-                            android:layout_marginStart="15dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/level_icon_light"/>
+                        <RatingBar
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/level"
+                            style= "@style/CustomRatingBar"
+                            android:numStars="3"
+                            android:stepSize="0.01"
+                            android:isIndicator="true"
+                            android:scaleY="0.8"
+                            android:scaleX="0.8"
+                            android:rating="1" />
 
-                        <ImageView
-                            android:layout_width="13dp"
-                            android:layout_height="13dp"
-                            android:scaleType="fitCenter"
-                            android:layout_marginStart="5dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/level_icon_grey"/>
-
-                        <ImageView
-                            android:layout_width="13dp"
-                            android:layout_height="13dp"
-                            android:scaleType="fitCenter"
-                            android:layout_marginStart="5dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/level_icon_grey"/>
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -170,7 +159,8 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
+                    android:layout_margin="20dp"
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -202,10 +192,9 @@
                                 app:cardBackgroundColor="#E6F8F8FA"
                                 app:cardCornerRadius="10dp">
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="match_parent">
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -216,47 +205,24 @@
                                         android:textColor="#252529"
                                         android:textSize="16sp" />
 
-                                    <LinearLayout
+
+                                    <RatingBar
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="10dp"
-                                        android:layout_marginTop="3dp"
-                                        android:orientation="horizontal">
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_light" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
+                                        android:id="@+id/ratingBar"
+                                        style= "@style/CustomRatingBar"
+                                        android:numStars="5"
+                                        android:stepSize="0.01"
+                                        android:isIndicator="true"
+                                        android:scaleY="0.8"
+                                        android:scaleX="0.8"
+                                        android:rating="3"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginTop="33dp"/>
 
 
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                    </LinearLayout>
-
-                                </LinearLayout>
+                                </RelativeLayout>
 
                             </androidx.cardview.widget.CardView>
 
@@ -286,10 +252,9 @@
                                 app:cardCornerRadius="10dp"
                                 android:layout_marginBottom="1.5dp">
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="match_parent">
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -300,45 +265,22 @@
                                         android:textColor="#252529"
                                         android:textSize="16sp" />
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
+                                    <RatingBar
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="10dp"
-                                        android:layout_marginTop="3dp"
-                                        android:orientation="horizontal">
+                                        android:id="@+id/ratingBar1"
+                                        style= "@style/CustomRatingBar"
+                                        android:numStars="5"
+                                        android:stepSize="0.01"
+                                        android:isIndicator="true"
+                                        android:scaleY="0.8"
+                                        android:scaleX="0.8"
+                                        android:rating="3"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginTop="33dp"/>
 
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_light" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                    </LinearLayout>
-                                </LinearLayout>
+                                </RelativeLayout>
 
                             </androidx.cardview.widget.CardView>
 
@@ -368,10 +310,9 @@
                                 app:cardBackgroundColor="#E6F8F8FA"
                                 app:cardCornerRadius="10dp">
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="vertical">
+                                    android:layout_height="match_parent">
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -382,45 +323,21 @@
                                         android:textColor="#252529"
                                         android:textSize="16dp" />
 
-                                    <LinearLayout
-                                        android:layout_width="match_parent"
+                                    <RatingBar
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="10dp"
-                                        android:layout_marginTop="3dp"
-                                        android:orientation="horizontal">
+                                        style= "@style/CustomRatingBar"
+                                        android:numStars="5"
+                                        android:stepSize="0.01"
+                                        android:isIndicator="true"
+                                        android:scaleY="0.8"
+                                        android:scaleX="0.8"
+                                        android:rating="3"
+                                        android:layout_marginStart="0dp"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginTop="33dp"/>
 
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_light" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                        <ImageView
-                                            android:layout_width="22dp"
-                                            android:layout_height="15dp"
-                                            android:scaleType="fitCenter"
-                                            android:src="@drawable/star_gray" />
-
-                                    </LinearLayout>
-                                </LinearLayout>
+                                </RelativeLayout>
 
                             </androidx.cardview.widget.CardView>
 
@@ -428,6 +345,8 @@
 
                     </LinearLayout>
                 </HorizontalScrollView>
+
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

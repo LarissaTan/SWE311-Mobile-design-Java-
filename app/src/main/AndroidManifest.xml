@@ -13,6 +13,13 @@
         android:theme="@style/Theme.FunnyLearning"
         tools:targetApi="31">
         <activity
+            android:name=".Temp_register"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Setting"
             android:exported="false">
             <meta-data
@@ -50,10 +57,6 @@
         <activity
             android:name=".ForgotPswEnter"
             android:exported="false">
-
-
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -61,7 +64,6 @@
         <activity
             android:name=".ForgotPswEmail"
             android:exported="false">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -97,8 +99,6 @@
         <activity
             android:name=".Login"
             android:exported="true">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -111,7 +111,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
 
             <meta-data
                 android:name="android.app.lib_name"
