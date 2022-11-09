@@ -86,7 +86,7 @@ public class ExerciseFragment extends Fragment {
         //image will add latter
 
         System.out.println("message is working");
-        execList.setLayoutManager(new LinearLayoutManager(getContext()));
+        execList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         adapter_exercise customAdapter = new adapter_exercise(exerciseList);
         System.out.println("layout manager is working");
         execList.setAdapter(customAdapter);
