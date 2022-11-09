@@ -15,19 +15,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Exercise"
+            android:fontFamily="@font/yujiboku_regular"
             android:textSize="30sp"
-            android:layout_margin="20dp" />
+            android:layout_margin="30dp" />
 
         <SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:iconifiedByDefault="true"
+            android:background="@drawable/exercise_search_bg"
             android:queryHint="Search Keyword"
             android:maxWidth="315dp">
 
         </SearchView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/alegreya"
+            android:text="Search results for 'Raise'"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="30dp"
+            android:id="@+id/recyclerview_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
 
 
 

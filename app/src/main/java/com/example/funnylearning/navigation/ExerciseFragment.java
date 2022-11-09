@@ -3,12 +3,19 @@ package com.example.funnylearning.navigation;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.recycle.chatbox.adapter_chatbox;
+import com.example.funnylearning.recycle.exercise.adapter_exercise;
+import com.example.funnylearning.recycle.exercise.model_exercise;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +23,9 @@ import com.example.funnylearning.R;
  * create an instance of this fragment.
  */
 public class ExerciseFragment extends Fragment {
+
+    private RecyclerView execList;
+    private final ArrayList<model_exercise> exerciseList = new ArrayList<model_exercise>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +71,26 @@ public class ExerciseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_exercise, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_exercise, container, false);
+
+        execList = (RecyclerView) view.findViewById(R.id.recyclerview_exercise);
+
+        exerciseList.clear();
+        System.out.println("message is working");
+        exerciseList.add(new model_exercise("Calf Raise"));
+        exerciseList.add(new model_exercise("Bent Raise"));
+        exerciseList.add(new model_exercise("Bent Raise"));
+        exerciseList.add(new model_exercise("Bent Raise"));
+        exerciseList.add(new model_exercise("Bent Raise"));
+        //image will add latter
+
+        System.out.println("message is working");
+        execList.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter_exercise customAdapter = new adapter_exercise(exerciseList);
+        System.out.println("layout manager is working");
+        execList.setAdapter(customAdapter);
+
+        return view;
     }
 }
