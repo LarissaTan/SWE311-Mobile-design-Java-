@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Enter_page extends AppCompatActivity {
+public class EnterPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class Enter_page extends AppCompatActivity {
         enter_page_btnSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent it = new Intent(Enter_page.this, Signup.class);
+                Intent it = new Intent(EnterPage.this, Signup.class);
                 startActivity(it);
             }
         });
@@ -30,7 +30,7 @@ public class Enter_page extends AppCompatActivity {
         enter_page_btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent it = new Intent(Enter_page.this, Homepage.class);
+                Intent it = new Intent(EnterPage.this, Homepage.class);
                 startActivity(it);
             }
         });
