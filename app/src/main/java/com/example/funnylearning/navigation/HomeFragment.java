@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public int tag;
+    public String tag = "0";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
         cheh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                tag = 0;
+                tag = "0";
                 Intent it = new Intent(getContext(), Temp_head.class);
                 it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
@@ -89,7 +89,7 @@ public class HomeFragment extends Fragment {
         test.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                tag = 1;
+                tag = "1";
                 Intent it = new Intent(getContext(), Temp_head.class);
                 it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
@@ -99,7 +99,7 @@ public class HomeFragment extends Fragment {
         ong.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                tag = 2;
+                tag = "2";
                 Intent it = new Intent(getContext(), Temp_head.class);
                 it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);

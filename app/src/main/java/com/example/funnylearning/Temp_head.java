@@ -13,6 +13,7 @@ import com.example.funnylearning.navigation.HomeFragment;
 import com.example.funnylearning.navigation.ReadingFragment;
 import com.example.funnylearning.navigation.SettingFragment;
 import com.example.funnylearning.temp_head.Message;
+import com.example.funnylearning.temp_head.RecordFragment;
 
 public class Temp_head extends AppCompatActivity {
 
@@ -27,11 +28,10 @@ public class Temp_head extends AppCompatActivity {
         Intent intent = getIntent();
 
         int tag = Integer.parseInt(intent.getStringExtra(HomeFragment.EXTRA_NAME));
-/*
+
         if(tag == 0){
             title = "Messages";
             setContentView(R.layout.activity_temp_head);
-            /* setTest need to put behind the setContentView!!!!! *
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
             Message messageFragment = new Message();
@@ -42,7 +42,6 @@ public class Temp_head extends AppCompatActivity {
         if(tag == 1){
             title = "Messages";
             setContentView(R.layout.activity_temp_head);
-            /* setTest need to put behind the setContentView!!!!! *
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
             Message messageFragment = new Message();
@@ -50,20 +49,17 @@ public class Temp_head extends AppCompatActivity {
             replacementFragment(messageFragment);
         }
 
-        if(tag == 1){
-            title = "Messages";
+        if(tag == 2){
+            title = "Record your day";
             setContentView(R.layout.activity_temp_head);
             // setTest need to put behind the setContentView!!!!!
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
-            Message messageFragment = new Message();
+            RecordFragment recordFragment = new RecordFragment();
             //SettingFragment settingFragment = new SettingFragment();
-            replacementFragment(messageFragment);
+            replacementFragment(recordFragment);
         }
-*/
-        Message messageFragment = new Message();
-        SettingFragment settingFragment = new SettingFragment();
-        replacementFragment(messageFragment);
+
     }
 
     private void replacementFragment(Fragment fragment){
