@@ -1,11 +1,17 @@
 package com.example.funnylearning.recycle.mood;
 
+import android.content.Context;
+import android.graphics.Color;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.funnylearning.R;
@@ -17,10 +23,15 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_mood_title;
+        ImageView imageView;
+        CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
+
             item_mood_title  = view.findViewById(R.id.record_mood_text);
+            imageView = view.findViewById(R.id.record_mood_image);
+            cardView = view.findViewById(R.id.record_mood_card);
         }
     }
 
@@ -41,9 +52,9 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
         model_mood list = moodList.get(position);
 
         viewHolder.item_mood_title.setText(list.name);//bug
-
+        viewHolder.imageView.setImageResource(list.drawable);
+        viewHolder.cardView.setCardBackgroundColor(Color.parseColor(list.color));
     }
-
 
     @Override
     public int getItemCount() {

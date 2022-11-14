@@ -4,7 +4,5 @@ public class model_exercise {
     String name = new String();
 
 
-    public model_exercise(String nameTmp) {
-        name = nameTmp;
-    }
+    public model_exercise(String nameTmp) { name = nameTmp;}
 }
