@@ -1,15 +1,17 @@
 package com.example.funnylearning.temp_head;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.funnylearning.R;
+import com.example.funnylearning.recycle.activities.adapter_activities;
+import com.example.funnylearning.recycle.activities.model_activities;
 import com.example.funnylearning.recycle.mood.adapter_mood;
 import com.example.funnylearning.recycle.mood.model_mood;
 
@@ -24,6 +26,8 @@ public class RecordFragment extends Fragment {
 
     private RecyclerView mdList;
     private final ArrayList<model_mood> moodList = new ArrayList<model_mood>();
+    private RecyclerView actList;
+    private final ArrayList<model_activities> activitiesList = new ArrayList<model_activities>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,6 +76,7 @@ public class RecordFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
 
         mdList = (RecyclerView) view.findViewById(R.id.recyclerview_record_mood);
+        actList = (RecyclerView) view.findViewById(R.id.recyclerview_record_activities);
 
         moodList.clear();
         System.out.println("message is working");
@@ -83,9 +88,21 @@ public class RecordFragment extends Fragment {
 
         System.out.println("message is working");
         mdList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        adapter_mood customAdapter = new adapter_mood(moodList);
+        adapter_mood customAdapterMood = new adapter_mood(moodList);
         System.out.println("layout manager is working");
-        mdList.setAdapter(customAdapter);
+        mdList.setAdapter(customAdapterMood);
+
+        activitiesList.clear();
+        System.out.println("message is working");
+        activitiesList.add(new model_activities("Party"));
+        activitiesList.add(new model_activities("Travel"));
+        activitiesList.add(new model_activities("Beach"));
+
+        System.out.println("message is working");
+        actList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        adapter_activities customAdapterActivities = new adapter_activities(activitiesList);
+        System.out.println("layout manager is working");
+        actList.setAdapter(customAdapterActivities);
 
         return view;
     }
