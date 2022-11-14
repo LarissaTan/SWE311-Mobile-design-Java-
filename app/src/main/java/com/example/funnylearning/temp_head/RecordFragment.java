@@ -94,9 +94,9 @@ public class RecordFragment extends Fragment {
 
         activitiesList.clear();
         System.out.println("message is working");
-        activitiesList.add(new model_activities("Party"));
-        activitiesList.add(new model_activities("Travel"));
-        activitiesList.add(new model_activities("Beach"));
+        activitiesList.add(new model_activities("Party", R.drawable.record_activities_party));
+        activitiesList.add(new model_activities("Travel", R.drawable.record_activities_travel));
+        activitiesList.add(new model_activities("Beach", R.drawable.record_activities_beach));
 
         System.out.println("message is working");
         actList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));

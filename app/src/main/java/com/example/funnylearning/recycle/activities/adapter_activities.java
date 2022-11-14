@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +18,12 @@ public class adapter_activities extends RecyclerView.Adapter<adapter_activities.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_activities_title;
+        ImageView imageView;
 
         public ViewHolder(View view) {
             super(view);
             item_activities_title = view.findViewById(R.id.record_activities_title);
+            imageView = view.findViewById(R.id.record_activities_image);
         }
     }
 
@@ -42,6 +45,7 @@ public class adapter_activities extends RecyclerView.Adapter<adapter_activities.
         model_activities list = activitiesList.get(position);
 
         viewHolder.item_activities_title.setText(list.name);//bug
+        viewHolder.imageView.setImageResource(list.drawable);
 
     }
 

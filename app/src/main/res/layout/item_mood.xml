@@ -9,7 +9,7 @@
         android:id="@+id/record_mood_card"
         android:layout_width="59dp"
         android:layout_height="59dp"
-        android:backgroundTint="#DAE8FF"
+        app:cardBackgroundColor= "#DAE8FF"
         app:cardCornerRadius="12dp">
 
         <ImageView
