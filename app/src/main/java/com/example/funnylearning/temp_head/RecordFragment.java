@@ -80,10 +80,10 @@ public class RecordFragment extends Fragment {
 
         moodList.clear();
         System.out.println("message is working");
-        moodList.add(new model_mood("Sad"));
-        moodList.add(new model_mood("Happy"));
-        moodList.add(new model_mood("Angry"));
-        moodList.add(new model_mood("Sleepy"));
+        moodList.add(new model_mood("Sad",R.drawable.record_mood_sad,"#DAE8FF"));
+        moodList.add(new model_mood("Happy", R.drawable.record_mood_happy,"#FFFFFF"));
+        moodList.add(new model_mood("Angry", R.drawable.record_mood_angry,"#FFF0CF"));
+        moodList.add(new model_mood("Sleepy", R.drawable.record_mood_sleepy,"#E9E4FF"));
         //image will add latter
 
         System.out.println("message is working");
