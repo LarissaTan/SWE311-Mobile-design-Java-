@@ -1,14 +1,19 @@
 package com.example.funnylearning.temp_head;
 
-import android.os.Bundle;
-
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.recycle.mood.adapter_mood;
+import com.example.funnylearning.recycle.mood.model_mood;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +21,9 @@ import com.example.funnylearning.R;
  * create an instance of this fragment.
  */
 public class RecordFragment extends Fragment {
+
+    private RecyclerView mdList;
+    private final ArrayList<model_mood> moodList = new ArrayList<model_mood>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +69,24 @@ public class RecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_record, container, false);
+        View view = inflater.inflate(R.layout.fragment_record, container, false);
+
+        mdList = (RecyclerView) view.findViewById(R.id.recyclerview_record_mood);
+
+        moodList.clear();
+        System.out.println("message is working");
+        moodList.add(new model_mood("Sad"));
+        moodList.add(new model_mood("Happy"));
+        moodList.add(new model_mood("Angry"));
+        moodList.add(new model_mood("Sleepy"));
+        //image will add latter
+
+        System.out.println("message is working");
+        mdList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        adapter_mood customAdapter = new adapter_mood(moodList);
+        System.out.println("layout manager is working");
+        mdList.setAdapter(customAdapter);
+
+        return view;
     }
 }
