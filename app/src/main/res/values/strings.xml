@@ -3,4 +3,16 @@
     <string name="app_title">Funny Learning</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="heading_one">School courses provided</string>
+    <string name="heading_two">Learning while playing games</string>
+    <string name="heading_three">Provide data visualization</string>
+    <string name="desc_one">Funny Learning offers school courses in
+        Maths and English. Kids can enjoy these free lessons to the
+        fullest. Help children better adapt to their curriculum in school.</string>
+    <string name="desc_two">Learning is very boring. In this way,
+        Funny Learning provides 3 games for children to learn while playing.
+        And also, these games can also test the knowledge mastery.</string>
+    <string name="desc_three">The data of daily learning is provided
+        in the app, and it will be visualized. Help parents better understand
+        their children\'s learning status.</string>
 </resources>

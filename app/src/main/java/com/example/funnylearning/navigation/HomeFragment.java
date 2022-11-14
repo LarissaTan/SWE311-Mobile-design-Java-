@@ -15,6 +15,7 @@ import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.onBoarding.onBoarding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,9 +91,9 @@ public class HomeFragment extends Fragment {
         test.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                tag = "1";
-                Intent it = new Intent(getContext(), Temp_head.class);
-                it.putExtra(EXTRA_NAME,tag);
+                //tag = "1";
+                Intent it = new Intent(getContext(), onBoarding.class);
+                //it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
             }
         });

@@ -11,4 +11,6 @@
     <color name="textColorHighlight">#4DD81B60</color>
     <color name="btn">#9158aa</color>
     <color name="hint">#808080</color>
+    <color name="inactive">#C4C4C4</color>
+    <color name="active">#F9D150</color>
 </resources>
