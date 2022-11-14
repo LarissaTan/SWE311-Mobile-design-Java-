@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.funnylearning.ChatActivity;
 import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
@@ -80,8 +81,8 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 tag = "0";
-                Intent it = new Intent(getContext(), Temp_head.class);
-                it.putExtra(EXTRA_NAME,tag);
+                Intent it = new Intent(getContext(), ChatActivity.class);
+                //it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
             }
         });
