@@ -20,19 +20,20 @@ import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.onBoarding.onBoarding;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class HomeFragment extends Fragment {
+
+public class HomeFragment extends Fragment implements OnChartValueSelectedListener {
 
     public static final String EXTRA_NAME = "tag";
 
@@ -60,26 +61,61 @@ public class HomeFragment extends Fragment {
 
         BarChart barChart = view.findViewById(R.id.home_chart);
 
-        ArrayList<BarEntry> visitors = new ArrayList<>();
-        visitors.add(new BarEntry(2014,420));
-        visitors.add(new BarEntry(2015,920));
-        visitors.add(new BarEntry(2016,321));
-        visitors.add(new BarEntry(2017,675));
-        visitors.add(new BarEntry(2018,892));
-        visitors.add(new BarEntry(2019,345));
-        visitors.add(new BarEntry(2020,239));
 
-        BarDataSet barDataSet = new BarDataSet(visitors,"Visitors");
-        //barDataSet.setColor(ColorTemplate.JOYFUL_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        String hexColor = "F9D150";
+        String hexColor2 = "FEF7E1";
 
-        BarData barData = new BarData(barDataSet);
+        int[] colorArray = new int[]{ColorTemplate.rgb(hexColor2),ColorTemplate.rgb(hexColor)};
+
+        ArrayList<BarEntry> data1 = new ArrayList<>();
+        data1.add(new BarEntry(2014,new float[]{220,60}));
+        data1.add(new BarEntry(2015,new float[]{220,60}));
+        data1.add(new BarEntry(2016,new float[]{220,60}));
+        data1.add(new BarEntry(2017,new float[]{220,60}));
+        data1.add(new BarEntry(2018,new float[]{220,60}));
+        data1.add(new BarEntry(2019,new float[]{220,60}));
+        data1.add(new BarEntry(2020,new float[]{220,60}));
+/*
+        ArrayList<BarEntry> data2 = new ArrayList<>();
+        data2.add(new BarEntry(2014,60));
+        data2.add(new BarEntry(2015,60));
+        data2.add(new BarEntry(2016,61));
+        data2.add(new BarEntry(2017,65));
+        data2.add(new BarEntry(2018,62));
+        data2.add(new BarEntry(2019,65));
+        data2.add(new BarEntry(2020,79));
+
+
+
+        BarDataSet barData2Set = new BarDataSet(data2,null);
+        */
+        BarDataSet barData1Set = new BarDataSet(data1,null);
+        barData1Set.setColor(ColorTemplate.rgb(hexColor2));
+        barData1Set.setValueTextColor(Color.WHITE);
+        barData1Set.setValueTextSize(16f);
+/*
+        barData2Set.setColor(ColorTemplate.rgb(hexColor));
+        barData2Set.setValueTextColor(Color.WHITE);
+        barData2Set.setValueTextSize(16f);
+*/
+        BarData barData = new BarData(barData1Set);
+
+        barChart.getAxisLeft().setDrawAxisLine(false);
+        barChart.getAxisRight().setDrawAxisLine(false);
+        barChart.getAxisLeft().setDrawGridLines(false);
+        barChart.getAxisRight().setDrawGridLines(false);
+
+        Legend legend = barChart.getLegend();
+        legend.setEnabled(true);
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setEnabled(true);
 
         barChart.setFitBars(true);
         barChart.setData(barData);
-        barChart.getDescription().setText("Example");
-        barChart.animateX(2000);
+        barChart.setVisibleXRangeMaximum(15);
+        barChart.setDescription(null);
+        barChart.animateX(0);
 
 
 
@@ -122,5 +158,15 @@ public class HomeFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onValueSelected(Entry e, Highlight h) {
+
+    }
+
+    @Override
+    public void onNothingSelected() {
+
     }
 }
