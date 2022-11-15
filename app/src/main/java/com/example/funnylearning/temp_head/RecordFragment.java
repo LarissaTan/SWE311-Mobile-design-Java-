@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,8 @@ import com.example.funnylearning.recycle.activities.adapter_activities;
 import com.example.funnylearning.recycle.activities.model_activities;
 import com.example.funnylearning.recycle.mood.adapter_mood;
 import com.example.funnylearning.recycle.mood.model_mood;
+import com.example.funnylearning.recycle.weather.adapter_weather;
+import com.example.funnylearning.recycle.weather.model_weather;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,8 @@ public class RecordFragment extends Fragment {
     private final ArrayList<model_mood> moodList = new ArrayList<model_mood>();
     private RecyclerView actList;
     private final ArrayList<model_activities> activitiesList = new ArrayList<model_activities>();
+    private RecyclerView weaList;
+    private final ArrayList<model_weather> weatherList = new ArrayList<model_weather>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,6 +82,7 @@ public class RecordFragment extends Fragment {
 
         mdList = (RecyclerView) view.findViewById(R.id.recyclerview_record_mood);
         actList = (RecyclerView) view.findViewById(R.id.recyclerview_record_activities);
+        weaList = (RecyclerView) view.findViewById(R.id.recyclerview_record_weather);
 
         moodList.clear();
         System.out.println("message is working");
@@ -103,6 +109,21 @@ public class RecordFragment extends Fragment {
         adapter_activities customAdapterActivities = new adapter_activities(activitiesList);
         System.out.println("layout manager is working");
         actList.setAdapter(customAdapterActivities);
+
+        weatherList.clear();
+        System.out.println("message is working");
+        weatherList.add(new model_weather(R.drawable.record_weather_sun));
+        weatherList.add(new model_weather(R.drawable.record_weather_suncloud));
+        weatherList.add(new model_weather(R.drawable.record_weather_cloud));
+        weatherList.add(new model_weather(R.drawable.record_weather_sunrain));
+        weatherList.add(new model_weather(R.drawable.record_weather_rain));
+        weatherList.add(new model_weather(R.drawable.record_weather_thunderrain));
+
+        System.out.println("message is working");
+        weaList.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
+        adapter_weather customAdapterWeather = new adapter_weather(weatherList);
+        System.out.println("layout manager is working");
+        weaList.setAdapter(customAdapterWeather);
 
         return view;
     }
