@@ -61,5 +61,5 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.6.1"
 
     // number picker
-    implementation 'com.shawnlin:number-picker:2.4.12'
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 }

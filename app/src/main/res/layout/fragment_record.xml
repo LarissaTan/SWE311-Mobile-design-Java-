@@ -80,9 +80,50 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="#E4DFFF"
+                    android:layout_gravity="center_vertical"/>
+                
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/number_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    app:np_width="64dp"
+                    app:np_height="180dp"
+                    app:np_dividerType="underline"
+                    app:np_dividerColor="#00000000"
+                    app:np_max="59"
+                    app:np_min="0"
+                    app:np_selectedTextColor="#9158AA"
+                    app:np_selectedTextSize="20sp"
+                    app:np_textColor="#9C9EB9"
+                    app:np_textSize="18sp"
+                    app:np_value="30"
+                    app:np_wheelItemCount="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginStart="50dp"
+                    android:text="Min"
+                    android:textSize="20sp"
+                    android:textColor="#9158AA"/>
+                
+            </FrameLayout>
+            
+            
+
+            <FrameLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="100dp">
+                android:layout_marginBottom="120dp">
 
                 <Button
                     android:layout_width="161dp"
@@ -91,7 +132,7 @@
                     android:text="Confirm"
                     android:textAllCaps="false"
                     android:textSize="18sp"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="10dp"/>
 
                 <Button
                     android:layout_width="161dp"
@@ -101,7 +142,7 @@
                     android:textAllCaps="false"
                     android:layout_gravity="right"
                     android:textSize="18sp"
-                    android:layout_marginEnd="15dp"/>
+                    android:layout_marginEnd="10dp"/>
 
             </FrameLayout>
 
