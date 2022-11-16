@@ -100,7 +100,7 @@ public class ColumnView extends View {
     private float toY(int num) {
         float y;
         try {
-            float a = (float) num / 30.0f;//数据按比例转换坐标
+            float a = (float) num / 15.0f;//数据按比例转换坐标
             y = yPoint - a * yScale;
         } catch (Exception e) {
             return 0;
