@@ -32,6 +32,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,36 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         super.onCreate(savedInstanceState);
         column = (LinearLayout) view.findViewById(R.id.column);
         barChart();
+
+        /******************************************************************************************************/
+        CircularProgressBar circularProgressBar = view.findViewById(R.id.home_math_progressBar);
+
+        circularProgressBar.setProgress(80f);
+        circularProgressBar.setProgressMax(100f);
+
+        // Set Width
+        circularProgressBar.setProgressBarWidth(7f); // in DP
+        circularProgressBar.setBackgroundProgressBarWidth(7f); // in DP
+
+        // Other
+        circularProgressBar.setRoundBorder(true);
+        circularProgressBar.setStartAngle(180f);
+        circularProgressBar.setProgressDirection(CircularProgressBar.ProgressDirection.TO_LEFT);
+
+    /******************************************************************************************************/
+        CircularProgressBar circularProgressBarEnglish = view.findViewById(R.id.home_english_progressBar);
+        circularProgressBarEnglish.setProgress(76f);
+        circularProgressBarEnglish.setProgressMax(100f);
+
+        // Set Width
+        circularProgressBarEnglish.setProgressBarWidth(7f); // in DP
+        circularProgressBarEnglish.setBackgroundProgressBarWidth(7f); // in DP
+
+        // Other
+        circularProgressBarEnglish.setRoundBorder(true);
+        circularProgressBarEnglish.setStartAngle(180f);
+        circularProgressBarEnglish.setProgressDirection(CircularProgressBar.ProgressDirection.TO_LEFT);
+        /******************************************************************************************************/
 
         Button test,ong,cheh;
         test = view.findViewById(R.id.just_for_test);
@@ -129,6 +160,8 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 }
 
         /*
+
+
         用这个方法没办法去掉坐标轴
 
         BarChart barChart = view.findViewById(R.id.home_chart);

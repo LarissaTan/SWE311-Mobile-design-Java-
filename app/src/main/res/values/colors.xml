@@ -17,4 +17,6 @@
     <color name="colorPrimary">#FDF2CF</color>
     <color name="green">#FEF8E5</color>
     <color name="colorShadow">#FDF2CF</color>
+    <color name="home_circle_green">#7BD66D</color>
+    <color name="home_circle_grey">#E4E9F3</color>
 </resources>

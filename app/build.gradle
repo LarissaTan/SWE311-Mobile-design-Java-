@@ -43,8 +43,11 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottieVersion"
     /*      api from github to achieve dots indicators   */
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    /*      api from github to achieve charts  */
+    /*      api from github to achieve charts(不好用)  */
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    /*for circle  progress bar*/
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
 
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
