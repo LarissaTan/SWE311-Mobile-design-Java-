@@ -13,4 +13,8 @@
     <color name="hint">#808080</color>
     <color name="inactive">#C4C4C4</color>
     <color name="active">#F9D150</color>
+    <color name="colorAccent">#F9D150</color>
+    <color name="colorPrimary">#FDF2CF</color>
+    <color name="green">#FEF8E5</color>
+    <color name="colorShadow">#FDF2CF</color>
 </resources>
