@@ -114,9 +114,9 @@ public class ChatActivity extends AppCompatActivity
 
         //SearchViewModel viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         // Bind it with SearchResultListView
-        //SearchViewModelBinding.bind(viewModel, binding.searchResultListView, this);
+        //SearchViewModelBinding.bind(searchViewModel, binding.searchResultListView, this);
         // Notify ViewModel when search is triggered
-        //binding.searchInputView.setSearchStartedListener(viewModel::setQuery);
+        //binding.searchInputView.setSearchStartedListener(searchViewModel::setQuery);
 
         //SearchViewModelBinding.bind(searchViewModel, binding.searchResultListView, this);
         /*binding.searchInputView.setDebouncedInputChangedListener(query -> {
