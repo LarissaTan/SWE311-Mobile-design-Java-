@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.funnylearning.ChatActivity;
@@ -110,10 +111,21 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         /******************************************************************************************************/
 
         Button test,ong,cheh;
+        ImageView addJournal;
+        addJournal = view.findViewById(R.id.home_add_journal);
         test = view.findViewById(R.id.just_for_test);
         ong =  view.findViewById(R.id.test_ong);
         cheh = view.findViewById(R.id.test_cheh);
 
+        addJournal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tag =  "3";
+                Intent it = new Intent(getContext(), Temp_head.class);
+                it.putExtra(EXTRA_NAME,tag);
+                startActivity(it);
+            }
+        });
 
         cheh.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

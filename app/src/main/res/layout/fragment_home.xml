@@ -244,6 +244,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
+                android:id="@+id/home_add_journal"
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/home_add_icon"

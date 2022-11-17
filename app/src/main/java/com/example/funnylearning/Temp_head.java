@@ -14,6 +14,7 @@ import com.example.funnylearning.navigation.ReadingFragment;
 import com.example.funnylearning.navigation.SettingFragment;
 import com.example.funnylearning.temp_head.Message;
 import com.example.funnylearning.temp_head.RecordFragment;
+import com.example.funnylearning.temp_head.VideoFragment;
 
 public class Temp_head extends AppCompatActivity {
 
@@ -27,11 +28,12 @@ public class Temp_head extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int tag = Integer.parseInt(intent.getStringExtra(HomeFragment.EXTRA_NAME));
+        Integer tag = Integer.valueOf(intent.getStringExtra(HomeFragment.EXTRA_NAME));
+        System.out.println("tag is = " + tag);
+        setContentView(R.layout.activity_temp_head);
 
         if(tag == 0){
             title = "Messages";
-            setContentView(R.layout.activity_temp_head);
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
             Message messageFragment = new Message();
@@ -41,7 +43,6 @@ public class Temp_head extends AppCompatActivity {
 
         if(tag == 1){
             title = "Messages";
-            setContentView(R.layout.activity_temp_head);
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
             Message messageFragment = new Message();
@@ -50,13 +51,20 @@ public class Temp_head extends AppCompatActivity {
         }
 
         if(tag == 2){
+            title = "Video";
+            // setTest need to put behind the setContentView!!!!!
+            head_bar_title = findViewById(R.id.head_bar_title);
+            head_bar_title.setText(title);
+            VideoFragment videoFragment = new VideoFragment();
+            replacementFragment(videoFragment);
+        }
+
+        if(tag == 3){
             title = "Record your day";
-            setContentView(R.layout.activity_temp_head);
             // setTest need to put behind the setContentView!!!!!
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
             RecordFragment recordFragment = new RecordFragment();
-            //SettingFragment settingFragment = new SettingFragment();
             replacementFragment(recordFragment);
         }
 
