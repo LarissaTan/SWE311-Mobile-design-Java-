@@ -8,10 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.MediaController;
+import android.widget.VideoView;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.funnylearning.R;
 
 public class VideoFragment extends Fragment {
 
+    private VideoView videoView;
+
+    String VideoUr1 = "https://www.youtube.com/watch?v=-ou9VvyJNOY";
 
     public VideoFragment() {
         // Required empty public constructor
@@ -21,7 +30,6 @@ public class VideoFragment extends Fragment {
     public static VideoFragment newInstance(String param1, String param2) {
         VideoFragment fragment = new VideoFragment();
 
-
         return fragment;
     }
 
@@ -29,12 +37,26 @@ public class VideoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+        View view = inflater.inflate(R.layout.fragment_video, container, false);
+
+        videoView = view.findViewById(R.id.video_addition);
+        Uri uri = Uri.parse(VideoUr1);
+        MediaController mediaController = new MediaController(getContext());
+        mediaController.setAnchorView(videoView);
+        mediaController.setMediaPlayer(videoView);
+        videoView.setMediaController(mediaController);
+        videoView.setVideoURI(uri);
+
+        videoView.start();
+
+        return view;
     }
 }
