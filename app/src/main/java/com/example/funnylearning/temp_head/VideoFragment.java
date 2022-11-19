@@ -47,16 +47,6 @@ public class VideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
-        videoView = view.findViewById(R.id.video_addition);
-        Uri uri = Uri.parse(VideoUr1);
-        MediaController mediaController = new MediaController(getContext());
-        mediaController.setAnchorView(videoView);
-        mediaController.setMediaPlayer(videoView);
-        videoView.setMediaController(mediaController);
-        videoView.setVideoURI(uri);
-
-        videoView.start();
-
         return view;
     }
 }

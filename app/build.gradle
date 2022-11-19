@@ -66,4 +66,7 @@ dependencies {
     // number picker
     implementation 'io.github.ShawnLin013:number-picker:2.4.13'
     implementation 'com.github.pires:obd-java-api:1.0'
+
+    // youtube video
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
 }
