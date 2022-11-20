@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".temp_head.RecordFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="October, 16, 2022"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textColor="#1A3B34"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mood"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_marginTop="25dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerview_record_mood"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activities"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_marginTop="25dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerview_record_activities"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weather"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_marginTop="25dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerview_record_weather"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="How long did you learn today?"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:layout_marginTop="25dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="#E4DFFF"
+                    android:layout_gravity="center_vertical"/>
+                
+                <com.shawnlin.numberpicker.NumberPicker
+                    android:id="@+id/number_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    app:np_width="64dp"
+                    app:np_height="180dp"
+                    app:np_dividerType="underline"
+                    app:np_dividerColor="#00000000"
+                    app:np_max="59"
+                    app:np_min="0"
+                    app:np_selectedTextColor="#9158AA"
+                    app:np_selectedTextSize="20sp"
+                    app:np_textColor="#9C9EB9"
+                    app:np_textSize="18sp"
+                    app:np_value="30"
+                    app:np_wheelItemCount="5"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginStart="50dp"
+                    android:text="Min"
+                    android:textSize="20sp"
+                    android:textColor="#9158AA"/>
+                
+            </FrameLayout>
+            
+            
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="120dp">
+
+                <Button
+                    android:layout_width="161dp"
+                    android:layout_height="46dp"
+                    android:backgroundTint="#9158AA"
+                    android:text="Confirm"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:layout_marginStart="10dp"/>
+
+                <Button
+                    android:layout_width="161dp"
+                    android:layout_height="46dp"
+                    android:backgroundTint="#F1BF1C"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:layout_gravity="right"
+                    android:textSize="18sp"
+                    android:layout_marginEnd="10dp"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
