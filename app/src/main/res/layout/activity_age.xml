@@ -6,4 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".Age">
 
+    <TextView
+        android:id="@+id/age_tv1"
+        style="@style/fragment_title"
+        android:layout_width="354dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="128dp"
+        android:text="What's your age?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="52dp"
+        android:src="@drawable/bullets3"
+        app:layout_constraintBottom_toTopOf="@+id/age_tv1"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="456dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        android:hint="Age"/>
+
+    <Button
+        android:id="@+id/math_level_btn1"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="624dp"
+        android:gravity="center"
+        android:text="Continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
