@@ -43,6 +43,28 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
 
+    </style>
+
+    <style name="TextBorderColor">
+        <item name = "android:shadowColor">#4A4747</item>
+        <item name = "android:shadowDx">1</item>
+        <item name = "android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+
+    <style name="ButtonYellow">
+        <item name="backgroundTint">#F9D150</item>
+        <item name="android:radius">12dp</item>
+    </style>
+
+    <style name="ButtonWhite">
+        <item name="backgroundTint">#FFFFFF</item>
+        <item name="android:radius">12dp</item>
+    </style>
 
 </resources>
