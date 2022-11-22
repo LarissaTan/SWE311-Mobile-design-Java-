@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_marginTop="80dp"
+        app:lottie_rawRes="@raw/congrats"/>
+
+    <TextView
+        android:id="@+id/dialog_txt"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You find 5 words !  Good job!"
+        android:fontFamily="@font/abeezee_regular"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"/>
+
+    <Button
+        android:id="@+id/dialog_btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:fontFamily="@font/abeezee_regular"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:text="Continue"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

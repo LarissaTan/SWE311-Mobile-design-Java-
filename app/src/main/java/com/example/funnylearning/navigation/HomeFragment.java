@@ -3,6 +3,7 @@ package com.example.funnylearning.navigation;
 import static androidx.databinding.DataBindingUtil.setContentView;
 import static com.github.mikephil.charting.utils.ColorTemplate.MATERIAL_COLORS;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.funnylearning.ChatActivity;
 import com.example.funnylearning.EnterPage;
@@ -139,11 +141,47 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
         test.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_success);
+                dialog.setTitle("Title...");
+
+                // set the custom dialog components - text, image and button
+                TextView text = (TextView) dialog.findViewById(R.id.dialog_txt);
+                text.setText("You find 2 words !  Good job!");
+
+                Button dialogButton = (Button) dialog.findViewById(R.id.dialog_btn_continue);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+                /*
                 // TODO Auto-generated method stub
                 //tag = "1";
                 Intent it = new Intent(getContext(), onBoarding.class);
                 //it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
+                */
+                /*
+                btnSignIn.setOnClickListener {
+                    val dialogBinding = layoutInflater.inflate(R.layout.dialog_login_alert,null)
+
+                    val login_dialog = Dialog(this)
+                    login_dialog.setContentView(dialogBinding)
+                    login_dialog.setCancelable(true)
+                    login_dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    login_dialog.show()
+
+                    val btn_back = dialogBinding.findViewById<Button>(R.id.btn_login_dialog_back)
+                            btn_back.setOnClickListener {
+                        login_dialog.dismiss()
+                    }
+                }
+                */
             }
         });
 
