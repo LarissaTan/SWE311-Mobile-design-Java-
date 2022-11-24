@@ -133,8 +133,9 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 tag = "0";
-                Intent it = new Intent(getContext(), ChatActivity.class);
-                //it.putExtra(EXTRA_NAME,tag);
+                //Intent it = new Intent(getContext(), ChatActivity.class);
+                Intent it = new Intent(getContext(), Temp_head.class);
+                it.putExtra(EXTRA_NAME,tag);
                 startActivity(it);
             }
         });
