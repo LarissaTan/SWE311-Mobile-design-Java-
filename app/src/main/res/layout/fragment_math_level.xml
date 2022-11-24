@@ -122,12 +122,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"/>
 
-        <view class="androidx.appcompat.app.AlertController$RecycleListView"
+       <!-- <view class="androidx.appcompat.app.AlertController$RecycleListView"
             android:id="@+id/recyclerView_math_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp">
-        </view>
+        </view>-->
 
         <RelativeLayout
             android:layout_width="match_parent"

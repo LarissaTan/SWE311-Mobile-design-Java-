@@ -13,7 +13,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.ArrayList;
 
-public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.ViewHolder> {
+/*public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.ViewHolder> {
 
     Context context;
     ArrayList<model_math_level> mList;
@@ -54,4 +54,4 @@ public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.
            titleImage = itemView.findViewById(R.id.title_image);
        }
    }
-}
+}*/
