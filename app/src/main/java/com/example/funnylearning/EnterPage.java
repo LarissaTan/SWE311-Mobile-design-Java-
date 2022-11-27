@@ -30,7 +30,7 @@ public class EnterPage extends AppCompatActivity {
         enter_page_btnLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent it = new Intent(EnterPage.this, Homepage.class);
+                Intent it = new Intent(EnterPage.this, Login.class);
                 startActivity(it);
             }
         });

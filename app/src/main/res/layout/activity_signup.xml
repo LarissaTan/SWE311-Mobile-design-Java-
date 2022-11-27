@@ -156,17 +156,17 @@
             android:id="@+id/dont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account?"
+            android:text="Already have an account?"
             android:gravity="center"
             android:fontFamily="@font/alegreya_variablefont_wght"
             android:textSize="20sp"
             android:textColor="@color/black"/>
 
         <TextView
-            android:id="@+id/signUp"
+            android:id="@+id/login_re"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up"
+            android:text="Login"
             android:gravity="center"
             android:fontFamily="@font/alegreya_variablefont_wght"
             android:textStyle="italic"

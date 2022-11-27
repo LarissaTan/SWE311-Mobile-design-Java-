@@ -173,6 +173,7 @@
                         android:orientation="horizontal">
 
                         <FrameLayout
+                            android:id="@+id/find_the_words"
                             android:layout_width="230dp"
                             android:layout_height="180dp"
                             android:layout_gravity="center_horizontal"

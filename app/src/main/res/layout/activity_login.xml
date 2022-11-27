@@ -72,7 +72,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLogin_lo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/outlined_text_input_layout2"
@@ -90,7 +90,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
-        android:layout_below="@+id/btnLogin"
+        android:layout_below="@+id/btnLogin_lo"
         android:gravity="center"
         android:fontFamily="@font/alegreya_variablefont_wght"
         android:textStyle="italic"
