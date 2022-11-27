@@ -1,5 +1,6 @@
 package com.example.funnylearning.navigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.chatbox.adapter_chatbox;
 import com.example.funnylearning.recycle.exercise.adapter_exercise;
 import com.example.funnylearning.recycle.exercise.model_exercise;
@@ -55,12 +57,12 @@ public class ExerciseFragment extends Fragment {
         exerciseList.add(new model_exercise("Bent Raise"));
         //image will add latter
 
-        System.out.println("message is working");
         execList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         adapter_exercise customAdapter = new adapter_exercise(exerciseList);
-        System.out.println("layout manager is working");
         execList.setAdapter(customAdapter);
+
 
         return view;
     }
+
 }
