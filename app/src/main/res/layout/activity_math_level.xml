@@ -45,7 +45,7 @@
         android:background="@drawable/button_selector"
         android:layout_marginStart="16dp"
         android:layout_marginTop="44dp"
-        android:textColor="#F9D150"
+        android:textColor="@drawable/level_txt_selector"
         android:textOff="1 + 2 = ?"
         android:textOn="3"
         android:textSize="23dp"
@@ -96,16 +96,17 @@
 
     <Button
         android:id="@+id/math_level_btn1"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="624dp"
         android:gravity="center"
         android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.387"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
