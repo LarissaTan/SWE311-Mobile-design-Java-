@@ -18,21 +18,16 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
+        System.out.println("basic act is working");
 
         Intent intent = getIntent();
 
-        Integer tag = Integer.valueOf(intent.getStringExtra(MathFragment.EXTRA_NAME));
-        Integer tagr = Integer.valueOf(intent.getStringExtra(ReadingFragment.EXTRA_NAME));
-
-        Math_levelFragment math1  = new Math_levelFragment();
-        Math_level_2_Fragment math2  = new Math_level_2_Fragment();
+        Integer tagr = Integer.valueOf(intent.getStringExtra(ReadingFragment.EXTRA_NAMEr));
+        setContentView(R.layout.activity_base);
 
         Reading_levelFragment read1  = new Reading_levelFragment();
         Reading_level_2_Fragment read2  = new Reading_level_2_Fragment();
 
-        if(tag == 1)    replacementFragment(math1);
-        if(tag == 2)    replacementFragment(math2);
         if(tagr == 1)   replacementFragment(read1);
         if(tagr == 2)   replacementFragment(read2);
     }

@@ -25,7 +25,7 @@ public class Temp_head extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("temp_head is working");
+//        System.out.println("temp_head is working");
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();

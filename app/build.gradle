@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    implementation 'androidx.navigation:navigation-fragment:2.4.1'
+    implementation 'androidx.navigation:navigation-ui:2.4.1'
     def lottieVersion = "3.4.0"
     /*      lottie api for  animation   */
     implementation "com.airbnb.android:lottie:$lottieVersion"

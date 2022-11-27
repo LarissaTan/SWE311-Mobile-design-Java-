@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.register.BaseActivity;
 import com.example.funnylearning.register.Reading_level_2_Fragment;
 
 import java.util.ArrayList;
@@ -27,7 +28,10 @@ public class ReadingFragment extends Fragment {
     }
 
     public static final String EXTRA_NAME = "tag";
-    public String tag;
+    public String tag = "0";
+
+    public static final String EXTRA_NAMEr = "tagr";
+    public String tagr = "0";
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class ReadingFragment extends Fragment {
 
         FrameLayout video = view.findViewById(R.id.reading_module1);
         FrameLayout findW = view.findViewById(R.id.find_the_words);
+        FrameLayout deliver = view.findViewById(R.id.deliver_good);
         video.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 tag = "2";
@@ -46,7 +51,20 @@ public class ReadingFragment extends Fragment {
 
         findW.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent it = new Intent(getContext(), Reading_level_2_Fragment.class);
+                tagr = "2";
+                System.out.println("tagr = "+tagr);
+                Intent it = new Intent(getContext(), BaseActivity.class);
+                it.putExtra(EXTRA_NAMEr,tagr);
+                startActivity(it);
+            }
+        });
+
+        deliver.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tagr = "1";
+                System.out.println("tagr = "+tagr);
+                Intent it = new Intent(getContext(), BaseActivity.class);
+                it.putExtra(EXTRA_NAMEr,tagr);
                 startActivity(it);
             }
         });

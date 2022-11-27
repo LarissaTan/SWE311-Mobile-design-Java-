@@ -16,6 +16,8 @@ import com.example.funnylearning.ForgotPswEmail;
 import com.example.funnylearning.ForgotPswEnter;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.register.Base2Activity;
+import com.example.funnylearning.register.BaseActivity;
 
 
 public class MathFragment extends Fragment {
@@ -26,16 +28,41 @@ public class MathFragment extends Fragment {
 
     public static final String EXTRA_NAME = "tag";
     public String tag;
+    public String tagm;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FrameLayout video = view.findViewById(R.id.math_video);
+
+        FrameLayout feed = view.findViewById(R.id.feed);
+        FrameLayout sheep = view.findViewById(R.id.count_sheep);
+
         video.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 tag = "2";
                 Intent it = new Intent(getContext(), Temp_head.class);
                 it.putExtra(EXTRA_NAME,tag);
+                startActivity(it);
+            }
+        });
+
+        feed.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tagm = "2";
+                System.out.println("tagr = "+tag);
+                Intent it = new Intent(getContext(), Base2Activity.class);
+                it.putExtra("tagm",tagm);
+                startActivity(it);
+            }
+        });
+
+        sheep.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tagm = "1";
+                System.out.println("tagr = "+tag);
+                Intent it = new Intent(getContext(), Base2Activity.class);
+                it.putExtra("tagm",tagm);
                 startActivity(it);
             }
         });
