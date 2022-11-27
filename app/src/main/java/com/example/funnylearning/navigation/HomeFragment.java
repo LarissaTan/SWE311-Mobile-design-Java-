@@ -145,6 +145,8 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
                 final Dialog dialog = new Dialog(getContext());
                 dialog.setContentView(R.layout.dialog_success);
                 dialog.setTitle("Title...");
+                dialog.getWindow().setDimAmount(0.5f);
+
 
                 // set the custom dialog components - text, image and button
                 TextView text = (TextView) dialog.findViewById(R.id.dialog_txt);
