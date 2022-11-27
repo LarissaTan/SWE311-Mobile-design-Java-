@@ -3,5 +3,5 @@
     <item android:state_checked="true"
         android:drawable="@drawable/shape_press_purple"/>
     <item android:state_checked="false"
-        android:drawable="#FFFFFF"/>
+        android:drawable="@color/white"/>
 </selector>

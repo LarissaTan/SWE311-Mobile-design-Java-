@@ -77,4 +77,10 @@
         <item name="android:thumb">@drawable/ic_baseline_radio_button_checked_24</item>
     </style>
 
+    <!--    normal text style-->
+    <style name="CustomStyleNormalText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>
