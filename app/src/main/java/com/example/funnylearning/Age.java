@@ -22,7 +22,7 @@ public class Age extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent it = new Intent(Age.this, ChoosePhoto.class);
+                Intent it = new Intent(Age.this, Goal.class);
                 startActivity(it);
             }
         });

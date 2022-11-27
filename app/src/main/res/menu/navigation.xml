@@ -22,9 +22,9 @@
         tools:ignore="ExtraText" />
     <item
         android:id="@+id/nav_exe"
-        android:title="Exercise"
+        android:title="Cartoons"
         tools:ignore="ExtraText"
-        android:icon="@drawable/exer_icon"/>
+        android:icon="@drawable/nav_cartoon"/>
 
     <item
         android:id="@+id/nav_settings"
