@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".register.Math_levelFragment">
+    tools:context=".register.Math_levelFragment"
+    android:background="@drawable/math_level_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -126,72 +127,138 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp">
 
+            <LinearLayout
+                android:id="@+id/game_id_math_l2"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/math_level_2_cat"
+                    android:layout_width="109dp"
+                    android:layout_height="81dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/math_level_cats" />
+
+                <TextView
+                    android:id="@+id/math_level_2_question"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="50dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/itim_regular"
+                    android:letterSpacing="0.2"
+                    android:text="2+3=?"
+                    android:textColor="#9158AA"
+                    android:textSize="40sp"
+                    android:translationZ="10dp" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/math_level_2_fish_1"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/game_id_math_l2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/math_level_fish" />
+
             <TextView
-                android:id="@+id/bee_text"
+                android:id="@+id/math_level_2_fish_txt1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="bee"
-                android:textColor="#000000"
-                android:textSize="40sp"
-                android:letterSpacing="0.2"
-                android:fontFamily="@font/itim_regular"
-                android:layout_marginTop="30dp"
-                android:layout_alignEnd="@+id/read_level_1"
-                android:layout_marginEnd="50dp"
-                android:translationZ="10dp"/>
-
-
-            <ImageButton
-                android:id="@+id/sound_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/sound_button"
-                android:scaleType="center"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="30dp"/>
-
-            <ImageView
-                android:id="@+id/read_level_1"
-                android:layout_width="214dp"
-                android:layout_height="135dp"
-                android:src="@drawable/read_level_1"
-                android:scaleType="fitCenter"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
-            
-            <ImageView
-                android:id="@+id/read_level_2"
-                android:layout_width="92dp"
-                android:layout_height="80dp"
-                android:src="@drawable/read_level_2"
-                android:scaleType="fitCenter"
-                android:layout_below="@+id/read_level_1"
-                android:layout_marginTop="30dp"
+                android:layout_below="@+id/game_id_math_l2"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="70dp"/>
-
-            <ImageView
-                android:id="@+id/read_level_3"
-                android:layout_width="99dp"
-                android:layout_height="90dp"
-                android:src="@drawable/read_level_3"
-                android:scaleType="fitCenter"
-                android:layout_below="@+id/read_level_1"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="70dp"/>
-
-            <ImageView
-                android:id="@+id/read_level_4"
-                android:layout_width="102dp"
-                android:layout_height="106dp"
-                android:src="@drawable/read_level_4"
-                android:scaleType="fitCenter"
-                android:layout_below="@+id/read_level_2"
+                android:layout_marginStart="170dp"
                 android:layout_marginTop="50dp"
+                android:fontFamily="@font/itim_regular"
+                android:text="2"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:translationZ="10dp" />
+
+            <ImageView
+                android:id="@+id/math_level_2_fish_2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/math_level_2_fish_1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="70dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/math_level_fish" />
+            <TextView
+                android:id="@+id/math_level_2_fish_txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/math_level_2_fish_1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="110dp"
+                android:fontFamily="@font/itim_regular"
+                android:text="6"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:translationZ="10dp" />
+
+            <ImageView
+                android:id="@+id/math_level_2_fish_3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/math_level_2_fish_1"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="110dp"/>
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/math_level_fish" />
+            <TextView
+                android:id="@+id/math_level_2_fish_txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/math_level_2_fish_1"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="140dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/itim_regular"
+                android:text="5"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:translationZ="10dp" />
+
+            <ImageView
+                android:id="@+id/math_level_2_fish_4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/math_level_2_fish_3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="110dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/math_level_fish" />
+            <TextView
+                android:id="@+id/math_level_2_fish_txt4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/math_level_2_fish_3"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/itim_regular"
+                android:text="5"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                android:translationZ="10dp" />
 
 
         </RelativeLayout>
