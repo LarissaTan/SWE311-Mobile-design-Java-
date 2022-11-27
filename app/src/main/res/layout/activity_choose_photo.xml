@@ -10,7 +10,7 @@
         android:id="@+id/choose_photo_imgView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/user_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -28,10 +28,10 @@
         app:layout_constraintTop_toTopOf="@+id/choose_photo_imgView1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/photo_choose_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/montserrat"
         android:text="Profile Photo"
         android:textColor="#F9D150"
@@ -41,17 +41,278 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/choose_photo_imgView1" />
 
-    <TextView
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/abeezee_regular"
-        android:text="Select a default photo here or click the camera to pick your chocie in your albums"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/photo_choose_title">
+
+            <TextView
+                android:id="@+id/profile_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="5dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/mulish"
+                android:text="@string/profile_des"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                tools:ignore="NotSibling" />
+
+            <ScrollView
+                android:id="@+id/photo_scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/profile_desc">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingHorizontal="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/img_2"
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:layout_width="0dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/profile_photo_2" />
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:fontFamily="@font/abeezee"
+                                android:text="option 1"
+                                android:textColor="@color/black"
+                                android:textSize="17sp" />
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Key words about this photo:"
+                                android:textColor="#9E9E9E"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="13dp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="Dark black, handsome, cool tones"
+                                    android:textColor="#9E9E9E"
+                                    android:fontFamily="@font/abeezee"
+                                    android:textSize="13dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_height="1dp"
+                        android:background="#EAEAEA"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingHorizontal="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:layout_width="0dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/profile_photo_3" />
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_marginTop="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="option 2"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="17sp"/>
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/keyword"
+                                android:textColor="#9E9E9E"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="13dp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="blue, cute, cartoon"
+                                    android:textColor="#9E9E9E"
+                                    android:fontFamily="@font/abeezee"
+                                    android:textSize="13dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_height="1dp"
+                        android:background="#EAEAEA"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingHorizontal="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:layout_width="0dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/profile_photo_4" />
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_marginTop="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Option 3"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="17sp"/>
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/keyword"
+                                android:textColor="#9E9E9E"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="13dp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="little boy, cute, cat ears"
+                                    android:textColor="#9E9E9E"
+                                    android:fontFamily="@font/abeezee"
+                                    android:textSize="13dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_height="1dp"
+                        android:background="#EAEAEA"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:paddingHorizontal="10dp"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_weight="1"
+                            android:layout_height="70dp"
+                            android:layout_width="0dp"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/profile_photo_5" />
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_marginTop="15dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Option 4"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="17sp"/>
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/keyword"
+                                android:textColor="#9E9E9E"
+                                android:fontFamily="@font/abeezee"
+                                android:textSize="13dp"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="black, sunglasses, adult male"
+                                    android:textColor="#9E9E9E"
+                                    android:fontFamily="@font/abeezee"
+                                    android:textSize="13dp"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/register_finNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/abeezee_regular"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="bottom"
+                android:layout_below="@+id/photo_scroll_view"
+                android:text="Continue"/>
+        </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,8 @@
     <string name="heading_one">School courses provided</string>
     <string name="heading_two">Learning while playing games</string>
     <string name="heading_three">Provide data visualization</string>
+    <string name="keyword">Key words about this photo:</string>
+    <string name="profile_des">Select a default photo here or click the camera to pick your chocie in your albums</string>
     <string name="desc_one">Funny Learning offers school courses in
         Maths and English. Kids can enjoy these free lessons to the
         fullest. Help children better adapt to their curriculum in school.</string>
