@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/transparent_background"
     android:orientation="vertical">
 
-<!--    <com.airbnb.lottie.LottieAnimationView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="300dp"-->
-<!--        app:lottie_autoPlay="true"-->
-<!--        app:lottie_loop="true"-->
-<!--        android:layout_marginTop="80dp"-->
-<!--        app:lottie_rawRes="@raw/congrats"/>-->
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
     <ImageView
         android:layout_width="300dp"
@@ -20,12 +17,7 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/dialog_congrats"/>
 
-    <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/transparent_background"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+
 
     <TextView
         android:id="@+id/dialog_txt"
@@ -33,17 +25,21 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:text="You find 5 words !  Good job!"
         android:background="@drawable/transparent_background"
         android:fontFamily="@font/abeezee_regular"
-        android:textColor="#000000"
-        android:textSize="24sp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"/>
 
     <Button
         android:id="@+id/dialog_btn_continue"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/abeezee_regular"
         android:textColor="#FFFFFF"
@@ -51,6 +47,6 @@
 
         android:text="Continue"/>
 
+        </LinearLayout>
 
-</LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
