@@ -67,4 +67,14 @@
         <item name="android:radius">12dp</item>
     </style>
 
+    <style name="CustomSeekbarStyle">
+        <item name="android:maxHeight">10dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressTint">#80A528</item>
+        <!--<item name="android:indeterminateDrawable">@color/colorAccent</item>-->
+        <item name="android:progressDrawable">@drawable/seekbar_progress_drawble</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:thumb">@drawable/ic_baseline_radio_button_checked_24</item>
+    </style>
+
 </resources>
