@@ -14,6 +14,7 @@ import com.example.funnylearning.navigation.ReadingFragment;
 import com.example.funnylearning.navigation.SettingFragment;
 import com.example.funnylearning.register.Math_levelFragment;
 import com.example.funnylearning.register.Reading_levelFragment;
+import com.example.funnylearning.temp_head.CartoonsFragment;
 import com.example.funnylearning.temp_head.Message;
 import com.example.funnylearning.temp_head.RecordFragment;
 import com.example.funnylearning.temp_head.VideoFragment;
@@ -30,7 +31,7 @@ public class Temp_head extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Integer tag = Integer.valueOf(intent.getStringExtra(HomeFragment.EXTRA_NAME));
+        Integer tag = Integer.valueOf(intent.getStringExtra("tag"));
         System.out.println("tag is = " + tag);
         setContentView(R.layout.activity_temp_head);
 
@@ -72,6 +73,15 @@ public class Temp_head extends AppCompatActivity {
             head_bar_title.setText(title);
             RecordFragment recordFragment = new RecordFragment();
             replacementFragment(recordFragment);
+        }
+
+        if(tag == 4){
+            title = "Cartoon";
+            // setTest need to put behind the setContentView!!!!!
+            head_bar_title = findViewById(R.id.head_bar_title);
+            head_bar_title.setText(title);
+            CartoonsFragment cartoonsFragment = new CartoonsFragment();
+            replacementFragment(cartoonsFragment);
         }
 
     }

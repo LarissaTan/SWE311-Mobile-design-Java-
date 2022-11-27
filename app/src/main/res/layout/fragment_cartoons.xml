@@ -20,7 +20,7 @@
             android:id="@+id/cartoon_video_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Learns How To Make Pancakes!"
+            android:text="How To Make Pancakes!"
             android:fontFamily="@font/abeezee_regular"
             android:textSize="24sp"
             android:textColor="#1E1F20"
