@@ -32,7 +32,7 @@
         app:helperTextTextAppearance="@style/HelperTextAppearance">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/outlined_edit_text1"
+            android:id="@+id/signUp_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -61,7 +61,7 @@
             app:helperTextTextAppearance="@style/HelperTextAppearance">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/outlined_edit_text2"
+                android:id="@+id/signUp_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
@@ -90,7 +90,7 @@
         app:helperTextTextAppearance="@style/HelperTextAppearance">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/outlined_edit_text3"
+            android:id="@+id/signUp_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -119,7 +119,7 @@
         app:helperTextTextAppearance="@style/HelperTextAppearance">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/outlined_edit_text4"
+            android:id="@+id/signUp_repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -144,10 +144,23 @@
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/signUp_jump"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnSignup"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Jump"
+        android:backgroundTint="@color/btn"
+        android:textSize="30sp"
+        android:fontFamily="@font/indie_flower"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signUp_jump"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">

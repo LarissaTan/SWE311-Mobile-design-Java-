@@ -100,7 +100,6 @@
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
 
-
     <TextView
         android:id="@+id/forgetPwd"
         android:layout_width="match_parent"
