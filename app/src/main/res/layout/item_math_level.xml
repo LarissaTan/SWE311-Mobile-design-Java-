@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@android:color/transparent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@android:color/transparent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/title_image"
+        <ImageView
+            android:id="@+id/item_math_level_image"
             android:layout_width="74dp"
             android:layout_height="80dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             android:src="@drawable/math_level_sheep"
             android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginEnd="30dp" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/item_math_level_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_math_level_image"
+            android:textColor="@android:color/transparent"/>
 
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

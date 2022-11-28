@@ -43,9 +43,9 @@ public class Temp_head extends AppCompatActivity {
             //Message messageFragment = new Message();
             //SettingFragment settingFragment = new SettingFragment();
             //replacementFragment(messageFragment);
-            //Math_levelFragment math_levelFragment = new Math_levelFragment();
-            Reading_levelFragment reading_levelFragment = new Reading_levelFragment();
-            replacementFragment(reading_levelFragment);
+            Math_levelFragment math_levelFragment = new Math_levelFragment();
+            //Reading_levelFragment reading_levelFragment = new Reading_levelFragment();
+            replacementFragment(math_levelFragment);
         }
 
         if(tag == 1){
