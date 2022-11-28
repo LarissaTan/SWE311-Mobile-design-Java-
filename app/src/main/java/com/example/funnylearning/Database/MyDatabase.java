@@ -4,13 +4,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.navigation.PopUpToBuilder;
+
 public class MyDatabase extends SQLiteOpenHelper {
 
     //定义数据库名和版本号
     public static final String name = "funny_learning.db";
     public static final int DB_VERSION = 1;
 
-    public static final String CREATE_USERDATA = "create table tb_User(id int primary key,name varchar(20),email varchar(20),pwd varchar(20),age int,gender bool)";
+    public static final String CREATE_USER = "create table tb_User(userid varchar(20) primary key, password varchar(20))";
+    public static final String CREATE_USERDATA = "create table tb_UserData(id int primary key,name varchar(20),email varchar(20),pwd varchar(20),age int,gender bool)";
 
     public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
 
@@ -20,6 +23,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
         db.execSQL(CREATE_CARTOONDATA);
     }
