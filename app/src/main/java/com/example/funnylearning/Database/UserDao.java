@@ -35,32 +35,29 @@ public class UserDao {
         }
     }
 
-    public Boolean insertData(String userId, String password){
+    public Boolean insertEmailPassword(String email, String password){
         open();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("userid", userId);
+        contentValues.put("email", email);
         contentValues.put("password", password);
         long result = db.insert("tb_User",null,contentValues);
-        close();
         if (result == -1) return false;
         else
             return true;
     }
 
-    public Boolean checkUserId(String userId){
+    public Boolean checkUserEmail(String email){
         open();
-        Cursor cursor = db.rawQuery("select * from user where userid = ?", new String[] {userId});
-        close();
+        Cursor cursor = db.rawQuery("select * from tb_User where email = ?", new String[] {email});
         if(cursor.getCount()>0)
             return true;
         else
             return false;
     }
 
-    public Boolean checkUserNamePassword(String userId, String password){
+    public Boolean checkUserEmailPassword(String email, String password){
         open();
-        Cursor cursor = db.rawQuery("select * from user where userid = ? and password = ?", new String[] {userId, password});
-        close();
+        Cursor cursor = db.rawQuery("select * from tb_User where email = ? and password = ?", new String[] {email, password});
         if(cursor.getCount()>0)
             return true;
         else
