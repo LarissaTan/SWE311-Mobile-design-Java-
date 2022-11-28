@@ -16,9 +16,14 @@ public class MyDatabase extends SQLiteOpenHelper {
     // only store login information
     public static final String CREATE_USER = "create table tb_User(email varchar(50) primary key, password varchar(20))";
 
-    public static final String CREATE_USERDATA = "create table tb_UserData(id int primary key,name varchar(20),email varchar(20) ,pwd varchar(20),age int,gender bool)";
+    // store user information
+    public static final String CREATE_USERDATA = "create table tb_UserData(userId int primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, foreign key (email) references tb_User(email))";
 
     public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
+
+    // drop table
+    public static final String DROP_USER = "drop Table if exists tb_User";
+    public static final String DROP_USERDATA = "drop Table if exists tb_UserData";
 
     //构造函数
     public MyDatabase(Context context) {
@@ -32,6 +37,8 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(DROP_USER);
+        db.execSQL(DROP_USERDATA);
     }
 
 }
