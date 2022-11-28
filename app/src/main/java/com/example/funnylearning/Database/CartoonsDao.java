@@ -62,7 +62,7 @@ public class CartoonsDao {
         values.put("key1",cartoon.Key1);
         values.put("key2",cartoon.Key2);
 
-        return db.insert("users",null,values);
+        return db.insert("tb_Cartoon",null,values);
     }
 
     public boolean isCartoonExist(String username){
@@ -72,8 +72,8 @@ public class CartoonsDao {
 
     //查找所有cartoon的信息
     @SuppressLint("Range")
-    public ArrayList<Map<String, Object>> getAllCartoons() {
-        ArrayList<Map<String, Object>> listCartoon = new ArrayList<Map<String, Object>>();
+    public Cartoons getAllCartoons() {
+        Cartoons c = new Cartoons();
         Cursor cursor = db.query("tb_Cartoon", null, null, null, null, null,null);
 
         int resultCounts = cursor.getCount();  //记录总数
@@ -81,18 +81,16 @@ public class CartoonsDao {
             return null;
         } else {
             while (cursor.moveToNext()) {
-                Map<String, Object> map = new HashMap<String, Object>();
-                map.put("id", cursor.getString(cursor.getColumnIndex("id")));
-                map.put("name", cursor.getString(cursor.getColumnIndex("name")));
-                map.put("level", cursor.getString(cursor.getColumnIndex("level")));
-                map.put("url", cursor.getString(cursor.getColumnIndex("url")));
-                map.put("duration", cursor.getString(cursor.getColumnIndex("duration")));
-                map.put("summary", cursor.getString(cursor.getColumnIndex("summary")));
-                map.put("key1", cursor.getString(cursor.getColumnIndex("key1")));
-                map.put("key2", cursor.getString(cursor.getColumnIndex("key2")));
-                listCartoon.add(map);
+                c.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
+                c.Name  = cursor.getString(cursor.getColumnIndex("name"));
+                c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
+                c.Url = cursor.getString(cursor.getColumnIndex("url"));
+                c.Duration = cursor.getString(cursor.getColumnIndex("duration"));
+                c.Summary = cursor.getString(cursor.getColumnIndex("summary"));
+                c.Key1 = cursor.getString(cursor.getColumnIndex("key1"));
+                c.Key2 = cursor.getString(cursor.getColumnIndex("key2"));
             }
-            return listCartoon;
+            return c;
         }
     }
 }
