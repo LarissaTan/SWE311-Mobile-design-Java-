@@ -16,6 +16,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
+import java.util.List;
+import java.util.Map;
+
 public class CartoonsFragment extends Fragment {
 
 
@@ -67,11 +70,15 @@ public class CartoonsFragment extends Fragment {
 
         long tmp = dao.insertCartoon(c);
 
+        System.out.println("tmp = " + tmp);
+
+        Cartoons cartoonData=dao.getAllCartoons();
+
 
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer){
-                String videoId = "_2yM8MM9qNs";
+                String videoId = cartoonData.Url;
                 youTubePlayer.loadVideo(videoId,0);
             }
         });
