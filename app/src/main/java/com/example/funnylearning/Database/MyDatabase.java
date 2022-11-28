@@ -12,7 +12,7 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     public static final String CREATE_USERDATA = "create table tb_User(id int primary key,name varchar(20),email varchar(20),pwd varchar(20),age int,gender bool)";
 
-    public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(80),key1 varchar(80),key2 varchar(80))";
+    public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
 
     //构造函数
     public MyDatabase(Context context) {
