@@ -20,6 +20,7 @@ public class UserDao {
     //打开数据库
     public void open() throws SQLiteException {
         dbHelper = new MyDatabase(context);
+        //dbHelper.onCreate(db);
         try {
             db = dbHelper.getWritableDatabase();
         } catch (SQLiteException ex) {

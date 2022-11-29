@@ -14,16 +14,16 @@ public class MyDatabase extends SQLiteOpenHelper {
 
     // for login signup purpose
     // only store login information
-    public static final String CREATE_USER = "create table tb_User(email varchar(50) primary key, password varchar(20))";
+    public static final String CREATE_USER = "create table if not exists tb_User(email varchar(50) primary key, password varchar(20));";
 
     // store user information
-    public static final String CREATE_USERDATA = "create table tb_UserData(userId int primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, test text, foreign key (email) references tb_User(email))";
+    public static final String CREATE_USERDATA = "create table if not exists tb_UserData(userId integer primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, foreign key (email) references tb_User(email));";
 
-    public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
+    public static final String CREATE_CARTOONDATA = "create table if not exists tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
 
     // drop table
-    public static final String DROP_USER = "drop Table if exists tb_User";
-    public static final String DROP_USERDATA = "drop Table if exists tb_UserData";
+    public static final String DROP_USER = "drop Table if exists tb_User;";
+    public static final String DROP_USERDATA = "drop Table if exists tb_UserData;";
 
 
 
