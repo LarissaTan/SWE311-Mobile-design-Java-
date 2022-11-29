@@ -25,22 +25,20 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String DROP_USER = "drop Table if exists tb_User";
     public static final String DROP_USERDATA = "drop Table if exists tb_UserData";
 
+
+
     //构造函数
     public MyDatabase(Context context) {
         super(context, name, null, DB_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DROP_USER);
-        db.execSQL(DROP_USERDATA);
-
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
         db.execSQL(CREATE_CARTOONDATA);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
 }
