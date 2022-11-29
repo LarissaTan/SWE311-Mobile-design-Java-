@@ -64,7 +64,7 @@ public class UserDataDao {
         }
     }
 
-    public Boolean insertGender(Boolean gender, int userId){
+    public Boolean updateGender(Boolean gender, int userId){
         open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("gender", gender);
@@ -74,12 +74,13 @@ public class UserDataDao {
             return true;
     }
 
-    public Boolean insertAge(int age, int userId){
+    public Boolean updateAge(int age, int userId){
         open();
-        Cursor cursor = db.rawQuery("update tb_UserData set age = " + age +" where userId = " + userId + ";", new String[]{});
-        if(cursor.getCount()>0)
-            return true;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("age", age);
+        long result = db.update("tb_UserData", contentValues, "userId =" + userId, new String[]{});
+        if (result == -1) return false;
         else
-            return false;
+            return true;
     }
 }

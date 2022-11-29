@@ -27,7 +27,6 @@ public class Gender extends AppCompatActivity {
         int userId =0;
         if(extras != null){
             userId = extras.getInt("userId");
-            Toast.makeText(this, "userid:" + userId, Toast.LENGTH_SHORT).show();
         }else {
             Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
         }
@@ -63,11 +62,12 @@ public class Gender extends AppCompatActivity {
                             Toast.makeText(Gender.this, "Gender id wrong", Toast.LENGTH_SHORT).show();
                         }
 
-                        Boolean insert = userDataDao.insertGender(genderMale, finalUserId);
+                        Boolean insert = userDataDao.updateGender(genderMale, finalUserId);
 
                         if(insert == true){
                             Toast.makeText(Gender.this, "Gender Selected Successfully", Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(Gender.this, MathLevel.class);
+                            it.putExtra("userId",finalUserId);
                             startActivity(it);
                         }
                         else{
