@@ -56,6 +56,9 @@ public class Signup extends AppCompatActivity {
                             Boolean insert = userDao.insertEmailPassword(user_email, user_password);
                             if(insert == true) {
                                 Toast.makeText(Signup.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+
+
+
                                 Intent it = new Intent(Signup.this, Gender.class);
                                 startActivity(it);
                             }
