@@ -31,14 +31,16 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(DROP_USER);
+        db.execSQL(DROP_USERDATA);
+
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
         db.execSQL(CREATE_CARTOONDATA);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DROP_USER);
-        db.execSQL(DROP_USERDATA);
+
     }
 
 }
