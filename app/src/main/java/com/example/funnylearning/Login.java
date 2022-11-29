@@ -33,6 +33,8 @@ public class Login extends AppCompatActivity {
         Button login =  findViewById(R.id.btnLogin_lo);
         Button jump = (Button) findViewById(R.id.btnJump_lo);
 
+        userDao.open();
+
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub

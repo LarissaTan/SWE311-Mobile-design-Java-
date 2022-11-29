@@ -21,6 +21,8 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        userDao.open();
+
         TextInputEditText name, email, password, repassword;
 
         name = findViewById(R.id.signUp_name);
