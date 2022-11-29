@@ -16,7 +16,7 @@
         android:src="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_text_input_layout1"
+        android:id="@+id/signUp_inputlayout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,110 +24,125 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
         android:hint="Name"
         android:theme="@style/EditTextThemeOverlay"
+        app:startIconDrawable="@drawable/stream_compose_ic_person"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/stream_compose_ic_error"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="error"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:counterEnabled="true"
+        app:counterMaxLength="20"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signUp_name"
+            android:id="@+id/signUp_edittext_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:paddingStart="10dp"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlined_text_input_layout2"
+            android:id="@+id/signUp_inputlayout_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/outlined_text_input_layout1"
+            android:layout_below="@+id/signUp_inputlayout_name"
             android:layout_marginStart="10dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="15dp"
             android:hint="Email"
             android:theme="@style/EditTextThemeOverlay"
             app:errorTextAppearance="@style/ErrorTextAppearance"
-            app:helperText="OutlinedBox helper helper"
-            app:helperTextTextAppearance="@style/HelperTextAppearance">
+            app:helperText="Required*"
+            app:helperTextTextAppearance="@style/HelperTextAppearance"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signUp_email"
+                android:id="@+id/signUp_edittext_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
-                android:textColorHighlight="@color/textColorHighlight" />
+                android:textColorHighlight="@color/textColorHighlight"
+                android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_text_input_layout3"
+        android:id="@+id/signUp_inputlayout_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlined_text_input_layout2"
+        android:layout_below="@+id/signUp_inputlayout_email"
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
         android:hint="Password"
         android:theme="@style/EditTextThemeOverlay"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="OutlinedBox helper helper"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:passwordToggleEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signUp_password"
+            android:id="@+id/signUp_edittext_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:paddingStart="10dp"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_text_input_layout4"
+        android:id="@+id/signUp_inputlayout_repassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlined_text_input_layout3"
+        android:layout_below="@+id/signUp_inputlayout_password"
         android:layout_marginStart="10dp"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="15dp"
         android:hint="Repassword"
         android:theme="@style/EditTextThemeOverlay"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="OutlinedBox helper helper"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:passwordToggleEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/signUp_repassword"
+            android:id="@+id/signUp_edittext_repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:paddingStart="10dp"
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +150,7 @@
         android:id="@+id/btnSignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlined_text_input_layout4"
+        android:layout_below="@+id/signUp_inputlayout_repassword"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
@@ -144,23 +159,10 @@
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
 
-    <Button
-        android:id="@+id/signUp_jump"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnSignup"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Jump"
-        android:backgroundTint="@color/btn"
-        android:textSize="30sp"
-        android:fontFamily="@font/indie_flower"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signUp_jump"
+        android:layout_below="@+id/btnSignup"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">
