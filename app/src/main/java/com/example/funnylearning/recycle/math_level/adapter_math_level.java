@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.funnylearning.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.ViewHolder> {
 
@@ -48,6 +49,9 @@ public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.
         return mathLevelList.size();
     }
 
-
+    public List<model_math_level> getList()
+    {
+        return mathLevelList;
+    }
 
 }
