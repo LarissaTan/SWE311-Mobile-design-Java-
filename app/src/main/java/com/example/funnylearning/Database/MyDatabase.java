@@ -17,7 +17,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String CREATE_USER = "create table tb_User(email varchar(50) primary key, password varchar(20))";
 
     // store user information
-    public static final String CREATE_USERDATA = "create table tb_UserData(userId int primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, foreign key (email) references tb_User(email))";
+    public static final String CREATE_USERDATA = "create table tb_UserData(userId int primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, test text, foreign key (email) references tb_User(email))";
 
     public static final String CREATE_CARTOONDATA = "create table tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200))";
 
@@ -33,6 +33,10 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //testing
+        db.execSQL(DROP_USERDATA);
+        db.execSQL(DROP_USER);
+
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
         db.execSQL(CREATE_CARTOONDATA);
