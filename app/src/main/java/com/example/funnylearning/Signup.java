@@ -10,18 +10,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
+import com.example.funnylearning.Database.UserDataDao;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Signup extends AppCompatActivity {
 
     UserDao userDao = new UserDao(this);
+    UserDataDao userDataDao = new UserDataDao(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        userDao.open();
 
         TextInputEditText name, email, password, repassword;
 
@@ -57,10 +57,20 @@ public class Signup extends AppCompatActivity {
                             if(insert == true) {
                                 Toast.makeText(Signup.this, "Registered successfully", Toast.LENGTH_SHORT).show();
 
+                                Boolean insertName = userDataDao.insertEmailName(user_email, user_name);
+                                Integer userId = userDataDao.getUserId(user_email);
 
-
-                                Intent it = new Intent(Signup.this, Gender.class);
-                                startActivity(it);
+                                if(insertName == true && userId != -1)
+                                {
+                                    Toast.makeText(Signup.this, "User data creating", Toast.LENGTH_SHORT).show();
+                                    Intent it = new Intent(Signup.this, Gender.class);
+                                    it.putExtra("userId",userId);
+                                    startActivity(it);
+                                }
+                                else
+                                {
+                                    Toast.makeText(Signup.this, "User data create fail", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else {
                                 Toast.makeText(Signup.this, "Registration failed", Toast.LENGTH_SHORT).show();
