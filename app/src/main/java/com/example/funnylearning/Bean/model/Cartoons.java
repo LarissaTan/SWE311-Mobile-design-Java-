@@ -6,7 +6,5 @@ public class Cartoons {
     public Integer Level;
     public String Url;
     public String Duration;
-    public String Summary;
-    public String Key1;
-    public String Key2;
+
 }

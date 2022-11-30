@@ -19,12 +19,14 @@ public class MyDatabase extends SQLiteOpenHelper {
     // store user information
     public static final String CREATE_USERDATA = "create table if not exists tb_UserData(userId integer primary key AUTOINCREMENT,name varchar(20),email varchar(50), age int, gender bool, foreign key (email) references tb_User(email));";
 
-    public static final String CREATE_CARTOONDATA = "create table if not exists tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10),summary varchar(200),key1 varchar(200),key2 varchar(200), image varchar(100))";
+    public static final String CREATE_CARTOONDATA = "create table if not exists tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10), image varchar(100))";
+    public static final String CREATE_CARTOONDETAILS = "create table if not exists tb_CartoonData(id int primary key,name varchar(20),summary varchar(200),key1 varchar(200),key2 varchar(200))";
 
     // drop table
     public static final String DROP_USER = "drop Table if exists tb_User;";
     public static final String DROP_USERDATA = "drop Table if exists tb_UserData;";
     public static final String DROP_CARTOON = "drop Table if exists tb_Cartoon;";
+    public static final String DROP_CARTOONDATA = "drop Table if exists tb_CartoonData;";
 
 
 
@@ -38,10 +40,12 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(DROP_USERDATA);
         db.execSQL(DROP_USER);
         db.execSQL(DROP_CARTOON);
+        db.execSQL(DROP_CARTOONDATA);
 
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
         db.execSQL(CREATE_CARTOONDATA);
+        db.execSQL(CREATE_CARTOONDETAILS);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
