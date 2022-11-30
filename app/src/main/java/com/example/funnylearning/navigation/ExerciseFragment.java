@@ -64,7 +64,7 @@ public class ExerciseFragment extends Fragment {
         exerciseList.clear();
         System.out.println("message is working");
         for (int i = 0; i < cartoonData.size(); i++)
-            exerciseList.add(new model_exercise(cartoonData.get(i).Name,"https://i.328888.xyz/img/2022/12/01/iOoQk.png",cartoonData.get(i).Level));
+            exerciseList.add(new model_exercise(cartoonData.get(i).Name,cartoonData.get(i).image,cartoonData.get(i).Level));
         //image will add latter
 
         execList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));

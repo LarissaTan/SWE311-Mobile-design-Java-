@@ -9,4 +9,5 @@ public class Cartoons {
     public String Summary;
     public String Key1;
     public String Key2;
+    public String image;
 }

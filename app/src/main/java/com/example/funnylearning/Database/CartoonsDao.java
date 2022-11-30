@@ -58,6 +58,7 @@ public class CartoonsDao {
         values.put("level",cartoon.Level);
         values.put("url",cartoon.Url);
         values.put("duration",cartoon.Duration);
+        values.put("image",cartoon.image);
 
         long tmp = db.insert("tb_Cartoon",null,values);
 
@@ -88,15 +89,17 @@ public class CartoonsDao {
             return null;
         } else {
             while (cursor.moveToNext()) {
+                cursor1.moveToNext();
                 Cartoons c = new Cartoons();
                 c.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
                 c.Name  = cursor.getString(cursor.getColumnIndex("name"));
                 c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
                 c.Url = cursor.getString(cursor.getColumnIndex("url"));
                 c.Duration = cursor.getString(cursor.getColumnIndex("duration"));
-                c.Summary = cursor.getString(cursor1.getColumnIndex("summary"));
-                c.Key1 = cursor.getString(cursor1.getColumnIndex("key1"));
-                c.Key2 = cursor.getString(cursor1.getColumnIndex("key2"));
+                c.Summary = cursor1.getString(cursor1.getColumnIndex("summary"));
+                c.Key1 = cursor1.getString(cursor1.getColumnIndex("key1"));
+                c.Key2 = cursor1.getString(cursor1.getColumnIndex("key2"));
+                c.image = cursor.getString(cursor.getColumnIndex("image"));
                 cartoons.add(c);
             }
             return cartoons;
