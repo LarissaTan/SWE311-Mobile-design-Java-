@@ -1,5 +1,7 @@
 package com.example.funnylearning.register;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,9 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -45,6 +52,7 @@ public class Math_levelFragment extends Fragment {
 
     LinearLayout normalUI;
     ConstraintLayout finalUI;
+    ConstraintLayout ansUI;
 
     Random random =new Random();
     int display;
@@ -54,6 +62,8 @@ public class Math_levelFragment extends Fragment {
     int points = 0;
     int rounds = 5;
     int totalQuestions = 5;
+
+    Animation scaleUp,scaleDown;
 
     public Math_levelFragment() {
         // Required empty public constructor
@@ -70,7 +80,7 @@ public class Math_levelFragment extends Fragment {
 
     }
 
-    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId"})
+    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId", "ClickableViewAccessibility"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -90,86 +100,133 @@ public class Math_levelFragment extends Fragment {
 
         normalUI = view.findViewById(R.id.normalUI);
         finalUI = view.findViewById(R.id.finalUI);
+        ansUI =view.findViewById(R.id.ansUI);
 
         normalUI.setVisibility(View.VISIBLE);
         finalUI.setVisibility(View.INVISIBLE);
+        ansUI.setVisibility(View.INVISIBLE);
+
+        scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
+        scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
 
         mList = (RecyclerView) view.findViewById(R.id.recyclerview_math_level);
 
         NextQuestion();
-        /*mathLevelList.clear();
-        System.out.println("message is working");
 
-
-        System.out.println("display" + display+1);
-        for (int i = 0; i < display+1; i ++) {
-            System.out.println("loop");
-            mathLevelList.add(new model_math_level("i"));
-        }
-        System.out.println(display);
-
-        //mList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        adapter_math_level customAdapter = new adapter_math_level(mathLevelList);
-        customAdapter.notifyDataSetChanged();
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
-
-        if((display+1) % 2 != 0) {
-            adjustSpan(gridLayoutManager);
-        }
-
-        mList.setLayoutManager(gridLayoutManager);
-        mList.setAdapter(customAdapter);*/
-
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                btn1.setTextColor(Color.WHITE);
-                btn1.setBackgroundColor(Color.parseColor("#F9D150"));
-                btn2.setTextColor(Color.parseColor("#F9D150"));
-                btn2.setBackgroundColor(Color.WHITE);
-                btn3.setTextColor(Color.parseColor("#F9D150"));
-                btn3.setBackgroundColor(Color.WHITE);
-                optionSelect(view);
-                display = random.nextInt(4);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    btn1.startAnimation(scaleDown);
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            optionSelect(view);
+                        }
+                    }, 500);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+
+                    btn1.startAnimation(scaleUp);
+                    btn1.setTextColor(Color.WHITE);
+                    btn1.setBackgroundColor(Color.parseColor("#F9D150"));
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    btn1.startAnimation(scaleDown);
+                    btn1.setTextColor(Color.parseColor("#F9D150"));
+                    btn1.setBackgroundColor(Color.WHITE);
+                }
+
+                return true;
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                btn2.setTextColor(Color.WHITE);
-                btn2.setBackgroundColor(Color.parseColor("#F9D150"));
-                btn1.setTextColor(Color.parseColor("#F9D150"));
-                btn1.setBackgroundColor(Color.WHITE);
-                btn3.setTextColor(Color.parseColor("#F9D150"));
-                btn3.setBackgroundColor(Color.WHITE);
-                optionSelect(view);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    btn2.startAnimation(scaleDown);
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            optionSelect(view);
+                        }
+                    }, 500);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+
+                    btn2.startAnimation(scaleUp);
+                    btn2.setTextColor(Color.WHITE);
+                    btn2.setBackgroundColor(Color.parseColor("#F9D150"));
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    btn2.startAnimation(scaleDown);
+                    btn2.setTextColor(Color.parseColor("#F9D150"));
+                    btn2.setBackgroundColor(Color.WHITE);
+                }
+
+                return true;
             }
         });
 
-        btn3.setOnClickListener(new View.OnClickListener() {
+        btn3.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
-                btn3.setTextColor(Color.WHITE);
-                btn3.setBackgroundColor(Color.parseColor("#F9D150"));
-                btn1.setTextColor(Color.parseColor("#F9D150"));
-                btn1.setBackgroundColor(Color.WHITE);
-                btn2.setTextColor(Color.parseColor("#F9D150"));
-                btn2.setBackgroundColor(Color.WHITE);
-                optionSelect(view);
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    btn3.startAnimation(scaleDown);
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            optionSelect(view);
+                        }
+                    }, 500);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+
+                    btn3.startAnimation(scaleUp);
+                    btn3.setTextColor(Color.WHITE);
+                    btn3.setBackgroundColor(Color.parseColor("#F9D150"));
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    btn3.startAnimation(scaleDown);
+                    btn3.setTextColor(Color.parseColor("#F9D150"));
+                    btn3.setBackgroundColor(Color.WHITE);
+                }
+
+                return true;
             }
         });
 
-        playAgainBtn.setOnClickListener(new View.OnClickListener() {
+        playAgainBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onTouch(View view, MotionEvent motionEvent) {
 
-                playAgainBtn.setTextColor(Color.WHITE);
-                playAgainBtn.setBackgroundColor(Color.parseColor("#F9D150"));
-                playAgain(view);
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    playAgainBtn.startAnimation(scaleDown);
+                    view.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            playAgain(view);
+                        }
+                    }, 300);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+
+                    playAgainBtn.startAnimation(scaleUp);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    playAgainBtn.startAnimation(scaleDown);
+
+                }
+
+                return true;
             }
         });
 
@@ -179,7 +236,6 @@ public class Math_levelFragment extends Fragment {
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     public void NextQuestion() {
 
-        alertTextView.setText("Let's Do It");
         btn1.setTextColor(Color.parseColor("#F9D150"));
         btn1.setBackgroundColor(Color.WHITE);
         btn2.setTextColor(Color.parseColor("#F9D150"));
@@ -262,8 +318,38 @@ public class Math_levelFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
-        roundsLeftTextView.setText(Integer.toString(--rounds));
+        if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
+            points+=20;
+            alertTextView.setText("Correct");
+            alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
+        }else {
+            alertTextView.setText("Correct Answer: " + (display+1));
+            alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
+        }
 
+        onAnswer();
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("return answer");
+                ansUI.setAlpha(0.5f);
+                ansUI.setVisibility(View.INVISIBLE);
+                ansUI.animate()
+                        .alpha(0f)
+                        .setDuration(380)
+                        .setListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                if (rounds >= 1)
+                                    normalUI.setVisibility(View.VISIBLE);
+                            }
+                        });
+            }
+        }, 1000);
+
+
+        scoreTextView.setText(Integer.toString(points));
+        roundsLeftTextView.setText(Integer.toString(--rounds));
         if (rounds == 4)
             roundsLeftProgressBar.setProgress(20, true);
         else if (rounds == 3)
@@ -275,19 +361,34 @@ public class Math_levelFragment extends Fragment {
         else if (rounds <=0)
         {
             roundsLeftProgressBar.setProgress(100, true);
-            onFinish();
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("finish");
+                    onFinish();
+                }
+            }, 1400);
+
         }
 
-        if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
-            points+=10;
-            alertTextView.setText("Correct");
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("next");
+                NextQuestion();
+            }
+        }, 1400);
+    }
 
-        }else {
-            alertTextView.setText("Correct Answer: " + (display+1));
-        }
-
-        scoreTextView.setText(Integer.toString(points));
-        NextQuestion();
+    public void onAnswer(){
+        System.out.println("onAnswer");
+        normalUI.setVisibility(View.INVISIBLE);
+        ansUI.setAlpha(0f);
+        ansUI.setVisibility(View.VISIBLE);
+        ansUI.animate()
+                .alpha(0.5f)
+                .setDuration(400)
+                .setListener(null);
     }
 
     public void onFinish() {
@@ -299,9 +400,10 @@ public class Math_levelFragment extends Fragment {
     public void playAgain(View view){
         points=0;
         rounds=5;
+        roundsLeftTextView.setText(Integer.toString(rounds));
+        roundsLeftProgressBar.setProgress(0,true);
         scoreTextView.setText(Integer.toString(points));
         finalUI.setVisibility(View.INVISIBLE);
         normalUI.setVisibility(View.VISIBLE);
-
     }
 }
