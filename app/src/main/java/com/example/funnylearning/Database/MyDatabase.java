@@ -24,6 +24,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     // drop table
     public static final String DROP_USER = "drop Table if exists tb_User;";
     public static final String DROP_USERDATA = "drop Table if exists tb_UserData;";
+    public static final String DROP_CARTOON = "drop Table if exists tb_Cartoon;";
 
 
 
@@ -36,6 +37,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         //testing
         db.execSQL(DROP_USERDATA);
         db.execSQL(DROP_USER);
+        db.execSQL(DROP_CARTOON);
 
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
