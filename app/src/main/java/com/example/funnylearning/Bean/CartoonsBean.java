@@ -5,5 +5,4 @@ import java.io.Serializable;
 public class CartoonsBean implements Serializable {
 
 
-
 }

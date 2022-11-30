@@ -78,9 +78,14 @@ public class Temp_head extends AppCompatActivity {
         if(tag == 4){
             title = "Cartoon";
             // setTest need to put behind the setContentView!!!!!
+            String itemNum = intent.getStringExtra("itemNum");
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
+
             CartoonsFragment cartoonsFragment = new CartoonsFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("NoItem",itemNum);
+            cartoonsFragment.setArguments(bundle);
             replacementFragment(cartoonsFragment);
         }
 

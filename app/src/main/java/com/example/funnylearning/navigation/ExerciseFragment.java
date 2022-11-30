@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.funnylearning.Bean.model.Cartoons;
+import com.example.funnylearning.Database.CartoonsDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.chatbox.adapter_chatbox;
@@ -46,15 +48,18 @@ public class ExerciseFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_exercise, container, false);
 
+        CartoonsDao dao=new CartoonsDao(view.getContext());
+        //打开数据库
+        dao.open();
+
+        ArrayList<Cartoons> cartoonData=dao.getAllCartoons();
+
         execList = (RecyclerView) view.findViewById(R.id.recyclerview_exercise);
 
         exerciseList.clear();
         System.out.println("message is working");
-        exerciseList.add(new model_exercise("Calf Raise"));
-        exerciseList.add(new model_exercise("Bent Raise"));
-        exerciseList.add(new model_exercise("Bent Raise"));
-        exerciseList.add(new model_exercise("Bent Raise"));
-        exerciseList.add(new model_exercise("Bent Raise"));
+        for (int i = 0; i < cartoonData.size(); i++)
+            exerciseList.add(new model_exercise(cartoonData.get(i).Name));
         //image will add latter
 
         execList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));

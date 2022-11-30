@@ -72,8 +72,8 @@ public class CartoonsDao {
 
     //查找所有cartoon的信息
     @SuppressLint("Range")
-    public Cartoons getAllCartoons() {
-        Cartoons c = new Cartoons();
+    public ArrayList<Cartoons> getAllCartoons() {
+        ArrayList<Cartoons> cartoons = new ArrayList<Cartoons>();
         Cursor cursor = db.query("tb_Cartoon", null, null, null, null, null,null);
 
         int resultCounts = cursor.getCount();  //记录总数
@@ -81,6 +81,7 @@ public class CartoonsDao {
             return null;
         } else {
             while (cursor.moveToNext()) {
+                Cartoons c = new Cartoons();
                 c.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
                 c.Name  = cursor.getString(cursor.getColumnIndex("name"));
                 c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
@@ -89,8 +90,9 @@ public class CartoonsDao {
                 c.Summary = cursor.getString(cursor.getColumnIndex("summary"));
                 c.Key1 = cursor.getString(cursor.getColumnIndex("key1"));
                 c.Key2 = cursor.getString(cursor.getColumnIndex("key2"));
+                cartoons.add(c);
             }
-            return c;
+            return cartoons;
         }
     }
 }

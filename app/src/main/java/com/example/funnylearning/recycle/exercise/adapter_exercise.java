@@ -1,5 +1,6 @@
 package com.example.funnylearning.recycle.exercise;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class adapter_exercise extends RecyclerView.Adapter<adapter_exercise.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, @SuppressLint("RecyclerView") final int position) {
         model_exercise list = exerciseList.get(position);
         viewHolder. item_exercise_title.setText(list.name);
 
@@ -54,6 +55,7 @@ public class adapter_exercise extends RecyclerView.Adapter<adapter_exercise.View
             public void onClick(View view) {
                 Intent it = new Intent(view.getContext(), Temp_head.class);
                 it.putExtra("tag","4");
+                it.putExtra("itemNum", String.valueOf(position));
                 view.getContext().startActivity(it);
             }
         });
