@@ -56,21 +56,6 @@ public class CartoonsFragment extends Fragment {
         CartoonsDao dao=new CartoonsDao(view.getContext());
         //打开数据库
         dao.open();
-//
-//        Cartoons c  = new Cartoons();
-//
-//        c.id = 4;
-//        c.Name ="Destiny";
-//        c.Duration = "5MIN";
-//        c.Level = 1;
-//        c.Url = "wEKLEeY_WeQ";
-//        c.Summary = "The lesson I gained from this was: there’s no need to live life perfectly to the minute. Things go wrong all the time. ";
-//        c.Key1 = "Moral of the story : Even those who believe in destiny, look both sides of the road before crossing";
-//        c.Key2 = "Easy for children to understand. And this is just a relax video. It does not have any lines.";
-//
-//        long tmp = dao.insertCartoon(c);
-//
-//        System.out.println("tmp = " + tmp);
 
         Cartoons cartoonData=dao.getAllCartoons();
 
