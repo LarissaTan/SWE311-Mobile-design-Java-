@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -87,6 +88,7 @@ public class CartoonsFragment extends Fragment {
         key2.setText(cartoonData.get(index).Key2);
         time.setText(cartoonData.get(index).Duration);
         level.setRating(cartoonData.get(index).Level);
+
 
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override

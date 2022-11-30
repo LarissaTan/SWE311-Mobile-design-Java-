@@ -1,6 +1,8 @@
 package com.example.funnylearning.navigation;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.funnylearning.Bean.model.Cartoons;
 import com.example.funnylearning.Database.CartoonsDao;
@@ -19,6 +22,8 @@ import com.example.funnylearning.recycle.chatbox.adapter_chatbox;
 import com.example.funnylearning.recycle.exercise.adapter_exercise;
 import com.example.funnylearning.recycle.exercise.model_exercise;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class ExerciseFragment extends Fragment {
@@ -59,7 +64,7 @@ public class ExerciseFragment extends Fragment {
         exerciseList.clear();
         System.out.println("message is working");
         for (int i = 0; i < cartoonData.size(); i++)
-            exerciseList.add(new model_exercise(cartoonData.get(i).Name));
+            exerciseList.add(new model_exercise(cartoonData.get(i).Name,"https://i.328888.xyz/img/2022/12/01/iOoQk.png",cartoonData.get(i).Level));
         //image will add latter
 
         execList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
@@ -69,5 +74,6 @@ public class ExerciseFragment extends Fragment {
 
         return view;
     }
+
 
 }
