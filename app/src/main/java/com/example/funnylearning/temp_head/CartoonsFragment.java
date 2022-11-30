@@ -86,7 +86,7 @@ public class CartoonsFragment extends Fragment {
         key1.setText(cartoonData.get(index).Key1);
         key2.setText(cartoonData.get(index).Key2);
         time.setText(cartoonData.get(index).Duration);
-        level.setNumStars(cartoonData.get(index).Level);
+        level.setRating(cartoonData.get(index).Level);
 
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
@@ -99,15 +99,3 @@ public class CartoonsFragment extends Fragment {
     }
 
 }
-
-/*
-*
-*   cartoon_video_title
-*   cartoon_level_detail
-*   cartoon_duration
-*   cartoon_summary
-*   cartoon_key1
-*   cartoon_key2
-*
-*
-* */
