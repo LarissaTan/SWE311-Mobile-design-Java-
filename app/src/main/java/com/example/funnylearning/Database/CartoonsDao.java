@@ -58,11 +58,16 @@ public class CartoonsDao {
         values.put("level",cartoon.Level);
         values.put("url",cartoon.Url);
         values.put("duration",cartoon.Duration);
-        values.put("summary",cartoon.Summary);
-        values.put("key1",cartoon.Key1);
-        values.put("key2",cartoon.Key2);
 
-        return db.insert("tb_Cartoon",null,values);
+        long tmp = db.insert("tb_Cartoon",null,values);
+
+        ContentValues values1 = new ContentValues();
+        values1.put("id",cartoon.id);
+        values1.put("summary",cartoon.Summary);
+        values1.put("key1",cartoon.Key1);
+        values1.put("key2",cartoon.Key2);
+
+        return db.insert("tb_CartoonData",null,values1);
     }
 
     public boolean isCartoonExist(String username){
@@ -75,6 +80,8 @@ public class CartoonsDao {
     public ArrayList<Cartoons> getAllCartoons() {
         ArrayList<Cartoons> cartoons = new ArrayList<Cartoons>();
         Cursor cursor = db.query("tb_Cartoon", null, null, null, null, null,null);
+        Cursor cursor1 = db.query("tb_CartoonData",null,null,null,null,null,null);
+
 
         int resultCounts = cursor.getCount();  //记录总数
         if (resultCounts == 0 ) {
@@ -87,9 +94,9 @@ public class CartoonsDao {
                 c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
                 c.Url = cursor.getString(cursor.getColumnIndex("url"));
                 c.Duration = cursor.getString(cursor.getColumnIndex("duration"));
-                c.Summary = cursor.getString(cursor.getColumnIndex("summary"));
-                c.Key1 = cursor.getString(cursor.getColumnIndex("key1"));
-                c.Key2 = cursor.getString(cursor.getColumnIndex("key2"));
+                c.Summary = cursor.getString(cursor1.getColumnIndex("summary"));
+                c.Key1 = cursor.getString(cursor1.getColumnIndex("key1"));
+                c.Key2 = cursor.getString(cursor1.getColumnIndex("key2"));
                 cartoons.add(c);
             }
             return cartoons;
