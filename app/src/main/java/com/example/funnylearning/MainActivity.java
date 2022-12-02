@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import com.example.funnylearning.Bean.FindWordsBean;
 import com.example.funnylearning.Bean.model.Cartoons;
 import com.example.funnylearning.Database.CartoonsDao;
+import com.example.funnylearning.Database.FindWordsDao;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -94,6 +96,82 @@ public class MainActivity extends AppCompatActivity {
 
         tmp = dao.insertCartoon(c);
 
+
+        /***
+         * 插入words 数据
+         */
+        FindWordsDao wordsDao=new FindWordsDao(this);
+        FindWordsBean f = new FindWordsBean();
+
+        f.id = 1;
+        f.correct = "Teacher";
+        f.wrong1 = "Taecher";
+        f.wrong2 = "Teacer";
+
+        long temp = wordsDao.insertFindWords(f);
+
+        f.id = 2;
+        f.correct = "Correct";
+        f.wrong1 = "Corect";
+        f.wrong2 = "Corract";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 3;
+        f.correct = "True";
+        f.wrong1 = "Trua";
+        f.wrong2 = "Tuer";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 4;
+        f.correct = "Mobile";
+        f.wrong1 = "Moblie";
+        f.wrong2 = "Moilbe";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 5;
+        f.correct = "Successful";
+        f.wrong1 = "Sucessful";
+        f.wrong2 = "Succesful";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 6;
+        f.correct = "Minute";
+        f.wrong1 = "Mintue";
+        f.wrong2 = "Minue";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 7;
+        f.correct = "Delicious";
+        f.wrong1 = "Delcious";
+        f.wrong2 = "Decious";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 8;
+        f.correct = "Contribution";
+        f.wrong1 = "Contribation";
+        f.wrong2 = "Contrabution";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 9;
+        f.correct = "Bulletproof";
+        f.wrong1 = "Buletproof";
+        f.wrong2 = "Bulletprof";
+
+        temp = wordsDao.insertFindWords(f);
+
+        f.id = 10;
+        f.correct = "Computer";
+        f.wrong1 = "Komputer";
+        f.wrong2 = "comprute";
+
+        temp = wordsDao.insertFindWords(f);
 
     }
 }

@@ -71,8 +71,8 @@ public class CartoonsDao {
         return db.insert("tb_CartoonData",null,values1);
     }
 
-    public boolean isCartoonExist(String username){
-        Cursor cursor = db.query("tb_Cartoon", null,"name=?", new String[]{username},null,null,null);
+    public boolean isCartoonExist(String tmp){
+        Cursor cursor = db.query("tb_Cartoon", null,"name=?", new String[]{tmp},null,null,null);
         return cursor.moveToNext();
     }
 
