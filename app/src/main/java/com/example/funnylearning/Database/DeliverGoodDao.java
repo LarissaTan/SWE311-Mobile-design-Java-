@@ -14,7 +14,7 @@ public class DeliverGoodDao {
         this.context = context;
     }
 
-    public long insertDeliverGood(){
+    public long insertDeliverGood(int id, String correct, String wrong1, String wrong2, String word){
 
         return 0;
 
