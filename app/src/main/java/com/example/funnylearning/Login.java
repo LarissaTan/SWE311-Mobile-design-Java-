@@ -5,16 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
+import com.example.funnylearning.Database.UserDataDao;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
 
     UserDao userDao = new UserDao(this);
+    UserDataDao userDataDao = new UserDataDao(this);
+
+    TextInputLayout login_account, login_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +30,6 @@ public class Login extends AppCompatActivity {
 
         //forgetPwd
         TextView forgetPassword, signUp;
-        TextInputEditText login_account, login_password;
 
         forgetPassword = findViewById(R.id.forgetPwd);
         signUp = findViewById(R.id.signUp);
@@ -32,8 +38,6 @@ public class Login extends AppCompatActivity {
 
         Button login =  findViewById(R.id.btnLogin_lo);
         Button jump = (Button) findViewById(R.id.btnJump_lo);
-
-        userDao.open();
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -52,8 +56,37 @@ public class Login extends AppCompatActivity {
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent it = new Intent(Login.this, Homepage.class);
-                startActivity(it);
+
+                if (confirmInput()) {
+                    String user_email = login_account.getEditText().getText().toString();
+                    String user_password = login_password.getEditText().getText().toString();
+
+                    Boolean checkUser = userDao.checkUserEmail(user_email);
+
+                    if (checkUser == true) {
+                        Boolean checkPassword = userDao.checkUserEmailPassword(user_email,user_password);
+
+                        if(checkPassword == true){
+                            Integer userId = userDataDao.getUserId(user_email);
+
+                            if (userId != -1) {
+                                Intent it = new Intent(Login.this, Homepage.class);
+                                it.putExtra("userId", userId);
+                                startActivity(it);
+                            } else {
+                                Toast.makeText(Login.this, "User data fail", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            login_password.setError("Wrong Password!");
+                            Toast.makeText(Login.this, "Wrong Password!", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        login_account.setError("User account not exists!");
+                        Toast.makeText(Login.this, "User account not exists! Please sign up!", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(Login.this, "Please enter valid input!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -63,5 +96,57 @@ public class Login extends AppCompatActivity {
                 startActivity(it);
             }
         });
+    }
+
+    private boolean confirmInput(){
+        if(!validate_email() | !validate_password()){
+            return false;
+        } else
+            return true;
+    }
+
+    private boolean validate_email()
+    {
+        String textEmail = login_account.getEditText().getText().toString().trim();
+
+        if(textEmail.isEmpty()) {
+            login_account.setError("This field cannot be empty!");
+            return false;
+        } else if(textEmail.length() < 3) {
+            login_account.setError("Minimum 3 characters");
+            return false;
+        } else if(textEmail.length() > 50){
+            login_account.setError("Maximum 50 characters");
+            return false;
+        } else if(!isEmailValid(textEmail)){
+            login_account.setError("Please enter a valid email address");
+            return false;
+        } else {
+            login_account.setError(null);
+            return true;
+        }
+    }
+
+    private boolean isEmailValid(CharSequence address){
+        return Patterns.EMAIL_ADDRESS.matcher(address).matches();
+    }
+
+    private boolean validate_password()
+    {
+        String textPassword = login_password.getEditText().getText().toString().trim();
+
+        if(textPassword.isEmpty()) {
+            login_password.setError("This field cannot be empty!");
+            return false;
+        } else if(textPassword.length() < 3) {
+            login_password.setError("Minimum 3 characters");
+            return false;
+        } else if(textPassword.length() > 20){
+            login_password.setError("Maximum 20 characters");
+            return false;
+        } else {
+            login_password.setError(null);
+            return true;
+        }
     }
 }

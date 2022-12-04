@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+
 import com.example.funnylearning.Bean.FindWordsBean;
 
 import java.util.ArrayList;
@@ -17,6 +19,24 @@ public class FindWordsDao {
 
     public FindWordsDao(Context context) {
         this.context = context;
+    }
+
+    //打开数据库
+    public void open() throws SQLiteException {
+        dbHelper = new MyDatabase(context);
+        try {
+            db = dbHelper.getWritableDatabase();
+        } catch (SQLiteException ex) {
+            db = dbHelper.getReadableDatabase();
+        }
+    }
+
+    //关闭数据库
+    public void close() {
+        if (db != null) {
+            db.close();
+            db = null;
+        }
     }
 
     public long insertFindWords(FindWordsBean temp){

@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
          * 插入words 数据
          */
         FindWordsDao wordsDao=new FindWordsDao(this);
+        wordsDao.open();
         FindWordsBean f = new FindWordsBean();
 
         f.id = 1;

@@ -43,7 +43,6 @@ public class Signup extends AppCompatActivity {
                     String user_name = name.getEditText().getText().toString();
                     String user_email = email.getEditText().getText().toString();
                     String user_password = password.getEditText().getText().toString();
-                    String user_repassword = repassword.getEditText().getText().toString();
 
                     Boolean checkUser = userDao.checkUserEmail(user_email);
 

@@ -49,7 +49,7 @@ public class UserDao {
 
     public Boolean checkUserEmail(String email){
         open();
-        Cursor cursor = db.rawQuery("select * from tb_User where email = ?", new String[] {email});
+        Cursor cursor = db.rawQuery("select email from tb_User where email = ?", new String[] {email});
         if(cursor.getCount()>0)
             return true;
         else

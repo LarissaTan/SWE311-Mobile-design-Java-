@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login"
-    android:background="#f9d150"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    android:background="#f9d150">
 
     <ImageView
         android:id="@+id/logo"
@@ -16,7 +15,7 @@
         android:layout_centerHorizontal="true"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_text_input_layout1"
+        android:id="@+id/login_account"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,50 +26,57 @@
         android:layout_marginBottom="10dp"
         android:hint="Account"
         android:theme="@style/EditTextThemeOverlay"
+        app:startIconDrawable="@drawable/envelop_icon"
         app:errorTextAppearance="@style/ErrorTextAppearance"
         app:helperText="Required*"
-        app:helperTextTextColor="#C6394A"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_account"
+            android:id="@+id/login_account_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlined_text_input_layout2"
+        android:id="@+id/login_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlined_text_input_layout1"
+        android:layout_below="@+id/login_account"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
         android:hint="Password"
         android:theme="@style/EditTextThemeOverlay"
+        app:startIconDrawable="@drawable/password_icon"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:endIconMode="password_toggle"
         app:helperText="Required*"
-        app:helperTextTextColor="#C6394A"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:passwordToggleEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_password"
+            android:id="@+id/login_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +84,7 @@
         android:id="@+id/btnLogin_lo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/outlined_text_input_layout2"
+        android:layout_below="@+id/login_password"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="20dp"
