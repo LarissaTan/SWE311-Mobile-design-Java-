@@ -8,12 +8,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class ForgotPswEnter extends AppCompatActivity {
+
+    TextInputLayout code, password, repassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_psw_enter);
+        Bundle extras = getIntent().getExtras();
+        String user_email;
+        if(extras != null){
+            user_email = extras.getString("email");
+        }else {
+            Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
+        }
+
+        code = findViewById(R.id.forgot_psw_enter_Code);
+        password = findViewById(R.id.forgot_psw_enter_new_password);
+        repassword = findViewById(R.id.forgot_psw_enter_repeat_password);
 
         Button btn;
 

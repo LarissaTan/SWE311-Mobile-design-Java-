@@ -18,7 +18,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgot_psw_enter_outlined_text_input_layout1"
+        android:id="@+id/forgot_psw_enter_Code"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:hint="Code"
         android:theme="@style/EditTextThemeOverlay"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="error"
+        app:helperText="Required*"
         app:helperTextTextAppearance="@style/HelperTextAppearance">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -47,11 +47,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgot_psw_enter_outlined_text_input_layout2"
+        android:id="@+id/forgot_psw_enter_new_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/forgot_psw_enter_outlined_text_input_layout1"
+        android:layout_below="@+id/forgot_psw_enter_Code"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -59,8 +59,11 @@
         android:hint="New Password"
         android:theme="@style/EditTextThemeOverlay"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="error"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:passwordToggleEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/forgot_psw_enter_outlined_edit_text2"
@@ -71,16 +74,17 @@
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgot_psw_enter_outlined_text_input_layout3"
+        android:id="@+id/forgot_psw_enter_repeat_password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/forgot_psw_enter_outlined_text_input_layout2"
+        android:layout_below="@+id/forgot_psw_enter_new_password"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
@@ -88,8 +92,11 @@
         android:hint="Repeat Your New Password"
         android:theme="@style/EditTextThemeOverlay"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="error"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:passwordToggleEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="20">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/forgot_psw_enter_outlined_edit_text3"
@@ -100,7 +107,8 @@
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
