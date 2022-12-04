@@ -58,10 +58,9 @@ public class Math_levelFragment extends Fragment {
     int display;
     int indexOfCorrectAnswer;
     ArrayList<Integer> answers = new ArrayList<Integer>();
-    ArrayList<Integer> displaysList = new ArrayList<Integer>();
     int points = 0;
-    int rounds = 5;
-    int totalQuestions = 5;
+    int rounds = 10;
+    int progress = 0;
 
     Animation scaleUp,scaleDown;
 
@@ -245,12 +244,6 @@ public class Math_levelFragment extends Fragment {
 
         display = random.nextInt(4);
 
-        /*displaysList.add(display);
-        while(display == displaysList.get(rounds%5))
-        {
-            display = random.nextInt(4);
-        }*/
-
         indexOfCorrectAnswer = random.nextInt(3);
 
         mathLevelList.clear();
@@ -319,7 +312,7 @@ public class Math_levelFragment extends Fragment {
     public void optionSelect(View view){
 
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
-            points+=20;
+            points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
         }else {
@@ -350,15 +343,10 @@ public class Math_levelFragment extends Fragment {
 
         scoreTextView.setText(Integer.toString(points));
         roundsLeftTextView.setText(Integer.toString(--rounds));
-        if (rounds == 4)
-            roundsLeftProgressBar.setProgress(20, true);
-        else if (rounds == 3)
-            roundsLeftProgressBar.setProgress(40, true);
-        else if (rounds == 2)
-            roundsLeftProgressBar.setProgress(60, true);
-        else if (rounds == 1)
-            roundsLeftProgressBar.setProgress(80, true);
-        else if (rounds <=0)
+        roundsLeftTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
+        progress += 10;
+        roundsLeftProgressBar.setProgress(progress, true);
+        if (rounds <=0)
         {
             roundsLeftProgressBar.setProgress(100, true);
             view.postDelayed(new Runnable() {
@@ -391,15 +379,17 @@ public class Math_levelFragment extends Fragment {
                 .setListener(null);
     }
 
+    @SuppressLint("SetTextI18n")
     public void onFinish() {
         finalScoreTextView.setText(Integer.toString(points));
         normalUI.setVisibility(View.INVISIBLE);
         finalUI.setVisibility(View.VISIBLE);
     }
 
+    @SuppressLint("SetTextI18n")
     public void playAgain(View view){
         points=0;
-        rounds=5;
+        rounds=10;
         roundsLeftTextView.setText(Integer.toString(rounds));
         roundsLeftProgressBar.setProgress(0,true);
         scoreTextView.setText(Integer.toString(points));
