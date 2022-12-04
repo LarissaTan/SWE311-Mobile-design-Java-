@@ -64,4 +64,13 @@ public class UserDao {
         else
             return false;
     }
+
+    public Boolean updatePassword(String email, String password){
+        open();
+        Cursor cursor = db.rawQuery("update tb_User set password = ? where email =?", new String[] {password, email});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
 }
