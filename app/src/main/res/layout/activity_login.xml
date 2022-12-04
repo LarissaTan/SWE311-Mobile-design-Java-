@@ -38,7 +38,6 @@
             android:id="@+id/login_account_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
@@ -71,7 +70,6 @@
             android:id="@+id/login_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:paddingStart="20dp"
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
@@ -93,25 +91,12 @@
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
 
-    <Button
-        android:id="@+id/btnJump_lo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLogin_lo"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:text="jump"
-        android:backgroundTint="@color/btn"
-        android:textSize="30sp"
-        android:fontFamily="@font/indie_flower"/>
-
     <TextView
         android:id="@+id/forgetPwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forgot Password?"
-        android:layout_below="@+id/btnJump_lo"
+        android:layout_below="@+id/btnLogin_lo"
         android:gravity="center"
         android:fontFamily="@font/alegreya_variablefont_wght"
         android:textStyle="italic"

@@ -29,7 +29,7 @@
         android:text="Enter the email address associated with your account and we'll send you a code to reset your password." />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/forgot_psw_email_outlined_text_input_layout1"
+        android:id="@+id/forgot_psw_email_email"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,9 +40,13 @@
         android:layout_marginBottom="5dp"
         android:hint="Email"
         android:theme="@style/EditTextThemeOverlay"
+        app:startIconDrawable="@drawable/envelop_icon"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="error"
-        app:helperTextTextAppearance="@style/HelperTextAppearance">
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:counterEnabled="true"
+        app:counterMaxLength="50"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/forgot_psw_email_outlined_edit_text1"
@@ -53,7 +57,8 @@
             android:paddingTop="10dp"
             android:paddingEnd="10dp"
             android:paddingBottom="10dp"
-            android:textColorHighlight="@color/textColorHighlight" />
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="textEmailAddress"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
