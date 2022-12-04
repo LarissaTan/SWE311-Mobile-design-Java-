@@ -37,7 +37,6 @@ public class Login extends AppCompatActivity {
         login_password = findViewById(R.id.login_password);
 
         Button login =  findViewById(R.id.btnLogin_lo);
-        Button jump = (Button) findViewById(R.id.btnJump_lo);
 
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -90,12 +89,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        jump.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent it = new Intent(Login.this, Homepage.class);
-                startActivity(it);
-            }
-        });
+
     }
 
     private boolean confirmInput(){
