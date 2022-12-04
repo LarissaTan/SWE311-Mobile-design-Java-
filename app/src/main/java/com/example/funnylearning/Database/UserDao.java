@@ -67,10 +67,11 @@ public class UserDao {
 
     public Boolean updatePassword(String email, String password){
         open();
-        Cursor cursor = db.rawQuery("update tb_User set password = ? where email =?", new String[] {password, email});
-        if(cursor.getCount()>0)
-            return true;
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password", password);
+        long result = db.update("tb_User", contentValues, "email = ?", new String[]{email});
+        if (result == -1) return false;
         else
-            return false;
+            return true;
     }
 }

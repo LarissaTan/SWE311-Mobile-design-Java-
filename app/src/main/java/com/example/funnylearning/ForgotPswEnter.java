@@ -17,7 +17,7 @@ public class ForgotPswEnter extends AppCompatActivity {
     TextInputLayout code, password, repassword;
 
     // temporary verification code
-    String validateCode = "3212";
+    Integer validateCode = 3212;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class ForgotPswEnter extends AppCompatActivity {
         if(extras != null){
             user_email = extras.getString("email");
         }else {
-            Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "no email passed", Toast.LENGTH_SHORT).show();
         }
 
         code = findViewById(R.id.forgot_psw_enter_Code);
@@ -47,9 +47,9 @@ public class ForgotPswEnter extends AppCompatActivity {
                 if(confirmInput())
                 {
                     String user_password = password.getEditText().getText().toString();
-                    String textCode = code.getEditText().getText().toString().trim(); 
+                    Integer textCode = Integer.parseInt(code.getEditText().getText().toString());
                     
-                    if(textCode == validateCode)
+                    if(textCode.equals(validateCode))
                     {
                         Boolean updatePassword = userDao.updatePassword(finalUser_email, user_password);
 
