@@ -15,6 +15,8 @@ public class ForgotPswEnter extends AppCompatActivity {
 
     UserDao userDao = new UserDao(this);
     TextInputLayout code, password, repassword;
+
+    // temporary verification code
     String validateCode = "3212";
 
     @Override
