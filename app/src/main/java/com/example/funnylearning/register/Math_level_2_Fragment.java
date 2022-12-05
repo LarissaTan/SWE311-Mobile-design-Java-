@@ -3,13 +3,16 @@ package com.example.funnylearning.register;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -24,12 +27,15 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Math_level_2_Fragment extends Fragment {
+
+    String tagm;
 
     TextView scoreTextView;
     TextView timeLeftTextView;
@@ -50,6 +56,7 @@ public class Math_level_2_Fragment extends Fragment {
     FrameLayout btn4;
     Button startBtn;
     Button playAgainBtn;
+    Button quitBtn;
 
     LinearLayout normalUI;
     ConstraintLayout finalUI;
@@ -68,6 +75,8 @@ public class Math_level_2_Fragment extends Fragment {
 
     Animation scaleUp,scaleDown;
 
+    long timeLeft;
+
     public Math_level_2_Fragment() {
         // Required empty public constructor
     }
@@ -85,7 +94,7 @@ public class Math_level_2_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility"})
+    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -111,6 +120,11 @@ public class Math_level_2_Fragment extends Fragment {
 
         startBtn = view.findViewById(R.id.start_btn);
         playAgainBtn = view.findViewById(R.id.btnPlayAgain);
+        quitBtn = view.findViewById(R.id.btnQuit);
+
+        final MediaPlayer mp_btn = MediaPlayer.create(getContext(),R.raw.game_button_click_sound);
+        /*float log1=(float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));*/
+        mp_btn.setVolume(100,100);
 
 
         normalUI = view.findViewById(R.id.normalUI);
@@ -125,6 +139,8 @@ public class Math_level_2_Fragment extends Fragment {
         scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
         scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
 
+        scoreTextView.setText(Integer.toString(points));
+
         startBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -137,6 +153,7 @@ public class Math_level_2_Fragment extends Fragment {
                         }
                     }, 500);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
                     startBtn.startAnimation(scaleUp);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
                     startBtn.startAnimation(scaleDown);
@@ -158,7 +175,9 @@ public class Math_level_2_Fragment extends Fragment {
                         }
                     }, 500);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
                     btn1.startAnimation(scaleUp);
+
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
                     btn1.startAnimation(scaleDown);
                 }
@@ -179,7 +198,9 @@ public class Math_level_2_Fragment extends Fragment {
                         }
                     }, 500);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
                     btn2.startAnimation(scaleUp);
+
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
                     btn2.startAnimation(scaleDown);
                 }
@@ -200,7 +221,9 @@ public class Math_level_2_Fragment extends Fragment {
                         }
                     }, 500);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
                     btn3.startAnimation(scaleUp);
+
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
                     btn3.startAnimation(scaleDown);
                 }
@@ -221,6 +244,7 @@ public class Math_level_2_Fragment extends Fragment {
                         }
                     }, 500);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
                     btn4.startAnimation(scaleUp);
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
                     btn4.startAnimation(scaleDown);
@@ -243,12 +267,37 @@ public class Math_level_2_Fragment extends Fragment {
                     }, 300);
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
-
+                    mp_btn.start();
                     playAgainBtn.startAnimation(scaleUp);
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
 
                     playAgainBtn.startAnimation(scaleDown);
+
+                }
+
+                return true;
+            }
+        });
+
+        quitBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    quitBtn.startAnimation(scaleDown);
+                    tagm = "0";
+                    Intent it = new Intent(getContext(), Homepage.class);
+                    /*it.putExtra("tagm",tagm);*/
+                    startActivity(it);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
+                    quitBtn.startAnimation(scaleUp);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    quitBtn.startAnimation(scaleDown);
 
                 }
 
@@ -293,11 +342,19 @@ public class Math_level_2_Fragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
+        final MediaPlayer mp_correct = MediaPlayer.create(getContext(),R.raw.correct_answer_sound);
+        mp_correct.setVolume(100,100);
+
+        final MediaPlayer mp_wrong = MediaPlayer.create(getContext(),R.raw.wrong_answer_sound);
+        mp_wrong.setVolume(100,100);
+
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
+            mp_correct.start();
             points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
         }else {
+            mp_wrong.start();
             alertTextView.setText("Correct Answer: " + (a+b));
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
         }
@@ -311,7 +368,7 @@ public class Math_level_2_Fragment extends Fragment {
                 ansUI.setVisibility(View.INVISIBLE);
                 ansUI.animate()
                         .alpha(0f)
-                        .setDuration(380)
+                        .setDuration(200)
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
@@ -321,7 +378,7 @@ public class Math_level_2_Fragment extends Fragment {
                             }
                         });
             }
-        }, 1000);
+        }, 2300);
 
 
         scoreTextView.setText(Integer.toString(points));
@@ -332,7 +389,7 @@ public class Math_level_2_Fragment extends Fragment {
                 System.out.println("next");
                 NextQuestion();
             }
-        }, 1400);
+        }, 1000);
     }
 
     public void onAnswer(){
@@ -342,7 +399,7 @@ public class Math_level_2_Fragment extends Fragment {
         ansUI.setVisibility(View.VISIBLE);
         ansUI.animate()
                 .alpha(0.5f)
-                .setDuration(400)
+                .setDuration(500)
                 .setListener(null);
     }
 
@@ -356,6 +413,13 @@ public class Math_level_2_Fragment extends Fragment {
     }
 
     public void start(View view) {
+
+        final MediaPlayer mp_countdown = MediaPlayer.create(getContext(),R.raw.countdown_sound);
+        mp_countdown.setVolume(100,100);
+
+        final MediaPlayer mp_game_over = MediaPlayer.create(getContext(),R.raw.game_over_sound);
+        mp_game_over.setVolume(100,100);
+
         startBtn.setVisibility(View.INVISIBLE);
         normalUI.setVisibility(View.VISIBLE);
         NextQuestion();
@@ -374,6 +438,12 @@ public class Math_level_2_Fragment extends Fragment {
                     progress += 2;
                     timeLeftProgressBar.setProgress(progress, true);
                 }
+
+                if(progress >= 90)
+                {
+                    mp_countdown.start();
+                }
+
             }
 
             @SuppressLint("SetTextI18n")
@@ -383,12 +453,13 @@ public class Math_level_2_Fragment extends Fragment {
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        mp_game_over.start();
                         normalUI.setVisibility(View.INVISIBLE);
                         finalUI.setVisibility(View.VISIBLE);
                     }
                 }, 1400);
             }
         }.start();
-
     }
+
 }

@@ -44,10 +44,10 @@ public class Temp_head extends AppCompatActivity {
             //Message messageFragment = new Message();
             //SettingFragment settingFragment = new SettingFragment();
             //replacementFragment(messageFragment);
-            //Math_levelFragment math_levelFragment = new Math_levelFragment();
+            Math_levelFragment math_levelFragment = new Math_levelFragment();
             //Reading_levelFragment reading_levelFragment = new Reading_levelFragment();
-            Math_level_2_Fragment math_level_2_fragment = new Math_level_2_Fragment();
-            replacementFragment(math_level_2_fragment);
+            //Math_level_2_Fragment math_level_2_fragment = new Math_level_2_Fragment();
+            replacementFragment(math_levelFragment);
         }
 
         if(tag == 1){
