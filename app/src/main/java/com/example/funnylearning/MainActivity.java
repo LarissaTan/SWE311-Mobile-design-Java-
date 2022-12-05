@@ -14,6 +14,7 @@ import com.example.funnylearning.Bean.model.CourseType;
 import com.example.funnylearning.Database.CartoonsDao;
 import com.example.funnylearning.Database.CourseTypeDao;
 import com.example.funnylearning.Database.FindWordsDao;
+import com.example.funnylearning.Database.UserDao;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -210,6 +211,10 @@ public class MainActivity extends AppCompatActivity {
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
+        UserDao userDao = new UserDao(this);
+        userDao.open();
+
+        courseTmp = userDao.insertEmailPassword("swe2009514@xmu.edu.my", "1234");
 
     }
 }
