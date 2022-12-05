@@ -23,11 +23,11 @@ public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_math_level_title;
+        ImageView item_math_level_image;
 
         public ViewHolder(View view) {
             super(view);
-            item_math_level_title = view.findViewById(R.id.item_math_level_title);
+            item_math_level_image = view.findViewById(R.id.item_math_level_image);
         }
     }
 
@@ -41,7 +41,7 @@ public class adapter_math_level extends RecyclerView.Adapter<adapter_math_level.
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
         model_math_level list = mathLevelList.get(position);
-        viewHolder.item_math_level_title.setText(list.name);
+        viewHolder.item_math_level_image.setImageResource(list.drawable);
     }
 
     @Override
