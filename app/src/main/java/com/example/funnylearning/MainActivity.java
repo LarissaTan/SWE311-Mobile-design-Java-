@@ -10,7 +10,9 @@ import android.os.Bundle;
 
 import com.example.funnylearning.Bean.FindWordsBean;
 import com.example.funnylearning.Bean.model.Cartoons;
+import com.example.funnylearning.Bean.model.CourseType;
 import com.example.funnylearning.Database.CartoonsDao;
+import com.example.funnylearning.Database.CourseTypeDao;
 import com.example.funnylearning.Database.FindWordsDao;
 
 import java.util.Timer;
@@ -173,6 +175,41 @@ public class MainActivity extends AppCompatActivity {
         f.wrong2 = "comprute";
 
         temp = wordsDao.insertFindWords(f);
+
+        CourseTypeDao courseTypeDao=new CourseTypeDao(this);
+        courseTypeDao.open();
+        CourseType course = new CourseType();
+
+        course.setCourseName("Addition within Ten");
+        course.setType("Math");
+
+        Boolean courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setCourseName("Addition within One Hundred");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setCourseName("Subtraction within Ten");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setCourseName("Subtraction within One Hundred");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setCourseName("Learn the Basic Words");
+        course.setType("Reading");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setCourseName("Learn the Basic Grammar");
+        course.setType("Reading");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
 
     }
 }

@@ -165,7 +165,7 @@
         android:background="@color/grey" />
 
     <Button
-        android:id="@+id/sub_within_10"
+        android:id="@+id/goal1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -177,7 +177,7 @@
         app:layout_constraintTop_toBottomOf="@+id/goal_view" />
 
     <Button
-        android:id="@+id/basic_sentence"
+        android:id="@+id/goal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -186,10 +186,10 @@
         android:textAllCaps="false"
         android:text="Learn the basic sentence"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sub_within_10" />
+        app:layout_constraintTop_toBottomOf="@+id/goal1" />
 
     <Button
-        android:id="@+id/add_within_100"
+        android:id="@+id/goal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -198,7 +198,7 @@
         android:textAllCaps="false"
         android:text="Learn the addition within one hundred"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/basic_sentence" />
+        app:layout_constraintTop_toBottomOf="@+id/goal2" />
 
     <Button
         android:id="@+id/set_goal_btn"
