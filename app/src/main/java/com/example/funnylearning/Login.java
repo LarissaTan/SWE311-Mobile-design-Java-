@@ -41,7 +41,14 @@ public class Login extends AppCompatActivity {
         forgetPassword.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                Intent it = new Intent(Login.this, ForgotPswEmail.class);
+
+                Class<?> cl = null;
+                try {
+                    cl = Class.forName("com.example.funnylearning.ForgotPswEmail");
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Intent it = new Intent(Login.this, cl);
                 startActivity(it);
             }
         });
