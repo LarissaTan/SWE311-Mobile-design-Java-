@@ -4,38 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
-    android:background="#f9d150">
+    android:background="#f9d150"
+    tools:context=".Signup">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/logo_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_account"
+        android:id="@+id/signUp_inputlayout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
+        android:layout_below="@+id/signUp_inputlayout_email"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Account"
+        android:hint="Name"
+        app:startIconDrawable="@drawable/stream_compose_ic_person"
         android:theme="@style/EditTextThemeOverlay"
-        app:startIconDrawable="@drawable/envelop_icon"
+        app:errorEnabled="true"
         app:errorTextAppearance="@style/ErrorTextAppearance"
         app:helperText="Required*"
         app:helperTextTextAppearance="@style/HelperTextAppearance"
         app:counterEnabled="true"
-        app:counterMaxLength="50"
+        app:counterMaxLength="20"
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_account_input"
+            android:id="@+id/signUp_edittext_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp"
+            android:textColorHighlight="@color/textColorHighlight"
+            android:inputType="text"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/signUp_inputlayout_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo_2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Email verification code"
+        android:theme="@style/EditTextThemeOverlay"
+        app:errorTextAppearance="@style/ErrorTextAppearance"
+        app:helperText="Required*"
+        app:helperTextTextAppearance="@style/HelperTextAppearance"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/signUp_edittext_emailCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
@@ -46,104 +77,19 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login_account"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:hint="Password"
-        android:theme="@style/EditTextThemeOverlay"
-        app:startIconDrawable="@drawable/password_icon"
-        app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="Required*"
-        app:helperTextTextAppearance="@style/HelperTextAppearance"
-        app:passwordToggleEnabled="true"
-        app:counterEnabled="true"
-        app:counterMaxLength="20">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_password_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingTop="20dp"
-            android:paddingEnd="20dp"
-            android:textColorHighlight="@color/textColorHighlight"
-            android:inputType="textPassword"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-    <LinearLayout
-        android:id="@+id/login_linear_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-    <TextView
-        android:id="@+id/dont"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't have an account?"
-        android:gravity="center"
-        android:fontFamily="@font/alegreya_variablefont_wght"
-        android:textSize="20sp"
-        android:textColor="@color/black"/>
-
-    <TextView
-        android:id="@+id/signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign up"
-        android:gravity="center"
-        android:fontFamily="@font/alegreya_variablefont_wght"
-        android:textStyle="italic"
-        android:textColor="@color/btn"
-        android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/forgetPwd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Forgot Password?"
-        android:layout_alignBottom="@+id/login_linear_1"
-        android:gravity="center"
-        android:fontFamily="@font/alegreya_variablefont_wght"
-        android:textStyle="italic"
-        android:textColor="@color/btn"
-        android:textSize="20sp"
-        android:layout_marginBottom="30dp"/>
 
     <Button
-        android:id="@+id/btnLogin_lo"
+        android:id="@+id/btnSignup_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="60dp"
-        android:text="Log in"
+        android:text="Sign up"
         android:backgroundTint="@color/btn"
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
-
-
-
-
-
-
-
 
 
 
