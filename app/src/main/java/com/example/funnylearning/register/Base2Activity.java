@@ -27,9 +27,11 @@ public class Base2Activity extends AppCompatActivity {
         Integer tagm = Integer.valueOf(intent.getStringExtra("tagm"));
         setContentView(R.layout.activity_base2);
 
+        MathFragment math0 = new MathFragment();
         Math_levelFragment math1  = new Math_levelFragment();
         Math_level_2_Fragment math2  = new Math_level_2_Fragment();
 
+        if(tagm == 0)    replacementFragment(math0);
         if(tagm == 1)    replacementFragment(math1);
         if(tagm == 2)    replacementFragment(math2);
 

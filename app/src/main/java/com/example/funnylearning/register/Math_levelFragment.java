@@ -1,13 +1,19 @@
 package com.example.funnylearning.register;
 
+import static com.example.funnylearning.navigation.MathFragment.EXTRA_NAME;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +31,11 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.funnylearning.Homepage;
+import com.example.funnylearning.MathLevel;
 import com.example.funnylearning.R;
+import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.navigation.MathFragment;
 import com.example.funnylearning.recycle.math_level.adapter_math_level;
 import com.example.funnylearning.recycle.math_level.model_math_level;
 
@@ -38,6 +48,8 @@ public class Math_levelFragment extends Fragment {
     private RecyclerView mList;
     private final ArrayList<model_math_level> mathLevelList = new ArrayList<model_math_level>();
 
+    String tagm;
+
     TextView scoreTextView;
     TextView roundsLeftTextView;
     TextView alertTextView;
@@ -49,6 +61,7 @@ public class Math_levelFragment extends Fragment {
     Button btn2;
     Button btn3;
     Button playAgainBtn;
+    Button quitBtn;
 
     LinearLayout normalUI;
     ConstraintLayout finalUI;
@@ -79,7 +92,7 @@ public class Math_levelFragment extends Fragment {
 
     }
 
-    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId", "ClickableViewAccessibility"})
+    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,6 +109,14 @@ public class Math_levelFragment extends Fragment {
         btn2 = view.findViewById(R.id.math_level_btn2);
         btn3 = view.findViewById(R.id.math_level_btn3);
         playAgainBtn = view.findViewById(R.id.btnPlayAgain);
+        quitBtn = view.findViewById(R.id.btnQuit);
+
+        final MediaPlayer mp_btn = MediaPlayer.create(getContext(),R.raw.game_button_click_sound);
+        mp_btn.setVolume(100,100);
+        /*final MediaPlayer mp_bgm = MediaPlayer.create(getContext(),R.raw.math_level_bgm);
+        mp_bgm.setVolume(50,50);
+        mp_bgm.start();
+        mp_bgm.setLooping(true);*/
 
         normalUI = view.findViewById(R.id.normalUI);
         finalUI = view.findViewById(R.id.finalUI);
@@ -109,6 +130,10 @@ public class Math_levelFragment extends Fragment {
         scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
 
         mList = (RecyclerView) view.findViewById(R.id.recyclerview_math_level);
+
+        scoreTextView.setText(Integer.toString(points));
+        roundsLeftTextView.setText(Integer.toString(rounds));
+        roundsLeftProgressBar.setProgress(progress,true);
 
         NextQuestion();
 
@@ -127,9 +152,11 @@ public class Math_levelFragment extends Fragment {
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
 
+                    mp_btn.start();
                     btn1.startAnimation(scaleUp);
                     btn1.setTextColor(Color.WHITE);
                     btn1.setBackgroundColor(Color.parseColor("#F9D150"));
+
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
 
@@ -157,6 +184,7 @@ public class Math_levelFragment extends Fragment {
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
 
+                    mp_btn.start();
                     btn2.startAnimation(scaleUp);
                     btn2.setTextColor(Color.WHITE);
                     btn2.setBackgroundColor(Color.parseColor("#F9D150"));
@@ -187,6 +215,7 @@ public class Math_levelFragment extends Fragment {
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
 
+                    mp_btn.start();
                     btn3.startAnimation(scaleUp);
                     btn3.setTextColor(Color.WHITE);
                     btn3.setBackgroundColor(Color.parseColor("#F9D150"));
@@ -217,11 +246,37 @@ public class Math_levelFragment extends Fragment {
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
 
+                    mp_btn.start();
                     playAgainBtn.startAnimation(scaleUp);
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
 
                     playAgainBtn.startAnimation(scaleDown);
+
+                }
+
+                return true;
+            }
+        });
+
+        quitBtn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+                    quitBtn.startAnimation(scaleDown);
+                    tagm = "0";
+                    Intent it = new Intent(getContext(), Homepage.class);
+                    /*it.putExtra("tagm",tagm);*/
+                    startActivity(it);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
+                    mp_btn.start();
+                    quitBtn.startAnimation(scaleUp);
+
+                }else if (motionEvent.getAction()==MotionEvent.ACTION_MOVE){
+
+                    quitBtn.startAnimation(scaleDown);
 
                 }
 
@@ -312,11 +367,19 @@ public class Math_levelFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
+        final MediaPlayer mp_correct = MediaPlayer.create(getContext(),R.raw.correct_answer_sound);
+        mp_correct.setVolume(100,100);
+
+        final MediaPlayer mp_wrong = MediaPlayer.create(getContext(),R.raw.wrong_answer_sound);
+        mp_wrong.setVolume(100,100);
+
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
+            mp_correct.start();
             points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
         }else {
+            mp_wrong.start();
             alertTextView.setText("Correct Answer: " + (display+1));
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
         }
@@ -330,16 +393,16 @@ public class Math_levelFragment extends Fragment {
                 ansUI.setVisibility(View.INVISIBLE);
                 ansUI.animate()
                         .alpha(0f)
-                        .setDuration(380)
+                        .setDuration(200)
                         .setListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
-                                if (rounds >= 1)
+                                if (finalUI.getVisibility() == View.INVISIBLE)
                                     normalUI.setVisibility(View.VISIBLE);
                             }
                         });
             }
-        }, 1000);
+        }, 2300);
 
 
         scoreTextView.setText(Integer.toString(points));
@@ -356,7 +419,7 @@ public class Math_levelFragment extends Fragment {
                     System.out.println("finish");
                     onFinish();
                 }
-            }, 1400);
+            }, 2500);
 
         }
 
@@ -366,7 +429,7 @@ public class Math_levelFragment extends Fragment {
                 System.out.println("next");
                 NextQuestion();
             }
-        }, 1400);
+        }, 1000);
     }
 
     public void onAnswer(){
@@ -376,12 +439,16 @@ public class Math_levelFragment extends Fragment {
         ansUI.setVisibility(View.VISIBLE);
         ansUI.animate()
                 .alpha(0.5f)
-                .setDuration(400)
+                .setDuration(500)
                 .setListener(null);
     }
 
     @SuppressLint("SetTextI18n")
     public void onFinish() {
+        final MediaPlayer mp_game_over = MediaPlayer.create(getContext(),R.raw.game_over_sound);
+        mp_game_over.setVolume(100,100);
+
+        mp_game_over.start();
         finalScoreTextView.setText(Integer.toString(points));
         normalUI.setVisibility(View.INVISIBLE);
         finalUI.setVisibility(View.VISIBLE);
@@ -391,8 +458,9 @@ public class Math_levelFragment extends Fragment {
     public void playAgain(View view){
         points=0;
         rounds=10;
+        progress = 0;
         roundsLeftTextView.setText(Integer.toString(rounds));
-        roundsLeftProgressBar.setProgress(0,true);
+        roundsLeftProgressBar.setProgress(progress,true);
         scoreTextView.setText(Integer.toString(points));
         finalUI.setVisibility(View.INVISIBLE);
         normalUI.setVisibility(View.VISIBLE);
