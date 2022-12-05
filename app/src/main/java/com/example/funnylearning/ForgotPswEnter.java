@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,18 +19,20 @@ public class ForgotPswEnter extends AppCompatActivity {
 
     UserDao userDao = new UserDao(this);
     TextInputLayout code, password, repassword;
-
     // temporary verification code
-    Integer validateCode = 3212;
-
-
+    int validateCode=(int) (Math.random()*9000+1000);//随机生成一个四位整数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_psw_enter);
+
         Bundle extras = getIntent().getExtras();
         String user_email = null;
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
         if(extras != null){
             user_email = extras.getString("email");
         }else {
