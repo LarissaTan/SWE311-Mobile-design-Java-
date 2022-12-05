@@ -30,7 +30,7 @@ public class Goal extends AppCompatActivity {
         goal2 = findViewById(R.id.goal2);
         goal3 = findViewById(R.id.goal3);
 
-        //courseList = courseTypeDao.getAllCourse();
+        courseList = courseTypeDao.getAllCourse();
 
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,4 +40,5 @@ public class Goal extends AppCompatActivity {
             }
         });
     }
+
 }

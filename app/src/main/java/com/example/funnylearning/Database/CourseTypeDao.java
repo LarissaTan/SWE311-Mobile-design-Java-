@@ -88,7 +88,7 @@ public class CourseTypeDao {
         } else {
             while (cursor.moveToNext()) {
                 CourseType course = new CourseType();
-                course.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
+                course.setCourseId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("courseId"))));
                 course.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
 
                 courseList.add(course);
@@ -96,4 +96,25 @@ public class CourseTypeDao {
             return courseList;
         }
     }
+/*
+    public ArrayList<CourseType> getGoalList() {
+        ArrayList<CourseType> courseList = new ArrayList<CourseType>();
+        Cursor cursor = db.rawQuery("select tb_CourseType.typeId, tb_CourseType.typeName from ")
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                CourseType course = new CourseType();
+                course.setCourseId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("courseId"))));
+                course.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
+
+                courseList.add(course);
+            }
+            return courseList;
+        }
+    }
+
+ */
 }

@@ -53,4 +53,15 @@ public class UserGoalLevelDao {
             return true;
     }
 
+    public Boolean insertGoal(UserLevel goalList){
+        open();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("userId", goalList.getUserId());
+        contentValues.put("typeId", goalList.getTypeId());
+        long result = db.insert("tb_UserGoalLevel",null,contentValues);
+        if (result == -1) return false;
+        else
+            return true;
+    }
 }
