@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/level"
                     style= "@style/CustomRatingBar"
-                    android:numStars="4"
+                    android:numStars="5"
                     android:stepSize="0.01"
                     android:isIndicator="true"
                     android:scaleY="0.8"

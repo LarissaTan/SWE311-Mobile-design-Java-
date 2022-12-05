@@ -70,12 +70,9 @@ public class Math_level_2_Fragment extends Fragment {
     int wrongAnswer;
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int points = 0;
-    int time = 60;
     int progress = 0;
 
     Animation scaleUp,scaleDown;
-
-    long timeLeft;
 
     public Math_level_2_Fragment() {
         // Required empty public constructor
@@ -407,6 +404,7 @@ public class Math_level_2_Fragment extends Fragment {
     public void playAgain(View view){
         points=0;
         scoreTextView.setText(Integer.toString(points));
+        timeLeftProgressBar.setProgress(0,true);
         countDownTimer.start();
         finalUI.setVisibility(View.INVISIBLE);
         normalUI.setVisibility(View.VISIBLE);
