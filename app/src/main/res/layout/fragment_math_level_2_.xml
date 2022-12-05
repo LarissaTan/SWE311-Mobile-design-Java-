@@ -226,10 +226,10 @@
                 android:id="@+id/game_id_math_l2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
                 <ImageView
@@ -244,8 +244,8 @@
                     android:id="@+id/math_level_2_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="2dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/itim_regular"
@@ -266,23 +266,24 @@
                 android:layout_marginStart="140dp"
                 android:layout_marginTop="15dp"
                 android:tag="0">
+
                 <ImageView
                     android:id="@+id/math_level_2_image_1"
                     android:layout_width="90dp"
                     android:layout_height="80dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/math_level_fish"
-                    android:layout_gravity="center_vertical|center_horizontal"/>
+                    android:src="@drawable/math_level_fish" />
 
                 <TextView
                     android:id="@+id/math_level_2_fish_txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/itim_regular"
-                    android:text="2"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/itim_regular"
+                    android:text="2"
                     android:textColor="#000000"
                     android:textSize="30sp"
                     android:translationZ="10dp" />
@@ -298,22 +299,24 @@
                 android:layout_marginTop="-10dp"
                 android:layout_marginEnd="60dp"
                 android:tag="1">
+
                 <ImageView
                     android:id="@+id/math_level_2_image_2"
                     android:layout_width="90dp"
                     android:layout_height="80dp"
-                    android:scaleType="fitCenter"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/math_level_fish" />
+
                 <TextView
                     android:id="@+id/math_level_2_fish_txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/itim_regular"
-                    android:text="6"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/itim_regular"
+                    android:text="6"
                     android:textColor="#000000"
                     android:textSize="30sp"
                     android:translationZ="10dp" />
@@ -333,8 +336,8 @@
                     android:id="@+id/math_level_2_image_3"
                     android:layout_width="90dp"
                     android:layout_height="80dp"
-                    android:scaleType="fitCenter"
                     android:layout_gravity="center_horizontal|center_vertical"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/math_level_fish" />
 
                 <TextView
@@ -368,15 +371,16 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:scaleType="fitCenter"
                     android:src="@drawable/math_level_fish" />
+
                 <TextView
                     android:id="@+id/math_level_2_fish_txt4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/itim_regular"
-                    android:text="5"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/itim_regular"
+                    android:text="5"
                     android:textColor="#000000"
                     android:textSize="30sp"
                     android:translationZ="10dp" />

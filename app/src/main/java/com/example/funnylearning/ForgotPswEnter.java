@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
+import com.example.funnylearning.others.emailCode;
 import com.google.android.material.textfield.TextInputLayout;
+
+import javax.mail.MessagingException;
 
 public class ForgotPswEnter extends AppCompatActivity {
 
@@ -18,6 +21,8 @@ public class ForgotPswEnter extends AppCompatActivity {
 
     // temporary verification code
     Integer validateCode = 3212;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,12 @@ public class ForgotPswEnter extends AppCompatActivity {
             user_email = extras.getString("email");
         }else {
             Toast.makeText(this, "no email passed", Toast.LENGTH_SHORT).show();
+        }
+
+        try {
+            emailCode.sendEmail(user_email, validateCode);
+        } catch (MessagingException e) {
+            e.printStackTrace();
         }
 
         code = findViewById(R.id.forgot_psw_enter_Code);
