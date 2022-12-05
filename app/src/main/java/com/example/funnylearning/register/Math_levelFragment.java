@@ -252,7 +252,8 @@ public class Math_levelFragment extends Fragment {
         System.out.println("display" + display+1);
         for (int i = 0; i < display+1; i ++) {
             System.out.println("loop");
-            mathLevelList.add(new model_math_level("i"));
+            mathLevelList.add(new model_math_level(R.drawable.math_level_sheep));
+
         }
         System.out.println(display);
 
