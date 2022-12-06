@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +16,8 @@ import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.others.HumanVerifidation;
 import com.example.funnylearning.others.other;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
 //veri_code_img_human
 public class Signup extends AppCompatActivity {
 
@@ -35,8 +34,8 @@ public class Signup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        code = findViewById(R.id.signUp_inputlayout_name);
-        email = findViewById(R.id.signUp_inputlayout_name);
+        code = findViewById(R.id.signUp_inputlayout_human_code);
+        email = findViewById(R.id.signUp_inputlayout_email);
         image_code = findViewById(R.id.veri_code_img_human);
         refresh = findViewById(R.id.veri_code_refresh);
 
@@ -53,12 +52,19 @@ public class Signup extends AppCompatActivity {
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 if (confirmInput()) {
-                    String veri_code = code.getEditText().getText().toString();
                     String user_email = email.getEditText().getText().toString();
 
                     Boolean checkUser = userDao.checkUserEmail(user_email);
+
+                    if(checkUser == false){
+                        Intent it = new Intent(Signup.this, Signup_2.class);
+                        it.putExtra("user_email", user_email);
+                        startActivity(it);
+                    }else {
+                        email.setError("This email already registered!");
+                        Toast.makeText(Signup.this, "User already exists! Please log in", Toast.LENGTH_SHORT).show();
+                    }
 
 //                    if (checkUser == false) {
 //                        Boolean insert = userDao.insertEmailPassword(user_email, user_password);
@@ -116,18 +122,15 @@ public class Signup extends AppCompatActivity {
 
     private boolean validate_code()
     {
-        String textName = code.getEditText().getText().toString().trim();
+        String textCode = code.getEditText().getText().toString().trim();
 
-        if(textName.isEmpty()) {
+        if(textCode.isEmpty()) {
             code.setError("This field cannot be empty!");
             return false;
-        } else if(textName.length() < 3) {
-            code.setError("Minimum 3 characters");
+        } else if(!textCode.equals(veriCode)){
+            code.setError("Wrong Code!!!");
             return false;
-        } else if(textName.length() > 20){
-            code.setError("Maximum 20 characters");
-            return false;
-        } else {
+        }else {
             code.setError(null);
             return true;
         }

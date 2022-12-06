@@ -16,13 +16,13 @@
         android:src="@drawable/logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/signUp_inputlayout_name"
+        android:id="@+id/signUp_inputlayout_human_code"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/signUp_inputlayout_email"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:hint="Human verification code"
         android:theme="@style/EditTextThemeOverlay"
@@ -53,7 +53,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/logo"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="10dp"
             android:hint="Email"
             android:theme="@style/EditTextThemeOverlay"
@@ -102,6 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:gravity="center">
