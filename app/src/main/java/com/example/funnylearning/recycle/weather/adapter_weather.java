@@ -1,14 +1,17 @@
 package com.example.funnylearning.recycle.weather;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.Temp_head;
 
 import java.util.ArrayList;
 
@@ -17,11 +20,12 @@ public class adapter_weather extends RecyclerView.Adapter<com.example.funnylearn
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
+        CardView card;
 
         public ViewHolder(View view) {
             super(view);
-
             imageView = view.findViewById(R.id.record_weather_image);
+            card = view.findViewById(R.id.record_weather_card);
         }
     }
 
@@ -42,6 +46,14 @@ public class adapter_weather extends RecyclerView.Adapter<com.example.funnylearn
         model_weather list = weatherList.get(position);
 
         viewHolder.imageView.setImageResource(list.drawable);
+
+        //点击事件
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.card.setCardBackgroundColor(-1777665);
+            }
+        });
 
     }
 
