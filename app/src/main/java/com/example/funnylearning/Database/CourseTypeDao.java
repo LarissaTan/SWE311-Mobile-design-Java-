@@ -46,10 +46,10 @@ public class CourseTypeDao {
         open();
         ContentValues contentValues = new ContentValues();
 
-        if(checkCourseName(courseType.getCourseName())){
+        if(checkCourseName(courseType.getTypeName())){
             return false;
         }
-        contentValues.put("typeName", courseType.getCourseName());
+        contentValues.put("typeName", courseType.getTypeName());
         contentValues.put("type",courseType.getType());
         long result = db.insert("tb_CourseType",null,contentValues);
         if (result == -1) return false;
@@ -70,15 +70,20 @@ public class CourseTypeDao {
     public String getCourseName(int typeId){
         open();
         Cursor cursor = db.rawQuery("select typeName from tb_CourseType where typeId = " + typeId, new String[] {});
-        if(cursor.getCount()>0)
+        if(cursor.getCount() == 0)
             return null;
         else {
-            return cursor.getString(cursor.getColumnIndex("typeName"));
+            if(cursor.moveToNext()){
+                return cursor.getString(cursor.getColumnIndex("typeName"));
+            }else {
+                return null;
+            }
         }
     }
 
     @SuppressLint("Range")
     public ArrayList<CourseType> getAllCourse() {
+        open();
         ArrayList<CourseType> courseList = new ArrayList<CourseType>();
         Cursor cursor = db.query("tb_CourseType", null, null, null, null, null,null);
 
@@ -88,18 +93,24 @@ public class CourseTypeDao {
         } else {
             while (cursor.moveToNext()) {
                 CourseType course = new CourseType();
-                course.setCourseId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("courseId"))));
-                course.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
+                course.setTypeId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId"))));
+                course.setTypeName(cursor.getString(cursor.getColumnIndex("typeName")));
+                course.setType(cursor.getString(cursor.getColumnIndex("type")));
 
                 courseList.add(course);
             }
             return courseList;
         }
     }
-/*
-    public ArrayList<CourseType> getGoalList() {
+
+    @SuppressLint("Range")
+    public ArrayList<CourseType> getGoalList(int userId) {
+        open();
         ArrayList<CourseType> courseList = new ArrayList<CourseType>();
-        Cursor cursor = db.rawQuery("select tb_CourseType.typeId, tb_CourseType.typeName from ")
+        Cursor cursor;
+
+        cursor = db.rawQuery("select typeId from tb_CourseType except select typeId from tb_UserGoalLevel where userId = " + userId + " and achievement = 1;",new String[]{});
+
 
         int resultCounts = cursor.getCount();  //记录总数
         if (resultCounts == 0 ) {
@@ -107,14 +118,13 @@ public class CourseTypeDao {
         } else {
             while (cursor.moveToNext()) {
                 CourseType course = new CourseType();
-                course.setCourseId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("courseId"))));
-                course.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
 
+                course.setTypeId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId"))));
+                course.setTypeName(getCourseName(course.getTypeId()));
                 courseList.add(course);
             }
             return courseList;
         }
     }
 
- */
 }

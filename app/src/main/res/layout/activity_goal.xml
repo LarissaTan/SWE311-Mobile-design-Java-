@@ -60,7 +60,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alegreya"
             android:layout_marginStart="20dp"
-            android:text="xxx" />
+            android:text="Select a goal..."
+            android:textSize="16sp"
+            android:textStyle="italic"/>
 
         <Button
             android:layout_width="0dp"
@@ -69,6 +71,7 @@
             android:alpha="0" />
 
         <ImageView
+            android:id="@+id/chosen_goal_1_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -98,7 +101,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/alegreya"
             android:layout_marginStart="20dp"
-            android:text="xxxxxxx" />
+            android:text="Select a goal..."
+            android:textSize="16sp"
+            android:textStyle="italic"/>
 
         <Button
             android:layout_width="0dp"
@@ -107,6 +112,7 @@
             android:alpha="0" />
 
         <ImageView
+            android:id="@+id/chosen_goal_2_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -136,7 +142,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/alegreya"
                 android:layout_marginStart="20dp"
-                android:text="xxxxxxxx" />
+                android:text="Select a goal..."
+                android:textSize="16sp"
+                android:textStyle="italic"/>
 
             <Button
                 android:layout_width="0dp"
@@ -145,6 +153,7 @@
                 android:alpha="0" />
 
             <ImageView
+                android:id="@+id/chosen_goal_3_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -180,7 +189,7 @@
         android:id="@+id/goal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/grey"
         android:textAllCaps="false"

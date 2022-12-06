@@ -181,32 +181,47 @@ public class MainActivity extends AppCompatActivity {
         courseTypeDao.open();
         CourseType course = new CourseType();
 
-        course.setCourseName("Addition within Ten");
+        course.setTypeName("Addition within Ten");
         course.setType("Math");
 
         Boolean courseTmp = courseTypeDao.insertCourseType(course);
 
-        course.setCourseName("Addition within One Hundred");
+        course.setTypeName("Addition within One Hundred");
         course.setType("Math");
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
-        course.setCourseName("Subtraction within Ten");
+        course.setTypeName("Subtraction within Ten");
         course.setType("Math");
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
-        course.setCourseName("Subtraction within One Hundred");
+        course.setTypeName("Subtraction within One Hundred");
         course.setType("Math");
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
-        course.setCourseName("Learn the Basic Words");
+        course.setTypeName("Multiplication within ten");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setTypeName("Division within ten");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setTypeName("Learn the Basic Words");
         course.setType("Reading");
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
-        course.setCourseName("Learn the Basic Grammar");
+        course.setTypeName("Learn the Basic Sentences");
+        course.setType("Reading");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setTypeName("Learn the Basic Grammar");
         course.setType("Reading");
 
         courseTmp = courseTypeDao.insertCourseType(course);

@@ -7,6 +7,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import java.sql.Time;
+import java.text.SimpleDateFormat;
+
 public class UserDataDao {
 
     private Context context;
@@ -78,6 +81,27 @@ public class UserDataDao {
         open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("age", age);
+        long result = db.update("tb_UserData", contentValues, "userId =" + userId, new String[]{});
+        if (result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean updatePhoto(int photoId, int userId){
+        open();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("profilePicture", photoId);
+        long result = db.update("tb_UserData", contentValues, "userId =" + userId, new String[]{});
+        if (result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean updateLearningGoal(Time time, int userId){
+        open();
+        ContentValues contentValues = new ContentValues();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        contentValues.put("learningGoal", dateFormat.format(time));
         long result = db.update("tb_UserData", contentValues, "userId =" + userId, new String[]{});
         if (result == -1) return false;
         else

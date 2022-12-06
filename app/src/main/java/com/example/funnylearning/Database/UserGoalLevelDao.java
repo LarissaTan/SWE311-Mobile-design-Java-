@@ -2,6 +2,7 @@ package com.example.funnylearning.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
@@ -40,28 +41,49 @@ public class UserGoalLevelDao {
         }
     }
 
-    public Boolean insertLevel(UserLevel levelList){
+    public Boolean checkGoalLevel(int userId, int typeId){
         open();
-        ContentValues contentValues = new ContentValues();
-
-        contentValues.put("userId", levelList.getUserId());
-        contentValues.put("typeId", levelList.getTypeId());
-        contentValues.put("achievement", true);
-        long result = db.insert("tb_UserGoalLevel",null,contentValues);
-        if (result == -1) return false;
-        else
+        Cursor cursor = db.rawQuery("select * from tb_UserGoalLevel where userId = " + userId + " and typeId = " + typeId, new String[] {});
+        if(cursor.getCount()>0)
             return true;
+        else
+            return false;
+    }
+
+    public Boolean insertLevel(UserLevel levelList){
+
+        if(!checkGoalLevel(levelList.getUserId(), levelList.getTypeId()))
+        {
+            open();
+            ContentValues contentValues = new ContentValues();
+
+            contentValues.put("userId", levelList.getUserId());
+            contentValues.put("typeId", levelList.getTypeId());
+            contentValues.put("achievement", true);
+            long result = db.insert("tb_UserGoalLevel",null,contentValues);
+            if (result == -1) return false;
+            else
+                return true;
+        }else{
+            return false;
+        }
     }
 
     public Boolean insertGoal(UserLevel goalList){
-        open();
-        ContentValues contentValues = new ContentValues();
+        if(!checkGoalLevel(goalList.getUserId(), goalList.getTypeId()))
+        {
+            open();
+            ContentValues contentValues = new ContentValues();
 
-        contentValues.put("userId", goalList.getUserId());
-        contentValues.put("typeId", goalList.getTypeId());
-        long result = db.insert("tb_UserGoalLevel",null,contentValues);
-        if (result == -1) return false;
-        else
-            return true;
+            contentValues.put("userId", goalList.getUserId());
+            contentValues.put("typeId", goalList.getTypeId());
+            contentValues.put("achievement", false);
+            long result = db.insert("tb_UserGoalLevel",null,contentValues);
+            if (result == -1) return false;
+            else
+                return true;
+        }else{
+            return false;
+        }
     }
 }

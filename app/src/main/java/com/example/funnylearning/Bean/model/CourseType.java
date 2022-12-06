@@ -2,8 +2,8 @@ package com.example.funnylearning.Bean.model;
 
 public class CourseType {
 
-    private int courseId;
-    private String courseName;
+    private int typeId;
+    private String typeName;
     private String type;
 
     public String getType() {
@@ -14,15 +14,19 @@ public class CourseType {
         this.type = type;
     }
 
-    public String getCourseName() {
-        return courseName;
+    public int getTypeId() {
+        return typeId;
     }
 
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }
