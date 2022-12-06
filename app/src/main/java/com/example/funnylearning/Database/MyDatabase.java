@@ -47,11 +47,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String CREATE_FINDWORDS = "create table if not exists tb_FindWords(id int primary key, correct varchar(10), wrong1  varchar(10), wrong2 varchar(10))";
     public static final String CREATE_DELIVERGOODS =  "create table if not exists tb_DeliverGoods(id int primary key, word varchar(10), corrGood varchar(200), wrongGood1 varchar(200), wrongGood2 varchar(200),audio varchar(100))";
 
-    // drop table
-    public static final String DROP_USER = "drop Table if exists tb_User;";
-    public static final String DROP_USERDATA = "drop Table if exists tb_UserData;";
-    public static final String DROP_CARTOON = "drop Table if exists tb_Cartoon;";
-    public static final String DROP_CARTOONDATA = "drop Table if exists tb_CartoonData;";
 
 
     //构造函数
@@ -60,11 +55,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //testing
-        db.execSQL(DROP_USERDATA);
-        db.execSQL(DROP_USER);
-        db.execSQL(DROP_CARTOON);
-        db.execSQL(DROP_CARTOONDATA);
 
         db.execSQL(CREATE_USER);
         db.execSQL(CREATE_USERDATA);
@@ -76,7 +66,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         //db.execSQL(CREATE_GAME);
         //db.execSQL(CREATE_USERGAMERECORD);
         db.execSQL(CREATE_USERGOALLEVEL);
-        //db.execSQL(CREATE_USERDAYRECORD);
+        db.execSQL(CREATE_USERDAYRECORD);
         db.execSQL(CREATE_USERLEARNINGRECORD);
 
         db.execSQL(CREATE_CARTOONDATA);
