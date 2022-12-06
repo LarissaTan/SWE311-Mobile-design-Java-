@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.others.HumanVerifidation;
+import com.example.funnylearning.others.other;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 //veri_code_img_human
@@ -43,6 +44,9 @@ public class Signup extends AppCompatActivity {
         Bitmap tmp = humanVeri.getImg();
         image_code.setImageBitmap(tmp);
         veriCode = humanVeri.getCode();
+
+        other te = new other();
+        System.out.println("the hash code is "  +  te.SHA("123"));
 
         Button btnSignup;
         btnSignup = findViewById(R.id.btnSignup);
