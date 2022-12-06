@@ -73,7 +73,7 @@
             android:paddingTop="20dp"
             android:paddingEnd="20dp"
             android:textColorHighlight="@color/textColorHighlight"
-            android:inputType="textEmailAddress"/>
+            android:inputType="number"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

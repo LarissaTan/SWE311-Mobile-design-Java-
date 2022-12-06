@@ -100,17 +100,10 @@ public class ForgotPswEnter extends AppCompatActivity {
         if(textCode.isEmpty()) {
             code.setError("This field cannot be empty!");
             return false;
-        } else if(textCode.length() < 3) {
-            code.setError("Minimum 3 characters");
-            return false;
-        } else if(textCode.length() > 5){
-            code.setError("Maximum 5 characters");
-            return false;
         } else {
             code.setError(null);
             return true;
         }
-        
     }
 
     private boolean validate_password()

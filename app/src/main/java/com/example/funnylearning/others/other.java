@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class other {
 
-    public String SHA(final String strText) {
+    public static String SHA(final String strText) {
         // 返回值
         String strResult = null;
         // 是否是有效字符串

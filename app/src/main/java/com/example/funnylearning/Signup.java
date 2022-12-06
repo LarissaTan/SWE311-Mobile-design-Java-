@@ -65,29 +65,6 @@ public class Signup extends AppCompatActivity {
                         email.setError("This email already registered!");
                         Toast.makeText(Signup.this, "User already exists! Please log in", Toast.LENGTH_SHORT).show();
                     }
-
-//                    if (checkUser == false) {
-//                        Boolean insert = userDao.insertEmailPassword(user_email, user_password);
-//                        if (insert == true) {
-//                            Toast.makeText(Signup.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-//
-//                            Boolean insertName = userDataDao.insertEmailName(user_email, user_name);
-//                            Integer userId = userDataDao.getUserId(user_email);
-//
-//                            if (insertName == true && userId != -1) {
-//                                Intent it = new Intent(Signup.this, Gender.class);
-//                                it.putExtra("userId", userId);
-//                                startActivity(it);
-//                            } else {
-//                                Toast.makeText(Signup.this, "User data create fail", Toast.LENGTH_SHORT).show();
-//                            }
-//                        } else {
-//                            Toast.makeText(Signup.this, "Registration failed", Toast.LENGTH_SHORT).show();
-//                        }
-//                    } else {
-//                        email.setError("This email already registered!");
-//                        Toast.makeText(Signup.this, "User already exists! Please log in", Toast.LENGTH_SHORT).show();
-//                    }
                 }
             }
         });
@@ -109,8 +86,6 @@ public class Signup extends AppCompatActivity {
                 System.out.println("code is " + veriCode);
             }
         });
-
-
     }
 
     private boolean confirmInput(){
@@ -161,47 +136,4 @@ public class Signup extends AppCompatActivity {
     private boolean isEmailValid(CharSequence address){
         return Patterns.EMAIL_ADDRESS.matcher(address).matches();
     }
-
-//    private boolean validate_password()
-//    {
-//        String textPassword = password.getEditText().getText().toString().trim();
-//
-//        if(textPassword.isEmpty()) {
-//            password.setError("This field cannot be empty!");
-//            return false;
-//        } else if(textPassword.length() < 3) {
-//            password.setError("Minimum 3 characters");
-//            return false;
-//        } else if(textPassword.length() > 20){
-//            password.setError("Maximum 20 characters");
-//            return false;
-//        } else {
-//            password.setError(null);
-//            return true;
-//        }
-//    }
-//
-//    private boolean validate_repassword()
-//    {
-//        String textRepassword = repassword.getEditText().getText().toString().trim();
-//        String textPassword = password.getEditText().getText().toString().trim();
-//
-//        if(textRepassword.isEmpty()) {
-//            repassword.setError("This field cannot be empty!");
-//            return false;
-//        } else if(textRepassword.length() < 3) {
-//            repassword.setError("Minimum 3 characters");
-//            return false;
-//        } else if(textRepassword.length() > 20){
-//            repassword.setError("Maximum 20 characters");
-//            return false;
-//        } else if(!textRepassword.equals(textPassword)){
-//            repassword.setError("The passwords are not same!");
-//            return false;
-//        } else {
-//            repassword.setError(null);
-//            return true;
-//        }
-//    }
-
 }

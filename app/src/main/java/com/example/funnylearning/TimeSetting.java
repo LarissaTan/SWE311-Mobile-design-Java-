@@ -7,17 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.onBoarding.onBoarding;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 
 public class TimeSetting extends AppCompatActivity {
 
     SeekBar learningGoal;
+    TextView notice;
     UserDataDao userDataDao = new UserDataDao(this);
 
     @Override
@@ -34,10 +35,28 @@ public class TimeSetting extends AppCompatActivity {
         int finalUserId = userId;
 
         learningGoal = findViewById(R.id.qmuiSlider);
+        notice = findViewById(R.id.learningGoal_timeNotice);
 
         Button btn;
 
         btn = findViewById(R.id.set_goal_finish_btn);
+
+        learningGoal.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                notice.setText("Your goal is" + progress + "MIN.");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
