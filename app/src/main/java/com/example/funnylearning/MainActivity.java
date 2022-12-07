@@ -19,6 +19,7 @@ import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
+import com.example.funnylearning.data.DataCourseVideo;
 import com.example.funnylearning.others.other;
 
 import java.sql.Time;
@@ -248,6 +249,8 @@ public class MainActivity extends AppCompatActivity {
         courseTmp = userDataDao.updatePhoto(R.drawable.profile_photo_3, 1);
         Time time = new Time(0,30,0);
         courseTmp = userDataDao.updateLearningGoal(time, 1);
+
+        DataCourseVideo.start(this);
 
         /*DeliverGoodDao goodsDao = new DeliverGoodDao(this);
         goodsDao.open();

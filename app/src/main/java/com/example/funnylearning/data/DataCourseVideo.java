@@ -9,13 +9,11 @@ import com.example.funnylearning.R;
 import java.sql.Time;
 
 public class DataCourseVideo {
-    public void start(Context context){
+    public static void start(Context context){
         CourseVideoDao courseVideoDao = new CourseVideoDao(context);
         courseVideoDao.open();
 
         final int videoNumber = 10;
-
-        CourseVideo[] courseVideo = new CourseVideo[videoNumber];
 
         int[] typeId = new int[videoNumber];
         int[] coursePicture = new int[videoNumber];
@@ -115,21 +113,18 @@ public class DataCourseVideo {
         videoId[9] = "e7ODZR7e1W0";
         duration[9] = new Time(0,6,9);
 
-        for(int i=0; i<videoNumber; i++){
-            if(videoId[i]!=null){
-                courseVideo[i].setTypeId(typeId[i]);
-                courseVideo[i].setCoursePicture(coursePicture[i]);
-                courseVideo[i].setViewNumber(viewNumber[i]);
-                courseVideo[i].setLevel(level[i]);
-                courseVideo[i].setCourseName(courseName[i]);
-                courseVideo[i].setVideoId(videoId[i]);
-                courseVideo[i].setDuration(duration[i]);
-            }
-        }
 
         for(int i=0; i<videoNumber; i++){
-            if(courseVideo != null){
-                courseVideoDao.insertCourseVideo(courseVideo[i]);
+            if(videoId[i]!= null){
+                CourseVideo courseVideo = new CourseVideo();
+                courseVideo.setTypeId(typeId[i]);
+                courseVideo.setCoursePicture(coursePicture[i]);
+                courseVideo.setViewNumber(viewNumber[i]);
+                courseVideo.setLevel(level[i]);
+                courseVideo.setCourseName(courseName[i]);
+                courseVideo.setVideoId(videoId[i]);
+                courseVideo.setDuration(duration[i]);
+                courseVideoDao.insertCourseVideo(courseVideo);
             }
         }
     }
