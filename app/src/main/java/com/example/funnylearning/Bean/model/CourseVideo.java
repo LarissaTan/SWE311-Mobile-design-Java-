@@ -11,6 +11,10 @@ public class CourseVideo {
         return courseId;
     }
 
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
     public String getCourseName() {
         return courseName;
     }

@@ -1,14 +1,18 @@
 package com.example.funnylearning.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import com.example.funnylearning.Bean.model.Cartoons;
 import com.example.funnylearning.Bean.model.CourseVideo;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class CourseVideoDao {
 
@@ -68,5 +72,90 @@ public class CourseVideoDao {
             return true;
         else
             return false;
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<CourseVideo> getAllCourseVideo() {
+        ArrayList<CourseVideo> videoList = new ArrayList<CourseVideo>();
+        Cursor cursor = db.query("tb_Course", null, null, null, null, null,null);
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                CourseVideo courseVideo = new CourseVideo();
+                courseVideo.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
+                courseVideo.setTypeId(cursor.getInt(cursor.getColumnIndex("typeId")));
+                courseVideo.setVideoId(cursor.getString(cursor.getColumnIndex("videoId")));
+                Time time = new Time(cursor.getLong(cursor.getColumnIndex("duration")));
+                courseVideo.setDuration(time);
+                courseVideo.setCoursePicture(cursor.getInt(cursor.getColumnIndex("coursePicture")));
+                courseVideo.setViewNumber(cursor.getInt(cursor.getColumnIndex("viewNumber")));
+                courseVideo.setLevel(cursor.getInt(cursor.getColumnIndex("level")));
+                videoList.add(courseVideo);
+            }
+            return videoList;
+        }
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<CourseVideo> getAllMathCourseVideo() {
+        ArrayList<CourseVideo> videoList = new ArrayList<CourseVideo>();
+        Cursor cursor = db.rawQuery("select typeId from tb_Course except select typeId from tb_CourseType where type = ?", new String[]{"Math"});
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                CourseVideo courseVideo = new CourseVideo();
+                courseVideo = getCourseVideoById(cursor.getInt(cursor.getColumnIndex("courseId")));
+                videoList.add(courseVideo);
+            }
+            return videoList;
+        }
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<CourseVideo> getAllReadingCourseVideo() {
+        ArrayList<CourseVideo> videoList = new ArrayList<CourseVideo>();
+        Cursor cursor = db.rawQuery("select typeId from tb_Course except select typeId from tb_CourseType where type = ?", new String[]{"Reading"});
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                CourseVideo courseVideo = new CourseVideo();
+                courseVideo = getCourseVideoById(cursor.getInt(cursor.getColumnIndex("courseId")));
+                videoList.add(courseVideo);
+            }
+            return videoList;
+        }
+    }
+
+    @SuppressLint("Range")
+    public CourseVideo getCourseVideoById(int courseId){
+        open();
+        Cursor cursor = db.rawQuery("select * from tb_Course where typeId = " + courseId, new String[] {});
+        if(cursor.getCount() == 0)
+            return null;
+        else {
+            if(cursor.moveToNext()){
+                CourseVideo courseVideo = new CourseVideo();
+                courseVideo.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
+                courseVideo.setTypeId(cursor.getInt(cursor.getColumnIndex("typeId")));
+                courseVideo.setVideoId(cursor.getString(cursor.getColumnIndex("videoId")));
+                Time time = new Time(cursor.getLong(cursor.getColumnIndex("duration")));
+                courseVideo.setDuration(time);
+                courseVideo.setCoursePicture(cursor.getInt(cursor.getColumnIndex("coursePicture")));
+                courseVideo.setViewNumber(cursor.getInt(cursor.getColumnIndex("viewNumber")));
+                courseVideo.setLevel(cursor.getInt(cursor.getColumnIndex("level")));
+                return courseVideo;
+            }else {
+                return null;
+            }
+        }
     }
 }
