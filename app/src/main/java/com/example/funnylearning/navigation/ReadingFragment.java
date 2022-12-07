@@ -106,8 +106,8 @@ public class ReadingFragment extends Fragment {
         courseList.add(new model_course_video(1,"1",R.drawable.reading1_image,"Learn the basic words", 1,10));
 
         gameList.clear();
-        gameList.add(new model_game(3,"com.example.funnylearning.register.Reading_game_1", R.drawable.read_boy,"Find the words",1));
-        gameList.add(new model_game(4,"com.example.funnylearning.register.Reading_game_2",R.drawable.read_car, "Deliver the goods", 4));
+        gameList.add(new model_game(3,"com.example.funnylearning.register.Reading_game_2", R.drawable.read_boy,"Find the words",1));
+        gameList.add(new model_game(4,"com.example.funnylearning.register.Reading_game_1",R.drawable.read_car, "Deliver the goods", 4));
 
         adapter_course_video adapter = new adapter_course_video(courseList);
         adapter.notifyDataSetChanged();

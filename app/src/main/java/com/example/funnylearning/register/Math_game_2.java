@@ -66,6 +66,12 @@ public class Math_game_2 extends AppCompatActivity {
 
     Animation scaleUp,scaleDown;
 
+    MediaPlayer mp_btn = new MediaPlayer();
+    MediaPlayer mp_correct = new MediaPlayer();
+    MediaPlayer mp_wrong = new MediaPlayer();
+    MediaPlayer mp_countdown = new MediaPlayer();
+    MediaPlayer mp_game_over = new MediaPlayer();
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +100,7 @@ public class Math_game_2 extends AppCompatActivity {
         playAgainBtn = findViewById(R.id.btnPlayAgain);
         quitBtn = findViewById(R.id.btnQuit);
 
-        final MediaPlayer mp_btn = MediaPlayer.create(this,R.raw.game_button_click_sound);
-        /*float log1=(float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));*/
+        mp_btn = MediaPlayer.create(this,R.raw.game_button_click_sound);
         mp_btn.setVolume(100,100);
 
 
@@ -309,10 +314,10 @@ public class Math_game_2 extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
-        final MediaPlayer mp_correct = MediaPlayer.create(this,R.raw.correct_answer_sound);
+        mp_correct = MediaPlayer.create(this,R.raw.correct_answer_sound);
         mp_correct.setVolume(100,100);
 
-        final MediaPlayer mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
+        mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
@@ -379,14 +384,18 @@ public class Math_game_2 extends AppCompatActivity {
         countDownTimer.start();
         finalUI.setVisibility(View.INVISIBLE);
         normalUI.setVisibility(View.VISIBLE);
+        if(mp_game_over.isPlaying())
+        {
+            mp_game_over.stop();
+        }
     }
 
     public void start(View view) {
 
-        final MediaPlayer mp_countdown = MediaPlayer.create(this,R.raw.countdown_sound);
+        mp_countdown = MediaPlayer.create(this,R.raw.countdown_sound);
         mp_countdown.setVolume(100,100);
 
-        final MediaPlayer mp_game_over = MediaPlayer.create(this,R.raw.game_over_sound);
+        mp_game_over = MediaPlayer.create(this,R.raw.game_over_sound);
         mp_game_over.setVolume(100,100);
 
         startBtn.setVisibility(View.INVISIBLE);
@@ -430,5 +439,41 @@ public class Math_game_2 extends AppCompatActivity {
             }
 
         }.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        if (countDownTimer!=null)
+        {
+            countDownTimer.cancel();
+            countDownTimer = null;
+        }
+        if(mp_btn.isPlaying())
+        {
+            mp_btn.stop();
+            mp_btn.release();
+        }
+        if(mp_correct.isPlaying())
+        {
+            mp_correct.stop();
+            mp_correct.release();
+        }
+        if(mp_wrong.isPlaying())
+        {
+            mp_wrong.stop();
+            mp_wrong.release();
+        }
+        if(mp_game_over.isPlaying())
+        {
+            mp_game_over.stop();
+            mp_game_over.release();
+        }
+        if(mp_countdown.isPlaying())
+        {
+            mp_countdown.stop();
+            mp_countdown.release();
+        }
     }
 }
