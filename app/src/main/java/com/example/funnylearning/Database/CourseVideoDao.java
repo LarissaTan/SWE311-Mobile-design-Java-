@@ -59,7 +59,7 @@ public class CourseVideoDao {
         contentValues.put("coursePicture",courseVideo.getCoursePicture());
         contentValues.put("viewNumber",courseVideo.getViewNumber());
         contentValues.put("level",courseVideo.getLevel());
-        long result = db.insert("tb_CourseType",null,contentValues);
+        long result = db.insert("tb_Course",null,contentValues);
         if (result == -1) return false;
         else
             return true;
