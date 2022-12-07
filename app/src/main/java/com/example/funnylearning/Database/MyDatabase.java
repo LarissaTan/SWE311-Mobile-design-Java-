@@ -60,7 +60,7 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(CREATE_USERDATA);
 
         db.execSQL(CREATE_COURSETYPE);
-        //db.execSQL(CREATE_COURSE);
+        db.execSQL(CREATE_COURSE);
         //db.execSQL(CREATE_COURSECOMMENT);
         //db.execSQL(CREATE_COURSELIKE);
         db.execSQL(CREATE_GAME);
