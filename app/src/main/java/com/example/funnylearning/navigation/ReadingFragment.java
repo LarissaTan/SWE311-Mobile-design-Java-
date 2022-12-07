@@ -6,8 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +14,8 @@ import android.widget.FrameLayout;
 
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
-import com.example.funnylearning.register.BaseActivity;
-import com.example.funnylearning.register.Reading_level_2_Fragment;
-
-import java.util.ArrayList;
+import com.example.funnylearning.register.Reading_game_1;
+import com.example.funnylearning.register.Reading_game_2;
 
 public class ReadingFragment extends Fragment {
 
@@ -53,7 +49,7 @@ public class ReadingFragment extends Fragment {
             public void onClick(View v) {
                 tagr = "2";
                 System.out.println("tagr = "+tagr);
-                Intent it = new Intent(getContext(), BaseActivity.class);
+                Intent it = new Intent(getContext(), Reading_game_2.class);
                 it.putExtra(EXTRA_NAMEr,tagr);
                 startActivity(it);
             }
@@ -63,7 +59,7 @@ public class ReadingFragment extends Fragment {
             public void onClick(View v) {
                 tagr = "1";
                 System.out.println("tagr = "+tagr);
-                Intent it = new Intent(getContext(), BaseActivity.class);
+                Intent it = new Intent(getContext(), Reading_game_1.class);
                 it.putExtra(EXTRA_NAMEr,tagr);
                 startActivity(it);
             }

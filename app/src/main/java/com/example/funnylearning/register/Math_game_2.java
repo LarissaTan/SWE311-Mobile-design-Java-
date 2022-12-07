@@ -1,24 +1,18 @@
 package com.example.funnylearning.register;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
-import android.provider.MediaStore;
-import android.speech.tts.TextToSpeech;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -33,9 +27,7 @@ import com.example.funnylearning.R;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Math_level_2_Fragment extends Fragment {
-
-    String tagm;
+public class Math_game_2 extends AppCompatActivity {
 
     TextView scoreTextView;
     TextView timeLeftTextView;
@@ -74,67 +66,50 @@ public class Math_level_2_Fragment extends Fragment {
 
     Animation scaleUp,scaleDown;
 
-    public Math_level_2_Fragment() {
-        // Required empty public constructor
-    }
-
-
-    public static Math_level_2_Fragment newInstance(String param1, String param2) {
-        Math_level_2_Fragment fragment = new Math_level_2_Fragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @SuppressLint("ClickableViewAccessibility")
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
+        setContentView(R.layout.activity_math_game2);
 
-    @SuppressLint({"MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_math_level_2_, container, false);
+        scoreTextView = findViewById(R.id.scoreTextView);
+        timeLeftTextView = findViewById(R.id.timeLeftTextView);
+        alertTextView = findViewById(R.id.alertTextView);
+        finalScoreTextView = findViewById(R.id.finalScoreTextView);
 
-        scoreTextView = view.findViewById(R.id.scoreTextView);
-        timeLeftTextView = view.findViewById(R.id.timeLeftTextView);
-        alertTextView = view.findViewById(R.id.alertTextView);
-        finalScoreTextView =view.findViewById(R.id.finalScoreTextView);
+        timeLeftProgressBar = findViewById(R.id.circular_progress_bar);
 
-        timeLeftProgressBar = view.findViewById(R.id.circular_progress_bar);
+        questionTextView = findViewById(R.id.math_level_2_question);
+        btn1TextView = findViewById(R.id.math_level_2_fish_txt1);
+        btn2TextView = findViewById(R.id.math_level_2_fish_txt2);
+        btn3TextView = findViewById(R.id.math_level_2_fish_txt3);
+        btn4TextView = findViewById(R.id.math_level_2_fish_txt4);
 
-        questionTextView = view.findViewById(R.id.math_level_2_question);
-        btn1TextView = view.findViewById(R.id.math_level_2_fish_txt1);
-        btn2TextView = view.findViewById(R.id.math_level_2_fish_txt2);
-        btn3TextView = view.findViewById(R.id.math_level_2_fish_txt3);
-        btn4TextView = view.findViewById(R.id.math_level_2_fish_txt4);
+        btn1 = findViewById(R.id.math_level_2_fish_1);
+        btn2 = findViewById(R.id.math_level_2_fish_2);
+        btn3 = findViewById(R.id.math_level_2_fish_3);
+        btn4 = findViewById(R.id.math_level_2_fish_4);
 
-        btn1 = view.findViewById(R.id.math_level_2_fish_1);
-        btn2 = view.findViewById(R.id.math_level_2_fish_2);
-        btn3 = view.findViewById(R.id.math_level_2_fish_3);
-        btn4 = view.findViewById(R.id.math_level_2_fish_4);
+        startBtn = findViewById(R.id.start_btn);
+        playAgainBtn = findViewById(R.id.btnPlayAgain);
+        quitBtn = findViewById(R.id.btnQuit);
 
-        startBtn = view.findViewById(R.id.start_btn);
-        playAgainBtn = view.findViewById(R.id.btnPlayAgain);
-        quitBtn = view.findViewById(R.id.btnQuit);
-
-        final MediaPlayer mp_btn = MediaPlayer.create(getContext(),R.raw.game_button_click_sound);
+        final MediaPlayer mp_btn = MediaPlayer.create(this,R.raw.game_button_click_sound);
         /*float log1=(float)(Math.log(maxVolume-currVolume)/Math.log(maxVolume));*/
         mp_btn.setVolume(100,100);
 
 
-        normalUI = view.findViewById(R.id.normalUI);
-        finalUI = view.findViewById(R.id.finalUI);
-        ansUI =view.findViewById(R.id.ansUI);
+        normalUI = findViewById(R.id.normalUI);
+        finalUI = findViewById(R.id.finalUI);
+        ansUI = findViewById(R.id.ansUI);
 
         startBtn.setVisibility(View.VISIBLE);
         normalUI.setVisibility(View.INVISIBLE);
         finalUI.setVisibility(View.INVISIBLE);
         ansUI.setVisibility(View.INVISIBLE);
 
-        scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
-        scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
+        scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
 
         scoreTextView.setText(Integer.toString(points));
 
@@ -283,10 +258,7 @@ public class Math_level_2_Fragment extends Fragment {
 
                 if(motionEvent.getAction()==MotionEvent.ACTION_UP){
                     quitBtn.startAnimation(scaleDown);
-                    tagm = "0";
-                    Intent it = new Intent(getContext(), Homepage.class);
-                    /*it.putExtra("tagm",tagm);*/
-                    startActivity(it);
+                    Math_game_2.this.finish();
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                     mp_btn.start();
@@ -302,8 +274,6 @@ public class Math_level_2_Fragment extends Fragment {
             }
         });
 
-
-        return view;
     }
 
     @SuppressLint("SetTextI18n")
@@ -339,10 +309,10 @@ public class Math_level_2_Fragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
-        final MediaPlayer mp_correct = MediaPlayer.create(getContext(),R.raw.correct_answer_sound);
+        final MediaPlayer mp_correct = MediaPlayer.create(this,R.raw.correct_answer_sound);
         mp_correct.setVolume(100,100);
 
-        final MediaPlayer mp_wrong = MediaPlayer.create(getContext(),R.raw.wrong_answer_sound);
+        final MediaPlayer mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
@@ -413,10 +383,10 @@ public class Math_level_2_Fragment extends Fragment {
 
     public void start(View view) {
 
-        final MediaPlayer mp_countdown = MediaPlayer.create(getContext(),R.raw.countdown_sound);
+        final MediaPlayer mp_countdown = MediaPlayer.create(this,R.raw.countdown_sound);
         mp_countdown.setVolume(100,100);
 
-        final MediaPlayer mp_game_over = MediaPlayer.create(getContext(),R.raw.game_over_sound);
+        final MediaPlayer mp_game_over = MediaPlayer.create(this,R.raw.game_over_sound);
         mp_game_over.setVolume(100,100);
 
         startBtn.setVisibility(View.INVISIBLE);
@@ -458,7 +428,7 @@ public class Math_level_2_Fragment extends Fragment {
                     }
                 }, 1400);
             }
+
         }.start();
     }
-
 }

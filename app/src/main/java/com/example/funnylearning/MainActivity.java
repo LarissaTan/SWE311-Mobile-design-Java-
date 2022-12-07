@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import com.example.funnylearning.Bean.DeliverGoodBean;
 import com.example.funnylearning.Bean.FindWordsBean;
 import com.example.funnylearning.Bean.model.Cartoons;
 import com.example.funnylearning.Bean.model.CourseType;
 import com.example.funnylearning.Database.CartoonsDao;
 import com.example.funnylearning.Database.CourseTypeDao;
+import com.example.funnylearning.Database.DeliverGoodDao;
 import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
@@ -246,5 +248,18 @@ public class MainActivity extends AppCompatActivity {
         courseTmp = userDataDao.updatePhoto(R.drawable.profile_photo_3, 1);
         Time time = new Time(0,30,0);
         courseTmp = userDataDao.updateLearningGoal(time, 1);
+
+        /*DeliverGoodDao goodsDao = new DeliverGoodDao(this);
+        goodsDao.open();
+        DeliverGoodBean d = new DeliverGoodBean();
+
+        d.id = 1;
+        d.word = "bee";
+        d.correctUrl=R.drawable.read_level_2;
+        d.wrong1Url=R.drawable.read_level_1;
+        d.wrong2Url=R.drawable.read_level_3;
+        d.audio=R.raw.bee;
+
+        long test = goodsDao.insertDeliverGood(d);*/
     }
 }

@@ -9,12 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.funnylearning.navigation.HomeFragment;
-import com.example.funnylearning.navigation.ReadingFragment;
-import com.example.funnylearning.navigation.SettingFragment;
-import com.example.funnylearning.register.Math_levelFragment;
-import com.example.funnylearning.register.Math_level_2_Fragment;
-import com.example.funnylearning.register.Reading_levelFragment;
 import com.example.funnylearning.temp_head.CartoonsFragment;
 import com.example.funnylearning.temp_head.Message;
 import com.example.funnylearning.temp_head.RecordFragment;
@@ -44,10 +38,10 @@ public class Temp_head extends AppCompatActivity {
             //Message messageFragment = new Message();
             //SettingFragment settingFragment = new SettingFragment();
             //replacementFragment(messageFragment);
-            Math_levelFragment math_levelFragment = new Math_levelFragment();
+            //Math_levelFragment math_levelFragment = new Math_levelFragment();
             //Reading_levelFragment reading_levelFragment = new Reading_levelFragment();
             //Math_level_2_Fragment math_level_2_fragment = new Math_level_2_Fragment();
-            replacementFragment(math_levelFragment);
+            //replacementFragment(math_levelFragment);
         }
 
         if(tag == 1){

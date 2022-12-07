@@ -12,12 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.example.funnylearning.ForgotPswEmail;
-import com.example.funnylearning.ForgotPswEnter;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
-import com.example.funnylearning.register.Base2Activity;
-import com.example.funnylearning.register.BaseActivity;
+import com.example.funnylearning.register.Math_game_1;
+import com.example.funnylearning.register.Math_game_2;
 
 
 public class MathFragment extends Fragment {
@@ -51,7 +49,7 @@ public class MathFragment extends Fragment {
             public void onClick(View v) {
                 tagm = "2";
                 System.out.println("tagr = "+tag);
-                Intent it = new Intent(getContext(), Base2Activity.class);
+                Intent it = new Intent(getContext(), Math_game_2.class);
                 it.putExtra("tagm",tagm);
                 startActivity(it);
             }
@@ -61,9 +59,10 @@ public class MathFragment extends Fragment {
             public void onClick(View v) {
                 tagm = "1";
                 System.out.println("tagr = "+tag);
-                Intent it = new Intent(getContext(), Base2Activity.class);
+                Intent it = new Intent(getContext(), Math_game_1.class);
                 it.putExtra("tagm",tagm);
                 startActivity(it);
+
             }
         });
     }

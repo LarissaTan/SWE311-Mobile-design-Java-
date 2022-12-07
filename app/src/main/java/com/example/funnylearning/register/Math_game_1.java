@@ -1,7 +1,5 @@
 package com.example.funnylearning.register;
 
-import static com.example.funnylearning.navigation.MathFragment.EXTRA_NAME;
-
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
@@ -9,46 +7,33 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Handler;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.MathLevel;
 import com.example.funnylearning.R;
-import com.example.funnylearning.Temp_head;
-import com.example.funnylearning.navigation.MathFragment;
 import com.example.funnylearning.recycle.math_level.adapter_math_level;
 import com.example.funnylearning.recycle.math_level.model_math_level;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-
-public class Math_levelFragment extends Fragment {
-
+public class Math_game_1 extends AppCompatActivity {
     private RecyclerView mList;
     private final ArrayList<model_math_level> mathLevelList = new ArrayList<model_math_level>();
-
-    String tagm;
 
     TextView scoreTextView;
     TextView roundsLeftTextView;
@@ -77,59 +62,40 @@ public class Math_levelFragment extends Fragment {
 
     Animation scaleUp,scaleDown;
 
-    public Math_levelFragment() {
-        // Required empty public constructor
-    }
+    @SuppressLint("ClickableViewAccessibility")
+    protected void onCreate(Bundle savedInstanceState) {
 
-    public static Math_levelFragment newInstance(String param1, String param2) {
-        Math_levelFragment fragment = new Math_levelFragment();
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_math_game1);
 
-    }
+        scoreTextView = findViewById(R.id.scoreTextView);
+        roundsLeftTextView = findViewById(R.id.roundsLeftTextView);
+        alertTextView = findViewById(R.id.alertTextView);
+        finalScoreTextView = findViewById(R.id.finalScoreTextView);
 
-    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId", "ClickableViewAccessibility", "SetTextI18n"})
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_math_level, container, false);
+        roundsLeftProgressBar =findViewById(R.id.circular_progress_bar);
 
-        scoreTextView = view.findViewById(R.id.scoreTextView);
-        roundsLeftTextView = view.findViewById(R.id.roundsLeftTextView);
-        alertTextView = view.findViewById(R.id.alertTextView);
-        finalScoreTextView =view.findViewById(R.id.finalScoreTextView);
+        btn1 = findViewById(R.id.math_level_btn1);
+        btn2 = findViewById(R.id.math_level_btn2);
+        btn3 = findViewById(R.id.math_level_btn3);
+        playAgainBtn = findViewById(R.id.btnPlayAgain);
+        quitBtn = findViewById(R.id.btnQuit);
 
-        roundsLeftProgressBar =view.findViewById(R.id.circular_progress_bar);
-
-        btn1 = view.findViewById(R.id.math_level_btn1);
-        btn2 = view.findViewById(R.id.math_level_btn2);
-        btn3 = view.findViewById(R.id.math_level_btn3);
-        playAgainBtn = view.findViewById(R.id.btnPlayAgain);
-        quitBtn = view.findViewById(R.id.btnQuit);
-
-        final MediaPlayer mp_btn = MediaPlayer.create(getContext(),R.raw.game_button_click_sound);
+        final MediaPlayer mp_btn = MediaPlayer.create(this,R.raw.game_button_click_sound);
         mp_btn.setVolume(100,100);
-        /*final MediaPlayer mp_bgm = MediaPlayer.create(getContext(),R.raw.math_level_bgm);
-        mp_bgm.setVolume(50,50);
-        mp_bgm.start();
-        mp_bgm.setLooping(true);*/
 
-        normalUI = view.findViewById(R.id.normalUI);
-        finalUI = view.findViewById(R.id.finalUI);
-        ansUI =view.findViewById(R.id.ansUI);
+        normalUI = findViewById(R.id.normalUI);
+        finalUI = findViewById(R.id.finalUI);
+        ansUI = findViewById(R.id.ansUI);
 
         normalUI.setVisibility(View.VISIBLE);
         finalUI.setVisibility(View.INVISIBLE);
         ansUI.setVisibility(View.INVISIBLE);
 
-        scaleUp = AnimationUtils.loadAnimation(getContext(), R.anim.scale_up);
-        scaleDown = AnimationUtils.loadAnimation(getContext(), R.anim.scale_down);
+        scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
+        scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
 
-        mList = (RecyclerView) view.findViewById(R.id.recyclerview_math_level);
+        mList = (RecyclerView) findViewById(R.id.recyclerview_math_level);
 
         scoreTextView.setText(Integer.toString(points));
         roundsLeftTextView.setText(Integer.toString(rounds));
@@ -265,10 +231,7 @@ public class Math_levelFragment extends Fragment {
 
                 if(motionEvent.getAction()==MotionEvent.ACTION_UP){
                     quitBtn.startAnimation(scaleDown);
-                    tagm = "0";
-                    Intent it = new Intent(getContext(), Homepage.class);
-                    /*it.putExtra("tagm",tagm);*/
-                    startActivity(it);
+                    Math_game_1.this.finish();
 
                 }else if (motionEvent.getAction()==MotionEvent.ACTION_DOWN){
                     mp_btn.start();
@@ -283,8 +246,6 @@ public class Math_levelFragment extends Fragment {
                 return true;
             }
         });
-
-        return view;
     }
 
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
@@ -316,7 +277,7 @@ public class Math_levelFragment extends Fragment {
         adapter_math_level customAdapter = new adapter_math_level(mathLevelList);
         customAdapter.notifyDataSetChanged();
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,GridLayoutManager.VERTICAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
 
         if((display+1) % 2 != 0) {
             adjustSpan(gridLayoutManager);
@@ -343,9 +304,9 @@ public class Math_levelFragment extends Fragment {
             }
         }
 
-            btn1.setText(Integer.toString(answers.get(0)));
-            btn2.setText(Integer.toString(answers.get(1)));
-            btn3.setText(Integer.toString(answers.get(2)));
+        btn1.setText(Integer.toString(answers.get(0)));
+        btn2.setText(Integer.toString(answers.get(1)));
+        btn3.setText(Integer.toString(answers.get(2)));
     }
 
     private void adjustSpan (GridLayoutManager gridLayoutManager)
@@ -367,10 +328,10 @@ public class Math_levelFragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
-        final MediaPlayer mp_correct = MediaPlayer.create(getContext(),R.raw.correct_answer_sound);
+        final MediaPlayer mp_correct = MediaPlayer.create(this,R.raw.correct_answer_sound);
         mp_correct.setVolume(100,100);
 
-        final MediaPlayer mp_wrong = MediaPlayer.create(getContext(),R.raw.wrong_answer_sound);
+        final MediaPlayer mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
@@ -445,7 +406,7 @@ public class Math_levelFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void onFinish() {
-        final MediaPlayer mp_game_over = MediaPlayer.create(getContext(),R.raw.game_over_sound);
+        final MediaPlayer mp_game_over = MediaPlayer.create(this,R.raw.game_over_sound);
         mp_game_over.setVolume(100,100);
 
         mp_game_over.start();

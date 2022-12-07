@@ -168,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <FrameLayout
+                        <!--<FrameLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -225,7 +225,7 @@
 
                             </androidx.cardview.widget.CardView>
 
-                        </FrameLayout>
+                        </FrameLayout>-->
 
                         <FrameLayout
                             android:id="@+id/count_sheep"
