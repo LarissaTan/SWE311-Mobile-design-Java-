@@ -1,11 +1,14 @@
 package com.example.funnylearning.navigation;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,10 +17,21 @@ import android.widget.FrameLayout;
 
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.recycle.course_video.adapter_course_video;
+import com.example.funnylearning.recycle.course_video.model_course_video;
+import com.example.funnylearning.recycle.game.adapter_game;
+import com.example.funnylearning.recycle.game.model_game;
 import com.example.funnylearning.register.Reading_game_1;
 import com.example.funnylearning.register.Reading_game_2;
 
+import java.util.ArrayList;
+
 public class ReadingFragment extends Fragment {
+
+    private RecyclerView cvList;
+    private final ArrayList<model_course_video> courseList = new ArrayList<model_course_video>();
+    private RecyclerView glist;
+    private final ArrayList<model_game> gameList = new ArrayList<model_game>();
 
     public ReadingFragment() {
         // Required empty public constructor
@@ -33,7 +47,7 @@ public class ReadingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FrameLayout video = view.findViewById(R.id.reading_module1);
+        /*FrameLayout video = view.findViewById(R.id.reading_module1);
         FrameLayout findW = view.findViewById(R.id.find_the_words);
         FrameLayout deliver = view.findViewById(R.id.deliver_good);
         video.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +77,7 @@ public class ReadingFragment extends Fragment {
                 it.putExtra(EXTRA_NAMEr,tagr);
                 startActivity(it);
             }
-        });
+        });*/
     }
 
     public static ReadingFragment newInstance(String param1, String param2) {
@@ -78,12 +92,35 @@ public class ReadingFragment extends Fragment {
 
     }
 
+    @SuppressLint({"NotifyDataSetChanged", "MissingInflatedId"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reading, container, false);
 
+        cvList = (RecyclerView) view.findViewById(R.id.recyclerview_reading_course);
+        glist = (RecyclerView) view.findViewById(R.id.recyclerview_reading_game);
+
+        courseList.clear();
+        courseList.add(new model_course_video(1,"1",R.drawable.reading1_image,"Learn the basic words", 1,10));
+
+        gameList.clear();
+        gameList.add(new model_game(3,"com.example.funnylearning.register.Reading_game_1", R.drawable.read_boy,"Find the words",1));
+        gameList.add(new model_game(4,"com.example.funnylearning.register.Reading_game_2",R.drawable.read_car, "Deliver the goods", 4));
+
+        adapter_course_video adapter = new adapter_course_video(courseList);
+        adapter.notifyDataSetChanged();
+        adapter_game customAdapter = new adapter_game(gameList);
+        customAdapter.notifyDataSetChanged();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        cvList.setLayoutManager(linearLayoutManager);
+        cvList.setAdapter(adapter);
+
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        glist.setLayoutManager(linearLayoutManager1);
+        glist.setAdapter(customAdapter);
         return view;
     }
 }

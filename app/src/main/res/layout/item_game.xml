@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="20dp">
+
+    <FrameLayout
+        android:id="@+id/find_the_words"
+        android:layout_width="230dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/item_game_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true"
+            android:maxWidth="230dp"
+            android:maxHeight="180dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/read_boy" />
+
+        <androidx.cardview.widget.CardView
+            app:cardBackgroundColor="#E6F8F8FA"
+            app:cardCornerRadius="10dp"
+            android:layout_width="230dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="1.5dp"
+            android:layout_marginTop="90dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_game_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Find the words"
+                    android:textColor="#252529"
+                    android:textSize="16sp" />
+
+                <RatingBar
+                    android:id="@+id/item_game_rating_bar"
+                    style="@style/CustomRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="33dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="3"
+                    android:scaleX="0.8"
+                    android:scaleY="0.8"
+                    android:stepSize="0.01" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+</FrameLayout>

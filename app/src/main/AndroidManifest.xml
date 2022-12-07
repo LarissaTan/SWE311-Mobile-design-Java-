@@ -13,20 +13,6 @@
         android:theme="@style/Theme.FunnyLearning"
         tools:targetApi="31">
         <activity
-            android:name=".Reading_game_2"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Reading_game_1"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Signup_3"
             android:exported="false">
             <meta-data
@@ -186,10 +172,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".Math_game_1" />
-        <activity android:name=".Math_game_2" />
         <activity android:name="com.example.funnylearning.register.Reading_game_2" />
         <activity android:name="com.example.funnylearning.register.Reading_game_1" />
+        <activity android:name="com.example.funnylearning.register.Math_game_1" />
+        <activity android:name="com.example.funnylearning.register.Math_game_2" />
 
         <meta-data
             android:name="preloaded_fonts"
