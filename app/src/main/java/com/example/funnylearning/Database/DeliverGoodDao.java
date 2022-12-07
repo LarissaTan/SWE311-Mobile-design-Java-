@@ -58,22 +58,22 @@ public class DeliverGoodDao {
                 DeliverGoodBean g = new DeliverGoodBean();
                 g.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
                 g.word  = cursor.getString(cursor.getColumnIndex("word"));
-                g.correctUrl = cursor.getString(cursor.getColumnIndex("corrGood"));
-                g.wrong1Url = cursor.getString(cursor.getColumnIndex("wrongGood1"));
-                g.wrong2Url = cursor.getString(cursor.getColumnIndex("wrongGood2"));
-                g.audio = cursor.getString(cursor.getColumnIndex("audio"));
+                g.correctUrl = Integer.valueOf(cursor.getString(cursor.getColumnIndex("corrGood")));
+                g.wrong1Url = Integer.valueOf(cursor.getString(cursor.getColumnIndex("wrongGood1")));
+                g.wrong2Url = Integer.valueOf(cursor.getString(cursor.getColumnIndex("wrongGood2")));
+                g.audio = Integer.valueOf(cursor.getString(cursor.getColumnIndex("audio")));
                 goods.add(g);
             }
             return goods;
         }
     }
 
-//    public void open() throws SQLiteException {
-//        dbHelper = new MyDatabase(context);
-//        try {
-//            db = dbHelper.getWritableDatabase();
-//        } catch (SQLiteException ex) {
-//            db = dbHelper.getReadableDatabase();
-//        }
-//    }
+  public void open() throws SQLiteException {
+      dbHelper = new MyDatabase(context);
+      try {
+          db = dbHelper.getWritableDatabase();
+      } catch (SQLiteException ex) {
+          db = dbHelper.getWritableDatabase();
+      }
+  }
 }

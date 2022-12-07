@@ -403,6 +403,7 @@ public class Math_level_2_Fragment extends Fragment {
     @SuppressLint("SetTextI18n")
     public void playAgain(View view){
         points=0;
+        progress = 0;
         scoreTextView.setText(Integer.toString(points));
         timeLeftProgressBar.setProgress(0,true);
         countDownTimer.start();
