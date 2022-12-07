@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import com.example.funnylearning.Bean.model.UserData;
+
 import java.sql.Time;
 import java.text.SimpleDateFormat;
 
@@ -106,5 +108,32 @@ public class UserDataDao {
         if (result == -1) return false;
         else
             return true;
+    }
+
+    @SuppressLint("Range")
+    public UserData getUserData(int userId){
+        UserData userData = new UserData();
+        open();
+
+        Cursor cursor = db.rawQuery("select * from tb_UserData where userId = " + userId, new String[]{});
+        if(cursor.getCount() == 0)
+            return null;
+        else {
+            if (cursor.moveToNext()) {
+                userData.setUserId(cursor.getInt(cursor.getColumnIndex("userId")));
+                userData.setName(cursor.getString(cursor.getColumnIndex("name")));
+                userData.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                userData.setAge(cursor.getInt(cursor.getColumnIndex("age")));
+                userData.setGender(cursor.getInt(cursor.getColumnIndex("gender"))>0);
+                Time time = new Time(cursor.getLong(cursor.getColumnIndex("learningGoal")));
+                userData.setLearningGoal(time);
+                userData.setLocation(cursor.getString(cursor.getColumnIndex("location")));
+                userData.setProfilePicture(cursor.getInt(cursor.getColumnIndex("profilePicture")));
+
+                return userData;
+            } else {
+                return null;
+            }
+        }
     }
 }

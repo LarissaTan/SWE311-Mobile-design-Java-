@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
@@ -28,11 +29,21 @@ public class onBoarding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_boarding);
 
+        Bundle extras = getIntent().getExtras();
+        int userId =0;
+        if(extras != null){
+            userId = extras.getInt("userId");
+        }else {
+            Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
+        }
+        int finalUserId = userId;
+
         skip = findViewById(R.id.skipButton);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(onBoarding.this, Homepage.class);
+                i.putExtra("userId",finalUserId);
                 startActivity(i);
                 finish();
             }

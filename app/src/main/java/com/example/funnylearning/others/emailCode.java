@@ -56,6 +56,7 @@ public class emailCode {
         message.setSentDate(new Date());
         message.saveChanges();
         System.out.println("准备发送");
+        System.out.println("code:" + code);
         Transport.send(message);
     }
 }

@@ -6,7 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.example.funnylearning.Bean.model.UserData;
+import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.navigation.ExerciseFragment;
 import com.example.funnylearning.navigation.HomeFragment;
 import com.example.funnylearning.navigation.MathFragment;
@@ -17,11 +20,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class Homepage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    Bundle userData = new Bundle();
+    UserDataDao userDataDao = new UserDataDao(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
+        Bundle extras = getIntent().getExtras();
+        int userId =0;
+        if(extras != null){
+            userId = extras.getInt("userId");
+        }else {
+            Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
+        }
+        int finalUserId = userId;
+
+        UserData user = null;
+        user = userDataDao.getUserData(finalUserId);
+
+        System.out.println("User information from database");
+        System.out.println("id: " + user.getUserId());
+        System.out.println("name: "+user.getName());
+
+        userData.putInt("userId", user.getUserId());
+        userData.putString("name", user.getName());
+        userData.putString("email", user.getEmail());
+        userData.putInt("age", user.getAge());
+        userData.putBoolean("gender", user.getGender());
+        userData.putString("learningGoal", user.getLearningGoal().toString());
+        userData.putString("location", user.getLocation());
+        userData.putInt("profilePicture", user.getProfilePicture());
 
         ExerciseFragment exerciseFragment = new ExerciseFragment();
         SettingFragment settingFragment = new SettingFragment();
@@ -58,6 +88,7 @@ public class Homepage extends AppCompatActivity {
     }
 
     private void replacementFragment(Fragment fragment){
+        fragment.setArguments(userData);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout_homepage,fragment);

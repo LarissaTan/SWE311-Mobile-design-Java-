@@ -15,8 +15,11 @@ import com.example.funnylearning.Database.CartoonsDao;
 import com.example.funnylearning.Database.CourseTypeDao;
 import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
+import com.example.funnylearning.Database.UserDataDao;
+import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.others.other;
 
+import java.sql.Time;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -232,5 +235,16 @@ public class MainActivity extends AppCompatActivity {
 
         courseTmp = userDao.insertEmailPassword("swe2009514@xmu.edu.my", other.SHA("1234"));
 
+        courseTmp = userDao.insertEmailPassword("test@gmail.com", other.SHA("1234"));
+
+        UserDataDao userDataDao = new UserDataDao(this);
+        userDataDao.open();
+
+        courseTmp = userDataDao.insertEmailName("test@gmail.com", "Ong Cong Kin");
+        courseTmp = userDataDao.updateGender(true, 1);
+        courseTmp = userDataDao.updateAge(12, 1);
+        courseTmp = userDataDao.updatePhoto(R.drawable.profile_photo_3, 1);
+        Time time = new Time(0,30,0);
+        courseTmp = userDataDao.updateLearningGoal(time, 1);
     }
 }
