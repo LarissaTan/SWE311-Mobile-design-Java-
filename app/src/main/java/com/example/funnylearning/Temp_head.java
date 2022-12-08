@@ -31,8 +31,6 @@ public class Temp_head extends AppCompatActivity {
         System.out.println("tag is = " + tag);
         setContentView(R.layout.activity_temp_head);
 
-        Bundle extras = getIntent().getExtras();
-
         if(tag == 0){
             //title = "Messages";
             title = "Math Level";
@@ -62,8 +60,7 @@ public class Temp_head extends AppCompatActivity {
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
 
-            dataToPass.putInt("courseId", extras.getInt("courseId"));
-
+            dataToPass = getIntent().getExtras();
 
             VideoFragment videoFragment = new VideoFragment();
             replacementFragment(videoFragment);

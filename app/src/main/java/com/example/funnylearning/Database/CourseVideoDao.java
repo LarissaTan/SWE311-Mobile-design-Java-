@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import com.example.funnylearning.Bean.model.Cartoons;
 import com.example.funnylearning.Bean.model.CourseVideo;
 
 import java.sql.Time;
@@ -129,8 +128,9 @@ public class CourseVideoDao {
     @SuppressLint("Range")
     public Boolean updateViewNumber(int courseId){
         open();
-        Cursor cursor = db.rawQuery("select viewNumber from tb_Course where courseId = " + courseId, new String[]{});
-        int viewNumber = cursor.getInt(cursor.getColumnIndex("viewNumber"));
+        int viewNumber = 0;
+        viewNumber = getViewNumber(courseId);
+
         viewNumber++;
 
         ContentValues contentValues = new ContentValues();
@@ -139,5 +139,23 @@ public class CourseVideoDao {
         if (result == -1) return false;
         else
             return true;
+    }
+
+    @SuppressLint("Range")
+    public int getViewNumber(int courseId){
+        open();
+        Cursor cursor = db.rawQuery("select viewNumber from tb_Course where courseId = " + courseId, null);
+        int viewNumber = 0;
+        if(cursor.getCount()==0){
+            return 0;
+        }else{
+            if(cursor.moveToNext()){
+                viewNumber = cursor.getInt(cursor.getColumnIndex("viewNumber"));
+            }else {
+                System.out.println("view get fail");
+                return 0;
+            }
+        }
+        return viewNumber;
     }
 }

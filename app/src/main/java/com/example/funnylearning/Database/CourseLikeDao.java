@@ -1,5 +1,6 @@
 package com.example.funnylearning.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -62,8 +63,20 @@ public class CourseLikeDao {
         }
     }
 
+    @SuppressLint("Range")
     public int getLikeNumber(int courseId){
-        Cursor cursor = db.rawQuery("select * from tb_CourseLike where courseId = " + courseId, null);
-        return cursor.getCount();
+        open();
+        Cursor cursor = db.rawQuery("select count(userId) from tb_CourseLike where courseId = " + courseId, new String[]{});
+        int likeNumber = 0;
+        if(cursor.getCount()==0){
+            return 0;
+        }else{
+            if(cursor.moveToNext()){
+                likeNumber = cursor.getInt(cursor.getColumnIndex("count(userId)"));
+            }else {
+                return 0;
+            }
+        }
+        return likeNumber;
     }
 }

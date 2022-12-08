@@ -1,5 +1,7 @@
 package com.example.funnylearning.temp_head;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.funnylearning.Bean.model.CourseVideo;
+import com.example.funnylearning.Database.CourseCommentDao;
+import com.example.funnylearning.Database.CourseLikeDao;
+import com.example.funnylearning.Database.CourseVideoDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.comment.adapter_comment;
 import com.example.funnylearning.recycle.comment.model_comment;
@@ -64,13 +70,17 @@ public class VideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
+        Integer userId = getArguments().getInt("userId");
+        Integer courseId = getArguments().getInt("courseId");
+        String videoId = getArguments().getString("videoId");
+
         view_no = view.findViewById(R.id.video_text_view);
         like_no = view.findViewById(R.id.video_text_like);
         comment_no = view.findViewById(R.id.video_text_comment);
 
-        view_no.setText("112");
-        like_no.setText("2");
-        comment_no.setText("2");
+        updateViewNumber(view.getContext(), courseId);
+        updateLikeNumber(view.getContext(), courseId);
+        updateCommentNumber(view.getContext(), courseId);
 
         YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
@@ -78,7 +88,6 @@ public class VideoFragment extends Fragment {
         youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer){
-                String videoId = "-ou9VvyJNOY";
                 youTubePlayer.loadVideo(videoId,0);
             }
         });
@@ -97,5 +106,24 @@ public class VideoFragment extends Fragment {
         cmtList.setAdapter(customAdapterComment);
 
         return view;
+    }
+
+    private void updateViewNumber(Context context, int courseId){
+        CourseVideoDao courseVideoDao = new CourseVideoDao(context);
+        courseVideoDao.updateViewNumber(courseId);
+        Integer numberOfLike = courseVideoDao.getViewNumber(courseId);
+        view_no.setText(numberOfLike.toString());
+    }
+
+    private void updateLikeNumber(Context context, int courseId){
+        CourseLikeDao courseLikeDao = new CourseLikeDao(context);
+        Integer numberOfLike = courseLikeDao.getLikeNumber(courseId);
+        like_no.setText(numberOfLike.toString());
+    }
+
+    private void updateCommentNumber(Context context, int courseId){
+        CourseCommentDao courseCommentDao = new CourseCommentDao(context);
+        Integer numberOfComment = courseCommentDao.getCommentNumber(courseId);
+        comment_no.setText(numberOfComment.toString());
     }
 }

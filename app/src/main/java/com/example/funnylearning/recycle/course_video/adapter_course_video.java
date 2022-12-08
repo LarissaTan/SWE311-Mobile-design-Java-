@@ -50,7 +50,7 @@ public class adapter_course_video extends RecyclerView.Adapter<adapter_course_vi
 
                 Intent it = new Intent(view.getContext(), Temp_head.class);
                 it.putExtra("userId",list.userId);
-                it.putExtra("vidId",list.vidId);
+                it.putExtra("videoId",list.vidId);
                 it.putExtra("courseId",list.courseId);
                 it.putExtra("tag", "2");
                 view.getContext().startActivity(it);

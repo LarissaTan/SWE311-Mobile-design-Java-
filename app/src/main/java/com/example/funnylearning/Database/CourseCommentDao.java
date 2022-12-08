@@ -77,4 +77,21 @@ public class CourseCommentDao {
             return comments;
         }
     }
+
+    @SuppressLint("Range")
+    public int getCommentNumber(int courseId){
+        open();
+        Cursor cursor = db.rawQuery("select count(comment) from tb_CourseComment where courseId = " + courseId, null);
+        int commentNumber = 0;
+        if(cursor.getCount()==0){
+            return 0;
+        }else{
+            if(cursor.moveToNext()){
+                commentNumber = cursor.getInt(cursor.getColumnIndex("count(comment)"));
+            }else {
+                return 0;
+            }
+        }
+        return commentNumber;
+    }
 }
