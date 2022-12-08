@@ -19,6 +19,7 @@ import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
+import com.example.funnylearning.data.DataCourseType;
 import com.example.funnylearning.data.DataCourseVideo;
 import com.example.funnylearning.data.DataGame;
 import com.example.funnylearning.data.DataUserAccount;
@@ -187,64 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
         temp = wordsDao.insertFindWords(f);
 
-        CourseTypeDao courseTypeDao=new CourseTypeDao(this);
-        courseTypeDao.open();
-        CourseType course = new CourseType();
-
-        course.setTypeName("Addition within Ten");
-        course.setType("Math");
-
-        Boolean courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Addition within One Hundred");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Subtraction within Ten");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Subtraction within One Hundred");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Multiplication within ten");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Division within ten");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Learn the Basic Words");
-        course.setType("Reading");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Learn the Basic Sentences");
-        course.setType("Reading");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Learn the Basic Grammar");
-        course.setType("Reading");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Learn the Basic Math");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
-
-        course.setTypeName("Addition within Twenty");
-        course.setType("Math");
-
-        courseTmp = courseTypeDao.insertCourseType(course);
+        DataCourseType.start(this);
 
         DataUserAccount.start(this);
 
