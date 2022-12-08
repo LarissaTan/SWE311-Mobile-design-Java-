@@ -87,7 +87,7 @@
             android:isIndicator="true"
             android:scaleY="0.8"
             android:scaleX="0.8"
-            android:rating="4"
+            android:rating="3"
             android:layout_gravity="center_horizontal|center_vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
