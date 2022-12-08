@@ -21,6 +21,8 @@ import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.data.DataCourseVideo;
 import com.example.funnylearning.data.DataGame;
+import com.example.funnylearning.data.DataUserAccount;
+import com.example.funnylearning.data.DataUserData;
 import com.example.funnylearning.others.other;
 
 import java.sql.Time;
@@ -244,22 +246,9 @@ public class MainActivity extends AppCompatActivity {
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
-        UserDao userDao = new UserDao(this);
-        userDao.open();
+        DataUserAccount.start(this);
 
-        courseTmp = userDao.insertEmailPassword("swe2009514@xmu.edu.my", other.SHA("1234"));
-
-        courseTmp = userDao.insertEmailPassword("test@gmail.com", other.SHA("1234"));
-
-        UserDataDao userDataDao = new UserDataDao(this);
-        userDataDao.open();
-
-        courseTmp = userDataDao.insertEmailName("test@gmail.com", "Ong Cong Kin");
-        courseTmp = userDataDao.updateGender(true, 1);
-        courseTmp = userDataDao.updateAge(12, 1);
-        courseTmp = userDataDao.updatePhoto(R.drawable.profile_photo_3, 1);
-        Time time = new Time(0,30,0);
-        courseTmp = userDataDao.updateLearningGoal(time, 1);
+        DataUserData.start(this);
 
         DataCourseVideo.start(this);
 

@@ -43,14 +43,28 @@ public class UserDataDao {
     }
 
     public Boolean insertEmailName (String email, String Name){
+        if(!checkEmailName(email)){
+            open();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("email", email);
+            contentValues.put("name", Name);
+            long result = db.insert("tb_UserData",null,contentValues);
+            if (result == -1) return false;
+            else
+                return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Boolean checkEmailName(String email){
         open();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("email", email);
-        contentValues.put("name", Name);
-        long result = db.insert("tb_UserData",null,contentValues);
-        if (result == -1) return false;
-        else
+        Cursor cursor = db.rawQuery("select * from tb_UserData where email = ?", new String[]{email});
+        if(cursor.getCount()==0){
+            return false;
+        }else {
             return true;
+        }
     }
 
     @SuppressLint("Range")
