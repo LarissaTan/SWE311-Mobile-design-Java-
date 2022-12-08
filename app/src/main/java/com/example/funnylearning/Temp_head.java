@@ -18,6 +18,7 @@ public class Temp_head extends AppCompatActivity {
 
     private TextView head_bar_title;
     public String title;
+    Bundle dataToPass = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,8 @@ public class Temp_head extends AppCompatActivity {
         Integer tag = Integer.valueOf(intent.getStringExtra("tag"));
         System.out.println("tag is = " + tag);
         setContentView(R.layout.activity_temp_head);
+
+        Bundle extras = getIntent().getExtras();
 
         if(tag == 0){
             //title = "Messages";
@@ -58,6 +61,10 @@ public class Temp_head extends AppCompatActivity {
             // setTest need to put behind the setContentView!!!!!
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
+
+            dataToPass.putInt("courseId", extras.getInt("courseId"));
+
+
             VideoFragment videoFragment = new VideoFragment();
             replacementFragment(videoFragment);
         }
@@ -88,6 +95,7 @@ public class Temp_head extends AppCompatActivity {
     }
 
     private void replacementFragment(Fragment fragment){
+        fragment.setArguments(dataToPass);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.temp_fragment,fragment);

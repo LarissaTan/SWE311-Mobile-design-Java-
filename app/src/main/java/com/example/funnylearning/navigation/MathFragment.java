@@ -99,7 +99,7 @@ public class MathFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_math, container, false);
-
+        Integer userId = getArguments().getInt("userId");
         cvList = (RecyclerView) view.findViewById(R.id.recyclerview_math_course);
         glist = (RecyclerView) view.findViewById(R.id.recyclerview_math_game);
 
@@ -109,12 +109,10 @@ public class MathFragment extends Fragment {
         ArrayList<CourseVideo> videoList = new ArrayList<>();
         videoList = courseVideoDao.getAllCourseVideoByTypeName("Math");
 
-        System.out.println(videoList.size());
-
         courseList.clear();
         for (int i = 0; i < videoList.size(); i++){
             System.out.println(videoList.get(i).getCourseName());
-            courseList.add(new model_course_video(videoList.get(i).getCourseId(),videoList.get(i).getVideoId(), videoList.get(i).getCoursePicture(),videoList.get(i).getCourseName(),videoList.get(i).getLevel(),10));
+            courseList.add(new model_course_video(userId, videoList.get(i).getCourseId(),videoList.get(i).getVideoId(), videoList.get(i).getCoursePicture(),videoList.get(i).getCourseName(),videoList.get(i).getLevel(),10));
         }
 
         gameList.clear();

@@ -2,6 +2,7 @@ package com.example.funnylearning.recycle.course_video;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ public class adapter_course_video extends RecyclerView.Adapter<adapter_course_vi
             public void onClick(View view) {
 
                 Intent it = new Intent(view.getContext(), Temp_head.class);
+                it.putExtra("userId",list.userId);
                 it.putExtra("vidId",list.vidId);
                 it.putExtra("courseId",list.courseId);
                 it.putExtra("tag", "2");

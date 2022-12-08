@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.example.funnylearning.Bean.model.CourseVideo;
+import com.example.funnylearning.Database.CourseVideoDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.course_video.adapter_course_video;
@@ -98,12 +100,22 @@ public class ReadingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reading, container, false);
+        Integer userId = getArguments().getInt("userId");
 
         cvList = (RecyclerView) view.findViewById(R.id.recyclerview_reading_course);
         glist = (RecyclerView) view.findViewById(R.id.recyclerview_reading_game);
 
+        CourseVideoDao courseVideoDao = new CourseVideoDao(view.getContext());
+        courseVideoDao.open();
+
+        ArrayList<CourseVideo> videoList = new ArrayList<>();
+        videoList = courseVideoDao.getAllCourseVideoByTypeName("Reading");
+
         courseList.clear();
-        courseList.add(new model_course_video(1,"1",R.drawable.reading1_image,"Learn the basic words", 1,10));
+        for (int i = 0; i < videoList.size(); i++){
+            System.out.println(videoList.get(i).getCourseName());
+            courseList.add(new model_course_video(userId, videoList.get(i).getCourseId(),videoList.get(i).getVideoId(), videoList.get(i).getCoursePicture(),videoList.get(i).getCourseName(),videoList.get(i).getLevel(),10));
+        }
 
         gameList.clear();
         gameList.add(new model_game(3,"com.example.funnylearning.register.Reading_game_2", R.drawable.read_boy,"Find the words",1));
