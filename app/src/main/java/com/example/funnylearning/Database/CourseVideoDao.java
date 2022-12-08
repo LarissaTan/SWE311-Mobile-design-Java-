@@ -86,6 +86,7 @@ public class CourseVideoDao {
             while (cursor.moveToNext()) {
                 CourseVideo courseVideo = new CourseVideo();
                 courseVideo.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
+                courseVideo.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
                 courseVideo.setTypeId(cursor.getInt(cursor.getColumnIndex("typeId")));
                 courseVideo.setVideoId(cursor.getString(cursor.getColumnIndex("videoId")));
                 Time time = new Time(cursor.getLong(cursor.getColumnIndex("duration")));
@@ -100,51 +101,18 @@ public class CourseVideoDao {
     }
 
     @SuppressLint("Range")
-    public ArrayList<CourseVideo> getAllMathCourseVideo() {
+    public ArrayList<CourseVideo> getAllCourseVideoByTypeName(String typeName) {
         ArrayList<CourseVideo> videoList = new ArrayList<CourseVideo>();
-        Cursor cursor = db.rawQuery("select typeId from tb_Course except select typeId from tb_CourseType where type = ?", new String[]{"Math"});
+        Cursor cursor = db.rawQuery("select * from tb_Course where typeId in (select typeId from tb_CourseType where type = ? )", new String[]{typeName});
 
         int resultCounts = cursor.getCount();  //记录总数
         if (resultCounts == 0 ) {
             return null;
         } else {
             while (cursor.moveToNext()) {
-                CourseVideo courseVideo = new CourseVideo();
-                courseVideo = getCourseVideoById(cursor.getInt(cursor.getColumnIndex("courseId")));
-                videoList.add(courseVideo);
-            }
-            return videoList;
-        }
-    }
-
-    @SuppressLint("Range")
-    public ArrayList<CourseVideo> getAllReadingCourseVideo() {
-        ArrayList<CourseVideo> videoList = new ArrayList<CourseVideo>();
-        Cursor cursor = db.rawQuery("select typeId from tb_Course except select typeId from tb_CourseType where type = ?", new String[]{"Reading"});
-
-        int resultCounts = cursor.getCount();  //记录总数
-        if (resultCounts == 0 ) {
-            return null;
-        } else {
-            while (cursor.moveToNext()) {
-                CourseVideo courseVideo = new CourseVideo();
-                courseVideo = getCourseVideoById(cursor.getInt(cursor.getColumnIndex("courseId")));
-                videoList.add(courseVideo);
-            }
-            return videoList;
-        }
-    }
-
-    @SuppressLint("Range")
-    public CourseVideo getCourseVideoById(int courseId){
-        open();
-        Cursor cursor = db.rawQuery("select * from tb_Course where typeId = " + courseId, new String[] {});
-        if(cursor.getCount() == 0)
-            return null;
-        else {
-            if(cursor.moveToNext()){
                 CourseVideo courseVideo = new CourseVideo();
                 courseVideo.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
+                courseVideo.setCourseName(cursor.getString(cursor.getColumnIndex("courseName")));
                 courseVideo.setTypeId(cursor.getInt(cursor.getColumnIndex("typeId")));
                 courseVideo.setVideoId(cursor.getString(cursor.getColumnIndex("videoId")));
                 Time time = new Time(cursor.getLong(cursor.getColumnIndex("duration")));
@@ -152,10 +120,24 @@ public class CourseVideoDao {
                 courseVideo.setCoursePicture(cursor.getInt(cursor.getColumnIndex("coursePicture")));
                 courseVideo.setViewNumber(cursor.getInt(cursor.getColumnIndex("viewNumber")));
                 courseVideo.setLevel(cursor.getInt(cursor.getColumnIndex("level")));
-                return courseVideo;
-            }else {
-                return null;
+                videoList.add(courseVideo);
             }
+            return videoList;
         }
+    }
+
+    @SuppressLint("Range")
+    public Boolean updateViewNumber(int courseId){
+        open();
+        Cursor cursor = db.rawQuery("select viewNumber from tb_Course where courseId = " + courseId, new String[]{});
+        int viewNumber = cursor.getInt(cursor.getColumnIndex("viewNumber"));
+        viewNumber++;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("viewNumber", viewNumber);
+        long result = db.update("tb_Course", contentValues, "courseId =" + courseId, new String[]{});
+        if (result == -1) return false;
+        else
+            return true;
     }
 }

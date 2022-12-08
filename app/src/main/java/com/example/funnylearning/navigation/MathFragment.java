@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.example.funnylearning.Bean.model.CourseVideo;
+import com.example.funnylearning.Database.CourseVideoDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.course_video.adapter_course_video;
@@ -101,8 +103,19 @@ public class MathFragment extends Fragment {
         cvList = (RecyclerView) view.findViewById(R.id.recyclerview_math_course);
         glist = (RecyclerView) view.findViewById(R.id.recyclerview_math_game);
 
+        CourseVideoDao courseVideoDao = new CourseVideoDao(view.getContext());
+        courseVideoDao.open();
+
+        ArrayList<CourseVideo> videoList = new ArrayList<>();
+        videoList = courseVideoDao.getAllCourseVideoByTypeName("Math");
+
+        System.out.println(videoList.size());
+
         courseList.clear();
-        courseList.add(new model_course_video(2,"2", R.drawable.math_pic,"Addition with ten",1,20));
+        for (int i = 0; i < videoList.size(); i++){
+            System.out.println(videoList.get(i).getCourseName());
+            courseList.add(new model_course_video(videoList.get(i).getCourseId(),videoList.get(i).getVideoId(), videoList.get(i).getCoursePicture(),videoList.get(i).getCourseName(),videoList.get(i).getLevel(),10));
+        }
 
         gameList.clear();
         gameList.add(new model_game(1,"com.example.funnylearning.register.Math_game_1", R.drawable.math_sheep,"Count the sheep",1));

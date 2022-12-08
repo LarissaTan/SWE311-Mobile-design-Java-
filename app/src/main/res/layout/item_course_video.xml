@@ -58,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Learn the basic words (1)"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textColor="#252529"
                     android:layout_marginTop="10dp" />
 
@@ -95,7 +95,7 @@
                         android:maxWidth="12dp"
                         android:maxHeight="12dp"
                         android:adjustViewBounds="true"
-                        android:layout_marginLeft="150dp"
+                        android:layout_marginLeft="130dp"
                         android:layout_gravity="center_vertical|right"/>
 
                     <TextView

@@ -109,7 +109,7 @@ public class CourseTypeDao {
         ArrayList<CourseType> courseList = new ArrayList<CourseType>();
         Cursor cursor;
 
-        cursor = db.rawQuery("select typeId from tb_CourseType except select typeId from tb_UserGoalLevel where userId = " + userId + " and achievement = 1;",new String[]{});
+        cursor = db.rawQuery("select * from tb_CourseType where typeId not in (select typeId from tb_UserGoalLevel where userId = " + userId + " and achievement = 1);",new String[]{});
 
 
         int resultCounts = cursor.getCount();  //记录总数
@@ -119,8 +119,9 @@ public class CourseTypeDao {
             while (cursor.moveToNext()) {
                 CourseType course = new CourseType();
 
-                course.setTypeId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId"))));
-                course.setTypeName(getCourseName(course.getTypeId()));
+                course.setTypeId(cursor.getInt(cursor.getColumnIndex("typeId")));
+                course.setTypeName(cursor.getString(cursor.getColumnIndex("typeName")));
+                course.setType(cursor.getString(cursor.getColumnIndex("type")));
                 courseList.add(course);
             }
             return courseList;
