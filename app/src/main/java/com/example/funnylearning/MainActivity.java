@@ -19,6 +19,7 @@ import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
+import com.example.funnylearning.data.DataCourseComment;
 import com.example.funnylearning.data.DataCourseType;
 import com.example.funnylearning.data.DataCourseVideo;
 import com.example.funnylearning.data.DataGame;
@@ -196,7 +197,10 @@ public class MainActivity extends AppCompatActivity {
 
         DataCourseVideo.start(this);
 
+        DataCourseComment.start(this);
+
         DataGame.start(this);
+
 
         /*DeliverGoodDao goodsDao = new DeliverGoodDao(this);
         goodsDao.open();

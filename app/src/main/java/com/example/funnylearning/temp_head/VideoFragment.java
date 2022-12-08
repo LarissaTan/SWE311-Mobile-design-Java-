@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.funnylearning.Bean.model.CourseVideo;
+import com.example.funnylearning.Bean.model.CourseVideoComment;
 import com.example.funnylearning.Database.CourseCommentDao;
 import com.example.funnylearning.Database.CourseLikeDao;
 import com.example.funnylearning.Database.CourseVideoDao;
@@ -26,6 +27,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VideoFragment extends Fragment {
 
@@ -125,5 +127,18 @@ public class VideoFragment extends Fragment {
         CourseCommentDao courseCommentDao = new CourseCommentDao(context);
         Integer numberOfComment = courseCommentDao.getCommentNumber(courseId);
         comment_no.setText(numberOfComment.toString());
+
+        ArrayList<CourseVideoComment> comments = courseCommentDao.getAllVideoComment(courseId);
+        commentList.clear();
+        for (int i=0; i<comments.size(); i++){
+            Date commentDate = comments.get(i).getDate();
+            Date currentDate = new Date(System.currentTimeMillis());
+            long difference = currentDate.getTime() - commentDate.getTime();
+            Date duration = new Date(difference);
+            if(duration.getYear()>0){
+
+            }
+
+        }
     }
 }
