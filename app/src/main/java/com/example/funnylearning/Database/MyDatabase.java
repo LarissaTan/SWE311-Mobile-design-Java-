@@ -32,7 +32,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     // course like: store the like for each video
     public static final String CREATE_COURSELIKE = "create table if not exists tb_CourseLike(courseId integer, userId integer, foreign key(courseId) references tb_Course(courseId), foreign key(userId) references tb_UserData(userId));";
     // game: to evaluate the child master the course or not
-    public static final String CREATE_GAME = "create table if not exists tb_Game(gameId integer primary key autoincrement, gameName varchar(50), typeId integer, level int, gamePicture int, link varchar(100), foreign key(typeId) references tb_CourseType(typeId));";
+    public static final String CREATE_GAME = "create table if not exists tb_Game(gameId integer primary key autoincrement, gameName varchar(50), typeId integer, level int, gamePicture int, link varchar(100), goal int, foreign key(typeId) references tb_CourseType(typeId));";
     // user game record: to store the record of the game for each user
     public static final String CREATE_USERGAMERECORD = "create table if not exists tb_UserGameRecord(date date, userId integer, gameId integer, score int, foreign key(userId) references tb_UserData(userId), foreign key(gameId) references tb_Game(gameId));";
     // user goal: record the goal set by the user

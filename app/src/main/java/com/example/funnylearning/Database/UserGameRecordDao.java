@@ -7,11 +7,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import com.example.funnylearning.Bean.model.Game;
 import com.example.funnylearning.Bean.model.UserGameRecord;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import io.getstream.chat.android.client.models.User;
 
 public class UserGameRecordDao {
 
@@ -75,6 +78,32 @@ public class UserGameRecordDao {
                 gameRecord.setScore(Integer.parseInt(cursor.getString(cursor.getColumnIndex("score"))));
             }
             return scoreList;
+        }
+    }
+
+    @SuppressLint("Range")
+    public UserGameRecord getRecordByTypeName(String typeName, int userId){
+        open();
+        UserGameRecord record = new UserGameRecord();
+        Cursor cursor = db.rawQuery
+                ("select * from tb_UserGameRecord where gameId in " +
+                        "(select gameId from tb_Game where typeId in " +
+                        "(select typeId from tb_CourseType where type = ? )) " +
+                        "and userId = " + userId +
+                        " order by date desc", new String[]{typeName});
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            if(cursor.moveToNext()) {
+                Date date = new Date(cursor.getLong(cursor.getColumnIndex("date")));
+                record.setDate(date);
+                record.setUserId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("userId"))));
+                record.setGameId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gameId"))));
+                record.setScore(Integer.parseInt(cursor.getString(cursor.getColumnIndex("score"))));
+            }
+            return record;
         }
     }
 }

@@ -82,7 +82,7 @@
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:rating="1"
+                    android:rating="5"
                     android:scaleX="0.8"
                     android:scaleY="0.8"
                     android:stepSize="0.01"

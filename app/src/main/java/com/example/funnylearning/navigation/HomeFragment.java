@@ -3,6 +3,7 @@ package com.example.funnylearning.navigation;
 import static androidx.databinding.DataBindingUtil.setContentView;
 import static com.github.mikephil.charting.utils.ColorTemplate.MATERIAL_COLORS;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,8 +19,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.funnylearning.Bean.model.CourseType;
+import com.example.funnylearning.Bean.model.UserGameRecord;
 import com.example.funnylearning.ChatActivity;
+import com.example.funnylearning.Database.CourseTypeDao;
+import com.example.funnylearning.Database.GameDao;
+import com.example.funnylearning.Database.UserGameRecordDao;
 import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
@@ -74,6 +81,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
     public String tag = "0";
     @Override
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -85,9 +93,58 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
         /******************************************************************************************************/
         CircularProgressBar circularProgressBar = view.findViewById(R.id.home_math_progressBar);
+        TextView math_score = view.findViewById(R.id.home_math_score);
+        TextView math_title = view.findViewById(R.id.home_math_title);
 
-        circularProgressBar.setProgress(80f);
-        circularProgressBar.setProgressMax(100f);
+        Integer score;
+        int gameId, typeId, goal;
+        String courseName = null;
+        int userId = getArguments().getInt("userId");
+
+        UserGameRecordDao userGameRecordDao = new UserGameRecordDao(view.getContext());
+        userGameRecordDao.open();
+        GameDao gameDao = new GameDao(view.getContext());
+        gameDao.open();
+        CourseTypeDao courseTypeDao = new CourseTypeDao(view.getContext());
+        courseTypeDao.open();
+
+        UserGameRecord recordMath = userGameRecordDao.getRecordByTypeName("Math", userId);
+
+        if(recordMath == null)
+        {
+            math_score.setText("0");
+            math_title.setText("Math Goals");
+            circularProgressBar.setProgress(0f);
+            circularProgressBar.setProgressMax(100f);
+
+        }else {
+            score = recordMath.getScore();
+            gameId = recordMath.getGameId();
+
+            typeId = gameDao.getTypeId(gameId);
+            goal = gameDao.getGoal(gameId);
+
+            if(typeId != -1)
+            {
+                courseName = courseTypeDao.getCourseName(typeId);
+            }else
+            {
+                Toast.makeText(view.getContext(), "get typeId fail", Toast.LENGTH_SHORT).show();
+            }
+
+
+            math_score.setText(score.toString());
+            math_title.setText(courseName);
+            circularProgressBar.setProgressMax((float) goal);
+            if(score < goal)
+            {
+                circularProgressBar.setProgress((float) score);
+            }else{
+                circularProgressBar.setProgress((float) goal);
+            }
+        }
+
+
 
         // Set Width
         circularProgressBar.setProgressBarWidth(7f); // in DP
@@ -99,9 +156,44 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         circularProgressBar.setProgressDirection(CircularProgressBar.ProgressDirection.TO_LEFT);
 
     /******************************************************************************************************/
+
         CircularProgressBar circularProgressBarEnglish = view.findViewById(R.id.home_english_progressBar);
-        circularProgressBarEnglish.setProgress(76f);
-        circularProgressBarEnglish.setProgressMax(100f);
+        TextView reading_score = view.findViewById(R.id.home_english_score);
+        TextView reading_title = view.findViewById(R.id.home_english_title);
+
+        UserGameRecord recordReading = userGameRecordDao.getRecordByTypeName("Reading", userId);
+        if(recordReading == null)
+        {
+            reading_score.setText("0");
+            reading_title.setText("English Goals");
+            circularProgressBarEnglish.setProgress(0f);
+            circularProgressBarEnglish.setProgressMax(100f);
+        }else{
+            score = recordReading.getScore();
+            gameId = recordReading.getGameId();
+
+            typeId = gameDao.getTypeId(gameId);
+            goal = gameDao.getGoal(gameId);
+
+            if(typeId != -1)
+            {
+                courseName = courseTypeDao.getCourseName(typeId);
+            }else
+            {
+                Toast.makeText(view.getContext(), "get typeId fail", Toast.LENGTH_SHORT).show();
+            }
+
+            reading_score.setText(score.toString());
+            reading_title.setText(courseName);
+            circularProgressBarEnglish.setProgressMax((float) goal);
+            if(score < goal)
+            {
+                circularProgressBarEnglish.setProgress((float) score);
+            }else{
+                circularProgressBarEnglish.setProgress((float) goal);
+            }
+        }
+
 
         // Set Width
         circularProgressBarEnglish.setProgressBarWidth(7f); // in DP

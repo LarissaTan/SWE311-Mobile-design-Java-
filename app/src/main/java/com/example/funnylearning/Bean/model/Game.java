@@ -8,6 +8,7 @@ public class Game {
         private int rating;
         private int image;
         private String link;
+        private int goal;
 
         public int getId() {
             return id;
@@ -57,5 +58,11 @@ public class Game {
             this.link = link;
         }
 
+        public int getGoal() {
+            return goal;
+        }
 
+        public void setGoal(int goal) {
+            this.goal = goal;
+        }
 }

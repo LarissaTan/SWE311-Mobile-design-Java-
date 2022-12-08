@@ -49,6 +49,7 @@ public class GameDao {
             values.put("level",game.getRating());
             values.put("gamePicture",game.getImage());
             values.put("link", game.getLink());
+            values.put("goal", game.getGoal());
 
             long result = db.insert("tb_Game",null,values);
 
@@ -88,6 +89,7 @@ public class GameDao {
                 game.setRating(Integer.parseInt(cursor.getString(cursor.getColumnIndex("level"))));
                 game.setImage(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gamePicture"))));
                 game.setLink(cursor.getString(cursor.getColumnIndex("link")));
+                game.setGoal(Integer.parseInt(cursor.getString(cursor.getColumnIndex("goal"))));
                 gameList.add(game);
             }
             return gameList;
@@ -112,9 +114,40 @@ public class GameDao {
                 game.setRating(Integer.parseInt(cursor.getString(cursor.getColumnIndex("level"))));
                 game.setImage(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gamePicture"))));
                 game.setLink(cursor.getString(cursor.getColumnIndex("link")));
+                game.setGoal(Integer.parseInt(cursor.getString(cursor.getColumnIndex("goal"))));
                 gameList.add(game);
             }
             return gameList;
+        }
+    }
+
+    @SuppressLint("Range")
+    public int getTypeId (int gameId){
+        open();
+        Cursor cursor = db.rawQuery("select typeId from tb_Game where gameId = " + gameId, new String[] {});
+        if(cursor.getCount() == 0)
+            return -1;
+        else {
+            if(cursor.moveToNext()){
+                return Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId")));
+            }else {
+                return -1;
+            }
+        }
+    }
+
+    @SuppressLint("Range")
+    public int getGoal (int gameId){
+        open();
+        Cursor cursor = db.rawQuery("select goal from tb_Game where gameId = " + gameId, new String[] {});
+        if(cursor.getCount() == 0)
+            return -1;
+        else {
+            if(cursor.moveToNext()){
+                return Integer.parseInt(cursor.getString(cursor.getColumnIndex("goal")));
+            }else {
+                return -1;
+            }
         }
     }
 

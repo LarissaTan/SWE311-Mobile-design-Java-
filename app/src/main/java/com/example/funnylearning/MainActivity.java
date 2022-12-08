@@ -22,6 +22,7 @@ import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.data.DataCourseComment;
 import com.example.funnylearning.data.DataCourseType;
 import com.example.funnylearning.data.DataCourseVideo;
+import com.example.funnylearning.data.DataDeliverGood;
 import com.example.funnylearning.data.DataGame;
 import com.example.funnylearning.data.DataUserAccount;
 import com.example.funnylearning.data.DataUserData;
@@ -201,18 +202,6 @@ public class MainActivity extends AppCompatActivity {
 
         DataGame.start(this);
 
-
-        /*DeliverGoodDao goodsDao = new DeliverGoodDao(this);
-        goodsDao.open();
-        DeliverGoodBean d = new DeliverGoodBean();
-
-        d.id = 1;
-        d.word = "bee";
-        d.correctUrl=R.drawable.read_level_2;
-        d.wrong1Url=R.drawable.read_level_1;
-        d.wrong2Url=R.drawable.read_level_3;
-        d.audio=R.raw.bee;
-
-        long test = goodsDao.insertDeliverGood(d);*/
+        DataDeliverGood.start(this);
     }
 }
