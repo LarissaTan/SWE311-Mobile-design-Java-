@@ -37,6 +37,7 @@ public class CourseLikeDao {
     }
 
     public Boolean insertLike(int userId, int courseId){
+        open();
         ContentValues contentValues = new ContentValues();
         contentValues.put("userId", userId);
         contentValues.put("courseId",courseId);
@@ -47,6 +48,7 @@ public class CourseLikeDao {
     }
 
     public Boolean deleteLike(int userId, int courseId){
+        open();
         ContentValues contentValues = new ContentValues();
         long result = db.delete("tb_CourseLike", " userId = " + userId + " and courseId = " + courseId, null);
         if (result == -1) return false;
@@ -55,6 +57,7 @@ public class CourseLikeDao {
     }
 
     public Boolean checkLike(int userId, int courseId){
+        open();
         Cursor cursor = db.rawQuery("select * from tb_CourseLike where userId = " + userId + " and courseId = " + courseId, null);
         if(cursor.getCount()>0){
             return true;

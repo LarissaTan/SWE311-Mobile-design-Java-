@@ -1,7 +1,7 @@
 package com.example.funnylearning.temp_head;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +17,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.funnylearning.Bean.model.CourseVideo;
 import com.example.funnylearning.Bean.model.CourseVideoComment;
 import com.example.funnylearning.Bean.model.UserData;
 import com.example.funnylearning.Database.CourseCommentDao;
@@ -43,6 +42,8 @@ public class VideoFragment extends Fragment {
     private TextView comment_no;
     private EditText commentInput;
     private ImageButton btn_enter;
+    private ImageButton btn_like;
+    private  Boolean userLike;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -68,9 +69,12 @@ public class VideoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
+        CourseLikeDao courseLikeDao = new CourseLikeDao(view.getContext());
+
         Integer userId = getArguments().getInt("userId");
         Integer courseId = getArguments().getInt("courseId");
         String videoId = getArguments().getString("videoId");
+        userLike = courseLikeDao.checkLike(userId,courseId);
 
         view_no = view.findViewById(R.id.video_text_view);
         like_no = view.findViewById(R.id.video_text_like);
@@ -80,6 +84,13 @@ public class VideoFragment extends Fragment {
 
         commentInput = view.findViewById(R.id.video_edittext_comment);
         btn_enter = view.findViewById(R.id.video_edittext_comment_button);
+        btn_like = view.findViewById(R.id.video_image_like);
+
+        if(userLike){
+            btn_like.setBackgroundResource(R.drawable.video_like_icon);
+        }else {
+            btn_like.setBackgroundResource(R.drawable.video_like_blank_icon);
+        }
 
         updateViewNumber(view.getContext(), courseId);
         updateLikeNumber(view.getContext(), courseId);
@@ -117,6 +128,21 @@ public class VideoFragment extends Fragment {
             }
         });
 
+        btn_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!userLike){
+                    btn_like.setBackgroundResource(R.drawable.video_like_icon);
+                    courseLikeDao.insertLike(userId,courseId);
+                    userLike = true;
+                }else {
+                    btn_like.setBackgroundResource(R.drawable.video_like_blank_icon);
+                    courseLikeDao.deleteLike(userId,courseId);
+                    userLike = false;
+                }
+                updateLikeNumber(view.getContext(), courseId);
+            }
+        });
 
         return view;
     }
@@ -146,24 +172,26 @@ public class VideoFragment extends Fragment {
 
         ArrayList<CourseVideoComment> comments = courseCommentDao.getAllVideoComment(courseId);
         commentList.clear();
-        for (int i=0; i<comments.size(); i++){
-            // get and set duration
-            Date commentDate = comments.get(i).getDate();
-            Date currentDate = new Date(System.currentTimeMillis());
-            System.out.println("comment_date" + commentDate);
-            System.out.println("current_date" + currentDate);
-            long duration = currentDate.getTime() - commentDate.getTime();
-            String textDuration = changeDurationText(duration);
+        if(comments != null){
+            for (int i=0; i<comments.size(); i++){
+                // get and set duration
+                Date commentDate = comments.get(i).getDate();
+                Date currentDate = new Date(System.currentTimeMillis());
+                System.out.println("comment_date" + commentDate);
+                System.out.println("current_date" + currentDate);
+                long duration = currentDate.getTime() - commentDate.getTime();
+                String textDuration = changeDurationText(duration);
 
-            // set user data
-            UserData userData = new UserData();
-            userData = userDataDao.getUserData(comments.get(i).getUserId());
-            String userName = new String();
-            userName = userData.getName();
-            int profile = userData.getProfilePicture();
+                // set user data
+                UserData userData = new UserData();
+                userData = userDataDao.getUserData(comments.get(i).getUserId());
+                String userName = new String();
+                userName = userData.getName();
+                int profile = userData.getProfilePicture();
 
-            // add to list
-            commentList.add(new model_comment(profile, userName, textDuration, comments.get(i).getComment()));
+                // add to list
+                commentList.add(new model_comment(profile, userName, textDuration, comments.get(i).getComment()));
+            }
         }
 
         System.out.println("message is working");
