@@ -54,6 +54,7 @@ public class adapter_game extends RecyclerView.Adapter<adapter_game.ViewHolder>{
                 }
 
                 Intent it = new Intent(view.getContext(), cl);
+                it.putExtra("userId",list.userId);
                 it.putExtra("gameId",list.gameId);
                 view.getContext().startActivity(it);
             }

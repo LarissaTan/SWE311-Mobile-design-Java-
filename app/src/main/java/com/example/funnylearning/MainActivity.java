@@ -20,6 +20,7 @@ import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.data.DataCourseVideo;
+import com.example.funnylearning.data.DataGame;
 import com.example.funnylearning.others.other;
 
 import java.sql.Time;
@@ -233,6 +234,16 @@ public class MainActivity extends AppCompatActivity {
 
         courseTmp = courseTypeDao.insertCourseType(course);
 
+        course.setTypeName("Learn the Basic Math");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
+        course.setTypeName("Addition within Twenty");
+        course.setType("Math");
+
+        courseTmp = courseTypeDao.insertCourseType(course);
+
         UserDao userDao = new UserDao(this);
         userDao.open();
 
@@ -251,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
         courseTmp = userDataDao.updateLearningGoal(time, 1);
 
         DataCourseVideo.start(this);
+
+        DataGame.start(this);
 
         /*DeliverGoodDao goodsDao = new DeliverGoodDao(this);
         goodsDao.open();

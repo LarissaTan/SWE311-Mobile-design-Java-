@@ -1,5 +1,6 @@
 package com.example.funnylearning.Database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -84,6 +85,43 @@ public class UserGoalLevelDao {
                 return true;
         }else{
             return false;
+        }
+    }
+
+    @SuppressLint("Range")
+    public Boolean updateLevel (int userId, int gameId){
+        open();
+        Cursor cursor = db.rawQuery("select typeId from tb_Game where gameId = " + gameId,null);
+        int typeId = 0;
+
+        if(cursor.getCount()==0)
+            return false;
+        else
+        {
+            if(cursor.moveToNext())
+            {
+                typeId = cursor.getInt(cursor.getColumnIndex("typeId"));
+            }else {
+                return false;
+            }
+
+            if(!checkGoalLevel(userId, typeId)){
+                UserLevel level = new UserLevel();
+                level.setUserId(userId);
+                level.setTypeId(typeId);
+                insertLevel(level);
+                return true;
+            }
+            else
+            {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("achievement", true);
+                long result = db.update
+                        ("tb_UserGoalLevel",contentValues,
+                                "userId = " + userId + " and typeId = " + typeId, null);
+
+                return result != -1;
+            }
         }
     }
 }

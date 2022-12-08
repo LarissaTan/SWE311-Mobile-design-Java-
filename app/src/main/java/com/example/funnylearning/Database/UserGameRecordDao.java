@@ -7,11 +7,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import com.example.funnylearning.Bean.GameBean;
-import com.example.funnylearning.Bean.model.CourseType;
 import com.example.funnylearning.Bean.model.UserGameRecord;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class UserGameRecordDao {
 
@@ -40,13 +40,12 @@ public class UserGameRecordDao {
 
     public Boolean insertScore(UserGameRecord gameRecord){
 
-        if(!checkRecord(gameRecord.getUserId(), gameRecord.getGameId()))
-        {
             open();
             ContentValues values = new ContentValues();
-
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            values.put("date", dateFormat.format(gameRecord.getDate()));
             values.put("userId", gameRecord.getUserId());
-            values.put("typeId", gameRecord.getGameId());
+            values.put("gameId", gameRecord.getGameId());
             values.put("score",gameRecord.getScore());
 
             long result = db.insert("tb_UserGameRecord",null,values);
@@ -55,19 +54,6 @@ public class UserGameRecordDao {
                 return false;
             else
                 return true;
-        }else{
-            return false;
-        }
-
-    }
-
-    public Boolean checkRecord(int uId, int gId){
-        open();
-        Cursor cursor = db.rawQuery("select * from tb_UserGameRecord where userId = " + uId + " and gameId = " + gId, new String[] {});
-        if(cursor.getCount()>0)
-            return true;
-        else
-            return false;
     }
 
     @SuppressLint("Range")
@@ -82,6 +68,8 @@ public class UserGameRecordDao {
         } else {
             while (cursor.moveToNext()) {
                 UserGameRecord gameRecord = new UserGameRecord();
+                Date date = new Date(cursor.getLong(cursor.getColumnIndex("date")));
+                gameRecord.setDate(date);
                 gameRecord.setUserId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("userId"))));
                 gameRecord.setGameId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gameId"))));
                 gameRecord.setScore(Integer.parseInt(cursor.getString(cursor.getColumnIndex("score"))));

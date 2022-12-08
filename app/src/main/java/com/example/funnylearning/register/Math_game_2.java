@@ -20,11 +20,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.funnylearning.Bean.model.UserGameRecord;
+import com.example.funnylearning.Database.UserGameRecordDao;
+import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class Math_game_2 extends AppCompatActivity {
@@ -63,6 +68,7 @@ public class Math_game_2 extends AppCompatActivity {
     ArrayList<Integer> answers = new ArrayList<Integer>();
     int points = 0;
     int progress = 0;
+    int achievement = 80;
 
     Animation scaleUp,scaleDown;
 
@@ -72,11 +78,22 @@ public class Math_game_2 extends AppCompatActivity {
     MediaPlayer mp_countdown = new MediaPlayer();
     MediaPlayer mp_game_over = new MediaPlayer();
 
+    int userId = 0;
+    int gameId = 0;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_game2);
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            userId = extra.getInt("userId");
+            gameId = extra.getInt("gameId");
+        }else{
+            Toast.makeText(this, "Id not passed", Toast.LENGTH_SHORT).show();
+        }
 
         scoreTextView = findViewById(R.id.scoreTextView);
         timeLeftTextView = findViewById(R.id.timeLeftTextView);
@@ -428,6 +445,7 @@ public class Math_game_2 extends AppCompatActivity {
             @Override
             public void onFinish() {
                 finalScoreTextView.setText(Integer.toString(points));
+                insertDatabase(points);
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -439,6 +457,30 @@ public class Math_game_2 extends AppCompatActivity {
             }
 
         }.start();
+    }
+
+    public void insertDatabase (int score){
+
+        UserGameRecord userGameRecord =  new UserGameRecord();
+        Date date = new Date(System.currentTimeMillis());
+
+        UserGameRecordDao userGameRecordDao = new UserGameRecordDao(this);
+        userGameRecordDao.open();
+
+        userGameRecord.setDate(date);
+        userGameRecord.setUserId(userId);
+        userGameRecord.setGameId(gameId);
+        userGameRecord.setScore(points);
+        userGameRecordDao.insertScore(userGameRecord);
+
+
+        if(points >= achievement)
+        {
+            UserGoalLevelDao userGoalLevelDao = new UserGoalLevelDao(this);
+            userGoalLevelDao.open();
+
+            userGoalLevelDao.updateLevel(userId,gameId);
+        }
     }
 
     @Override

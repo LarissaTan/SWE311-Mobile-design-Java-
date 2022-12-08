@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
-import com.example.funnylearning.Bean.FindWordsBean;
-import com.example.funnylearning.Bean.GameBean;
+import com.example.funnylearning.Bean.model.Game;
+import com.example.funnylearning.Bean.model.UserGameRecord;
 
 import java.util.ArrayList;
 
@@ -37,31 +37,43 @@ public class GameDao {
         }
     }
 
-    public long insertGame(GameBean temp){
-        ContentValues values = new ContentValues();
+    public boolean insertGame(Game game){
 
-        if(isExist(temp.name)){
-            return -1;
+        if(!checkGame(game.getName()))
+        {
+            open();
+            ContentValues values = new ContentValues();
+
+            values.put("gameName",game.getName());
+            values.put("typeId",game.getTypeId());
+            values.put("level",game.getRating());
+            values.put("gamePicture",game.getImage());
+            values.put("link", game.getLink());
+
+            long result = db.insert("tb_Game",null,values);
+
+            if (result == -1)
+                return false;
+            else
+                return true;
         }
 
-        values.put("name",temp.name);
-        values.put("typeId",temp.typeId);
-        values.put("rating",temp.rating);
-        values.put("image",temp.image);
-        values.put("link",temp.link);
-
-        long tmp = db.insert("tb_Game",null,values);
-        return tmp;
+        return false;
     }
 
-    public Boolean isExist(String tmp){
-        Cursor cursor = db.query("tb_Game", null,"name=?", new String[]{tmp},null,null,null);
-        return cursor.moveToNext();
+    public Boolean checkGame(String name){
+        open();
+        Cursor cursor = db.rawQuery("select * from tb_Game where gameName = ? " , new String[] {name});
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
     }
 
     @SuppressLint("Range")
-    public ArrayList<GameBean> getAllGames() {
-        ArrayList<GameBean> games = new ArrayList<GameBean>();
+    public ArrayList<Game> getAllGame(){
+        open();
+        ArrayList<Game> gameList = new ArrayList<Game>();
         Cursor cursor = db.query("tb_Game", null, null, null, null, null,null);
 
         int resultCounts = cursor.getCount();  //记录总数
@@ -69,17 +81,41 @@ public class GameDao {
             return null;
         } else {
             while (cursor.moveToNext()) {
-                GameBean g = new GameBean();
-                g.id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
-                g.name = cursor.getString(cursor.getColumnIndex("name"));
-                g.typeId = Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId")));
-                g.rating = Integer.parseInt(cursor.getString(cursor.getColumnIndex("rating")));
-                g.image = Integer.parseInt(cursor.getString(cursor.getColumnIndex("image")));
-                g.link = cursor.getString(cursor.getColumnIndex("link"));
-
-                games.add(g);
+                Game game = new Game();
+                game.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gameId"))));
+                game.setName(cursor.getString(cursor.getColumnIndex("gameName")));
+                game.setTypeId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId"))));
+                game.setRating(Integer.parseInt(cursor.getString(cursor.getColumnIndex("level"))));
+                game.setImage(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gamePicture"))));
+                game.setLink(cursor.getString(cursor.getColumnIndex("link")));
+                gameList.add(game);
             }
-            return games;
+            return gameList;
         }
     }
+
+    @SuppressLint("Range")
+    public ArrayList<Game> getGameByTypeName(String typeName){
+        open();
+        ArrayList<Game> gameList = new ArrayList<Game>();
+        Cursor cursor = db.rawQuery("select * from tb_Game where typeId in (select typeId from tb_CourseType where type = ? )", new String[]{typeName});
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                Game game = new Game();
+                game.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gameId"))));
+                game.setName(cursor.getString(cursor.getColumnIndex("gameName")));
+                game.setTypeId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("typeId"))));
+                game.setRating(Integer.parseInt(cursor.getString(cursor.getColumnIndex("level"))));
+                game.setImage(Integer.parseInt(cursor.getString(cursor.getColumnIndex("gamePicture"))));
+                game.setLink(cursor.getString(cursor.getColumnIndex("link")));
+                gameList.add(game);
+            }
+            return gameList;
+        }
+    }
+
 }

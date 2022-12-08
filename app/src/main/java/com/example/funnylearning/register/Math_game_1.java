@@ -16,19 +16,25 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.funnylearning.Bean.model.UserGameRecord;
+import com.example.funnylearning.Database.UserGameRecordDao;
+import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.MathLevel;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.math_level.adapter_math_level;
 import com.example.funnylearning.recycle.math_level.model_math_level;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 
 public class Math_game_1 extends AppCompatActivity {
@@ -59,6 +65,7 @@ public class Math_game_1 extends AppCompatActivity {
     int points = 0;
     int rounds = 10;
     int progress = 0;
+    int achievement = 90;
 
     Animation scaleUp,scaleDown;
 
@@ -68,11 +75,24 @@ public class Math_game_1 extends AppCompatActivity {
     MediaPlayer mp_countdown = new MediaPlayer();
     MediaPlayer mp_game_over = new MediaPlayer();
 
+    int userId = 0;
+    int gameId = 0;
+
     @SuppressLint("ClickableViewAccessibility")
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_game1);
+
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            userId = extra.getInt("userId");
+            gameId = extra.getInt("gameId");
+        }else{
+            Toast.makeText(this, "Id not passed", Toast.LENGTH_SHORT).show();
+        }
+        System.out.println("userid: " + userId);
+        System.out.println("gameid" + gameId);
 
         scoreTextView = findViewById(R.id.scoreTextView);
         roundsLeftTextView = findViewById(R.id.roundsLeftTextView);
@@ -419,6 +439,27 @@ public class Math_game_1 extends AppCompatActivity {
         finalScoreTextView.setText(Integer.toString(points));
         normalUI.setVisibility(View.INVISIBLE);
         finalUI.setVisibility(View.VISIBLE);
+
+        UserGameRecord userGameRecord =  new UserGameRecord();
+        Date date = new Date(System.currentTimeMillis());
+
+        UserGameRecordDao userGameRecordDao = new UserGameRecordDao(this);
+        userGameRecordDao.open();
+
+        userGameRecord.setDate(date);
+        userGameRecord.setUserId(userId);
+        userGameRecord.setGameId(gameId);
+        userGameRecord.setScore(points);
+        userGameRecordDao.insertScore(userGameRecord);
+
+
+        if(points >= achievement)
+        {
+            UserGoalLevelDao userGoalLevelDao = new UserGoalLevelDao(this);
+            userGoalLevelDao.open();
+
+            userGoalLevelDao.updateLevel(userId,gameId);
+        }
     }
 
     @SuppressLint("SetTextI18n")

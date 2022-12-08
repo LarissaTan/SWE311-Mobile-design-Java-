@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.example.funnylearning.Bean.model.CourseVideo;
+import com.example.funnylearning.Bean.model.Game;
 import com.example.funnylearning.Database.CourseVideoDao;
+import com.example.funnylearning.Database.GameDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.course_video.adapter_course_video;
@@ -117,9 +119,19 @@ public class ReadingFragment extends Fragment {
             courseList.add(new model_course_video(userId, videoList.get(i).getCourseId(),videoList.get(i).getVideoId(), videoList.get(i).getCoursePicture(),videoList.get(i).getCourseName(),videoList.get(i).getLevel(),10));
         }
 
+        GameDao gameDao = new GameDao(view.getContext());
+        gameDao.open();
+
+        ArrayList<Game> games = new ArrayList<>();
+        games = gameDao.getGameByTypeName("Reading");
+
         gameList.clear();
-        gameList.add(new model_game(3,"com.example.funnylearning.register.Reading_game_2", R.drawable.read_boy,"Find the words",1));
-        gameList.add(new model_game(4,"com.example.funnylearning.register.Reading_game_1",R.drawable.read_car, "Deliver the goods", 4));
+        for (int i = 0; i < games.size(); i++){
+            System.out.println(games.get(i).getName());
+            gameList.add
+                    (new model_game(userId, games.get(i).getId(), games.get(i).getName(),
+                            games.get(i).getImage(),games.get(i).getRating(),games.get(i).getLink()));
+        }
 
         adapter_course_video adapter = new adapter_course_video(courseList);
         adapter.notifyDataSetChanged();
