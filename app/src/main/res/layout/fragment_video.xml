@@ -151,6 +151,7 @@
             android:layout_margin="15dp">
 
             <EditText
+                android:id="@+id/video_edittext_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -162,6 +163,7 @@
         </androidx.cardview.widget.CardView>
 
         <ImageButton
+            android:id="@+id/video_edittext_comment_button"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center"

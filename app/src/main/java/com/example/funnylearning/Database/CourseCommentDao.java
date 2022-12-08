@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 
 import com.example.funnylearning.Bean.model.CourseVideoComment;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,11 +66,17 @@ public class CourseCommentDao {
             return null;
         } else {
             while (cursor.moveToNext()) {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 CourseVideoComment courseVideoComment = new CourseVideoComment();
                 courseVideoComment.setUserId(cursor.getInt(cursor.getColumnIndex("userId")));
                 courseVideoComment.setCourseId(cursor.getInt(cursor.getColumnIndex("courseId")));
                 courseVideoComment.setComment(cursor.getString(cursor.getColumnIndex("comment")));
-                Date date = new Date(cursor.getLong(cursor.getColumnIndex("time")));
+                Date date = null;
+                try {
+                    date = dateFormat.parse(cursor.getString(cursor.getColumnIndex("time")));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 courseVideoComment.setDate(date);
 
                 comments.add(courseVideoComment);

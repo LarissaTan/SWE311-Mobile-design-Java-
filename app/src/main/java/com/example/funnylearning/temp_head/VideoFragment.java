@@ -12,13 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.funnylearning.Bean.model.CourseVideo;
 import com.example.funnylearning.Bean.model.CourseVideoComment;
+import com.example.funnylearning.Bean.model.UserData;
 import com.example.funnylearning.Database.CourseCommentDao;
 import com.example.funnylearning.Database.CourseLikeDao;
 import com.example.funnylearning.Database.CourseVideoDao;
+import com.example.funnylearning.Database.UserDataDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.comment.adapter_comment;
 import com.example.funnylearning.recycle.comment.model_comment;
@@ -36,6 +41,8 @@ public class VideoFragment extends Fragment {
     private TextView view_no;
     private TextView like_no;
     private TextView comment_no;
+    private EditText commentInput;
+    private ImageButton btn_enter;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -58,17 +65,6 @@ public class VideoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        int profile1 = R.drawable.video_comment_picture1;
-        String name1 = "Eugene Rodriquez";
-        String duration1 = "2 hours ago";
-        String comment1 = "This video is easy for my child to learn. She understand a lot. And it motivates her to continue learning.";
-
-        int profile2 = R.drawable.video_comment_picture2;
-        String name2 = "Mabel Hansen";
-        String duration2 = "3 hours ago";
-        String comment2 = "My boy can fully follow up the video. He likes the voice of the lecturer. Hope more lectures can be added.";
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_video, container, false);
 
@@ -79,6 +75,11 @@ public class VideoFragment extends Fragment {
         view_no = view.findViewById(R.id.video_text_view);
         like_no = view.findViewById(R.id.video_text_like);
         comment_no = view.findViewById(R.id.video_text_comment);
+
+        cmtList = (RecyclerView) view.findViewById(R.id.recyclerview_video_comments);
+
+        commentInput = view.findViewById(R.id.video_edittext_comment);
+        btn_enter = view.findViewById(R.id.video_edittext_comment_button);
 
         updateViewNumber(view.getContext(), courseId);
         updateLikeNumber(view.getContext(), courseId);
@@ -94,18 +95,28 @@ public class VideoFragment extends Fragment {
             }
         });
 
-        cmtList = (RecyclerView) view.findViewById(R.id.recyclerview_video_comments);
+        btn_enter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String comment = new String();
+                comment = commentInput.getText().toString();
+                if(comment == ""){
+                    Toast.makeText(view.getContext(), "Please enter comment to submit!", Toast.LENGTH_SHORT).show();
+                }else {
+                    CourseVideoComment courseVideoComment = new CourseVideoComment();
+                    Date currentDate = new Date(System.currentTimeMillis());
+                    courseVideoComment.setUserId(userId);
+                    courseVideoComment.setCourseId(courseId);
+                    courseVideoComment.setComment(comment);
+                    courseVideoComment.setDate(currentDate);
 
-        commentList.clear();
-        System.out.println("message is working");
-        commentList.add(new model_comment(profile1, name1, duration1, comment1));
-        commentList.add(new model_comment(profile2, name2, duration2, comment2));
+                    insertComment(view.getContext(), courseVideoComment);
+                    updateCommentNumber(view.getContext(), courseId);
+                    commentInput.setText(null);
+                }
+            }
+        });
 
-        System.out.println("message is working");
-        cmtList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        adapter_comment customAdapterComment = new adapter_comment(commentList);
-        System.out.println("layout manager is working");
-        cmtList.setAdapter(customAdapterComment);
 
         return view;
     }
@@ -125,20 +136,104 @@ public class VideoFragment extends Fragment {
 
     private void updateCommentNumber(Context context, int courseId){
         CourseCommentDao courseCommentDao = new CourseCommentDao(context);
+        courseCommentDao.open();
+
         Integer numberOfComment = courseCommentDao.getCommentNumber(courseId);
         comment_no.setText(numberOfComment.toString());
+
+        UserDataDao userDataDao = new UserDataDao(context);
+        userDataDao.open();
 
         ArrayList<CourseVideoComment> comments = courseCommentDao.getAllVideoComment(courseId);
         commentList.clear();
         for (int i=0; i<comments.size(); i++){
+            // get and set duration
             Date commentDate = comments.get(i).getDate();
             Date currentDate = new Date(System.currentTimeMillis());
-            long difference = currentDate.getTime() - commentDate.getTime();
-            Date duration = new Date(difference);
-            if(duration.getYear()>0){
+            System.out.println("comment_date" + commentDate);
+            System.out.println("current_date" + currentDate);
+            long duration = currentDate.getTime() - commentDate.getTime();
+            String textDuration = changeDurationText(duration);
 
-            }
+            // set user data
+            UserData userData = new UserData();
+            userData = userDataDao.getUserData(comments.get(i).getUserId());
+            String userName = new String();
+            userName = userData.getName();
+            int profile = userData.getProfilePicture();
 
+            // add to list
+            commentList.add(new model_comment(profile, userName, textDuration, comments.get(i).getComment()));
         }
+
+        System.out.println("message is working");
+        cmtList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
+        adapter_comment customAdapterComment = new adapter_comment(commentList);
+        System.out.println("layout manager is working");
+        cmtList.setAdapter(customAdapterComment);
+    }
+
+    private String changeDurationText(long duration){
+        String textDuration = new String();
+        long difference_in_year = duration / (1000L * 60 * 60 * 24 * 365);
+        if(difference_in_year>0){
+            if(difference_in_year == 1){
+                textDuration = difference_in_year + " year ago";
+            }else {
+                textDuration = difference_in_year + " years ago";
+            }
+        }else {
+            long difference_in_month = (duration / (1000L * 60 * 60 * 24 * (365 /12))) % 12;
+            if(difference_in_month>0) {
+                if (difference_in_month == 1) {
+                    textDuration = difference_in_month + " month ago";
+                } else {
+                    textDuration = difference_in_month + " months ago";
+                }
+            }else {
+                long difference_in_day = (duration / (1000 * 60 * 60 * 24)) % 31;
+                if(difference_in_day>0) {
+                    if (difference_in_day == 1) {
+                        textDuration = difference_in_day + " day ago";
+                    } else {
+                        textDuration = difference_in_day + " days ago";
+                    }
+                }else {
+                    long difference_in_hour = (duration / (1000 * 60 * 60)) % 24;
+                    if(difference_in_hour>0) {
+                        if (difference_in_hour == 1) {
+                            textDuration = difference_in_hour + " hour ago";
+                        } else {
+                            textDuration = difference_in_hour + " hours ago";
+                        }
+                    }else {
+                        long difference_in_minute = (duration / (1000 * 60)) % 60;
+                        if(difference_in_minute>0) {
+                            if (difference_in_minute == 1) {
+                                textDuration = difference_in_minute + " minute ago";
+                            } else {
+                                textDuration = difference_in_minute + " minutes ago";
+                            }
+                        }else{
+                            long difference_in_second = (duration / 1000) % 60;
+                            if(difference_in_second>=0) {
+                                if (difference_in_second <= 1) {
+                                    textDuration = difference_in_second + " second ago";
+                                } else {
+                                    textDuration = difference_in_second + " seconds ago";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return textDuration;
+    }
+
+    private void insertComment(Context context, CourseVideoComment courseVideoComment){
+        CourseCommentDao courseCommentDao = new CourseCommentDao(context);
+        courseCommentDao.open();
+        courseCommentDao.insertComment(courseVideoComment);
     }
 }
