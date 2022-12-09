@@ -14,15 +14,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.funnylearning.Bean.DayRecordBean;
+import com.example.funnylearning.ChoosePhoto;
 import com.example.funnylearning.Database.UserDayRecordDao;
+import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
+import com.example.funnylearning.TimeSetting;
 import com.example.funnylearning.recycle.activities.adapter_activities;
 import com.example.funnylearning.recycle.activities.model_activities;
 import com.example.funnylearning.recycle.mood.adapter_mood;
 import com.example.funnylearning.recycle.mood.model_mood;
 import com.example.funnylearning.recycle.weather.adapter_weather;
 import com.example.funnylearning.recycle.weather.model_weather;
+import com.example.funnylearning.register.Math_game_1;
 import com.shawnlin.numberpicker.NumberPicker;
 
 import java.time.LocalDate;
@@ -136,6 +140,7 @@ public class RecordFragment extends Fragment {
             public void onClick(View v) {
                 int tmp_time = time.getValue();
                 dao.changeTime(tmp_time, 1);
+                getActivity().finish();
             }
         });
 
@@ -143,7 +148,11 @@ public class RecordFragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                LocalDate date = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                String tmp = date.format(formatter);
+                dao.deleteRecord(1, tmp);
+                getActivity().finish();
             }
         });
 

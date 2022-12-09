@@ -36,7 +36,7 @@ public class MathLevel extends AppCompatActivity {
         ToggleButton mathlvl1, mathlvl2, mathlvl3, mathlvl4;
         Button btn;
 
-        btn = findViewById(R.id.math_level_btn1);
+        btn = findViewById(R.id.math_level_btn_cont);
         mathlvl1 = findViewById(R.id.math_level_tbtn1);
         mathlvl2 = findViewById(R.id.math_level_tbtn2);
         mathlvl3 = findViewById(R.id.math_level_tbtn3);

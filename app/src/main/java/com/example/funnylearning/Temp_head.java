@@ -7,12 +7,17 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.funnylearning.temp_head.CartoonsFragment;
 import com.example.funnylearning.temp_head.Message;
 import com.example.funnylearning.temp_head.RecordFragment;
 import com.example.funnylearning.temp_head.VideoFragment;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Temp_head extends AppCompatActivity {
 
@@ -89,6 +94,16 @@ public class Temp_head extends AppCompatActivity {
             cartoonsFragment.setArguments(bundle);
             replacementFragment(cartoonsFragment);
         }
+
+        //temp_return_btn
+        ImageView btn = findViewById(R.id.temp_return_btn);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Temp_head.this.finish();
+            }
+        });
 
     }
 

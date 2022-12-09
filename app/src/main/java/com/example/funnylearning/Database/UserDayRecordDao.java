@@ -122,4 +122,10 @@ public class UserDayRecordDao {
         }
         return temp;
     }
+
+    public void deleteRecord(int id, String date){
+        open();
+        ContentValues contentValues = new ContentValues();
+        db.delete("tb_UserDayRecord", " userId = " + id + " and recordDate = " + date, null);
+    }
 }
