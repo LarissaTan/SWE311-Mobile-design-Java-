@@ -70,21 +70,13 @@ public class adapter_weather extends RecyclerView.Adapter<com.example.funnylearn
 
         /*
         onBindViewHolder 方法可能是在class里for添加了其他视图
-        引入mposition与当前的position判断，判断在点击的位置上显示打勾图片，在其他位置上不显示打勾
+        引入point与当前的position判断，判断在点击的位置上显示打勾图片，在其他位置上不显示打勾
          */
         if (position == point) {
             viewHolder.click.setVisibility(View.VISIBLE);
         } else {
             viewHolder.click.setVisibility(View.INVISIBLE);
         }
-
-//        //点击事件
-//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                viewHolder.card.setCardBackgroundColor(-1777665);
-//            }
-//        });
 
     }
 

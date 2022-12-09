@@ -13,11 +13,13 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.funnylearning.R;
+import com.example.funnylearning.recycle.weather.adapter_weather;
 
 import java.util.ArrayList;
 
 public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning.recycle.mood.adapter_mood.ViewHolder>{//bug
     private final ArrayList<model_mood> moodList;
+    private int point = -1;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView item_mood_title;
@@ -42,7 +44,22 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
     public adapter_mood.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_mood, viewGroup, false);
 
-        return new ViewHolder(view);
+        final adapter_mood.ViewHolder holder = new adapter_mood.ViewHolder(view);
+
+        /*
+        添加选中的打勾显示
+         */
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                point = holder.getAdapterPosition();
+                holder.cardView.setCardBackgroundColor(-934116);
+                notifyDataSetChanged();
+            }
+        });
+
+
+        return holder;
     }
 
     @Override
@@ -51,7 +68,13 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
 
         viewHolder.item_mood_title.setText(list.name);//bug
         viewHolder.imageView.setImageResource(list.drawable);
-        viewHolder.cardView.setCardBackgroundColor(Color.parseColor(list.color));
+        //viewHolder.cardView.setCardBackgroundColor(Color.parseColor(list.color));
+
+        if (position == point) {
+            viewHolder.cardView.setCardBackgroundColor(-7251798);
+        } else {
+            viewHolder.cardView.setCardBackgroundColor(Color.parseColor(list.color));
+        }
     }
 
     @Override

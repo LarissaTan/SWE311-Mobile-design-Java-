@@ -8,7 +8,7 @@
         android:id="@+id/record_activities_card"
         android:layout_width="wrap_content"
         android:layout_height="52dp"
-        android:backgroundTint="#EDF1FA"
+        app:cardBackgroundColor= "#EDF1FA"
         android:layout_marginEnd="10dp"
         app:cardCornerRadius="12dp">
 
