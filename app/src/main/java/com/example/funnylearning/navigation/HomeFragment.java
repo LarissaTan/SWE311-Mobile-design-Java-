@@ -26,6 +26,7 @@ import com.example.funnylearning.Bean.model.UserGameRecord;
 import com.example.funnylearning.ChatActivity;
 import com.example.funnylearning.Database.CourseTypeDao;
 import com.example.funnylearning.Database.GameDao;
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.Database.UserGameRecordDao;
 import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
@@ -212,11 +213,18 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         addJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tag =  "3";
-                Intent it = new Intent(getContext(), Temp_head.class);
-                it.putExtra(EXTRA_NAME,tag);
-                it.putExtra("userId",userId);
-                startActivity(it);
+                UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
+                dao.open();
+                boolean isRecorded = dao.isDayRecordExist(userId);
+                if(!isRecorded) {
+                    tag = "3";
+                    Intent it = new Intent(getContext(), Temp_head.class);
+                    it.putExtra(EXTRA_NAME, tag);
+                    it.putExtra("userId", userId);
+                    startActivity(it);
+                }else{
+                    Toast.makeText(v.getContext(), "You have done the record today ~~~", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

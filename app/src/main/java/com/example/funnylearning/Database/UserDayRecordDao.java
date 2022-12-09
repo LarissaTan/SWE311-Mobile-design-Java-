@@ -86,16 +86,16 @@ public class UserDayRecordDao {
         db.execSQL("update tb_UserDayRecord set learningTime=? where recordDate=? and userId=?", new Object[]{time, tmp, id});
     }
 
-    private boolean isDayRecordExist(String tmp, int id) {
-//        Cursor cursor_tmp = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{},null, null,null);
-//        Cursor cursor = null;
-//        if(cursor_tmp != null) {
-//            cursor = db.query("tb_UserDayRecord", null, "recordDate=?", new String[]{tmp}, null, null, null);
-//        }else{
-//            return true;
-//        }
-        Cursor cursor = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{},null, null,null);
-        return true;
+    public boolean isDayRecordExist(int id) {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        Cursor cursor = db.query("tb_UserDayRecord", null, "recordDate=?", new String[]{tmp}, null, null, null);
+        System.out.println("cursor is " + cursor.getCount());
+        if(cursor.getCount() == 0)
+            return false;
+        else
+            return true;
     }
 
     @SuppressLint("Range")
