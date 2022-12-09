@@ -8,13 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.funnylearning.Bean.DayRecordBean;
 
-public class UserDayRecord {
+public class UserDayRecordDao {
     private Context context;
     private MyDatabase dbHelper;
     private SQLiteDatabase db;
 
     //构造函数
-    public UserDayRecord(Context context) {
+    public UserDayRecordDao(Context context) {
         this.context = context;
     }
     // userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime time, recordDate date
