@@ -122,6 +122,7 @@ public class UserDayRecordDao {
     public void deleteRecord(int id, String date){
         open();
         ContentValues contentValues = new ContentValues();
-        db.delete("tb_UserDayRecord", " userId = " + id + " and recordDate = " + date, null);
+        //System.out.println("id  = " + id + ",  date = " + date);
+        db.execSQL("delete from tb_UserDayRecord where recordDate=? and userId=?", new Object[]{date, id});
     }
 }
