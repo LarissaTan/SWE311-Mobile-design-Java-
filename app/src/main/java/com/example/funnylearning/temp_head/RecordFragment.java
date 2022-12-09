@@ -57,32 +57,32 @@ public class RecordFragment extends Fragment {
         weaList = (RecyclerView) view.findViewById(R.id.recyclerview_record_weather);
 
         moodList.clear();
-        System.out.println("message is working");
+        //System.out.println("message is working");
         moodList.add(new model_mood("Sad",R.drawable.record_mood_sad,"#DAE8FF"));
         moodList.add(new model_mood("Happy", R.drawable.record_mood_happy,"#FFFFFF"));
         moodList.add(new model_mood("Angry", R.drawable.record_mood_angry,"#FFF0CF"));
         moodList.add(new model_mood("Sleepy", R.drawable.record_mood_sleepy,"#E9E4FF"));
 
-        System.out.println("message is working");
+        //System.out.println("message is working");
         mdList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         adapter_mood customAdapterMood = new adapter_mood(moodList);
-        System.out.println("layout manager is working");
+        //System.out.println("layout manager is working");
         mdList.setAdapter(customAdapterMood);
 
         activitiesList.clear();
-        System.out.println("message is working");
+        //System.out.println("message is working");
         activitiesList.add(new model_activities("Party", R.drawable.record_activities_party));
         activitiesList.add(new model_activities("Travel", R.drawable.record_activities_travel));
         activitiesList.add(new model_activities("Beach", R.drawable.record_activities_beach));
 
-        System.out.println("message is working");
+        //System.out.println("message is working");
         actList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         adapter_activities customAdapterActivities = new adapter_activities(activitiesList);
-        System.out.println("layout manager is working");
+        //System.out.println("layout manager is working");
         actList.setAdapter(customAdapterActivities);
 
         weatherList.clear();
-        System.out.println("message is working");
+        //System.out.println("message is working");
         weatherList.add(new model_weather(R.drawable.record_weather_sun));
         weatherList.add(new model_weather(R.drawable.record_weather_suncloud));
         weatherList.add(new model_weather(R.drawable.record_weather_cloud));
@@ -90,10 +90,10 @@ public class RecordFragment extends Fragment {
         weatherList.add(new model_weather(R.drawable.record_weather_rain));
         weatherList.add(new model_weather(R.drawable.record_weather_thunderrain));
 
-        System.out.println("message is working");
+        //System.out.println("message is working");
         weaList.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
         adapter_weather customAdapterWeather = new adapter_weather(weatherList);
-        System.out.println("layout manager is working");
+        //System.out.println("layout manager is working");
         weaList.setAdapter(customAdapterWeather);
 
         return view;

@@ -48,7 +48,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String CREATE_DELIVERGOODS =  "create table if not exists tb_DeliverGoods(id int primary key, word varchar(10), corrGood varchar(200), wrongGood1 varchar(200), wrongGood2 varchar(200),audio varchar(100))";
 
 
-
     //构造函数
     public MyDatabase(Context context) {
         super(context, name, null, DB_VERSION);
