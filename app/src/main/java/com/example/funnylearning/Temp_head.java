@@ -63,6 +63,7 @@ public class Temp_head extends AppCompatActivity {
             dataToPass = getIntent().getExtras();
 
             VideoFragment videoFragment = new VideoFragment();
+            videoFragment.setArguments(dataToPass);
             replacementFragment(videoFragment);
         }
 
@@ -92,7 +93,6 @@ public class Temp_head extends AppCompatActivity {
     }
 
     private void replacementFragment(Fragment fragment){
-        fragment.setArguments(dataToPass);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.temp_fragment,fragment);
