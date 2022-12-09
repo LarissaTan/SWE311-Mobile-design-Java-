@@ -58,6 +58,7 @@ public class Signup_2 extends AppCompatActivity {
                         it.putExtra("user_email", finalEmail);
                         it.putExtra("name", textName);
                         startActivity(it);
+                        finish();
                     }else {
                         verificationCode.setError("Invalid verification code!");
                         Toast.makeText(Signup_2.this, "Please enter the correct verification code!", Toast.LENGTH_SHORT).show();

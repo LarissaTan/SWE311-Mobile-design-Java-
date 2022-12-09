@@ -48,6 +48,7 @@ public class Age extends AppCompatActivity {
                         Intent it = new Intent(Age.this, Goal.class);
                         it.putExtra("userId",finalUserId);
                         startActivity(it);
+                        finish();
                     }else {
                         Toast.makeText(Age.this, "update age fail", Toast.LENGTH_SHORT).show();
                     }

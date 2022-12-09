@@ -108,6 +108,7 @@ public class ChoosePhoto extends AppCompatActivity {
                         Intent it = new Intent(ChoosePhoto.this, TimeSetting.class);
                         it.putExtra("userId",finalUserId);
                         startActivity(it);
+                        finish();
                     }else {
                         Toast.makeText(ChoosePhoto.this, "Photo input fail", Toast.LENGTH_SHORT).show();
                     }

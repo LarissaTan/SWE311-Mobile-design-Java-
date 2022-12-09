@@ -20,8 +20,7 @@ public class ForgotPswSucceed extends AppCompatActivity {
         btn_succeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(ForgotPswSucceed.this, Login.class);
-                startActivity(it);
+                ForgotPswSucceed.this.finish();
             }
         });
     }

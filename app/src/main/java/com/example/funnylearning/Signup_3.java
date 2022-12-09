@@ -60,6 +60,7 @@ public class Signup_3 extends AppCompatActivity {
                             Intent it = new Intent(Signup_3.this, Gender.class);
                             it.putExtra("userId", userId);
                             startActivity(it);
+                            finish();
                         } else {
                             Toast.makeText(Signup_3.this, "User data create fail", Toast.LENGTH_SHORT).show();
                         }

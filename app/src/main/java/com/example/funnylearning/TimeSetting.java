@@ -70,6 +70,7 @@ public class TimeSetting extends AppCompatActivity {
                     Intent it = new Intent(TimeSetting.this, onBoarding.class);
                     it.putExtra("userId",finalUserId);
                     startActivity(it);
+                    finish();
                 }else {
                     Toast.makeText(TimeSetting.this, "Time choosing fail", Toast.LENGTH_SHORT).show();
                 }

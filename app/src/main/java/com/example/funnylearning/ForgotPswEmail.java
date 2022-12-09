@@ -41,6 +41,7 @@ public class ForgotPswEmail extends AppCompatActivity {
                         Intent it = new Intent(ForgotPswEmail.this, ForgotPswEnter.class);
                         it.putExtra("email", user_email);
                         startActivity(it);
+                        finish();
                     }else {
                         email.setError("This email haven't registered!");
                     }
