@@ -1,9 +1,12 @@
 package com.example.funnylearning.temp_head;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,12 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.funnylearning.Bean.DayRecordBean;
 import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.R;
+import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.recycle.activities.adapter_activities;
 import com.example.funnylearning.recycle.activities.model_activities;
 import com.example.funnylearning.recycle.mood.adapter_mood;
 import com.example.funnylearning.recycle.mood.model_mood;
 import com.example.funnylearning.recycle.weather.adapter_weather;
 import com.example.funnylearning.recycle.weather.model_weather;
+import com.shawnlin.numberpicker.NumberPicker;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -78,6 +83,7 @@ public class RecordFragment extends Fragment {
         actList = (RecyclerView) view.findViewById(R.id.recyclerview_record_activities);
         weaList = (RecyclerView) view.findViewById(R.id.recyclerview_record_weather);
 
+
         moodList.clear();
         //System.out.println("message is working");
         moodList.add(new model_mood("Sad",R.drawable.record_mood_sad,"#DAE8FF"));
@@ -117,6 +123,29 @@ public class RecordFragment extends Fragment {
         adapter_weather customAdapterWeather = new adapter_weather(weatherList);
         //System.out.println("layout manager is working");
         weaList.setAdapter(customAdapterWeather);
+
+
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) NumberPicker time = view.findViewById(R.id.number_picker_record);
+        Button confirm, cancel;
+
+        confirm = view.findViewById(R.id.btn_record_confirm);
+        cancel = view.findViewById(R.id.btn_record_cancel);
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int tmp_time = time.getValue();
+                dao.changeTime(tmp_time, 1);
+            }
+        });
+
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         return view;
     }
