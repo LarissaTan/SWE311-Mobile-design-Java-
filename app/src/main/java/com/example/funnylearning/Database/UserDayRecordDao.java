@@ -5,13 +5,36 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 
 import com.example.funnylearning.Bean.DayRecordBean;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class UserDayRecordDao {
     private Context context;
     private MyDatabase dbHelper;
     private SQLiteDatabase db;
+
+    //打开数据库
+    public void open() throws SQLiteException {
+        dbHelper = new MyDatabase(context);
+        //dbHelper.onCreate(db);
+        try {
+            db = dbHelper.getWritableDatabase();
+        } catch (SQLiteException ex) {
+            db = dbHelper.getReadableDatabase();
+        }
+    }
+
+    //关闭数据库
+    public void close() {
+        if (db != null) {
+            db.close();
+            db = null;
+        }
+    }
 
     //构造函数
     public UserDayRecordDao(Context context) {
@@ -22,9 +45,9 @@ public class UserDayRecordDao {
 
         ContentValues values = new ContentValues();
 
-        if(isDayRecordExist(tmp.recordDate)){
-            return -1;
-        }
+//        if(isDayRecordExist(tmp.recordDate, tmp.userid)){
+//            return -1;
+//        }
 
         values.put("activity", tmp.activity);
         values.put("learningTime", tmp.learningTime);
@@ -34,11 +57,27 @@ public class UserDayRecordDao {
         values.put("recordDate", String.valueOf(tmp.recordDate));
 
         return db.insert("tb_UserDayRecord",null,values);
+        //tb_UserDayRecord(userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime time, recordDate varchar(15), foreign key(userId)
     }
 
-    private boolean isDayRecordExist(String tmp) {
-        Cursor cursor = db.query("tb_UserDayRecord", null,"recordDate=?", new String[]{String.valueOf(tmp)},null,null,null);
-        return cursor.moveToNext();
+    @SuppressLint("Range")
+    public void changeActivity(String activity, int id){
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        db.execSQL("update tb_UserDayRecord set activity=? where recordDate=?", new Object[]{activity, tmp});
+    }
+
+    private boolean isDayRecordExist(String tmp, int id) {
+//        Cursor cursor_tmp = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{},null, null,null);
+//        Cursor cursor = null;
+//        if(cursor_tmp != null) {
+//            cursor = db.query("tb_UserDayRecord", null, "recordDate=?", new String[]{tmp}, null, null, null);
+//        }else{
+//            return true;
+//        }
+        Cursor cursor = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{},null, null,null);
+        return true;
     }
 
     @SuppressLint("Range")

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.mood.adapter_mood;
 
@@ -52,6 +53,32 @@ public class adapter_activities extends RecyclerView.Adapter<adapter_activities.
                 point = holder.getAdapterPosition();
                 holder.card.setCardBackgroundColor(-934116);
                 notifyDataSetChanged();
+
+                UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
+
+//                switch(point){
+//                    case 0:
+//                        dao.changeActivity("sunny", 1);
+//                        break;
+//                    case 1:
+//                        dao.changeActivity("overcast", 1);
+//                        break;
+//                    case 2:
+//                        dao.changeActivity("cloudy", 1);
+//                        break;
+//                    case 3:
+//                        dao.changeActivity("sunshower", 1);
+//                        break;
+//                    case 4:
+//                        dao.changeActivity("rain", 1);
+//                        break;
+//                    case 5:
+//                        dao.changeActivity("thunder", 1);
+//                        break;
+//
+//                    default :
+//                        break;
+//                }
             }
         });
 

@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.funnylearning.Bean.DayRecordBean;
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.activities.adapter_activities;
 import com.example.funnylearning.recycle.activities.model_activities;
@@ -18,6 +20,8 @@ import com.example.funnylearning.recycle.mood.model_mood;
 import com.example.funnylearning.recycle.weather.adapter_weather;
 import com.example.funnylearning.recycle.weather.model_weather;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -51,6 +55,22 @@ public class RecordFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_record, container, false);
+
+        UserDayRecordDao dao = new UserDayRecordDao(view.getContext());
+
+        DayRecordBean bean = new DayRecordBean();
+        bean.userid = 1;
+        bean.activity = "-1";
+        bean.mood = "-1";
+        bean.weather = "-1";
+        bean.learningTime = "-1";
+
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        bean.recordDate = tmp;
+
+        long temp = dao.insertDayRecord(bean);
 
         mdList = (RecyclerView) view.findViewById(R.id.recyclerview_record_mood);
         actList = (RecyclerView) view.findViewById(R.id.recyclerview_record_activities);
