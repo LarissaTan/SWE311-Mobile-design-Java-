@@ -60,7 +60,20 @@ public class Homepage extends AppCompatActivity {
         ReadingFragment readingFragment = new ReadingFragment();
 
         bottomNavigationView  = findViewById(R.id.bottomNavigationView);
-        replacementFragment(homeFragment);
+
+        String nav_jump = extras.getString("nav_jump");
+        System.out.println("nav_jump is " + nav_jump);
+        if(nav_jump == null)
+            replacementFragment(homeFragment);
+        else if(nav_jump == "read")
+            replacementFragment(readingFragment);
+        else if(nav_jump == "math")
+            replacementFragment(mathFragment);
+        else if(nav_jump == "cartoon")
+            replacementFragment(exerciseFragment);
+        else
+            replacementFragment(homeFragment);
+
         //bottomNavigationView.setSelectedItemId(R.id.nav_goal);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {

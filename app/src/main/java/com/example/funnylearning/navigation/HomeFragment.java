@@ -6,10 +6,12 @@ import static com.github.mikephil.charting.utils.ColorTemplate.MATERIAL_COLORS;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,9 +20,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.funnylearning.Bean.DayRecordBean;
 import com.example.funnylearning.Bean.model.CourseType;
 import com.example.funnylearning.Bean.model.UserGameRecord;
 import com.example.funnylearning.ChatActivity;
@@ -31,6 +35,8 @@ import com.example.funnylearning.Database.UserGameRecordDao;
 import com.example.funnylearning.EnterPage;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
+import com.example.funnylearning.Signup_2;
+import com.example.funnylearning.Signup_3;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.onBoarding.onBoarding;
 import com.example.funnylearning.others.ColumnView;
@@ -87,20 +93,214 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        super.onCreate(savedInstanceState);
-        column = (LinearLayout) view.findViewById(R.id.column);
-        barChart();
+        /***************** btn init ***********************/
+//        ImageView read, math, cartoon;
+//        read = view.findViewById(R.id.home_reading);
+//        math = view.findViewById(R.id.home_math);
+//        cartoon = view.findViewById(R.id.home_exer);
+//
+//        read.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent it = new Intent(view.getContext(), Homepage.class);
+//                it.putExtra("nav_jump", "read");
+//                startActivity(it);
+//            }
+//        });
+//
+//        math.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent it = new Intent(view.getContext(), Homepage.class);
+//                it.putExtra("nav_jump", "math");
+//                startActivity(it);
+//            }
+//        });
+//
+//        cartoon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent it = new Intent(view.getContext(), Homepage.class);
+//                it.putExtra("nav_jump", "cartoon");
+//                startActivity(it);
+//            }
+//        });
 
-        /******************************************************************************************************/
-        CircularProgressBar circularProgressBar = view.findViewById(R.id.home_math_progressBar);
-        TextView math_score = view.findViewById(R.id.home_math_score);
-        TextView math_title = view.findViewById(R.id.home_math_title);
+        /**************************************************/
 
         Integer score;
         int gameId, typeId, goal;
         String courseName = null;
         int userId = getArguments().getInt("userId");
         System.out.println("user id is = " + userId  + "(home frag");
+
+        super.onCreate(savedInstanceState);
+        column = (LinearLayout) view.findViewById(R.id.column);
+        barChart();
+
+        /*********** set visible and invisible ************/
+        UserDayRecordDao dao = new UserDayRecordDao(view.getContext());
+        dao.open();
+
+        //txt_study_time
+        TextView studyTitle, addFirstRecord, recordDate, activityTitle, recordTime;
+        ImageView activityIcon, moodIcon, weatherIcon;
+        CardView weatherCard, moodCard;
+        ProgressBar timeBar;
+
+        studyTitle = view.findViewById(R.id.txt_study_time);
+        addFirstRecord = view.findViewById(R.id.txt_add_first_record);
+        recordDate = view.findViewById(R.id.txt_record_time);
+        activityIcon = view.findViewById(R.id.home_activity_icon);
+        recordTime = view.findViewById(R.id.home_journal_time);
+        weatherCard = view.findViewById(R.id.home_card_weather);
+        moodCard = view.findViewById(R.id.card_record_mood);
+        timeBar = view.findViewById(R.id.home_journal_progressBar);
+        activityTitle = view.findViewById(R.id.home_activities_title);
+        moodIcon = view.findViewById(R.id.home_mood_icon);
+        weatherIcon = view.findViewById(R.id.home_weather_icon);
+
+        boolean isNRecord = dao.isNoRecord(userId);
+
+        if(isNRecord){
+            column.setVisibility(View.INVISIBLE);
+            studyTitle.setVisibility(View.INVISIBLE);
+            addFirstRecord.setVisibility(View.VISIBLE);
+            activityIcon.setVisibility(View.INVISIBLE);
+            weatherCard.setVisibility(View.INVISIBLE);
+            moodCard.setVisibility(View.INVISIBLE);
+            recordTime.setVisibility(View.INVISIBLE);
+            timeBar.setProgress(0);
+            recordDate.setVisibility(View.INVISIBLE);
+            activityTitle.setText("No data");
+
+        }else{
+            DayRecordBean recordBean = new DayRecordBean();
+            recordBean = dao.findNewestRecord(userId);
+            barChart();
+            column.setVisibility(View.VISIBLE);
+            studyTitle.setVisibility(View.VISIBLE);
+            addFirstRecord.setVisibility(View.VISIBLE);
+            activityIcon.setVisibility(View.VISIBLE);
+            weatherCard.setVisibility(View.VISIBLE);
+            recordDate.setVisibility(View.VISIBLE);
+            moodCard.setVisibility(View.VISIBLE);
+            recordTime.setVisibility(View.VISIBLE);
+
+            //TypedArray ta = view.getContext().obtainStyledAttributes(attrs, R.styleable.ClassicsHeader);
+
+            activityTitle.setText(recordBean.activity);
+            switch (recordBean.activity){
+                case "Party":
+                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_party)));
+                    break;
+                case "Travel":
+                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_travel)));
+                    break;
+                case "Beach":
+                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_beach)));
+                    break;
+                default :
+                    break;
+            }
+
+            switch (recordBean.mood){
+                case "sad":
+                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sad)));
+                    break;
+                case "happy":
+                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_happy)));
+                    break;
+                case "angry":
+                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_angry)));
+                    break;
+                case "sleepy":
+                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sleepy)));
+                    break;
+                default :
+                    break;
+            }
+
+            switch (recordBean.weather){
+                case "sunny":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sun)));
+                    break;
+                case "overcast":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_suncloud)));
+                    break;
+                case "cloudy":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_cloud)));
+                    break;
+                case "sunshower":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sunrain)));
+                    break;
+                case "rain":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_rain)));
+                    break;
+                case "thunder":
+                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_thunderrain)));;
+                    break;
+
+                default :
+                    break;
+            }
+
+            char tmp_str[] = recordBean.recordDate.toCharArray();
+            String month = null, str;
+            str = String.valueOf(tmp_str[3]);
+            str = str + tmp_str[4];
+            switch (str){
+                case "01":
+                    month  = "Jan";
+                    break;
+                case "02":
+                    month = "Feb";
+                    break;
+                case "03":
+                    month = "Mar";
+                    break;
+                case "04":
+                    month = "Apr";
+                    break;
+                case "05":
+                    month = "May";
+                    break;
+                case "06":
+                    month = "Jun";
+                    break;
+                case "07":
+                    month = "Jul";
+                    break;
+                case "08":
+                    month = "Aug";
+                    break;
+                case "09":
+                    month = "Sept";
+                    break;
+                case "10":
+                    month = "Oct";
+                    break;
+                case "11":
+                    month = "Nov";
+                    break;
+                case "12":
+                    month = "Dec";
+                    break;
+                default:
+                    break;
+            }
+
+            recordDate.setText(month + ", " + tmp_str[0] + tmp_str[1] + ", " + tmp_str[6] + tmp_str[7] + tmp_str[8] + tmp_str[9]);
+            recordTime.setText(String.valueOf(recordBean.learningTime) + " MIN");
+            timeBar.setProgress(recordBean.learningTime, true);
+        }
+
+
+        /******************************************************************************************************/
+        CircularProgressBar circularProgressBar = view.findViewById(R.id.home_math_progressBar);
+        TextView math_score = view.findViewById(R.id.home_math_score);
+        TextView math_title = view.findViewById(R.id.home_math_title);
+
 
         UserGameRecordDao userGameRecordDao = new UserGameRecordDao(view.getContext());
         userGameRecordDao.open();
@@ -206,15 +406,12 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         circularProgressBarEnglish.setProgressDirection(CircularProgressBar.ProgressDirection.TO_LEFT);
         /******************************************************************************************************/
 
-        Button test,ong,cheh;
         ImageView addJournal;
         addJournal = view.findViewById(R.id.home_add_journal);
 
         addJournal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
-                dao.open();
                 boolean isRecorded = dao.isDayRecordExist(userId);
                 if(!isRecorded) {
                     tag = "3";
@@ -227,9 +424,6 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
                 }
             }
         });
-
-
-
         return view;
     }
 

@@ -90,12 +90,20 @@ public class UserDayRecordDao {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String tmp = date.format(formatter);
-        Cursor cursor = db.query("tb_UserDayRecord", null, "recordDate=?", new String[]{tmp}, null, null, null);
+        Cursor cursor = db.query("tb_UserDayRecord", null, "recordDate=? and userId=" + id, new String[]{tmp}, null, null, null);
         System.out.println("cursor is " + cursor.getCount());
         if(cursor.getCount() == 0)
             return false;
         else
             return true;
+    }
+
+    public boolean isNoRecord(int id){
+        Cursor cursor = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{}, null, null, null);
+        if(cursor.getCount() == 0)
+            return true;
+        else
+            return false;
     }
 
     @SuppressLint("Range")
