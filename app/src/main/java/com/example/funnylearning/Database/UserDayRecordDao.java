@@ -44,10 +44,6 @@ public class UserDayRecordDao {
     public long insertDayRecord(DayRecordBean tmp){
         ContentValues values = new ContentValues();
 
-//        if(isDayRecordExist(tmp.recordDate, tmp.userid)){
-//            return -1;
-//        }
-
         values.put("activity", tmp.activity);
         values.put("learningTime", tmp.learningTime);
         values.put("mood", tmp.mood);

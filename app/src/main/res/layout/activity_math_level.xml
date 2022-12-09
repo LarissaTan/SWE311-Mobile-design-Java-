@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/math_level_tv2" />
 
     <Button
-        android:id="@+id/math_level_btn1"
+        android:id="@+id/math_level_btn_cont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

@@ -54,18 +54,20 @@ public class adapter_activities extends RecyclerView.Adapter<adapter_activities.
                 holder.card.setCardBackgroundColor(-934116);
                 notifyDataSetChanged();
 
+                model_activities list = activitiesList.get(point);
+
                 UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
                 dao.open();
 
                 switch(point){
                     case 0:
-                        dao.changeActivity("Party", 1);
+                        dao.changeActivity("Party", list.id);
                         break;
                     case 1:
-                        dao.changeActivity("Travel", 1);
+                        dao.changeActivity("Travel", list.id);
                         break;
                     case 2:
-                        dao.changeActivity("Beach", 1);
+                        dao.changeActivity("Beach", list.id);
                         break;
                     default :
                         break;

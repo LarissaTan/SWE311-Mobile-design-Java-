@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
     }
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
-        //Bundle args = new Bundle();
         return fragment;
     }
 
@@ -100,6 +99,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         int gameId, typeId, goal;
         String courseName = null;
         int userId = getArguments().getInt("userId");
+        System.out.println("user id is = " + userId  + "(home frag");
 
         UserGameRecordDao userGameRecordDao = new UserGameRecordDao(view.getContext());
         userGameRecordDao.open();
@@ -215,6 +215,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
                 tag =  "3";
                 Intent it = new Intent(getContext(), Temp_head.class);
                 it.putExtra(EXTRA_NAME,tag);
+                it.putExtra("userId",userId);
                 startActivity(it);
             }
         });

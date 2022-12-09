@@ -57,21 +57,23 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
                 holder.cardView.setCardBackgroundColor(-934116);
                 notifyDataSetChanged();
 
+                model_mood list = moodList.get(point);
+
                 UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
                 dao.open();
 
                 switch(point){
                     case 0:
-                        dao.changeMood("sad", 1);
+                        dao.changeMood("sad", list.id);
                         break;
                     case 1:
-                        dao.changeMood("happy", 1);
+                        dao.changeMood("happy", list.id);
                         break;
                     case 2:
-                        dao.changeMood("angry", 1);
+                        dao.changeMood("angry", list.id);
                         break;
                     case 3:
-                        dao.changeMood("sleepy", 1);
+                        dao.changeMood("sleepy", list.id);
                         break;
                     default :
                         break;

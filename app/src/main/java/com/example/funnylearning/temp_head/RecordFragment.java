@@ -49,8 +49,6 @@ public class RecordFragment extends Fragment {
 
     public static RecordFragment newInstance(String param1, String param2) {
         RecordFragment fragment = new RecordFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -65,12 +63,14 @@ public class RecordFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_record, container, false);
 
+        Integer id = getArguments().getInt("userId");
+
         UserDayRecordDao dao = new UserDayRecordDao(view.getContext());
 
         dao.open();
 
         DayRecordBean bean = new DayRecordBean();
-        bean.userid = 1;
+        bean.userid = id;
         bean.activity = null;
         bean.mood = null;
         bean.weather = null;
@@ -90,10 +90,10 @@ public class RecordFragment extends Fragment {
 
         moodList.clear();
         //System.out.println("message is working");
-        moodList.add(new model_mood("Sad",R.drawable.record_mood_sad,"#DAE8FF"));
-        moodList.add(new model_mood("Happy", R.drawable.record_mood_happy,"#FFFFFF"));
-        moodList.add(new model_mood("Angry", R.drawable.record_mood_angry,"#FFF0CF"));
-        moodList.add(new model_mood("Sleepy", R.drawable.record_mood_sleepy,"#E9E4FF"));
+        moodList.add(new model_mood("Sad",R.drawable.record_mood_sad,"#DAE8FF", id));
+        moodList.add(new model_mood("Happy", R.drawable.record_mood_happy,"#FFFFFF", id));
+        moodList.add(new model_mood("Angry", R.drawable.record_mood_angry,"#FFF0CF", id));
+        moodList.add(new model_mood("Sleepy", R.drawable.record_mood_sleepy,"#E9E4FF",  id));
 
         //System.out.println("message is working");
         mdList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -103,9 +103,9 @@ public class RecordFragment extends Fragment {
 
         activitiesList.clear();
         //System.out.println("message is working");
-        activitiesList.add(new model_activities("Party", R.drawable.record_activities_party));
-        activitiesList.add(new model_activities("Travel", R.drawable.record_activities_travel));
-        activitiesList.add(new model_activities("Beach", R.drawable.record_activities_beach));
+        activitiesList.add(new model_activities("Party", R.drawable.record_activities_party, id));
+        activitiesList.add(new model_activities("Travel", R.drawable.record_activities_travel, id));
+        activitiesList.add(new model_activities("Beach", R.drawable.record_activities_beach, id));
 
         //System.out.println("message is working");
         actList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -115,12 +115,12 @@ public class RecordFragment extends Fragment {
 
         weatherList.clear();
         //System.out.println("message is working");
-        weatherList.add(new model_weather(R.drawable.record_weather_sun));
-        weatherList.add(new model_weather(R.drawable.record_weather_suncloud));
-        weatherList.add(new model_weather(R.drawable.record_weather_cloud));
-        weatherList.add(new model_weather(R.drawable.record_weather_sunrain));
-        weatherList.add(new model_weather(R.drawable.record_weather_rain));
-        weatherList.add(new model_weather(R.drawable.record_weather_thunderrain));
+        weatherList.add(new model_weather(R.drawable.record_weather_sun, id));
+        weatherList.add(new model_weather(R.drawable.record_weather_suncloud, id));
+        weatherList.add(new model_weather(R.drawable.record_weather_cloud, id));
+        weatherList.add(new model_weather(R.drawable.record_weather_sunrain, id));
+        weatherList.add(new model_weather(R.drawable.record_weather_rain, id));
+        weatherList.add(new model_weather(R.drawable.record_weather_thunderrain, id));
 
         //System.out.println("message is working");
         weaList.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
@@ -151,7 +151,7 @@ public class RecordFragment extends Fragment {
                 LocalDate date = LocalDate.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 String tmp = date.format(formatter);
-                dao.deleteRecord(1, tmp);
+                dao.deleteRecord(id, tmp);
                 getActivity().finish();
             }
         });

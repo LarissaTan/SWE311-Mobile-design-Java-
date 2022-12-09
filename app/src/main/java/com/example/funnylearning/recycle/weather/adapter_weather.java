@@ -57,27 +57,29 @@ public class adapter_weather extends RecyclerView.Adapter<com.example.funnylearn
                 //在这里运行notifyDataSetChanged 会导致下面的onBindViewHolder 重新加载一遍
                 notifyDataSetChanged();
 
+                model_weather list = weatherList.get(point);
+
                 UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
                 dao.open();
 
                 switch(point){
                     case 0:
-                        dao.changeWeather("sunny", 1);
+                        dao.changeWeather("sunny", list.id);
                         break;
                     case 1:
-                        dao.changeWeather("overcast", 1);
+                        dao.changeWeather("overcast", list.id);
                         break;
                     case 2:
-                        dao.changeWeather("cloudy", 1);
+                        dao.changeWeather("cloudy", list.id);
                         break;
                     case 3:
-                        dao.changeWeather("sunshower", 1);
+                        dao.changeWeather("sunshower", list.id);
                         break;
                     case 4:
-                        dao.changeWeather("rain", 1);
+                        dao.changeWeather("rain", list.id);
                         break;
                     case 5:
-                        dao.changeWeather("thunder", 1);
+                        dao.changeWeather("thunder", list.id);
                         break;
 
                     default :

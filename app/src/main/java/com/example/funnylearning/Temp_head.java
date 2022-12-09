@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.funnylearning.temp_head.CartoonsFragment;
 import com.example.funnylearning.temp_head.Message;
@@ -67,6 +68,9 @@ public class Temp_head extends AppCompatActivity {
 
             dataToPass = getIntent().getExtras();
 
+            int i = dataToPass.getInt("userId");
+            System.out.println("temp_head: userId = " + i + " (video");
+
             VideoFragment videoFragment = new VideoFragment();
             videoFragment.setArguments(dataToPass);
             replacementFragment(videoFragment);
@@ -74,10 +78,16 @@ public class Temp_head extends AppCompatActivity {
 
         if(tag == 3){
             title = "Record your day";
-            // setTest need to put behind the setContentView!!!!!
             head_bar_title = findViewById(R.id.head_bar_title);
             head_bar_title.setText(title);
+            // setTest need to put behind the setContentView!!!!!
+            dataToPass = getIntent().getExtras();
+
+            int i = dataToPass.getInt("userId");
+            System.out.println("temp_head: userId = " + i + " (record");
+
             RecordFragment recordFragment = new RecordFragment();
+            recordFragment.setArguments(dataToPass);
             replacementFragment(recordFragment);
         }
 

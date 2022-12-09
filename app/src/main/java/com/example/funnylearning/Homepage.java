@@ -41,7 +41,7 @@ public class Homepage extends AppCompatActivity {
         user = userDataDao.getUserData(finalUserId);
 
         System.out.println("User information from database");
-        System.out.println("id: " + user.getUserId());
+        System.out.println("id: " + user.getUserId() + "  (from homepage)");
         System.out.println("name: "+user.getName());
 
         userData.putInt("userId", user.getUserId());
