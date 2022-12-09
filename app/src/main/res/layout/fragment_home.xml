@@ -386,27 +386,6 @@
 
         </LinearLayout>
 
-            <Button
-                android:id="@+id/just_for_test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="just for test"/>
-
-            <Button
-                android:id="@+id/test_ong"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
-                android:layout_gravity="center"
-                android:text="just test for ong"/>
-            <Button
-                android:id="@+id/test_cheh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="0dp"
-                android:layout_gravity="center"
-                android:text="just test for cheh"/>
 
 </LinearLayout>
     </ScrollView>

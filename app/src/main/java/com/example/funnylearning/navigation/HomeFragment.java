@@ -208,9 +208,6 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         Button test,ong,cheh;
         ImageView addJournal;
         addJournal = view.findViewById(R.id.home_add_journal);
-        test = view.findViewById(R.id.just_for_test);
-        ong =  view.findViewById(R.id.test_ong);
-        cheh = view.findViewById(R.id.test_cheh);
 
         addJournal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,74 +219,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
             }
         });
 
-        cheh.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                tag = "0";
-                //Intent it = new Intent(getContext(), ChatActivity.class);
-                Intent it = new Intent(getContext(), Temp_head.class);
-                it.putExtra(EXTRA_NAME,tag);
-                startActivity(it);
-            }
-        });
 
-        test.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                final Dialog dialog = new Dialog(getContext());
-                dialog.setContentView(R.layout.dialog_success);
-                dialog.setTitle("Title...");
-                dialog.getWindow().setDimAmount(0.5f);
-                dialog.getWindow ().setBackgroundDrawable (new ColorDrawable(android.graphics.Color.TRANSPARENT));
-
-                // set the custom dialog components - text, image and button
-                TextView text = (TextView) dialog.findViewById(R.id.dialog_txt);
-                text.setText("You find 2 words !  Good job!");
-
-                Button dialogButton = (Button) dialog.findViewById(R.id.dialog_btn_continue);
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
-                /*
-                // TODO Auto-generated method stub
-                //tag = "1";
-                Intent it = new Intent(getContext(), onBoarding.class);
-                //it.putExtra(EXTRA_NAME,tag);
-                startActivity(it);
-                */
-                /*
-                btnSignIn.setOnClickListener {
-                    val dialogBinding = layoutInflater.inflate(R.layout.dialog_login_alert,null)
-
-                    val login_dialog = Dialog(this)
-                    login_dialog.setContentView(dialogBinding)
-                    login_dialog.setCancelable(true)
-                    login_dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                    login_dialog.show()
-
-                    val btn_back = dialogBinding.findViewById<Button>(R.id.btn_login_dialog_back)
-                            btn_back.setOnClickListener {
-                        login_dialog.dismiss()
-                    }
-                }
-                */
-            }
-        });
-
-        ong.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                tag = "2";
-                Intent it = new Intent(getContext(), Temp_head.class);
-                it.putExtra(EXTRA_NAME,tag);
-                startActivity(it);
-            }
-        });
 
         return view;
     }
@@ -366,6 +296,55 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         barChart.setVisibleXRangeMaximum(15);
         barChart.setDescription(null);
         barChart.animateX(0);
+
+
+                test.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.dialog_success);
+                dialog.setTitle("Title...");
+                dialog.getWindow().setDimAmount(0.5f);
+                dialog.getWindow ().setBackgroundDrawable (new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+                // set the custom dialog components - text, image and button
+                TextView text = (TextView) dialog.findViewById(R.id.dialog_txt);
+                text.setText("You find 2 words !  Good job!");
+
+                Button dialogButton = (Button) dialog.findViewById(R.id.dialog_btn_continue);
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.show();
+
+                // TODO Auto-generated method stub
+                //tag = "1";
+                Intent it = new Intent(getContext(), onBoarding.class);
+                //it.putExtra(EXTRA_NAME,tag);
+                startActivity(it);
+
+
+                btnSignIn.setOnClickListener {
+                    val dialogBinding = layoutInflater.inflate(R.layout.dialog_login_alert,null)
+
+                    val login_dialog = Dialog(this)
+                    login_dialog.setContentView(dialogBinding)
+                    login_dialog.setCancelable(true)
+                    login_dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                    login_dialog.show()
+
+                    val btn_back = dialogBinding.findViewById<Button>(R.id.btn_login_dialog_back)
+                            btn_back.setOnClickListener {
+                        login_dialog.dismiss()
+                    }
+                }
+
+            }
+                    });
 
 
 */
