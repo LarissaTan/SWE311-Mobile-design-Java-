@@ -38,7 +38,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     // user goal: record the goal set by the user
     public static final String CREATE_USERGOALLEVEL = "create table if not exists tb_UserGoalLevel(userId integer, typeId integer, achievement bool default '0', foreign key(userId) references tb_UserData(userId), foreign key(typeId) references tb_CourseType(typeId));";
     // user other data
-    public static final String CREATE_USERDAYRECORD = "create table if not exists tb_UserDayRecord(userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime time, recordDate varchar(15), foreign key(userId) references tb_UserData(userId));";
+    public static final String CREATE_USERDAYRECORD = "create table if not exists tb_UserDayRecord(userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime integer, recordDate varchar(15), foreign key(userId) references tb_UserData(userId));";
     // user learning data
     public static final String CREATE_USERLEARNINGRECORD = "create table if not exists tb_UserLearningData(userId integer, learningTime time, learningDate date, foreign key(userId) references tb_UserData(userId));";
 

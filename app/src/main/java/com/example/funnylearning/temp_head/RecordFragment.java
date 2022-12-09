@@ -58,12 +58,14 @@ public class RecordFragment extends Fragment {
 
         UserDayRecordDao dao = new UserDayRecordDao(view.getContext());
 
+        dao.open();
+
         DayRecordBean bean = new DayRecordBean();
         bean.userid = 1;
-        bean.activity = "-1";
-        bean.mood = "-1";
-        bean.weather = "-1";
-        bean.learningTime = "-1";
+        bean.activity = null;
+        bean.mood = null;
+        bean.weather = null;
+        bean.learningTime = -1;
 
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");

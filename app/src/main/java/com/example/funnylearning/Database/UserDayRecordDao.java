@@ -42,7 +42,6 @@ public class UserDayRecordDao {
     }
     // userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime time, recordDate date
     public long insertDayRecord(DayRecordBean tmp){
-
         ContentValues values = new ContentValues();
 
 //        if(isDayRecordExist(tmp.recordDate, tmp.userid)){
@@ -57,7 +56,6 @@ public class UserDayRecordDao {
         values.put("recordDate", String.valueOf(tmp.recordDate));
 
         return db.insert("tb_UserDayRecord",null,values);
-        //tb_UserDayRecord(userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime time, recordDate varchar(15), foreign key(userId)
     }
 
     @SuppressLint("Range")
@@ -65,7 +63,31 @@ public class UserDayRecordDao {
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String tmp = date.format(formatter);
-        db.execSQL("update tb_UserDayRecord set activity=? where recordDate=?", new Object[]{activity, tmp});
+        db.execSQL("update tb_UserDayRecord set activity=? where recordDate=? and userId=?", new Object[]{activity, tmp, id});
+    }
+
+    @SuppressLint("Range")
+    public void changeWeather(String weather, int id){
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        db.execSQL("update tb_UserDayRecord set weather=? where recordDate=? and userId=?", new Object[]{weather, tmp, id});
+    }
+
+    @SuppressLint("Range")
+    public void changeMood(String mood, int id){
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        db.execSQL("update tb_UserDayRecord set mood=? where recordDate=? and userId=?", new Object[]{mood, tmp, id});
+    }
+
+    @SuppressLint("Range")
+    public void changeTime(int time, int id){
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        db.execSQL("update tb_UserDayRecord set learningTime=? where recordDate=? and userId=?", new Object[]{time, tmp, id});
     }
 
     private boolean isDayRecordExist(String tmp, int id) {
@@ -94,7 +116,7 @@ public class UserDayRecordDao {
 
             temp.recordDate = cursor.getString(cursor.getColumnIndex("recordDate"));
             temp.activity = cursor.getString(cursor.getColumnIndex("activity"));
-            temp.learningTime = cursor.getString(cursor.getColumnIndex("learningTime"));
+            temp.learningTime = Integer.parseInt(cursor.getString(cursor.getColumnIndex("learningTime")));
             temp.mood = cursor.getString(cursor.getColumnIndex("mood"));
             temp.weather = cursor.getString(cursor.getColumnIndex("weather"));
         }

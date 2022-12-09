@@ -55,30 +55,21 @@ public class adapter_activities extends RecyclerView.Adapter<adapter_activities.
                 notifyDataSetChanged();
 
                 UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
+                dao.open();
 
-//                switch(point){
-//                    case 0:
-//                        dao.changeActivity("sunny", 1);
-//                        break;
-//                    case 1:
-//                        dao.changeActivity("overcast", 1);
-//                        break;
-//                    case 2:
-//                        dao.changeActivity("cloudy", 1);
-//                        break;
-//                    case 3:
-//                        dao.changeActivity("sunshower", 1);
-//                        break;
-//                    case 4:
-//                        dao.changeActivity("rain", 1);
-//                        break;
-//                    case 5:
-//                        dao.changeActivity("thunder", 1);
-//                        break;
-//
-//                    default :
-//                        break;
-//                }
+                switch(point){
+                    case 0:
+                        dao.changeActivity("Party", 1);
+                        break;
+                    case 1:
+                        dao.changeActivity("Travel", 1);
+                        break;
+                    case 2:
+                        dao.changeActivity("Beach", 1);
+                        break;
+                    default :
+                        break;
+                }
             }
         });
 

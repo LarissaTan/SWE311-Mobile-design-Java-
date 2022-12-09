@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.Temp_head;
 
@@ -55,6 +56,33 @@ public class adapter_weather extends RecyclerView.Adapter<com.example.funnylearn
                 //刷新界面 notify 通知Data 数据set设置Changed变化
                 //在这里运行notifyDataSetChanged 会导致下面的onBindViewHolder 重新加载一遍
                 notifyDataSetChanged();
+
+                UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
+                dao.open();
+
+                switch(point){
+                    case 0:
+                        dao.changeWeather("sunny", 1);
+                        break;
+                    case 1:
+                        dao.changeWeather("overcast", 1);
+                        break;
+                    case 2:
+                        dao.changeWeather("cloudy", 1);
+                        break;
+                    case 3:
+                        dao.changeWeather("sunshower", 1);
+                        break;
+                    case 4:
+                        dao.changeWeather("rain", 1);
+                        break;
+                    case 5:
+                        dao.changeWeather("thunder", 1);
+                        break;
+
+                    default :
+                        break;
+                }
             }
         });
 

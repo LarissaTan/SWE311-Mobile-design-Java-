@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.R;
 import com.example.funnylearning.recycle.weather.adapter_weather;
 
@@ -55,6 +56,26 @@ public class adapter_mood extends RecyclerView.Adapter<com.example.funnylearning
                 point = holder.getAdapterPosition();
                 holder.cardView.setCardBackgroundColor(-934116);
                 notifyDataSetChanged();
+
+                UserDayRecordDao dao = new UserDayRecordDao(v.getContext());
+                dao.open();
+
+                switch(point){
+                    case 0:
+                        dao.changeMood("sad", 1);
+                        break;
+                    case 1:
+                        dao.changeMood("happy", 1);
+                        break;
+                    case 2:
+                        dao.changeMood("angry", 1);
+                        break;
+                    case 3:
+                        dao.changeMood("sleepy", 1);
+                        break;
+                    default :
+                        break;
+                }
             }
         });
 

@@ -6,6 +6,6 @@ public class DayRecordBean {
     public String mood;
     public String activity;
     public String weather;
-    public String learningTime;
+    public int learningTime;
     public String recordDate;
 }
