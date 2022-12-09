@@ -43,13 +43,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                Class<?> cl = null;
-                try {
-                    cl = Class.forName("com.example.funnylearning.ForgotPswEmail");
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                Intent it = new Intent(Login.this, cl);
+                Intent it = new Intent(Login.this, ForgotPswEmail.class);
                 startActivity(it);
             }
         });
@@ -80,6 +74,7 @@ public class Login extends AppCompatActivity {
                                 Intent it = new Intent(Login.this, Homepage.class);
                                 it.putExtra("userId", userId);
                                 startActivity(it);
+                                finish();
                             } else {
                                 Toast.makeText(Login.this, "User data fail", Toast.LENGTH_SHORT).show();
                             }

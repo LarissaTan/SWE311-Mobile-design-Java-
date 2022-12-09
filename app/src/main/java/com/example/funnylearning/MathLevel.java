@@ -88,6 +88,7 @@ public class MathLevel extends AppCompatActivity {
                 Intent it = new Intent(MathLevel.this, Age.class);
                 it.putExtra("userId",finalUserId);
                 startActivity(it);
+                finish();
             }
         });
     }

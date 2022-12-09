@@ -69,6 +69,7 @@ public class Gender extends AppCompatActivity {
                             Intent it = new Intent(Gender.this, MathLevel.class);
                             it.putExtra("userId",finalUserId);
                             startActivity(it);
+                            finish();
                         }
                         else{
                             Toast.makeText(Gender.this, "Gender Selected fail", Toast.LENGTH_SHORT).show();

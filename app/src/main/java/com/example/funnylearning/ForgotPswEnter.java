@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.others.emailCode;
+import com.example.funnylearning.others.other;
 import com.google.android.material.textfield.TextInputLayout;
 
 import javax.mail.MessagingException;
@@ -65,13 +66,14 @@ public class ForgotPswEnter extends AppCompatActivity {
                     
                     if(textCode.equals(validateCode))
                     {
-                        Boolean updatePassword = userDao.updatePassword(finalUser_email, user_password);
+                        Boolean updatePassword = userDao.updatePassword(finalUser_email, other.SHA(user_password));
 
                         if(updatePassword == true)
                         {
                             Toast.makeText(getApplicationContext(),"You have successfully reset your password! Now, it`s time to login!", Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(ForgotPswEnter.this, ForgotPswSucceed.class);
                             startActivity(it);
+                            finish();
                         }
                     }else
                     {

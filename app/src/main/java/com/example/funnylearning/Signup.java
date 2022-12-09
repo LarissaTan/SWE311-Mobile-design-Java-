@@ -61,6 +61,7 @@ public class Signup extends AppCompatActivity {
                         Intent it = new Intent(Signup.this, Signup_2.class);
                         it.putExtra("user_email", user_email);
                         startActivity(it);
+                        finishAndRemoveTask();
                     }else {
                         email.setError("This email already registered!");
                         Toast.makeText(Signup.this, "User already exists! Please log in", Toast.LENGTH_SHORT).show();
@@ -74,6 +75,7 @@ public class Signup extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(Signup.this, Login.class);
                 startActivity(it);
+                finish();
             }
         });
 

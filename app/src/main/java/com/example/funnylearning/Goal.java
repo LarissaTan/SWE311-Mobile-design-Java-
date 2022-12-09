@@ -246,6 +246,7 @@ public class Goal extends AppCompatActivity {
                 Intent it = new Intent(Goal.this, ChoosePhoto.class);
                 it.putExtra("userId",finalUserId);
                 startActivity(it);
+                finish();
             }
         });
     }
