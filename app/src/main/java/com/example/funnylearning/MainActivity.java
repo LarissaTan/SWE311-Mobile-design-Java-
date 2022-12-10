@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent it = new Intent(MainActivity.this, EnterPage.class);
                 startActivity(it);
+                finish();
             }
         }, 3000);
 

@@ -152,6 +152,8 @@ public class RecordFragment extends Fragment {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 String tmp = date.format(formatter);
                 dao.deleteRecord(id, tmp);
+
+                getActivity().setResult(2,null);
                 getActivity().finish();
             }
         });

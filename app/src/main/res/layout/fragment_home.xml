@@ -47,20 +47,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/txt_add_first_record"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#9158AA"
-                android:fontFamily="@font/montserrat_medium"
-                android:textSize="18sp"
-                android:text="click here to add record ~"/>
+
 
         </LinearLayout>
 
     <!--柱状图绘制的地方-->
     <RelativeLayout
+        android:id="@+id/homepage_studytime"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:orientation="vertical"
@@ -68,12 +61,33 @@
         android:paddingEnd="15dp"
         android:paddingStart="15dp"
         android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/txt_add_first_record"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#9158AA"
+            android:fontFamily="@font/montserrat_medium"
+            android:textSize="18sp"
+            android:text="click here to add record ~"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center"/>
+
         <LinearLayout
             android:id="@+id/column"
             android:background="#00000000"
             android:layout_width="300dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
             android:gravity="center"
             android:orientation="vertical">
         </LinearLayout>
@@ -189,7 +203,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="12dp"
                 android:indeterminateTint="#9158AA"
-                android:progress="30"/>
+                android:min="0"
+                android:progress="30"
+                android:max="60"/>
 
             <ImageView
                 android:id="@+id/home_activity_icon"
