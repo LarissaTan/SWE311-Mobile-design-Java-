@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteException;
 import com.example.funnylearning.Bean.DayRecordBean;
 import com.example.funnylearning.Bean.model.Cartoons;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,14 +111,16 @@ public class CartoonsDao {
     @SuppressLint("Range")
     public ArrayList<Cartoons> getKeyCartoons(String keyword){
         ArrayList<Cartoons> cartoons = new ArrayList<Cartoons>();
-        String sql1 = "select name from tb_Cartoon where name like '%"+keyword+"%'";//注意：这里有单引号
-        Cursor cursor = db.rawQuery(sql1,null);
+        Cursor cursor = null;
+
+        cursor = db.rawQuery("select * from tb_Cartoon where name like ? ", new String[]{"%"+keyword+"%"});
+
+
         Cursor cursor_tmp;
 //        String sql2 = "select name from tb_CartoonData where name like '%"+keyword+"%'";//注意：这里有单引号
 //        Cursor cursor1 = db.rawQuery(sql2,null);
 
         int resultCounts = cursor.getCount();  //记录总数
-        System.out.println("result counts is " + resultCounts);
 
         if (resultCounts == 0 ) {
             return null;
@@ -131,12 +134,12 @@ public class CartoonsDao {
                 c.Duration = cursor.getString(cursor.getColumnIndex("duration"));
                 c.image = cursor.getString(cursor.getColumnIndex("image"));
 
-                cursor_tmp = db.query("tb_UserDayRecord", null, "userId=" + c.id, new String[]{}, null, null, null);
-
-                c.Summary = cursor_tmp.getString(cursor_tmp.getColumnIndex("summary"));
-                c.Key1 = cursor_tmp.getString(cursor_tmp.getColumnIndex("key1"));
-                c.Key2 = cursor_tmp.getString(cursor_tmp.getColumnIndex("key2"));
-
+                cursor_tmp = db.query("tb_CartoonData", null, "id=" + c.id, new String[]{}, null, null, null);
+                if(cursor_tmp.moveToFirst()) {
+                    c.Summary = cursor_tmp.getString(cursor_tmp.getColumnIndex("summary"));
+                    c.Key1 = cursor_tmp.getString(cursor_tmp.getColumnIndex("key1"));
+                    c.Key2 = cursor_tmp.getString(cursor_tmp.getColumnIndex("key2"));
+                }
                 cartoons.add(c);
             }
             return cartoons;
