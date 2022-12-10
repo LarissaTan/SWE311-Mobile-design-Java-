@@ -141,6 +141,9 @@ public class RecordFragment extends Fragment {
                 int tmp_time = time.getValue();
                 dao.changeTime(tmp_time, 1);
                 getActivity().finish();
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", id);
+                startActivity(it);
             }
         });
 

@@ -93,46 +93,55 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        /***************** btn init ***********************/
-//        ImageView read, math, cartoon;
-//        read = view.findViewById(R.id.home_reading);
-//        math = view.findViewById(R.id.home_math);
-//        cartoon = view.findViewById(R.id.home_exer);
-//
-//        read.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(view.getContext(), Homepage.class);
-//                it.putExtra("nav_jump", "read");
-//                startActivity(it);
-//            }
-//        });
-//
-//        math.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(view.getContext(), Homepage.class);
-//                it.putExtra("nav_jump", "math");
-//                startActivity(it);
-//            }
-//        });
-//
-//        cartoon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent it = new Intent(view.getContext(), Homepage.class);
-//                it.putExtra("nav_jump", "cartoon");
-//                startActivity(it);
-//            }
-//        });
 
-        /**************************************************/
+        Bundle tmp_data = new Bundle();
 
         Integer score;
         int gameId, typeId, goal;
         String courseName = null;
         int userId = getArguments().getInt("userId");
         System.out.println("user id is = " + userId  + "(home frag");
+
+
+
+
+        /***************** btn init ***********************/
+        ImageView read, math, cartoon;
+        read = view.findViewById(R.id.home_reading);
+        math = view.findViewById(R.id.home_math);
+        cartoon = view.findViewById(R.id.home_exer);
+
+        read.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 1);
+                startActivity(it);
+            }
+        });
+
+        math.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 2);
+                startActivity(it);
+            }
+        });
+
+        cartoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 3);
+                startActivity(it);
+            }
+        });
+
+        /**************************************************/
 
         super.onCreate(savedInstanceState);
         column = (LinearLayout) view.findViewById(R.id.column);
@@ -187,7 +196,6 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
             moodCard.setVisibility(View.VISIBLE);
             recordTime.setVisibility(View.VISIBLE);
 
-            //TypedArray ta = view.getContext().obtainStyledAttributes(attrs, R.styleable.ClassicsHeader);
 
             activityTitle.setText(recordBean.activity);
             switch (recordBean.activity){
