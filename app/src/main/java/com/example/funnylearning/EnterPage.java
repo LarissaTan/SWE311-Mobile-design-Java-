@@ -3,6 +3,7 @@ package com.example.funnylearning;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +24,9 @@ public class EnterPage extends AppCompatActivity {
         enter_page_btnSignup = findViewById(R.id.enter_page_btnSignup);
         btn_jump = findViewById(R.id.btnJump_lo);
 
-        CartoonsDao dao = new CartoonsDao(this);
-        dao.open();
-        System.out.println(dao.getKeyCartoons("make"));
+        if(permissions()){
+            ask();
+        }
 
         enter_page_btnSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -51,5 +52,18 @@ public class EnterPage extends AppCompatActivity {
             }
         });
 
+    }
+
+    protected boolean permissions(){
+        return (Build.VERSION.SDK_INT  > Build.VERSION_CODES.LOLLIPOP_MR1);
+    }
+
+    protected void ask() {
+        String[] permi = {
+                "android.permission.CALL_PHONE"
+        };
+        int requestCode = 200;
+        //代码动态配置的方式，向系统申请权限
+        requestPermissions(permi, requestCode);
     }
 }
