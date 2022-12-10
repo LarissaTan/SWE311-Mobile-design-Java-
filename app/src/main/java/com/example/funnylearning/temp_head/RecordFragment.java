@@ -139,11 +139,10 @@ public class RecordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 int tmp_time = time.getValue();
-                dao.changeTime(tmp_time, 1);
+                dao.changeTime(tmp_time, id);
+
+                getActivity().setResult(2,null);
                 getActivity().finish();
-                Intent it = new Intent(view.getContext(), Homepage.class);
-                it.putExtra("userId", id);
-                startActivity(it);
             }
         });
 
