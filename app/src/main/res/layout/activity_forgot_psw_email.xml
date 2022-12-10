@@ -42,7 +42,7 @@
         android:theme="@style/EditTextThemeOverlay"
         app:startIconDrawable="@drawable/envelop_icon"
         app:errorTextAppearance="@style/ErrorTextAppearance"
-        app:helperText="Required*"
+        app:helperText=""
         app:helperTextTextAppearance="@style/HelperTextAppearance"
         app:counterEnabled="true"
         app:counterMaxLength="50"
