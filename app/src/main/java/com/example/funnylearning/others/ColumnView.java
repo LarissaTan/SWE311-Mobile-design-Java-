@@ -83,17 +83,21 @@ public class ColumnView extends View {
 
     private void drawColumn(Canvas canvas, Paint paint, int data[]) {
         for (int i = 1; i <= (transverse.length - 1); i++) {
-            int startX = xPoint + i * xScale;
-            RectF rect = new RectF(startX - 20, toY(data[i - 1]), startX + 5, this.getHeight() - margin*2);
-            canvas.drawRoundRect(rect,10,10, paint);
+            if(data[i-1] != 0) {
+                int startX = xPoint + i * xScale;
+                RectF rect = new RectF(startX - 20, toY(data[i - 1]), startX + 5, this.getHeight() - margin * 2);
+                canvas.drawRoundRect(rect, 10, 10, paint);
+            }
         }
     }
 
     private void drawColumnShadow(Canvas canvas, Paint paint, int data[]) {
         for (int i = 1; i <= (transverse.length - 1); i++) {
-            int startX = xPoint + i * xScale;
-            RectF rectShadow = new RectF(startX - 20, toY(data[i - 1]+10), startX + 5, this.getHeight() - margin*2);
-            canvas.drawRoundRect(rectShadow,10,10, paint);
+            if(data[i-1] != 0) {
+                int startX = xPoint + i * xScale;
+                RectF rectShadow = new RectF(startX - 20, toY(data[i - 1] + 10), startX + 5, this.getHeight() - margin * 2);
+                canvas.drawRoundRect(rectShadow, 10, 10, paint);
+            }
         }
     }
 
