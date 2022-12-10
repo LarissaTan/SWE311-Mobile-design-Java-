@@ -114,11 +114,7 @@ public class CartoonsDao {
         Cursor cursor = null;
 
         cursor = db.rawQuery("select * from tb_Cartoon where name like ? ", new String[]{"%"+keyword+"%"});
-
-
         Cursor cursor_tmp;
-//        String sql2 = "select name from tb_CartoonData where name like '%"+keyword+"%'";//注意：这里有单引号
-//        Cursor cursor1 = db.rawQuery(sql2,null);
 
         int resultCounts = cursor.getCount();  //记录总数
 

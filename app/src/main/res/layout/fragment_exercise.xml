@@ -19,7 +19,8 @@
             android:textSize="30sp"
             android:layout_margin="30dp" />
 
-        <androidx.appcompat.widget.SearchView
+        <android.widget.SearchView
+            android:id="@+id/cartoon_search_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -29,15 +30,16 @@
             android:queryHint="Search Keyword"
             android:maxWidth="315dp">
 
-        </androidx.appcompat.widget.SearchView>
+        </android.widget.SearchView>
 
         <TextView
+            android:id="@+id/cartoon_search_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/alegreya"
-            android:text="Search results for 'Raise'"
+            android:text=""
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
