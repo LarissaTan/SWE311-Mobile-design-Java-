@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
+import com.example.funnylearning.Bean.DayRecordBean;
 import com.example.funnylearning.Bean.model.Cartoons;
 
 import java.util.ArrayList;
@@ -93,6 +94,36 @@ public class CartoonsDao {
                 Cartoons c = new Cartoons();
                 c.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
                 c.Name  = cursor.getString(cursor.getColumnIndex("name"));
+                c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
+                c.Url = cursor.getString(cursor.getColumnIndex("url"));
+                c.Duration = cursor.getString(cursor.getColumnIndex("duration"));
+                c.Summary = cursor1.getString(cursor1.getColumnIndex("summary"));
+                c.Key1 = cursor1.getString(cursor1.getColumnIndex("key1"));
+                c.Key2 = cursor1.getString(cursor1.getColumnIndex("key2"));
+                c.image = cursor.getString(cursor.getColumnIndex("image"));
+                cartoons.add(c);
+            }
+            return cartoons;
+        }
+    }
+
+    @SuppressLint("Range")
+    public ArrayList<Cartoons> getKeyCartoons(String keyword){
+        ArrayList<Cartoons> cartoons = new ArrayList<Cartoons>();
+        String sql1 = "select name from tb_Cartoon where name like '%"+keyword+"%'";//注意：这里有单引号
+        Cursor cursor = db.rawQuery(sql1,null);
+        String sql2 = "select name from tb_CartoonData where name like '%"+keyword+"%'";//注意：这里有单引号
+        Cursor cursor1 = db.rawQuery(sql2,null);
+
+        int resultCounts = cursor.getCount();  //记录总数
+        if (resultCounts == 0 ) {
+            return null;
+        } else {
+            while (cursor.moveToNext()) {
+                cursor1.moveToNext();
+                Cartoons c = new Cartoons();
+                c.id = Integer.valueOf(cursor.getString(cursor.getColumnIndex("id")));
+                c.Name = cursor.getString(cursor.getColumnIndex("name"));
                 c.Level = Integer.valueOf(cursor.getString(cursor.getColumnIndex("level")));
                 c.Url = cursor.getString(cursor.getColumnIndex("url"));
                 c.Duration = cursor.getString(cursor.getColumnIndex("duration"));

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.funnylearning.Database.CartoonsDao;
+
 public class EnterPage extends AppCompatActivity {
 
     @Override
@@ -20,6 +22,10 @@ public class EnterPage extends AppCompatActivity {
         enter_page_btnLogin = findViewById(R.id.enter_page_btnLogin);
         enter_page_btnSignup = findViewById(R.id.enter_page_btnSignup);
         btn_jump = findViewById(R.id.btnJump_lo);
+
+//        CartoonsDao dao = new CartoonsDao(this);
+//        dao.open();
+//        System.out.println(dao.getKeyCartoons("make"));
 
         enter_page_btnSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
