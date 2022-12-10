@@ -116,13 +116,6 @@ public class ExerciseFragment extends Fragment {
             }
             @Override
             public boolean onQueryTextChange(String newText) {
-//                //如果newText长度不为0
-//                if (TextUtils.isEmpty(newText)){
-//                    listView.clearTextFilter();
-//                }else{
-//                    listView.setFilterText(newText);
-////          adapter.getFilter().filter(newText.toString());//替换成本句后消失黑框！！！
-//                }
                 return false;
             }
         });
