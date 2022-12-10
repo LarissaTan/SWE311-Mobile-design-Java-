@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".register.Reading_game_2">
+    tools:context=".register.Reading_game_2"
+    android:background="@drawable/bg_findwords">
 
     <Button
         android:id="@+id/start_btn"
