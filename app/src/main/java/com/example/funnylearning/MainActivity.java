@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import com.example.funnylearning.Bean.DayRecordBean;
 import com.example.funnylearning.Bean.DeliverGoodBean;
 import com.example.funnylearning.Bean.FindWordsBean;
 import com.example.funnylearning.Bean.model.Cartoons;
@@ -18,6 +19,7 @@ import com.example.funnylearning.Database.DeliverGoodDao;
 import com.example.funnylearning.Database.FindWordsDao;
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
+import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.Database.UserGoalLevelDao;
 import com.example.funnylearning.data.DataCourseComment;
 import com.example.funnylearning.data.DataCourseType;
@@ -189,6 +191,11 @@ public class MainActivity extends AppCompatActivity {
         f.wrong2 = "comprute";
 
         temp = wordsDao.insertFindWords(f);
+
+        UserDayRecordDao recordDao = new UserDayRecordDao(this);
+
+        DayRecordBean recordBean = new DayRecordBean();
+        recordBean.weather = "";
 
         DataCourseType.start(this);
 

@@ -8,9 +8,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 
 import com.example.funnylearning.Bean.DayRecordBean;
+import com.example.funnylearning.Bean.model.Cartoons;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class UserDayRecordDao {
     private Context context;
@@ -132,5 +137,73 @@ public class UserDayRecordDao {
         ContentValues contentValues = new ContentValues();
         //System.out.println("id  = " + id + ",  date = " + date);
         db.execSQL("delete from tb_UserDayRecord where recordDate=? and userId=?", new Object[]{date, id});
+    }
+
+    int[] time = new int[7];
+
+    @SuppressLint("Range")
+    public int[] getColData(int id){
+        open();
+        Cursor cursor = db.query("tb_UserDayRecord", null, "userId=" + id, new String[]{}, null, null, null);
+        int num = 0, total;
+        total = cursor.getCount();
+
+        while (cursor.moveToNext()) {
+            int t;
+            // 去掉前面的数据，留下最后7条
+            while(total > 7){
+                cursor.moveToNext();
+                total--;
+            }
+
+            String str = cursor.getString(cursor.getColumnIndex("recordDate"));
+            int first = str.charAt(0);
+            int second = str.charAt(1);
+            System.out.println("first is " + first);
+
+            t = Integer.valueOf(cursor.getString(cursor.getColumnIndex("learningTime")));
+
+
+        }
+        return time;
+
+
+
+    }
+
+    public static int getWeek(String time) {
+        int Week = -1;
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar c = Calendar.getInstance();
+        try {
+            c.setTime(format.parse(time));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        int wek=c.get(Calendar.DAY_OF_WEEK);
+
+        if (wek == 1) {
+            Week += 6;
+        }
+        if (wek == 2) {
+            Week += 0;
+        }
+        if (wek == 3) {
+            Week += 1;
+        }
+        if (wek == 4) {
+            Week += 2;
+        }
+        if (wek == 5) {
+            Week += 3;
+        }
+        if (wek == 6) {
+            Week += 4;
+        }
+        if (wek == 7) {
+            Week += 5;
+        }
+        return Week;
     }
 }

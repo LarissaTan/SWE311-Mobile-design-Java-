@@ -52,7 +52,10 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -444,6 +447,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
     public void onNothingSelected() {
 
     }
+
 }
 
         /*
