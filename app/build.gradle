@@ -92,4 +92,7 @@ dependencies {
 
     //    aligned text view
     implementation 'me.codeboy.android:align-text-view:2.3.2'
+
+    //    google maps
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
 }

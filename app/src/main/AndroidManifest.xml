@@ -12,6 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FunnyLearning"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCmasH6L-A0LbypB7DjO9uGmPFm9EEHRMM" />
+        <activity
+            android:name=".Settings.MapsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Settings.HelpCenterActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Settings.FAQ"
             android:exported="false">

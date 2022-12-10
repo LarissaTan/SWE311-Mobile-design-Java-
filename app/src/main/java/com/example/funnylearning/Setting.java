@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.funnylearning.Settings.FAQ;
+import com.example.funnylearning.Settings.MapsActivity;
 
 public class Setting extends AppCompatActivity {
 
@@ -26,6 +27,14 @@ public class Setting extends AppCompatActivity {
         faq.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent it = new Intent(Setting.this, FAQ.class);
+                startActivity(it);
+                //finishAndRemoveTask();
+            }
+        });
+
+        help.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent it = new Intent(Setting.this, MapsActivity.class);
                 startActivity(it);
                 //finishAndRemoveTask();
             }
