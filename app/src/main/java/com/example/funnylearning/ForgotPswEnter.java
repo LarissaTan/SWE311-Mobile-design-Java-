@@ -70,7 +70,7 @@ public class ForgotPswEnter extends AppCompatActivity {
 
                         if(updatePassword == true)
                         {
-                            Toast.makeText(getApplicationContext(),"You have successfully reset your password! Now, it`s time to login!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"You have successfully reset your password!", Toast.LENGTH_SHORT).show();
                             Intent it = new Intent(ForgotPswEnter.this, ForgotPswSucceed.class);
                             startActivity(it);
                             finish();

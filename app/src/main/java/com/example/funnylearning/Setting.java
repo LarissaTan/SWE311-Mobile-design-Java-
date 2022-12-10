@@ -41,6 +41,14 @@ public class Setting extends AppCompatActivity {
             }
         });
 
+        resetPwd.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent it = new Intent(Setting.this, ForgotPswEmail.class);
+                startActivity(it);
+                //finishAndRemoveTask();
+            }
+        });
+
 
 
     }
