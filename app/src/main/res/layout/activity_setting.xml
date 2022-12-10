@@ -127,6 +127,7 @@
                             android:textColor="#363F4D" />
 
                         <ImageView
+                            android:id="@+id/setting_reset"
                             android:layout_width="30dp"
                             android:layout_height="25dp"
                             android:layout_marginStart="60dp"
@@ -229,6 +230,7 @@
                             android:textColor="#363F4D" />
 
                         <ImageView
+                            android:id="@+id/setting_help"
                             android:layout_width="30dp"
                             android:layout_height="25dp"
                             android:layout_marginStart="60dp"
@@ -256,6 +258,7 @@
                             android:textColor="#363F4D" />
 
                         <ImageView
+                            android:id="@+id/setting_faq"
                             android:layout_width="30dp"
                             android:layout_height="25dp"
                             android:layout_marginStart="60dp"
