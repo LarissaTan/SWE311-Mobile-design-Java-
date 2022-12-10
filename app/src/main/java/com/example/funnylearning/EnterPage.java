@@ -23,9 +23,9 @@ public class EnterPage extends AppCompatActivity {
         enter_page_btnSignup = findViewById(R.id.enter_page_btnSignup);
         btn_jump = findViewById(R.id.btnJump_lo);
 
-//        CartoonsDao dao = new CartoonsDao(this);
-//        dao.open();
-//        System.out.println(dao.getKeyCartoons("make"));
+        CartoonsDao dao = new CartoonsDao(this);
+        dao.open();
+        System.out.println(dao.getKeyCartoons("make"));
 
         enter_page_btnSignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
