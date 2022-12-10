@@ -64,11 +64,14 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
     private LinearLayout column;
 
     // 此处插入数据
-    private void barChart() {
+    private void barChart(int num[]) {
         //第一个为空，它需要占一个位置
         String[] transverse = {"","Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
         String[] vertical = {"", " ", " ", " ", " "};
-        int[] data = {20 , 30, 40, 30, 20, 20, 18};
+
+        for(int i = 0 ; i < 7 ; i++)
+            System.out.println(num[i]);
+        int[] data = {num[0] , num[1], num[2], num[3], num[4], num[5], num[6]};
         List<Integer> color = new ArrayList<>();
         column.addView(new ColumnView(getContext(), transverse, vertical, color, data));
     }
@@ -98,6 +101,7 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
 
         Bundle tmp_data = new Bundle();
+
 
         Integer score;
         int gameId, typeId, goal;
@@ -148,11 +152,15 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
 
         super.onCreate(savedInstanceState);
         column = (LinearLayout) view.findViewById(R.id.column);
-        barChart();
+        //barChart();
 
         /*********** set visible and invisible ************/
         UserDayRecordDao dao = new UserDayRecordDao(view.getContext());
         dao.open();
+
+//        int[] i = new int[7];
+//        i = dao.getColData(userId);
+//        System.out.println(i);
 
         //txt_study_time
         TextView studyTitle, addFirstRecord, recordDate, activityTitle, recordTime;
@@ -189,10 +197,12 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         }else{
             DayRecordBean recordBean = new DayRecordBean();
             recordBean = dao.findNewestRecord(userId);
-            barChart();
+            int[] num = new int[7];
+            num = dao.getColData(userId);
+            barChart(num);
             column.setVisibility(View.VISIBLE);
             studyTitle.setVisibility(View.VISIBLE);
-            addFirstRecord.setVisibility(View.VISIBLE);
+            addFirstRecord.setVisibility(View.INVISIBLE);
             activityIcon.setVisibility(View.VISIBLE);
             weatherCard.setVisibility(View.VISIBLE);
             recordDate.setVisibility(View.VISIBLE);

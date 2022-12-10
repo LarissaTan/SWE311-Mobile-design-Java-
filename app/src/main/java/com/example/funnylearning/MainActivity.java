@@ -193,9 +193,64 @@ public class MainActivity extends AppCompatActivity {
         temp = wordsDao.insertFindWords(f);
 
         UserDayRecordDao recordDao = new UserDayRecordDao(this);
+        recordDao.open();
 
         DayRecordBean recordBean = new DayRecordBean();
-        recordBean.weather = "";
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 20;
+        recordBean.recordDate = "03-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 40;
+        recordBean.recordDate = "04-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 30;
+        recordBean.recordDate = "05-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 35;
+        recordBean.recordDate = "06-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 25;
+        recordBean.recordDate = "07-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 30;
+        recordBean.recordDate = "08-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 45;
+        recordBean.recordDate = "09-12-2022";
+        temp = recordDao.insertDayRecord(recordBean);
 
         DataCourseType.start(this);
 

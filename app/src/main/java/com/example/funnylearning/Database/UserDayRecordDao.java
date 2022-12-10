@@ -148,6 +148,13 @@ public class UserDayRecordDao {
         int num = 0, total;
         total = cursor.getCount();
 
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String tmp = date.format(formatter);
+        int tmp1 = tmp.charAt(0) - 48;
+        int tmp2 = tmp.charAt(1)  - 48;
+        int today = tmp1*10 + tmp2;
+
         while (cursor.moveToNext()) {
             int t;
             // 去掉前面的数据，留下最后7条
@@ -157,13 +164,18 @@ public class UserDayRecordDao {
             }
 
             String str = cursor.getString(cursor.getColumnIndex("recordDate"));
-            int first = str.charAt(0);
-            int second = str.charAt(1);
-            System.out.println("first is " + first);
+            int first = str.charAt(0) - 48;
+            int second = str.charAt(1)  - 48;
+            int day = first*10 + second;
 
-            t = Integer.valueOf(cursor.getString(cursor.getColumnIndex("learningTime")));
-
-
+            //找出近7天的数据
+            if(today - day < 8 || (today < 7 && 24 -today < day)){
+                System.out.println("str" + str);
+                int week = getWeek(str);
+                t = Integer.valueOf(cursor.getString(cursor.getColumnIndex("learningTime")));
+                System.out.println("str" + str + ", week" + week + ", t" + t);
+                time[week] = t;
+            }
         }
         return time;
 
@@ -182,27 +194,28 @@ public class UserDayRecordDao {
         }
 
         int wek=c.get(Calendar.DAY_OF_WEEK);
+        System.out.println("week is "+wek);
 
         if (wek == 1) {
-            Week += 6;
+            Week = 6;
         }
         if (wek == 2) {
-            Week += 0;
+            Week = 0;
         }
         if (wek == 3) {
-            Week += 1;
+            Week = 1;
         }
         if (wek == 4) {
-            Week += 2;
+            Week = 2;
         }
         if (wek == 5) {
-            Week += 3;
+            Week = 3;
         }
         if (wek == 6) {
-            Week += 4;
+            Week = 4;
         }
         if (wek == 7) {
-            Week += 5;
+            Week = 5;
         }
         return Week;
     }
