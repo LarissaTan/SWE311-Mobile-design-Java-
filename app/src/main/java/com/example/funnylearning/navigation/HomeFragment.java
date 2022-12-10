@@ -5,7 +5,6 @@ import static com.github.mikephil.charting.utils.ColorTemplate.MATERIAL_COLORS;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -54,7 +53,10 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -109,6 +111,45 @@ public class HomeFragment extends Fragment implements OnChartValueSelectedListen
         userId = getArguments().getInt("userId");
         System.out.println("user id is = " + userId  + "(home frag");
 
+        /***************** btn init ***********************/
+        ImageView read, math, cartoon;
+        read = view.findViewById(R.id.home_reading);
+        math = view.findViewById(R.id.home_math);
+        cartoon = view.findViewById(R.id.home_exer);
+
+        read.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 1);
+                startActivity(it);
+            }
+        });
+
+        math.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 2);
+                startActivity(it);
+            }
+        });
+
+        cartoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 3);
+                startActivity(it);
+            }
+        });
+
+        /**************************************************/
+
+        super.onCreate(savedInstanceState);
         column = (LinearLayout) view.findViewById(R.id.column);
         barChart();
 

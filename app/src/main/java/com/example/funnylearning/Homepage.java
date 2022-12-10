@@ -1,10 +1,12 @@
 package com.example.funnylearning;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -61,18 +63,19 @@ public class Homepage extends AppCompatActivity {
 
         bottomNavigationView  = findViewById(R.id.bottomNavigationView);
 
-        String nav_jump = extras.getString("nav_jump");
-        System.out.println("nav_jump is " + nav_jump);
-        if(nav_jump == null)
-            replacementFragment(homeFragment);
-        else if(nav_jump == "read")
+        int jump = -1;
+        jump = extras.getInt("nav_jump");
+        System.out.println("nav_jump is " + jump);
+
+        if(jump == 1) {
             replacementFragment(readingFragment);
-        else if(nav_jump == "math")
+        }else if(jump == 2) {
             replacementFragment(mathFragment);
-        else if(nav_jump == "cartoon")
+        }else if(jump == 3) {
             replacementFragment(exerciseFragment);
-        else
+        }else{
             replacementFragment(homeFragment);
+        }
 
         //bottomNavigationView.setSelectedItemId(R.id.nav_goal);
 
