@@ -362,65 +362,73 @@ public class HomeFragment extends Fragment{
             //TypedArray ta = view.getContext().obtainStyledAttributes(attrs, R.styleable.ClassicsHeader);
 
             activityTitle.setText(recordBean.activity);
-            switch (recordBean.activity){
-                case "Party":
-                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_party)));
-                    break;
-                case "Travel":
-                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_travel)));
-                    break;
-                case "Beach":
-                    activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_beach)));
-                    break;
-                default :
-                    break;
+            if(recordBean.activity!=null){
+                switch (recordBean.activity){
+                    case "Party":
+                        activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_party)));
+                        break;
+                    case "Travel":
+                        activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_travel)));
+                        break;
+                    case "Beach":
+                        activityIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_activities_beach)));
+                        break;
+                    default :
+                        break;
+                }
             }
 
-            switch (recordBean.mood){
-                case "sad":
-                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sad)));
-                    break;
-                case "happy":
-                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_happy)));
-                    break;
-                case "angry":
-                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_angry)));
-                    break;
-                case "sleepy":
-                    moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sleepy)));
-                    break;
-                default :
-                    break;
+            if(recordBean.mood != null) {
+                switch (recordBean.mood) {
+                    case "sad":
+                        moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sad)));
+                        break;
+                    case "happy":
+                        moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_happy)));
+                        break;
+                    case "angry":
+                        moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_angry)));
+                        break;
+                    case "sleepy":
+                        moodIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_mood_sleepy)));
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            switch (recordBean.weather){
-                case "sunny":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sun)));
-                    break;
-                case "overcast":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_suncloud)));
-                    break;
-                case "cloudy":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_cloud)));
-                    break;
-                case "sunshower":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sunrain)));
-                    break;
-                case "rain":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_rain)));
-                    break;
-                case "thunder":
-                    weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_thunderrain)));;
-                    break;
+            if(recordBean.weather!=null){
+                switch (recordBean.weather){
+                    case "sunny":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sun)));
+                        break;
+                    case "overcast":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_suncloud)));
+                        break;
+                    case "cloudy":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_cloud)));
+                        break;
+                    case "sunshower":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_sunrain)));
+                        break;
+                    case "rain":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_rain)));
+                        break;
+                    case "thunder":
+                        weatherIcon.setImageDrawable(getResources().getDrawable((R.drawable.record_weather_thunderrain)));;
+                        break;
 
-                default :
-                    break;
+                    default :
+                        break;
+                }
             }
+
 
             char tmp_str[] = recordBean.recordDate.toCharArray();
             String month = null, str;
             str = String.valueOf(tmp_str[3]);
             str = str + tmp_str[4];
+
             switch (str){
                 case "01":
                     month  = "Jan";
