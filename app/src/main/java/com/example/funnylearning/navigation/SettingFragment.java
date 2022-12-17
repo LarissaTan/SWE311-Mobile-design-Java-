@@ -76,7 +76,7 @@ public class SettingFragment extends Fragment {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent it = new Intent(getContext(), Setting.class);
-                startActivity(it);
+                startActivityForResult(it, 1);
             }
         });
 
@@ -84,4 +84,14 @@ public class SettingFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==1)
+        {
+            getActivity().finish();
+        }
+    }
 }

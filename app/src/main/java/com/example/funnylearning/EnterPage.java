@@ -22,7 +22,7 @@ public class EnterPage extends AppCompatActivity {
 
         enter_page_btnLogin = findViewById(R.id.enter_page_btnLogin);
         enter_page_btnSignup = findViewById(R.id.enter_page_btnSignup);
-        btn_jump = findViewById(R.id.btnJump_lo);
+        /*btn_jump = findViewById(R.id.btnJump_lo);*/
 
         if(permissions()){
             ask();
@@ -44,13 +44,13 @@ public class EnterPage extends AppCompatActivity {
             }
         });
 
-        btn_jump.setOnClickListener(new View.OnClickListener() {
+        /*btn_jump.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent it = new Intent(EnterPage.this, Homepage.class);
                 it.putExtra("userId", 1);
                 startActivity(it);
             }
-        });
+        });*/
 
     }
 

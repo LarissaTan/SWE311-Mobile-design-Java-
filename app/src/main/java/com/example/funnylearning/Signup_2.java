@@ -82,7 +82,13 @@ public class Signup_2 extends AppCompatActivity {
         if(textCode.isEmpty()) {
             verificationCode.setError("This field cannot be empty!");
             return false;
-        }else{
+        } else if(textCode.length()<4){
+            verificationCode.setError("Minimum 4 character");
+            return false;
+        } else if(textCode.length()>4){
+            verificationCode.setError("Maximum 4 character");
+            return false;
+        } else{
             verificationCode.setError(null);
             return true;
         }

@@ -39,8 +39,6 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String CREATE_USERGOALLEVEL = "create table if not exists tb_UserGoalLevel(userId integer, typeId integer, achievement bool default '0', foreign key(userId) references tb_UserData(userId), foreign key(typeId) references tb_CourseType(typeId));";
     // user other data
     public static final String CREATE_USERDAYRECORD = "create table if not exists tb_UserDayRecord(userId integer, mood varchar(10), activity varchar(10), weather varchar(10), learningTime integer, recordDate varchar(15), foreign key(userId) references tb_UserData(userId));";
-    // user learning data
-    public static final String CREATE_USERLEARNINGRECORD = "create table if not exists tb_UserLearningData(userId integer, learningTime time, learningDate date, foreign key(userId) references tb_UserData(userId));";
 
     public static final String CREATE_CARTOONDATA = "create table if not exists tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10), image varchar(100))";
     public static final String CREATE_CARTOONDETAILS = "create table if not exists tb_CartoonData(id int primary key,summary varchar(200),key1 varchar(200),key2 varchar(200))";
@@ -66,7 +64,6 @@ public class MyDatabase extends SQLiteOpenHelper {
         db.execSQL(CREATE_USERGAMERECORD);
         db.execSQL(CREATE_USERGOALLEVEL);
         db.execSQL(CREATE_USERDAYRECORD);
-        db.execSQL(CREATE_USERLEARNINGRECORD);
 
         db.execSQL(CREATE_CARTOONDATA);
         db.execSQL(CREATE_CARTOONDETAILS);

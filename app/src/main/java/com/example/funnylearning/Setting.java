@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class Setting extends AppCompatActivity {
 
     ImageView faq,help,resetPwd,reminder;
     Switch notification;
+    LinearLayout btn_logout;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,6 +32,7 @@ public class Setting extends AppCompatActivity {
         resetPwd = findViewById(R.id.setting_reset);
         notification = findViewById(R.id.setting_notification);
         reminder = findViewById(R.id.setting_reminders);
+        btn_logout = findViewById(R.id.setting_logout);
 
         faq.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -64,6 +67,14 @@ public class Setting extends AppCompatActivity {
         reminder.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Toast.makeText(Setting.this, "We will develop it later. Sorry for that (╯_╰)", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(1, null);
+                finish();
             }
         });
 
