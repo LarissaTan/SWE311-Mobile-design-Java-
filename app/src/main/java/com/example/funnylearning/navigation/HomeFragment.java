@@ -101,6 +101,7 @@ public class HomeFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(view.getContext(), ChatActivity.class);
+                it.putExtra("userId",userId);
                 startActivity(it);
             }
         });
