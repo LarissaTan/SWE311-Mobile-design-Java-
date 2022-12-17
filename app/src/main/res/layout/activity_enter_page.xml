@@ -54,7 +54,7 @@
         android:textSize="30sp"
         android:fontFamily="@font/indie_flower"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/btnJump_lo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,6 +63,6 @@
         android:text="jump"
         android:backgroundTint="@color/btn"
         android:textSize="30sp"
-        android:fontFamily="@font/indie_flower"/>
+        android:fontFamily="@font/indie_flower"/>-->
 
 </LinearLayout>

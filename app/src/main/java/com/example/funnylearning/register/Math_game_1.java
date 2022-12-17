@@ -35,6 +35,7 @@ import com.example.funnylearning.recycle.math_level.model_math_level;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 public class Math_game_1 extends AppCompatActivity {
@@ -62,6 +63,7 @@ public class Math_game_1 extends AppCompatActivity {
     int display;
     int indexOfCorrectAnswer;
     ArrayList<Integer> answers = new ArrayList<Integer>();
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
     int points = 0;
     int rounds = 10;
     int progress = 0;
@@ -295,7 +297,6 @@ public class Math_game_1 extends AppCompatActivity {
         for (int i = 0; i < display+1; i ++) {
             System.out.println("loop");
             mathLevelList.add(new model_math_level(R.drawable.math_level_sheep));
-
         }
         System.out.println(display);
 
@@ -311,6 +312,13 @@ public class Math_game_1 extends AppCompatActivity {
 
         mList.setLayoutManager(gridLayoutManager);
         mList.setAdapter(customAdapter);
+
+
+        for (int i = 0; i < 5; i ++)
+        {
+            numbers.add(i);
+        }
+
         answers.clear();
         System.out.println("index " + indexOfCorrectAnswer + "display" + display+1);
         for (int i = 0; i < 3; i++) {
@@ -321,12 +329,12 @@ public class Math_game_1 extends AppCompatActivity {
             }
             else {
                 int wrongAnswer = random.nextInt(5);
-                while(wrongAnswer==display+1)
+                while(numbers.get(wrongAnswer)==display+1 || answers.contains(numbers.get(wrongAnswer)))
                 {
                     wrongAnswer = random.nextInt(5);
                 }
-                System.out.println("Button Wrong");
-                answers.add(wrongAnswer);
+
+                answers.add(numbers.get(wrongAnswer));
             }
         }
 
