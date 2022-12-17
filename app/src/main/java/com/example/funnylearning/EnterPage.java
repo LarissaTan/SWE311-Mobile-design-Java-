@@ -44,14 +44,6 @@ public class EnterPage extends AppCompatActivity {
             }
         });
 
-        /*btn_jump.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent it = new Intent(EnterPage.this, Homepage.class);
-                it.putExtra("userId", 1);
-                startActivity(it);
-            }
-        });*/
-
     }
 
     protected boolean permissions(){
