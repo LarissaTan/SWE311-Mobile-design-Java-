@@ -102,6 +102,9 @@ public class ForgotPswEnter extends AppCompatActivity {
         if(textCode.isEmpty()) {
             code.setError("This field cannot be empty!");
             return false;
+        } else if(textCode.length()!=4){
+            code.setError("Only 4 characters!");
+            return false;
         } else {
             code.setError(null);
             return true;
