@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -90,10 +91,19 @@ public class HomeFragment extends Fragment{
         System.out.println("user id is = " + userId  + "(home frag");
 
         /***************** btn init ***********************/
-        ImageView read, math, cartoon;
+        ImageView read, math, cartoon, chat_icon;
         read = view.findViewById(R.id.home_reading);
         math = view.findViewById(R.id.home_math);
         cartoon = view.findViewById(R.id.home_exer);
+        chat_icon = view.findViewById(R.id.chat_icon);
+
+        chat_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(view.getContext(), ChatActivity.class);
+                startActivity(it);
+            }
+        });
 
         read.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,15 +67,6 @@ public class Homepage extends AppCompatActivity {
 
         bottomNavigationView  = findViewById(R.id.bottomNavigationView);
 
-        ImageButton chat_icon = findViewById(R.id.chat_icon);
-
-        chat_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(), ChatActivity.class);
-                startActivity(it);
-            }
-        });
 
         int jump = -1;
         jump = extras.getInt("nav_jump");
