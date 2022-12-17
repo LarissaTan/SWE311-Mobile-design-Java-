@@ -12,7 +12,7 @@ public class DataUserData {
         UserDataDao userDataDao = new UserDataDao(context);
         userDataDao.open();
 
-        int userAmount = 5;
+        int userAmount = 6;
 
         String[] email = new String[userAmount];
         String[] name = new String[userAmount];
@@ -60,6 +60,13 @@ public class DataUserData {
         age[4] = 10;
         photo[4] = R.drawable.profile_photo_5;
         time[4] = new Time(0,55,0);
+
+        email[4] = "yutong@gmail.com";
+        name[4] = "Liu Yutong";
+        gender[4] = false;
+        age[4] = 8;
+        photo[4] = R.drawable.profile_photo_3;
+        time[4] = new Time(0,45,0);
 
         for(int i=0; i<userAmount; i++){
             if(email[i]!=null){

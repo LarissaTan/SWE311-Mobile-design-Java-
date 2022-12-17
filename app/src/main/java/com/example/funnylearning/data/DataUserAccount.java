@@ -10,7 +10,7 @@ public class DataUserAccount {
         UserDao userDao = new UserDao(context);
         userDao.open();
 
-        int accountNumber = 5;
+        int accountNumber = 6;
 
         String[] email = new String[accountNumber];
         String[] password = new String[accountNumber];
@@ -30,6 +30,9 @@ public class DataUserAccount {
         // account 5: jessey
         email[4] = "jessey@gmail.com";
         password[4] = "1234";
+        // account 6: yutong
+        email[5] = "yutong@gmail.com";
+        password[5] = "1234";
 
         for(int i=0; i<accountNumber; i++){
             if(email[i] != null){
