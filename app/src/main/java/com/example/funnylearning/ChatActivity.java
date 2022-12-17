@@ -161,10 +161,13 @@ public class ChatActivity extends AppCompatActivity
         // whose "members" include our "user.id"
 
         FilterObject filter = Filters.and(
-                Filters.eq("type", "messaging")/*,
-                Filters.in("members", singletonList(user.getId()))*/
+                Filters.eq("type", "messaging"),
+                Filters.in("members", singletonList(user.getId()))
         );
 
+
+        // Step 5 - Connect the ChannelListViewModel to the ChannelListView, loose
+        //          coupling makes it easy to customize
         ViewModelProvider.Factory factory = new ChannelListViewModelFactory.Builder()
                 .filter(filter)
                 .sort(ChannelListViewModel.DEFAULT_SORT)
@@ -209,8 +212,6 @@ public class ChatActivity extends AppCompatActivity
             }
         });*/
 
-        // Step 5 - Connect the ChannelListViewModel to the ChannelListView, loose
-        //          coupling makes it easy to customize
         ChannelListViewModelBinding.bind(channelsViewModel, binding.channelListView, this);
         binding.channelListView.setChannelItemClickListener(channel -> {
             startActivity(ChannelActivity.newIntent(this, channel));
