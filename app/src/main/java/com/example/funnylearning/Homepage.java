@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.funnylearning.Bean.model.UserData;
@@ -62,6 +66,16 @@ public class Homepage extends AppCompatActivity {
         ReadingFragment readingFragment = new ReadingFragment();
 
         bottomNavigationView  = findViewById(R.id.bottomNavigationView);
+
+        ImageButton chat_icon = findViewById(R.id.chat_icon);
+
+        chat_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), ChatActivity.class);
+                startActivity(it);
+            }
+        });
 
         int jump = -1;
         jump = extras.getInt("nav_jump");
