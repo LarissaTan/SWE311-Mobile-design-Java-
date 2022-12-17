@@ -169,7 +169,7 @@ public class UserDayRecordDao {
             int day = first*10 + second;
 
             //找出近7天的数据
-            if(today - day < 8 || (today < 7 && 24 -today < day)){
+            if(today - day < 8 || (today < 7 && 24 -today < day) || today == day){
                 System.out.println("str" + str);
                 int week = getWeek(str);
                 t = Integer.valueOf(cursor.getString(cursor.getColumnIndex("learningTime")));

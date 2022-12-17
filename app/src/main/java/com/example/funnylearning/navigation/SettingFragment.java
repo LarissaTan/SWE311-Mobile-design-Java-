@@ -60,6 +60,7 @@ public class SettingFragment extends Fragment {
         fragment_profilePicture.setImageResource(profilePicture);
         fragment_name.setText(name);
         fragment_age.setText(age.toString());
+
         if(gender){
             fragment_gender.setText("Male");
         }else {

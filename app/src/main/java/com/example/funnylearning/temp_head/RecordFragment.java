@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -18,6 +19,7 @@ import com.example.funnylearning.ChoosePhoto;
 import com.example.funnylearning.Database.UserDayRecordDao;
 import com.example.funnylearning.Homepage;
 import com.example.funnylearning.R;
+import com.example.funnylearning.Setting;
 import com.example.funnylearning.Temp_head;
 import com.example.funnylearning.TimeSetting;
 import com.example.funnylearning.recycle.activities.adapter_activities;
@@ -141,8 +143,17 @@ public class RecordFragment extends Fragment {
                 int tmp_time = time.getValue();
                 dao.changeTime(tmp_time, id);
 
-                getActivity().setResult(2,null);
-                getActivity().finish();
+                DayRecordBean tmpBean = new DayRecordBean();
+                tmpBean = dao.findNewestRecord(id);
+
+                if(tmpBean.activity != null && tmpBean.mood != null && tmpBean.weather != null){
+                    getActivity().setResult(2,null);
+                    getActivity().finish();
+                }else{
+                    Toast.makeText(view.getContext(), "You need to fill up all the information !", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
