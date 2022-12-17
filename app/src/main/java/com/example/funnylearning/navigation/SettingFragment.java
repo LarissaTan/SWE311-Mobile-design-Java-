@@ -17,6 +17,8 @@ import com.example.funnylearning.Setting;
 
 public class SettingFragment extends Fragment {
 
+    private int userId;
+
     public SettingFragment() {
         // Required empty public constructor
     }
@@ -43,6 +45,8 @@ public class SettingFragment extends Fragment {
         Boolean gender = getArguments().getBoolean("gender");
         String email = getArguments().getString("email");
         String location = getArguments().getString("location");
+
+        userId = getArguments().getInt("userId");
 
         ImageView setting;
         setting  = view.findViewById(R.id.setting_jump);
@@ -77,7 +81,9 @@ public class SettingFragment extends Fragment {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent it = new Intent(getContext(), Setting.class);
-                startActivityForResult(it, 1);
+                it.putExtra("userId", userId);
+                startActivity(it);
+                //startActivityForResult(it, 1);
             }
         });
 

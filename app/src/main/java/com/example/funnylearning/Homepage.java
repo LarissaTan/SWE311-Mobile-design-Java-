@@ -78,6 +78,8 @@ public class Homepage extends AppCompatActivity {
             replacementFragment(mathFragment);
         }else if(jump == 3) {
             replacementFragment(exerciseFragment);
+        }else if(jump == 4){
+            replacementFragment(settingFragment);
         }else{
             replacementFragment(homeFragment);
         }

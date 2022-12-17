@@ -19,7 +19,9 @@ public class Setting extends AppCompatActivity {
 
     ImageView faq,help,resetPwd,reminder;
     Switch notification;
-    LinearLayout btn_logout;
+    LinearLayout btn_logout, btn_return;
+
+    private int userId = 0;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,12 +29,20 @@ public class Setting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null){
+            userId = extras.getInt("userId");
+        }else {
+            Toast.makeText(this, "no id passed", Toast.LENGTH_SHORT).show();
+        }
+
         faq = findViewById(R.id.setting_faq);
         help = findViewById(R.id.setting_help);
         resetPwd = findViewById(R.id.setting_reset);
         notification = findViewById(R.id.setting_notification);
         reminder = findViewById(R.id.setting_reminders);
         btn_logout = findViewById(R.id.setting_logout);
+        btn_return = findViewById(R.id.backButton_setting);
 
         faq.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -75,6 +85,16 @@ public class Setting extends AppCompatActivity {
             public void onClick(View v) {
                 setResult(1, null);
                 finish();
+            }
+        });
+
+        btn_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Setting.this, Homepage.class);
+                it.putExtra("userId", userId);
+                it.putExtra("nav_jump", 4);
+                startActivity(it);
             }
         });
 
