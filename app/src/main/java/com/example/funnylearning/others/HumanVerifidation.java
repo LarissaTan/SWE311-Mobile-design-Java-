@@ -8,15 +8,9 @@ import android.graphics.Paint;
 
 import java.util.Random;
 
-/**
- * Created by yao
- * 用于图片验证码的工具类
- */
 public class HumanVerifidation {
     private static final char[] CHARS = {
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
     };
@@ -27,7 +21,7 @@ public class HumanVerifidation {
     private Random mRandom = new Random();
 
     //Default Settings
-    private static final int DEFAULT_CODE_LENGTH = 6;//验证码的长度  这里是6位
+    private static final int DEFAULT_CODE_LENGTH = 4;//验证码的长度
     private static final int DEFAULT_FONT_SIZE = 60;//字体大小
     private static final int DEFAULT_LINE_NUMBER = 3;//多少条干扰线
     private static final int BASE_PADDING_LEFT = 20; //左边距
@@ -76,10 +70,7 @@ public class HumanVerifidation {
         canvas.restore();
         return bitmap;
     }
-    /**
-     * 得到图片中的验证码字符串
-     * @return
-     */
+
     public String getCode() {
         return code;
     }
@@ -136,8 +127,6 @@ public class HumanVerifidation {
         float skewX = mRandom.nextInt(11) / 10;
         skewX = mRandom.nextBoolean() ? skewX : -skewX;
         paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
-//        paint.setUnderlineText(true); //true为下划线，false为非下划线
-//        paint.setStrikeThruText(true); //true为删除线，false为非删除线
     }
 
     //随机间距
