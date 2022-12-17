@@ -71,8 +71,23 @@ public class adapter_exercise extends RecyclerView.Adapter<adapter_exercise.View
         viewHolder. item_exercise_title.setText(list.name);
         viewHolder. cartoon_level.setRating(list.num);
 
-        Drawable drawable = LoadImageFromWebOperations(list.image);
-        viewHolder.item_exercise_image.setImageDrawable(drawable);
+        switch(list.image){
+            case "pancakes":
+                viewHolder.item_exercise_image.setImageResource(R.drawable.pancakes);
+                break;
+            case "alphabet":
+                viewHolder.item_exercise_image.setImageResource(R.drawable.alphabet);
+                break;
+            case "coin":
+                viewHolder.item_exercise_image.setImageResource(R.drawable.coin);
+                break;
+            case "destiny":
+                viewHolder.item_exercise_image.setImageResource(R.drawable.destiny);
+                break;
+
+            default :
+                break;
+        }
 
 
 
