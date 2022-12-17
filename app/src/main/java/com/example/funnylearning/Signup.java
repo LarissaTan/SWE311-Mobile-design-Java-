@@ -104,10 +104,10 @@ public class Signup extends AppCompatActivity {
         if(textCode.isEmpty()) {
             code.setError("This field cannot be empty!");
             return false;
-        } else if(textCode.length() < 6){
+        } else if(textCode.length() < 4){
             code.setError("Minimum 6 characters");
             return false;
-        } else if(textCode.length() > 6){
+        } else if(textCode.length() > 4){
             code.setError("Maximum 6 characters");
             return false;
         }else if(!textCode.equals(veriCode)){

@@ -82,8 +82,8 @@ public class SettingFragment extends Fragment {
                 // TODO Auto-generated method stub
                 Intent it = new Intent(getContext(), Setting.class);
                 it.putExtra("userId", userId);
-                startActivity(it);
-                //startActivityForResult(it, 1);
+                //startActivity(it);
+                startActivityForResult(it, 1);
             }
         });
 

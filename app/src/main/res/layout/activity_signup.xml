@@ -31,7 +31,7 @@
         app:helperText=""
         app:helperTextTextAppearance="@style/HelperTextAppearance"
         app:counterEnabled="true"
-        app:counterMaxLength="6"
+        app:counterMaxLength="4"
         app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
