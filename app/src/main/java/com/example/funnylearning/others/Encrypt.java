@@ -6,22 +6,23 @@ import java.security.NoSuchAlgorithmException;
 public class Encrypt {
 
     public static String SHA(final String strText) {
-        // 返回值
-        String strResult = null;
-        // 是否是有效字符串
+
+        String result = null;
+
+        /// Make sure it is a valid string before starting to encrypt
         if (strText != null && strText.length() > 0) {
             try {
-                // SHA 加密开始
-                // 创建加密对象 并傳入加密類型
-                MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-                // 传入要加密的字符串
-                messageDigest.update(strText.getBytes());
-                // 得到 byte 類型结果
-                byte[] byteBuffer = messageDigest.digest();
 
-                // 將 byte 轉換爲 string
+                /***** SHA Encryption begins *****/
+                // Create an encrypted object and pass in the encrypted type
+                MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+                messageDigest.update(strText.getBytes());                           // Pass in the string to encrypt
+                byte[] byteBuffer = messageDigest.digest();                         // get byte type result
+
+                // convert byte to string
                 StringBuilder strHexString = new StringBuilder();
-                // 遍歷 byte buffer
+
+                // Traversing the byte buffer
                 for (byte b : byteBuffer) {
                     String hex = Integer.toHexString(0xff & b);
                     if (hex.length() == 1) {
@@ -29,12 +30,15 @@ public class Encrypt {
                     }
                     strHexString.append(hex);
                 }
-                // 得到返回結果
-                strResult = strHexString.toString();
+
+                // get the result
+                result = strHexString.toString();
+
             } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
             }
         }
-        return strResult;
+
+        return result;
     }
 }

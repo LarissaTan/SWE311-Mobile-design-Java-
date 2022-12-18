@@ -21,16 +21,19 @@ public class HumanVerifidation {
     private Random mRandom = new Random();
 
     //Default Settings
-    private static final int DEFAULT_CODE_LENGTH = 4;//验证码的长度
-    private static final int DEFAULT_FONT_SIZE = 60;//字体大小
-    private static final int DEFAULT_LINE_NUMBER = 3;//多少条干扰线
-    private static final int BASE_PADDING_LEFT = 20; //左边距
-    private static final int RANGE_PADDING_LEFT = 30;//左边距范围值
-    private static final int BASE_PADDING_TOP = 70;//上边距
-    private static final int RANGE_PADDING_TOP = 15;//上边距范围值
-    private static final int DEFAULT_WIDTH = 300;//默认宽度.图片的总宽
-    private static final int DEFAULT_HEIGHT = 100;//默认高度.图片的总高
-    private static final int DEFAULT_COLOR = 0xDF;//默认背景颜色值
+    private static final int DEFAULT_CODE_LENGTH = 4;   // Captcha length
+    private static final int DEFAULT_FONT_SIZE = 60;    // Font size
+    private static final int DEFAULT_LINE_NUMBER = 3;   // the number of interference lines
+
+    private static final int BASE_PADDING_LEFT = 25;    // padding
+    private static final int BASE_PADDING_TOP = 70;
+
+    private static final int RANGE_PADDING_LEFT = 30;   // the range of padding
+    private static final int RANGE_PADDING_TOP = 15;
+
+    private static final int DEFAULT_WIDTH = 300;
+    private static final int DEFAULT_HEIGHT = 100;
+    private static final int DEFAULT_COLOR = 0xDF;
 
     private String code;
 
@@ -41,9 +44,10 @@ public class HumanVerifidation {
         return veri;
     }
 
-    //生成验证码图片
+    /*** Generate verification code image ***/
     public Bitmap createBitmap() {
-        mPaddingLeft = 0; //每次生成验证码图片时初始化
+        // Initialize every time a captcha image is generated
+        mPaddingLeft = 0;
         mPaddingTop = 0;
 
         Bitmap bitmap = Bitmap.createBitmap(DEFAULT_WIDTH, DEFAULT_HEIGHT, Config.ARGB_8888);
@@ -61,12 +65,12 @@ public class HumanVerifidation {
             canvas.drawText(code.charAt(i) + "" , mPaddingLeft, mPaddingTop, paint);
         }
 
-        //干扰线
+        // interference lines
         for (int i = 0; i < DEFAULT_LINE_NUMBER; i++) {
             drawLine(canvas, paint);
         }
 
-        canvas.save();//保存 Canvas.ALL_SAVE_FLAG
+        canvas.save();
         canvas.restore();
         return bitmap;
     }
@@ -79,9 +83,10 @@ public class HumanVerifidation {
         return  createBitmap();
     }
 
-    //生成验证码
+    /***** generate verification code *****/
     public String createCode() {
-        mBuilder.delete(0, mBuilder.length()); //使用之前首先清空内容
+        // clean content before use
+        mBuilder.delete(0, mBuilder.length());
 
         for (int i = 0; i < DEFAULT_CODE_LENGTH; i++) {
             mBuilder.append(CHARS[mRandom.nextInt(CHARS.length)]);
@@ -90,7 +95,7 @@ public class HumanVerifidation {
         return mBuilder.toString();
     }
 
-    //生成干扰线
+    // draw the interference lines
     private void drawLine(Canvas canvas, Paint paint) {
         int color = randomColor();
         int startX = mRandom.nextInt(DEFAULT_WIDTH);
@@ -102,7 +107,7 @@ public class HumanVerifidation {
         canvas.drawLine(startX, startY, stopX, stopY, paint);
     }
 
-    //随机颜色
+    // random the color of characters
     private int randomColor() {
         mBuilder.delete(0, mBuilder.length()); //使用之前首先清空内容
 
@@ -119,7 +124,6 @@ public class HumanVerifidation {
         return Color.parseColor("#" + mBuilder.toString());
     }
 
-    //随机文本样式
     private void randomTextStyle(Paint paint) {
         int color = randomColor();
         paint.setColor(color);
@@ -129,7 +133,6 @@ public class HumanVerifidation {
         paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
     }
 
-    //随机间距
     private void randomPadding() {
         mPaddingLeft += BASE_PADDING_LEFT + mRandom.nextInt(RANGE_PADDING_LEFT);
         mPaddingTop = BASE_PADDING_TOP + mRandom.nextInt(RANGE_PADDING_TOP);
