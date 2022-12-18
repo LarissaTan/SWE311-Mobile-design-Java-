@@ -109,7 +109,8 @@ public class HumanVerifidation {
 
     // random the color of characters
     private int randomColor() {
-        mBuilder.delete(0, mBuilder.length()); //使用之前首先清空内容
+        // clean the content first
+        mBuilder.delete(0, mBuilder.length());
 
         String haxString;
         for (int i = 0; i < 3; i++) {
@@ -127,10 +128,11 @@ public class HumanVerifidation {
     private void randomTextStyle(Paint paint) {
         int color = randomColor();
         paint.setColor(color);
-        paint.setFakeBoldText(mRandom.nextBoolean());  //true为粗体，false为非粗体
+        paint.setFakeBoldText(mRandom.nextBoolean());  // true for bold, false for non-bold
         float skewX = mRandom.nextInt(11) / 10;
         skewX = mRandom.nextBoolean() ? skewX : -skewX;
-        paint.setTextSkewX(skewX); //float类型参数，负数表示右斜，整数左斜
+        // Float type parameter, negative number means right skew, integer left skew
+        paint.setTextSkewX(skewX);
     }
 
     private void randomPadding() {

@@ -107,7 +107,7 @@ public class ColumnView extends View {
         // data processing
         float y;
         try {
-            float a = (float) num / 15.0f;//数据按比例转换坐标
+            float a = (float) num / 15.0f;      // Data scaled to coordinates
             y = yPoint - a * yScale;
         } catch (Exception e) {
             return 0;

@@ -5,18 +5,18 @@ import java.security.NoSuchAlgorithmException;
 
 public class Encrypt {
 
-    public static String SHA(final String strText) {
+    public static String SHA(final String str) {
 
         String result = null;
 
         /// Make sure it is a valid string before starting to encrypt
-        if (strText != null && strText.length() > 0) {
+        if (str != null && str.length() > 0) {
             try {
 
                 /***** SHA Encryption begins *****/
                 // Create an encrypted object and pass in the encrypted type
                 MessageDigest messageDigest = MessageDigest.getInstance("MD5");
-                messageDigest.update(strText.getBytes());                           // Pass in the string to encrypt
+                messageDigest.update(str.getBytes());                           // Pass in the string to encrypt
                 byte[] byteBuffer = messageDigest.digest();                         // get byte type result
 
                 // convert byte to string
