@@ -43,12 +43,12 @@ public class HelpCenterActivity extends AppCompatActivity {
 
         call.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String number = "126702095"; //得到号码
-                Intent intent = new Intent();//意图对象
-                intent.setAction(Intent.ACTION_CALL);//执行打电话动作
-                Uri data = Uri.parse("tel:" + number);//设置拨打的号码
+                String number = "126702095"; // set phone number
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_CALL);// call action
+                Uri data = Uri.parse("tel:" + number);// set calling number
                 intent.setData(data);
-                startActivity(intent); //激活acitivity组件
+                startActivity(intent);
                 Toast.makeText(HelpCenterActivity.this, "It is calling.", Toast.LENGTH_SHORT).show();
             }
         });
