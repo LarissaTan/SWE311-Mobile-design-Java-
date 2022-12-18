@@ -234,19 +234,24 @@ public class Goal extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                for(int i=0; i<3; i++){
-                    if(chosenGoal[i]!=null){
-                        UserLevel userLevel = new UserLevel();
-                        userLevel.setUserId(finalUserId);
-                        userLevel.setTypeId(chosenGoal[i].getTypeId());
-                        userGoalLevelDao.insertGoal(userLevel);
+                if(chosenGoal[0]!=null){
+                    for(int i=0; i<3; i++){
+                        if(chosenGoal[i]!=null){
+                            UserLevel userLevel = new UserLevel();
+                            userLevel.setUserId(finalUserId);
+                            userLevel.setTypeId(chosenGoal[i].getTypeId());
+                            userGoalLevelDao.insertGoal(userLevel);
+                        }
                     }
+
+                    Intent it = new Intent(Goal.this, ChoosePhoto.class);
+                    it.putExtra("userId",finalUserId);
+                    startActivity(it);
+                    finish();
+                }else {
+                    Toast.makeText(Goal.this, "Please choose at least one goal", Toast.LENGTH_SHORT).show();
                 }
 
-                Intent it = new Intent(Goal.this, ChoosePhoto.class);
-                it.putExtra("userId",finalUserId);
-                startActivity(it);
-                finish();
             }
         });
     }

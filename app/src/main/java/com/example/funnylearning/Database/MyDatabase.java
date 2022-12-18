@@ -43,7 +43,7 @@ public class MyDatabase extends SQLiteOpenHelper {
     public static final String CREATE_CARTOONDATA = "create table if not exists tb_Cartoon(id int primary key,name varchar(20),level int,url varchar(40),duration varchar(10), image varchar(100))";
     public static final String CREATE_CARTOONDETAILS = "create table if not exists tb_CartoonData(id int primary key,summary varchar(200),key1 varchar(200),key2 varchar(200))";
     public static final String CREATE_FINDWORDS = "create table if not exists tb_FindWords(id int primary key, correct varchar(10), wrong1  varchar(10), wrong2 varchar(10))";
-    public static final String CREATE_DELIVERGOODS =  "create table if not exists tb_DeliverGoods(id int primary key, word varchar(10), corrGood varchar(200), wrongGood1 varchar(200), wrongGood2 varchar(200),audio varchar(100))";
+    public static final String CREATE_DELIVERGOODS =  "create table if not exists tb_DeliverGoods(id int primary key, word varchar(10), corrGood int, wrongGood1 int, wrongGood2 int,audio int)";
 
 
     //构造函数
