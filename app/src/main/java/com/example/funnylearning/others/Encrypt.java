@@ -5,7 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class Encrypt {
 
-    public static String SHA(final String str) {
+    public static String md5(final String str) {
 
         String result = null;
 

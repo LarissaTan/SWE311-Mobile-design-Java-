@@ -45,7 +45,7 @@ public class Signup extends AppCompatActivity {
         veriCode = humanVeri.getCode();
 
         Encrypt te = new Encrypt();
-        System.out.println("the hash code is "  +  te.SHA("123"));
+        System.out.println("the hash code is "  +  te.md5("123"));
 
         Button btnSignup;
         btnSignup = findViewById(R.id.btnSignup);

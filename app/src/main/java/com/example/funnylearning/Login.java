@@ -58,7 +58,7 @@ public class Login extends AppCompatActivity {
 
                 if (confirmInput()) {
                     String user_email = login_account.getEditText().getText().toString();
-                    String user_password = Encrypt.SHA(login_password.getEditText().getText().toString());
+                    String user_password = Encrypt.md5(login_password.getEditText().getText().toString());
 
                     Boolean checkUser = userDao.checkUserEmail(user_email);
 

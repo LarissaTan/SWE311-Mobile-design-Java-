@@ -36,7 +36,7 @@ public class DataUserAccount {
 
         for(int i=0; i<accountNumber; i++){
             if(email[i] != null){
-                userDao.insertEmailPassword(email[i], Encrypt.SHA(password[i]));
+                userDao.insertEmailPassword(email[i], Encrypt.md5(password[i]));
             }
         }
     }

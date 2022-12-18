@@ -47,7 +47,7 @@ public class Signup_3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(confirmInput()){
-                    String textPassword = Encrypt.SHA(password.getEditText().getText().toString());
+                    String textPassword = Encrypt.md5(password.getEditText().getText().toString());
 
                     Boolean insert = userDao.insertEmailPassword(finalEmail, textPassword);
                     if (insert == true) {

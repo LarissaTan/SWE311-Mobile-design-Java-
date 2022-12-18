@@ -66,7 +66,7 @@ public class ForgotPswEnter extends AppCompatActivity {
                     
                     if(textCode.equals(validateCode))
                     {
-                        Boolean updatePassword = userDao.updatePassword(finalUser_email, Encrypt.SHA(user_password));
+                        Boolean updatePassword = userDao.updatePassword(finalUser_email, Encrypt.md5(user_password));
 
                         if(updatePassword == true)
                         {
