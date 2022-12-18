@@ -1,22 +1,19 @@
 package com.example.funnylearning.others;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.view.View;
-
 import androidx.core.content.ContextCompat;
-
 import com.example.funnylearning.R;
-
 import java.util.List;
 
 public class ColumnView extends View {
 
-    private String[] transverse;    //横列的刻度值数组
-    private String[] vertical;      //竖列的刻度值数组
-    private List<Integer> colors;
-    private int[] high;           //柱状图高度数值数组
+    private String[] transverse;        // array of tick values for row
+    private String[] vertical;          // array of tick values for column
+    private int[] high;                 // An array of histogram height values
 
     private int xScale;
     private int yScale;
@@ -29,11 +26,12 @@ public class ColumnView extends View {
     private Paint paintRectF;
     private Paint paintRectShadowF;
 
+
     public ColumnView(Context context) {
         super(context);
     }
 
-    public ColumnView(Context context, String[] transverse, String[] vertical, List<Integer> colors, int[] high) {
+    public ColumnView(Context context, String[] transverse, String[] vertical, int[] high) {
         super(context);
         this.transverse = transverse;
         this.vertical = vertical;
@@ -55,16 +53,20 @@ public class ColumnView extends View {
         yPoint = this.getHeight() - margin;
         xScale = (this.getWidth() - 2 * margin) / (transverse.length - 1) - 10;
         yScale = (this.getHeight() - 2 * margin) / (vertical.length - 1);
+
+        // Abscissa
         paintCoordinate = new Paint(Paint.ANTI_ALIAS_FLAG);
         paintCoordinate.setColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
         paintCoordinate.setTextSize(32f);
-        //rectangle
+
+        // rectangle
         paintRectF = new Paint();
         paintRectF.setColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
         paintRectF.setStyle(Paint.Style.FILL);
         paintRectF.setDither(true);
         paintRectF.setAntiAlias(true);
-        //rectangle shadow
+
+        // rectangle shadow
         paintRectShadowF = new Paint();
         paintRectShadowF.setColor(ContextCompat.getColor(getContext(), R.color.colorShadow));
         paintRectShadowF.setStyle(Paint.Style.FILL);
@@ -73,7 +75,7 @@ public class ColumnView extends View {
     }
 
     private void drawCoordinate(Canvas canvas, Paint paint) {
-        // X轴坐标
+        // X-axis coordinates
         for (int i = 0; i <= (transverse.length - 1); i++) {
             paint.setTextAlign(Paint.Align.CENTER);
             int startX = xPoint + i * xScale;
@@ -102,6 +104,7 @@ public class ColumnView extends View {
     }
 
     private float toY(int num) {
+        // data processing
         float y;
         try {
             float a = (float) num / 15.0f;//数据按比例转换坐标

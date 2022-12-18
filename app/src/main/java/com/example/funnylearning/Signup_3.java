@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
-import com.example.funnylearning.others.other;
+import com.example.funnylearning.others.Encrypt;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Signup_3 extends AppCompatActivity {
@@ -47,7 +47,7 @@ public class Signup_3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(confirmInput()){
-                    String textPassword = other.SHA(password.getEditText().getText().toString());
+                    String textPassword = Encrypt.SHA(password.getEditText().getText().toString());
 
                     Boolean insert = userDao.insertEmailPassword(finalEmail, textPassword);
                     if (insert == true) {

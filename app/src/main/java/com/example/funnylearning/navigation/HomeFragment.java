@@ -47,17 +47,14 @@ public class HomeFragment extends Fragment{
     CardView weatherCard, moodCard;
     ProgressBar timeBar;
 
-    // 此处插入数据
+    // insert data here
     private void barChart(int num[]) {
-        //第一个为空，它需要占一个位置
+        // The first one is empty, it needs a place
         String[] transverse = {"","Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
         String[] vertical = {"", " ", " ", " ", " "};
 
-        for(int i = 0 ; i < 7 ; i++)
-            System.out.println(num[i]);
         int[] data = {num[0] , num[1], num[2], num[3], num[4], num[5], num[6]};
-        List<Integer> color = new ArrayList<>();
-        column.addView(new ColumnView(getContext(), transverse, vertical, color, data));
+        column.addView(new ColumnView(getContext(), transverse, vertical, data));
     }
 
     public static final String EXTRA_NAME = "tag";
@@ -143,12 +140,6 @@ public class HomeFragment extends Fragment{
 
         studytime = (RelativeLayout) view.findViewById(R.id.homepage_studytime);
 
-        /*********** set visible and invisible ************/
-
-
-//        int[] i = new int[7];
-//        i = dao.getColData(userId);
-//        System.out.println(i);
 
         //txt_study_time
         addFirstRecord = view.findViewById(R.id.txt_add_first_record);
@@ -358,7 +349,6 @@ public class HomeFragment extends Fragment{
             moodCard.setVisibility(View.VISIBLE);
             recordTime.setVisibility(View.VISIBLE);
 
-            //TypedArray ta = view.getContext().obtainStyledAttributes(attrs, R.styleable.ClassicsHeader);
 
             activityTitle.setText(recordBean.activity);
             switch (recordBean.activity){

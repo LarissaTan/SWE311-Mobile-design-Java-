@@ -3,7 +3,7 @@ package com.example.funnylearning.data;
 import android.content.Context;
 
 import com.example.funnylearning.Database.UserDao;
-import com.example.funnylearning.others.other;
+import com.example.funnylearning.others.Encrypt;
 
 public class DataUserAccount {
     public static void start(Context context){
@@ -33,7 +33,7 @@ public class DataUserAccount {
 
         for(int i=0; i<accountNumber; i++){
             if(email[i] != null){
-                userDao.insertEmailPassword(email[i], other.SHA(password[i]));
+                userDao.insertEmailPassword(email[i], Encrypt.SHA(password[i]));
             }
         }
     }

@@ -3,7 +3,7 @@ package com.example.funnylearning.others;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class other {
+public class Encrypt {
 
     public static String SHA(final String strText) {
         // 返回值

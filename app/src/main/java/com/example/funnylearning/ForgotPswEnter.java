@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.others.emailCode;
-import com.example.funnylearning.others.other;
+import com.example.funnylearning.others.Encrypt;
 import com.google.android.material.textfield.TextInputLayout;
 
 import javax.mail.MessagingException;
@@ -66,7 +66,7 @@ public class ForgotPswEnter extends AppCompatActivity {
                     
                     if(textCode.equals(validateCode))
                     {
-                        Boolean updatePassword = userDao.updatePassword(finalUser_email, other.SHA(user_password));
+                        Boolean updatePassword = userDao.updatePassword(finalUser_email, Encrypt.SHA(user_password));
 
                         if(updatePassword == true)
                         {

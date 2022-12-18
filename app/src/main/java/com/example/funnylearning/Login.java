@@ -2,7 +2,6 @@ package com.example.funnylearning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -13,8 +12,7 @@ import android.widget.Toast;
 
 import com.example.funnylearning.Database.UserDao;
 import com.example.funnylearning.Database.UserDataDao;
-import com.example.funnylearning.others.other;
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.funnylearning.others.Encrypt;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Login extends AppCompatActivity {
@@ -60,7 +58,7 @@ public class Login extends AppCompatActivity {
 
                 if (confirmInput()) {
                     String user_email = login_account.getEditText().getText().toString();
-                    String user_password = other.SHA(login_password.getEditText().getText().toString());
+                    String user_password = Encrypt.SHA(login_password.getEditText().getText().toString());
 
                     Boolean checkUser = userDao.checkUserEmail(user_email);
 
