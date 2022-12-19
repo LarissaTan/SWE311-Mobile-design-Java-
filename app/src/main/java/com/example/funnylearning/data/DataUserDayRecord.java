@@ -63,8 +63,72 @@ public class DataUserDayRecord {
         recordBean.mood = "happy";
         recordBean.activity = "Party";
         recordBean.userid = 1;
+        recordBean.learningTime = 40;
+        recordBean.recordDate = "10-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 30;
+        recordBean.recordDate = "11-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
         recordBean.learningTime = 45;
-        recordBean.recordDate = "09-12-2022";
+        recordBean.recordDate = "12-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 35;
+        recordBean.recordDate = "13-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 40;
+        recordBean.recordDate = "14-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 33;
+        recordBean.recordDate = "15-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 37;
+        recordBean.recordDate = "16-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 22;
+        recordBean.recordDate = "17-12-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 47;
+        recordBean.recordDate = "18-12-2022";
         recordDao.insertDayRecord(recordBean);
     }
 }
