@@ -43,6 +43,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        // set the location of xmum
         LatLng xmum = new LatLng(2.8305, 101.704);
         map.addMarker(new MarkerOptions().position(xmum).title("Marker in XMUM"));
         map.moveCamera(CameraUpdateFactory.newLatLng(xmum));
