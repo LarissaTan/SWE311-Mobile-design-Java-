@@ -16,7 +16,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 20;
-        recordBean.recordDate = "03-12-2022";
+        recordBean.recordDate = "20-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -24,7 +24,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 40;
-        recordBean.recordDate = "04-12-2022";
+        recordBean.recordDate = "21-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -32,7 +32,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 30;
-        recordBean.recordDate = "05-12-2022";
+        recordBean.recordDate = "22-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -40,7 +40,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 35;
-        recordBean.recordDate = "06-12-2022";
+        recordBean.recordDate = "23-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -48,7 +48,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 25;
-        recordBean.recordDate = "07-12-2022";
+        recordBean.recordDate = "24-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -56,7 +56,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 30;
-        recordBean.recordDate = "08-12-2022";
+        recordBean.recordDate = "25-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -64,7 +64,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 40;
-        recordBean.recordDate = "10-12-2022";
+        recordBean.recordDate = "26-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -72,7 +72,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 30;
-        recordBean.recordDate = "11-12-2022";
+        recordBean.recordDate = "27-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -80,7 +80,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 45;
-        recordBean.recordDate = "12-12-2022";
+        recordBean.recordDate = "28-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -88,7 +88,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 35;
-        recordBean.recordDate = "13-12-2022";
+        recordBean.recordDate = "29-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -96,7 +96,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 40;
-        recordBean.recordDate = "14-12-2022";
+        recordBean.recordDate = "30-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -104,7 +104,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 33;
-        recordBean.recordDate = "15-12-2022";
+        recordBean.recordDate = "31-12-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -112,7 +112,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 37;
-        recordBean.recordDate = "16-12-2022";
+        recordBean.recordDate = "01-01-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -120,7 +120,7 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 22;
-        recordBean.recordDate = "17-12-2022";
+        recordBean.recordDate = "02-01-2022";
         recordDao.insertDayRecord(recordBean);
 
         recordBean.weather = "rain";
@@ -128,7 +128,15 @@ public class DataUserDayRecord {
         recordBean.activity = "Party";
         recordBean.userid = 1;
         recordBean.learningTime = 47;
-        recordBean.recordDate = "18-12-2022";
+        recordBean.recordDate = "03-01-2022";
+        recordDao.insertDayRecord(recordBean);
+
+        recordBean.weather = "rain";
+        recordBean.mood = "happy";
+        recordBean.activity = "Party";
+        recordBean.userid = 1;
+        recordBean.learningTime = 47;
+        recordBean.recordDate = "04-01-2022";
         recordDao.insertDayRecord(recordBean);
     }
 }

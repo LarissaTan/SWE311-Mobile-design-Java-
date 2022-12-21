@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.deleteDatabase("funny_learning.db");
 
         @SuppressLint("WrongViewCast") AppCompatTextView title = findViewById(R.id.title_app);
         Typeface typeface = Typeface.createFromAsset(getAssets(),"YujiBoku-Regular.ttf");

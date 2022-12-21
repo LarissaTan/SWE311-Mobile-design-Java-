@@ -157,7 +157,7 @@ public class UserDayRecordDao {
 
         while (cursor.moveToNext()) {
             int t;
-            // 去掉前面的数据，留下最后7条
+
             while(total > 7){
                 cursor.moveToNext();
                 total--;
@@ -168,7 +168,6 @@ public class UserDayRecordDao {
             int second = str.charAt(1)  - 48;
             int day = first*10 + second;
 
-            //找出近7天的数据
             if(today - day < 8 || (today < 7 && 24 -today < day) || today == day){
                 System.out.println("str" + str);
                 int week = getWeek(str);
