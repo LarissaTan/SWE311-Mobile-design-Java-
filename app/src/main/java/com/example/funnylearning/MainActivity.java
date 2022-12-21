@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         Typeface typeface = Typeface.createFromAsset(getAssets(),"YujiBoku-Regular.ttf");
         title.setTypeface(typeface);
         Timer timer = new Timer();
+
+        // make the animation working for 3 sec
         timer.schedule(new TimerTask() {
             public void run() {
                 Intent it = new Intent(MainActivity.this, EnterPage.class);
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         }, 3000);
 
 
+        // insert data in sqlite
         DataCartoons.start(this);
 
         DataFindWords.start(this);
