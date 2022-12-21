@@ -34,6 +34,7 @@ import java.util.Random;
 
 public class Math_game_2 extends AppCompatActivity {
 
+    //Initialization of variables
     TextView scoreTextView;
     TextView timeLeftTextView;
     TextView alertTextView;
@@ -87,6 +88,7 @@ public class Math_game_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_game2);
 
+        //Getting user and game id from previous page
         Bundle extra = getIntent().getExtras();
         if(extra != null){
             userId = extra.getInt("userId");
@@ -95,6 +97,7 @@ public class Math_game_2 extends AppCompatActivity {
             Toast.makeText(this, "Id not passed", Toast.LENGTH_SHORT).show();
         }
 
+        //Declaration of variables
         scoreTextView = findViewById(R.id.scoreTextView);
         timeLeftTextView = findViewById(R.id.timeLeftTextView);
         alertTextView = findViewById(R.id.alertTextView);
@@ -135,6 +138,7 @@ public class Math_game_2 extends AppCompatActivity {
 
         scoreTextView.setText(Integer.toString(points));
 
+        //start button
         startBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -156,7 +160,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
-        btn1.setTag(0);
+        //button 1
         btn1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -179,7 +183,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
-        btn2.setTag(1);
+        //button 2
         btn2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -202,7 +206,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
-        btn3.setTag(2);
+        //button 3
         btn3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -225,7 +229,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
-        btn4.setTag(3);
+        //button 4
         btn4.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -247,6 +251,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
+        //play again button
         playAgainBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -274,6 +279,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         });
 
+        //quit button
         quitBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -298,13 +304,17 @@ public class Math_game_2 extends AppCompatActivity {
 
     }
 
+    //render next question
     @SuppressLint("SetTextI18n")
     public void NextQuestion(){
+        //question
         a = random.nextInt(11);
         b = random.nextInt(11);
         questionTextView.setText(a + "+" + b + "=?");
 
+        //position of answer
         indexOfCorrectAnswer = random.nextInt(4);
+
         answers.clear();
         for(int i = 0; i<4; i++){
 
@@ -328,6 +338,7 @@ public class Math_game_2 extends AppCompatActivity {
 
     }
 
+    //on click
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
@@ -337,18 +348,22 @@ public class Math_game_2 extends AppCompatActivity {
         mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
+        //correct answer
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
             mp_correct.start();
             points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
-        }else {
+        }
+        //wrong answer
+        else {
             mp_wrong.start();
             alertTextView.setText("Correct Answer: " + (a+b));
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
         }
 
         onAnswer();
+
         view.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -369,7 +384,7 @@ public class Math_game_2 extends AppCompatActivity {
             }
         }, 2300);
 
-
+        //setting score
         scoreTextView.setText(Integer.toString(points));
 
         view.postDelayed(new Runnable() {
@@ -381,6 +396,7 @@ public class Math_game_2 extends AppCompatActivity {
         }, 1000);
     }
 
+    //answer page
     public void onAnswer(){
         System.out.println("onAnswer");
         normalUI.setVisibility(View.INVISIBLE);
@@ -392,6 +408,7 @@ public class Math_game_2 extends AppCompatActivity {
                 .setListener(null);
     }
 
+    //play again reset game
     @SuppressLint("SetTextI18n")
     public void playAgain(View view){
         points=0;
@@ -403,10 +420,12 @@ public class Math_game_2 extends AppCompatActivity {
         normalUI.setVisibility(View.VISIBLE);
         if(mp_game_over.isPlaying())
         {
+            //stop sound effect
             mp_game_over.stop();
         }
     }
 
+    //start game
     public void start(View view) {
 
         mp_countdown = MediaPlayer.create(this,R.raw.countdown_sound);
@@ -422,19 +441,21 @@ public class Math_game_2 extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
+                //time left
                 timeLeftTextView.setText(String.valueOf(millisUntilFinished/1000));
-                if (progress >= 80)
+                //progress bar
+                if (progress >= 80) //progress more than 80
                 {
                     progress ++;
                     timeLeftProgressBar.setProgress(progress, true);
                 }
-                else
+                else                //progress less than 80
                 {
                     progress += 2;
                     timeLeftProgressBar.setProgress(progress, true);
                 }
 
-                if(progress >= 90)
+                if(progress >= 90)  //10 seconds left
                 {
                     mp_countdown.start();
                 }
@@ -443,9 +464,9 @@ public class Math_game_2 extends AppCompatActivity {
 
             @SuppressLint("SetTextI18n")
             @Override
-            public void onFinish() {
-                finalScoreTextView.setText(Integer.toString(points));
-                insertDatabase(points);
+            public void onFinish() {                                    //end screen
+                finalScoreTextView.setText(Integer.toString(points));   //final score
+                insertDatabase(points);                                 //game record
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -459,6 +480,7 @@ public class Math_game_2 extends AppCompatActivity {
         }.start();
     }
 
+    //update game record
     public void insertDatabase (int score){
 
         UserGameRecord userGameRecord =  new UserGameRecord();
@@ -483,6 +505,7 @@ public class Math_game_2 extends AppCompatActivity {
         }
     }
 
+    //clean up
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub

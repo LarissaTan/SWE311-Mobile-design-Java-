@@ -20,6 +20,7 @@ public class GameDao {
 
     public GameDao(Context context) {this.context=context;}
 
+    //open db
     public void open() throws SQLiteException {
         dbHelper = new MyDatabase(context);
         //dbHelper.onCreate(db);
@@ -30,6 +31,7 @@ public class GameDao {
         }
     }
 
+    //close db
     public void close() {
         if (db != null) {
             db.close();
@@ -37,6 +39,7 @@ public class GameDao {
         }
     }
 
+    //insert game data
     public boolean insertGame(Game game){
 
         if(!checkGame(game.getName()))
@@ -62,6 +65,7 @@ public class GameDao {
         return false;
     }
 
+    //check duplicate game
     public Boolean checkGame(String name){
         open();
         Cursor cursor = db.rawQuery("select * from tb_Game where gameName = ? " , new String[] {name});
@@ -71,6 +75,7 @@ public class GameDao {
             return false;
     }
 
+    //get all games
     @SuppressLint("Range")
     public ArrayList<Game> getAllGame(){
         open();
@@ -96,6 +101,7 @@ public class GameDao {
         }
     }
 
+    //get game by type name
     @SuppressLint("Range")
     public ArrayList<Game> getGameByTypeName(String typeName){
         open();
@@ -121,6 +127,7 @@ public class GameDao {
         }
     }
 
+    //get type id
     @SuppressLint("Range")
     public int getTypeId (int gameId){
         open();
@@ -136,6 +143,7 @@ public class GameDao {
         }
     }
 
+    //get goal
     @SuppressLint("Range")
     public int getGoal (int gameId){
         open();

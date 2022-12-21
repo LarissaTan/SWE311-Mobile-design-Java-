@@ -35,6 +35,7 @@ import java.util.Random;
 
 public class Reading_game_2 extends AppCompatActivity {
 
+    //Initialization of variables
     TextView scoreTextView;
     TextView timeLeftTextView;
     TextView alertTextView;
@@ -80,6 +81,7 @@ public class Reading_game_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reading_game2);
 
+        //Getting user and game id from previous page
         Bundle extra = getIntent().getExtras();
         if(extra != null){
             userId = extra.getInt("userId");
@@ -88,6 +90,7 @@ public class Reading_game_2 extends AppCompatActivity {
             Toast.makeText(this, "Id not passed", Toast.LENGTH_SHORT).show();
         }
 
+        //Declaration of variables
         scoreTextView = findViewById(R.id.scoreTextView);
         timeLeftTextView = findViewById(R.id.timeLeftTextView);
         alertTextView = findViewById(R.id.alertTextView);
@@ -121,6 +124,7 @@ public class Reading_game_2 extends AppCompatActivity {
 
         scoreTextView.setText(Integer.toString(points));
 
+        //start button
         startBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -142,7 +146,7 @@ public class Reading_game_2 extends AppCompatActivity {
             }
         });
 
-        btn1TextView.setTag(0);
+        //button 1
         btn1TextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -165,7 +169,7 @@ public class Reading_game_2 extends AppCompatActivity {
             }
         });
 
-        btn2TextView.setTag(1);
+        //button 2
         btn2TextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -188,7 +192,7 @@ public class Reading_game_2 extends AppCompatActivity {
             }
         });
 
-        btn3TextView.setTag(2);
+        //button 3
         btn3TextView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -211,6 +215,7 @@ public class Reading_game_2 extends AppCompatActivity {
             }
         });
 
+        //play again button
         playAgainBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -238,6 +243,7 @@ public class Reading_game_2 extends AppCompatActivity {
             }
         });
 
+        //quit button
         quitBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -261,15 +267,16 @@ public class Reading_game_2 extends AppCompatActivity {
         });
     }
 
+    //render next question
     @SuppressLint("SetTextI18n")
     public void NextQuestion(){
 
         FindWordsDao dao = new FindWordsDao(this);
-        dao.open();
+        dao.open();                                             //open database
 
-        ArrayList<FindWordsBean> words = dao.getAllWords();
+        ArrayList<FindWordsBean> words = dao.getAllWords();     //get questions
 
-        display = random.nextInt(words.size());
+        display = random.nextInt(words.size());                 //random index for questions
         indexOfCorrectAnswer = random.nextInt(3);
 
         answers.clear();
@@ -294,6 +301,7 @@ public class Reading_game_2 extends AppCompatActivity {
         btn3TextView.setText(answers.get(2));
     }
 
+    //on click
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
@@ -303,12 +311,15 @@ public class Reading_game_2 extends AppCompatActivity {
         mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
+        //correct answer
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
             mp_correct.start();
             points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
-        }else {
+        }
+        //wrong answer
+        else {
             mp_wrong.start();
             alertTextView.setText("Correct Answer: " + (answers.get(indexOfCorrectAnswer)));
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
@@ -336,7 +347,7 @@ public class Reading_game_2 extends AppCompatActivity {
         }, 2300);
 
 
-        scoreTextView.setText(Integer.toString(points));
+        scoreTextView.setText(Integer.toString(points));  //set score
 
         view.postDelayed(new Runnable() {
             @Override
@@ -347,6 +358,7 @@ public class Reading_game_2 extends AppCompatActivity {
         }, 1000);
     }
 
+    //answer page
     public void onAnswer(){
         System.out.println("onAnswer");
         normalUI.setVisibility(View.INVISIBLE);
@@ -358,6 +370,7 @@ public class Reading_game_2 extends AppCompatActivity {
                 .setListener(null);
     }
 
+    //play again reset game
     @SuppressLint("SetTextI18n")
     public void playAgain(View view){
         points=0;
@@ -374,7 +387,7 @@ public class Reading_game_2 extends AppCompatActivity {
     }
 
 
-
+    //start game
     public void start(View view) {
 
         mp_countdown = MediaPlayer.create(this,R.raw.countdown_sound);
@@ -389,19 +402,19 @@ public class Reading_game_2 extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long millisUntilFinished) {
-                timeLeftTextView.setText(String.valueOf(millisUntilFinished/1000));
-                if (progress >= 80)
+                timeLeftTextView.setText(String.valueOf(millisUntilFinished/1000)); //time left
+                if (progress >= 80)         //progress more than 80
                 {
                     progress ++;
                     timeLeftProgressBar.setProgress(progress, true);
                 }
-                else
+                else                        //progress less than 80
                 {
                     progress += 2;
                     timeLeftProgressBar.setProgress(progress, true);
                 }
 
-                if(progress >= 90)
+                if(progress >= 90)          //10 seconds left
                 {
                     mp_countdown.start();
                 }
@@ -411,8 +424,8 @@ public class Reading_game_2 extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onFinish() {
-                finalScoreTextView.setText(Integer.toString(points));
-                insertDatabase(points);
+                finalScoreTextView.setText(Integer.toString(points));   //final score
+                insertDatabase(points);                                 //game record
                 view.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -427,6 +440,7 @@ public class Reading_game_2 extends AppCompatActivity {
 
     }
 
+    //update game record
     public void insertDatabase (int score){
 
         UserGameRecord userGameRecord =  new UserGameRecord();
@@ -451,6 +465,7 @@ public class Reading_game_2 extends AppCompatActivity {
         }
     }
 
+    //clean up
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub

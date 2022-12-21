@@ -39,6 +39,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Math_game_1 extends AppCompatActivity {
+
+    //Initialization of variables
     private RecyclerView mList;
     private final ArrayList<model_math_level> mathLevelList = new ArrayList<model_math_level>();
 
@@ -86,6 +88,7 @@ public class Math_game_1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_math_game1);
 
+        //Getting user and game id from previous page
         Bundle extra = getIntent().getExtras();
         if(extra != null){
             userId = extra.getInt("userId");
@@ -96,6 +99,7 @@ public class Math_game_1 extends AppCompatActivity {
         System.out.println("userid: " + userId);
         System.out.println("gameid" + gameId);
 
+        //Declaration of variables
         scoreTextView = findViewById(R.id.scoreTextView);
         roundsLeftTextView = findViewById(R.id.roundsLeftTextView);
         alertTextView = findViewById(R.id.alertTextView);
@@ -131,6 +135,7 @@ public class Math_game_1 extends AppCompatActivity {
 
         NextQuestion();
 
+        //button 1
         btn1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -163,6 +168,7 @@ public class Math_game_1 extends AppCompatActivity {
             }
         });
 
+        //button 2
         btn2.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -194,6 +200,7 @@ public class Math_game_1 extends AppCompatActivity {
             }
         });
 
+        //button 3
         btn3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -225,6 +232,7 @@ public class Math_game_1 extends AppCompatActivity {
             }
         });
 
+        //play again button
         playAgainBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -253,6 +261,7 @@ public class Math_game_1 extends AppCompatActivity {
             }
         });
 
+        //quit button
         quitBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -276,6 +285,7 @@ public class Math_game_1 extends AppCompatActivity {
         });
     }
 
+    //render next question
     @SuppressLint({"SetTextI18n", "NotifyDataSetChanged"})
     public void NextQuestion() {
 
@@ -286,21 +296,23 @@ public class Math_game_1 extends AppCompatActivity {
         btn3.setBackgroundColor(Color.WHITE);
         btn3.setTextColor(Color.parseColor("#F9D150"));
 
+        //question
         display = random.nextInt(4);
 
+        //location of answer
         indexOfCorrectAnswer = random.nextInt(3);
 
         mathLevelList.clear();
         System.out.println("message is working");
 
         System.out.println("display" + display+1);
+        //add to recycler view
         for (int i = 0; i < display+1; i ++) {
             System.out.println("loop");
             mathLevelList.add(new model_math_level(R.drawable.math_level_sheep));
         }
         System.out.println(display);
 
-        //mList.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
         adapter_math_level customAdapter = new adapter_math_level(mathLevelList);
         customAdapter.notifyDataSetChanged();
 
@@ -313,7 +325,7 @@ public class Math_game_1 extends AppCompatActivity {
         mList.setLayoutManager(gridLayoutManager);
         mList.setAdapter(customAdapter);
 
-
+        //number list
         for (int i = 0; i < 5; i ++)
         {
             numbers.add(i);
@@ -327,6 +339,7 @@ public class Math_game_1 extends AppCompatActivity {
                 System.out.println("button correct " + display +1);
                 answers.add(display+1);
             }
+            //non repeated wrong answer
             else {
                 int wrongAnswer = random.nextInt(5);
                 while(numbers.get(wrongAnswer)==display+1 || answers.contains(numbers.get(wrongAnswer)))
@@ -343,6 +356,7 @@ public class Math_game_1 extends AppCompatActivity {
         btn3.setText(Integer.toString(answers.get(2)));
     }
 
+    //adjust span of grid layout
     private void adjustSpan (GridLayoutManager gridLayoutManager)
     {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -359,6 +373,7 @@ public class Math_game_1 extends AppCompatActivity {
         });
     }
 
+    //on click
     @SuppressLint("SetTextI18n")
     public void optionSelect(View view){
 
@@ -368,12 +383,15 @@ public class Math_game_1 extends AppCompatActivity {
         mp_wrong = MediaPlayer.create(this,R.raw.wrong_answer_sound);
         mp_wrong.setVolume(100,100);
 
+        //correct answer
         if(Integer.toString(indexOfCorrectAnswer).equals(view.getTag().toString())){
             mp_correct.start();
             points+=10;
             alertTextView.setText("Correct");
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,45);
-        }else {
+        }
+        //wrong answer
+        else {
             mp_wrong.start();
             alertTextView.setText("Correct Answer: " + (display+1));
             alertTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,35);
@@ -400,6 +418,7 @@ public class Math_game_1 extends AppCompatActivity {
         }, 2300);
 
 
+        //update UI
         scoreTextView.setText(Integer.toString(points));
         roundsLeftTextView.setText(Integer.toString(--rounds));
         roundsLeftTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP,20);
@@ -427,6 +446,7 @@ public class Math_game_1 extends AppCompatActivity {
         }, 1000);
     }
 
+    //answer page
     public void onAnswer(){
         System.out.println("onAnswer");
         normalUI.setVisibility(View.INVISIBLE);
@@ -438,6 +458,7 @@ public class Math_game_1 extends AppCompatActivity {
                 .setListener(null);
     }
 
+    //end page
     @SuppressLint("SetTextI18n")
     public void onFinish() {
         mp_game_over = MediaPlayer.create(this,R.raw.game_over_sound);
@@ -448,6 +469,7 @@ public class Math_game_1 extends AppCompatActivity {
         normalUI.setVisibility(View.INVISIBLE);
         finalUI.setVisibility(View.VISIBLE);
 
+        //update database
         UserGameRecord userGameRecord =  new UserGameRecord();
         Date date = new Date(System.currentTimeMillis());
 
@@ -470,6 +492,7 @@ public class Math_game_1 extends AppCompatActivity {
         }
     }
 
+    //play again reset game
     @SuppressLint("SetTextI18n")
     public void playAgain(View view){
         points=0;
@@ -486,6 +509,7 @@ public class Math_game_1 extends AppCompatActivity {
         }
     }
 
+    //clean up
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub

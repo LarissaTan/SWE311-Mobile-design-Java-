@@ -133,23 +133,6 @@ public class ChatActivity extends AppCompatActivity
                     }
                 });
 
-                /*channelClient.create(memberIds, extraData)
-                        .enqueue(result1 -> {
-                            if (result1.isSuccess()) {
-                                Channel newChannel = result1.data();
-                            } else {
-                                System.out.println("Channel failed");
-                            }
-                        });*/
-
-                /*client.createChannel("messaging", "general", memberIds, extraData).enqueue(result1 -> {
-                    if (result1.isSuccess()) {
-                        Channel channel = result1.data();
-                    } else {
-                        System.out.println("Channel failed");
-                    }
-                });*/
-
             } else {
                 System.out.println("Connection failed");
             }
@@ -173,8 +156,6 @@ public class ChatActivity extends AppCompatActivity
                 .sort(ChannelListViewModel.DEFAULT_SORT)
                 .build();
 
-        //this.startActivity(ChannelListActivity.createIntent(this));
-
         ChannelListHeaderViewModel headerViewModel =
                 new ViewModelProvider(this).get(ChannelListHeaderViewModel.class);
 
@@ -186,31 +167,6 @@ public class ChatActivity extends AppCompatActivity
 
         // Bind it with ChannelListHeaderView
         ChannelListHeaderViewModelBinding.bind(headerViewModel, binding.channelListHeaderView, this);
-
-        //SearchViewModel viewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        // Bind it with SearchResultListView
-        //SearchViewModelBinding.bind(searchViewModel, binding.searchResultListView, this);
-        // Notify ViewModel when search is triggered
-        //binding.searchInputView.setSearchStartedListener(searchViewModel::setQuery);
-
-        //SearchViewModelBinding.bind(searchViewModel, binding.searchResultListView, this);
-        /*binding.searchInputView.setDebouncedInputChangedListener(query -> {
-            // Search query changed and has been stable for a short while
-            if (query.isEmpty()) {
-                binding.channelListView.setVisibility(ChannelListView.VISIBLE);
-            }
-        });
-
-        // Notify ViewModel when search is triggered
-        binding.searchInputView.setSearchStartedListener(query->{
-            searchViewModel.setQuery(query);
-            if (query.isEmpty()){
-                binding.channelListView.setVisibility(ChannelListView.VISIBLE);
-            }
-            if (!query.isEmpty()){
-                binding.searchResultListView.setVisibility(SearchResultListView.VISIBLE);
-            }
-        });*/
 
         ChannelListViewModelBinding.bind(channelsViewModel, binding.channelListView, this);
         binding.channelListView.setChannelItemClickListener(channel -> {

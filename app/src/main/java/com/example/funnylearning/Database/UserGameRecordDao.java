@@ -24,6 +24,7 @@ public class UserGameRecordDao {
 
     public UserGameRecordDao(Context context) {this.context = context;}
 
+    //open db
     public void open() throws SQLiteException {
         dbHelper = new MyDatabase(context);
         //dbHelper.onCreate(db);
@@ -34,6 +35,7 @@ public class UserGameRecordDao {
         }
     }
 
+    //close db
     public void close() {
         if (db != null) {
             db.close();
@@ -41,6 +43,7 @@ public class UserGameRecordDao {
         }
     }
 
+    //insert score
     public Boolean insertScore(UserGameRecord gameRecord){
 
             open();
@@ -59,6 +62,7 @@ public class UserGameRecordDao {
                 return true;
     }
 
+    //get all game record
     @SuppressLint("Range")
     public ArrayList<UserGameRecord> getAllScore(){
         open();
@@ -81,6 +85,7 @@ public class UserGameRecordDao {
         }
     }
 
+    //get record by type name
     @SuppressLint("Range")
     public UserGameRecord getRecordByTypeName(String typeName, int userId){
         open();
